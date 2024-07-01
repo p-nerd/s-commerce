@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
+// store routes
 Route::middleware([])->group(function () {
     Route::get('/', function () {
         return view('store/home');
