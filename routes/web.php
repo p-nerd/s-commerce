@@ -10,9 +10,10 @@ Route::middleware([])->group(function () {
     });
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard/index');
-})->middleware(['auth', 'verified'])->name('dashboard');
+// dashboard routes
+Route::prefix('/dashboard')->middleware(['auth', 'verified'])->group(function () {
+    require __DIR__.'/dashboard.php';
+});
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
