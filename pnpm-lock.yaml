@@ -12,25 +12,25 @@ importers:
         specifier: ^1.14.1
         version: 1.14.1
       '@tailwindcss/forms':
-        specifier: ^0.5.2
+        specifier: ^0.5.7
         version: 0.5.7(tailwindcss@3.4.4)
       alpinejs:
-        specifier: ^3.4.2
+        specifier: ^3.14.1
         version: 3.14.1
       autoprefixer:
-        specifier: ^10.4.2
+        specifier: ^10.4.19
         version: 10.4.19(postcss@8.4.39)
       axios:
-        specifier: ^1.6.4
+        specifier: ^1.7.2
         version: 1.7.2
       daisyui:
         specifier: ^4.12.10
         version: 4.12.10(postcss@8.4.39)
       laravel-vite-plugin:
-        specifier: ^1.0
+        specifier: ^1.0.4
         version: 1.0.4(vite@5.3.2)
       postcss:
-        specifier: ^8.4.31
+        specifier: ^8.4.39
         version: 8.4.39
       prettier:
         specifier: ^3.3.2
@@ -39,10 +39,10 @@ importers:
         specifier: ^0.6.5
         version: 0.6.5(prettier@3.3.2)
       tailwindcss:
-        specifier: ^3.1.0
+        specifier: ^3.4.4
         version: 3.4.4
       vite:
-        specifier: ^5.0
+        specifier: ^5.3.2
         version: 5.3.2
 
 packages:
