@@ -12,8 +12,18 @@ class CategoryController extends Controller
      */
     public function index()
     {
+        $categories = Category::with('subCategories')->get();
+
         return view('dashboard/categories/index', [
-            'categories' => Category::all(),
+            'categories' => $categories,
+        ]);
+    }
+
+    public function subCategories(Category $category)
+    {
+        return view('dashboard/categories/index', [
+            'category' => $category,
+            'categories' => $category->subCategories,
         ]);
     }
 
@@ -22,7 +32,13 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+        $categories = Category::query()
+            ->where('parent_id', null)
+            ->get();
+
+        return view('dashboard/categories/create', [
+            'categories' => $categories->map(fn (Category $category) => ['label' => $category->name, 'value', 'value' => $category->id]),
+        ]);
     }
 
     /**
