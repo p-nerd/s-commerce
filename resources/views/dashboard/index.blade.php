@@ -1,3 +1,3 @@
-<x-dash.layout-sidebar>
-    Your are login
-</x-dash.layout-sidebar>
+<x-dashboard-layout>
+    <div class="py-10">Your are login</div>
+</x-dashboard-layout>
