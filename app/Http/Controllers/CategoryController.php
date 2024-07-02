@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
+use Illuminate\Validation\ValidationException;
 
 class CategoryController extends Controller
 {
@@ -32,12 +34,8 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        $categories = Category::query()
-            ->where('parent_id', null)
-            ->get();
-
         return view('dashboard/categories/create', [
-            'categories' => $categories->map(fn (Category $category) => ['label' => $category->name, 'value', 'value' => $category->id]),
+            'categories' => Category::getParentCategoryOptions(),
         ]);
     }
 
@@ -46,23 +44,38 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $payload = $request->validate([
+            'name' => ['required', 'string', 'max:255'],
+            'description' => ['required', 'string'],
+            'parent_id' => ['nullable', 'exists:categories,id'],
+        ]);
+
+        $slug = Str::slug($payload['name']);
+
+        $category = Category::query()->where('slug', $slug)->first();
+        if ($category) {
+            throw ValidationException::withMessages([
+                'name' => 'The category already exist',
+            ]);
+        }
+
+        Category::create([
+            ...$payload,
+            'slug' => $slug,
+        ]);
+
+        return to_route('dashboard.categories')->with(['success' => 'Category created.']);
     }
 
     /**
-     * Display the specified resource.
-     */
-    public function show(Category $category)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
+     * Show the form for creating a new resource.
      */
     public function edit(Category $category)
     {
-        //
+        return view('dashboard/categories/edit', [
+            'category' => $category,
+            'categories' => Category::getParentCategoryOptions(),
+        ]);
     }
 
     /**
@@ -70,7 +83,15 @@ class CategoryController extends Controller
      */
     public function update(Request $request, Category $category)
     {
-        //
+        $payload = $request->validate([
+            'name' => ['required', 'string', 'max:255'],
+            'description' => ['required', 'string'],
+            'parent_id' => ['nullable', 'exists:categories,id'],
+        ]);
+
+        $category->update($payload);
+
+        return to_route('dashboard.categories.edit', ['category' => $category])->with(['success' => 'Category updated.']);
     }
 
     /**
@@ -80,6 +101,6 @@ class CategoryController extends Controller
     {
         $category->delete();
 
-        return redirect()->back()->with(['success' => 'Category deleted']);
+        return back()->with(['success' => 'Category deleted.']);
     }
 }
