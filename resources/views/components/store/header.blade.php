@@ -6,7 +6,7 @@
             <div class="modal-body">
                 <div class="deal" style="background-image: url('assets/imgs/banner/popup-1.png')">
                     <div class="deal-top">
-                        <h6 class="mb-10 text-brand-2">Deal of the Day</h6>
+                        <h6 class="text-brand-2 mb-10">Deal of the Day</h6>
                     </div>
                     <div class="deal-content detail-info">
                         <h4 class="product-title"><a href="shop-product-right.html" class="text-heading">Organic fruit
@@ -38,7 +38,7 @@
                                 <div class="product-rate d-inline-block">
                                     <div class="product-rating" style="width: 90%"></div>
                                 </div>
-                                <span class="font-small ml-5 text-muted"> (32 rates)</span>
+                                <span class="font-small text-muted ml-5"> (32 rates)</span>
                             </div>
                         </div>
                         <a href="shop-grid-right.html" class="btn hover-up">Shop Now <i
@@ -107,7 +107,7 @@
                                     <div class="product-rate d-inline-block">
                                         <div class="product-rating" style="width: 90%"></div>
                                     </div>
-                                    <span class="font-small ml-5 text-muted"> (32 reviews)</span>
+                                    <span class="font-small text-muted ml-5"> (32 reviews)</span>
                                 </div>
                             </div>
                             <div class="clearfix product-price-cover">
@@ -120,7 +120,7 @@
                                 </div>
                             </div>
                             <div class="detail-extralink mb-30">
-                                <div class="detail-qty border radius">
+                                <div class="detail-qty radius border">
                                     <a href="#" class="qty-down"><i class="fi-rs-angle-small-down"></i></a>
                                     <span class="qty-val">1</span>
                                     <a href="#" class="qty-up"><i class="fi-rs-angle-small-up"></i></a>

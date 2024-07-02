@@ -6,34 +6,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
-
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.bunny.net">
-    <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
+    <title>{{ config('app.name') }} Dashboard</title>
 
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
-<body class="font-sans antialiased">
-    <div class="min-h-screen bg-gray-100">
-        <x-dashboard.navigation />
+<body
+    class="scrollbar scrollbar-w-3 scrollbar-thumb-rounded-[0.25rem] scrollbar-track-slate-200 scrollbar-thumb-gray-400 dark:scrollbar-track-gray-900 dark:scrollbar-thumb-gray-700 bg-gray-50 selection:bg-red-500 selection:text-white dark:bg-gray-800">
 
-        <!-- Page Heading -->
-        @isset($header)
-            <header class="bg-white shadow">
-                <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                    {{ $header }}
-                </div>
-            </header>
-        @endisset
+    @include('layouts.navbar-sidebar')
 
-        <!-- Page Content -->
-        <main>
-            {{ $slot }}
-        </main>
+    @include('layouts.sidebar')
+
+    <div class="flex overflow-hidden bg-gray-50 pt-16 dark:bg-gray-900">
+        <div id="main-content"
+            class="relative h-full min-h-screen w-full overflow-y-auto bg-gray-50 text-center dark:bg-gray-900 lg:ml-64">
+            @isset($header)
+                <header class="p-4">
+                    <div class="rounded bg-white px-4 py-4 shadow">
+                        {{ $header }}
+                    </div>
+                </header>
+            @endisset
+            <main class="p-4">
+                {{ $slot }}
+            </main>
+        </div>
     </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/flowbite@2.4.1/dist/flowbite.min.js"></script>
 </body>
 
 </html>

@@ -39,7 +39,7 @@
         </section>
         <!--End hero slider-->
         <section class="popular-categories section-padding">
-            <div class="container wow animate__animated animate__fadeIn">
+            <div class="wow animate__animated animate__fadeIn container">
                 <div class="section-title">
                     <div class="title">
                         <h3>Featured Categories</h3>
@@ -278,7 +278,7 @@
                                             <div class="product-rate d-inline-block">
                                                 <div class="product-rating" style="width: 90%"></div>
                                             </div>
-                                            <span class="font-small ml-5 text-muted"> (4.0)</span>
+                                            <span class="font-small text-muted ml-5"> (4.0)</span>
                                         </div>
                                         <div>
                                             <span class="font-small text-muted">By <a
@@ -332,7 +332,7 @@
                                             <div class="product-rate d-inline-block">
                                                 <div class="product-rating" style="width: 80%"></div>
                                             </div>
-                                            <span class="font-small ml-5 text-muted"> (3.5)</span>
+                                            <span class="font-small text-muted ml-5"> (3.5)</span>
                                         </div>
                                         <div>
                                             <span class="font-small text-muted">By <a
@@ -386,7 +386,7 @@
                                             <div class="product-rate d-inline-block">
                                                 <div class="product-rating" style="width: 85%"></div>
                                             </div>
-                                            <span class="font-small ml-5 text-muted"> (4.0)</span>
+                                            <span class="font-small text-muted ml-5"> (4.0)</span>
                                         </div>
                                         <div>
                                             <span class="font-small text-muted">By <a
@@ -437,7 +437,7 @@
                                             <div class="product-rate d-inline-block">
                                                 <div class="product-rating" style="width: 90%"></div>
                                             </div>
-                                            <span class="font-small ml-5 text-muted"> (4.0)</span>
+                                            <span class="font-small text-muted ml-5"> (4.0)</span>
                                         </div>
                                         <div>
                                             <span class="font-small text-muted">By <a
@@ -491,7 +491,7 @@
                                             <div class="product-rate d-inline-block">
                                                 <div class="product-rating" style="width: 90%"></div>
                                             </div>
-                                            <span class="font-small ml-5 text-muted"> (4.0)</span>
+                                            <span class="font-small text-muted ml-5"> (4.0)</span>
                                         </div>
                                         <div>
                                             <span class="font-small text-muted">By <a
@@ -542,7 +542,7 @@
                                             <div class="product-rate d-inline-block">
                                                 <div class="product-rating" style="width: 90%"></div>
                                             </div>
-                                            <span class="font-small ml-5 text-muted"> (4.0)</span>
+                                            <span class="font-small text-muted ml-5"> (4.0)</span>
                                         </div>
                                         <div>
                                             <span class="font-small text-muted">By <a
@@ -593,7 +593,7 @@
                                             <div class="product-rate d-inline-block">
                                                 <div class="product-rating" style="width: 90%"></div>
                                             </div>
-                                            <span class="font-small ml-5 text-muted"> (4.0)</span>
+                                            <span class="font-small text-muted ml-5"> (4.0)</span>
                                         </div>
                                         <div>
                                             <span class="font-small text-muted">By <a
@@ -647,7 +647,7 @@
                                             <div class="product-rate d-inline-block">
                                                 <div class="product-rating" style="width: 90%"></div>
                                             </div>
-                                            <span class="font-small ml-5 text-muted"> (4.0)</span>
+                                            <span class="font-small text-muted ml-5"> (4.0)</span>
                                         </div>
                                         <div>
                                             <span class="font-small text-muted">By <a
@@ -701,7 +701,7 @@
                                             <div class="product-rate d-inline-block">
                                                 <div class="product-rating" style="width: 90%"></div>
                                             </div>
-                                            <span class="font-small ml-5 text-muted"> (4.0)</span>
+                                            <span class="font-small text-muted ml-5"> (4.0)</span>
                                         </div>
                                         <div>
                                             <span class="font-small text-muted">By <a href="vendor-details-1.html">Old
@@ -752,7 +752,7 @@
                                             <div class="product-rate d-inline-block">
                                                 <div class="product-rating" style="width: 50%"></div>
                                             </div>
-                                            <span class="font-small ml-5 text-muted"> (2.0)</span>
+                                            <span class="font-small text-muted ml-5"> (2.0)</span>
                                         </div>
                                         <div>
                                             <span class="font-small text-muted">By <a
@@ -811,7 +811,7 @@
                                             <div class="product-rate d-inline-block">
                                                 <div class="product-rating" style="width: 90%"></div>
                                             </div>
-                                            <span class="font-small ml-5 text-muted"> (4.0)</span>
+                                            <span class="font-small text-muted ml-5"> (4.0)</span>
                                         </div>
                                         <div>
                                             <span class="font-small text-muted">By <a
@@ -864,7 +864,7 @@
                                             <div class="product-rate d-inline-block">
                                                 <div class="product-rating" style="width: 80%"></div>
                                             </div>
-                                            <span class="font-small ml-5 text-muted"> (3.5)</span>
+                                            <span class="font-small text-muted ml-5"> (3.5)</span>
                                         </div>
                                         <div>
                                             <span class="font-small text-muted">By <a
@@ -917,7 +917,7 @@
                                             <div class="product-rate d-inline-block">
                                                 <div class="product-rating" style="width: 85%"></div>
                                             </div>
-                                            <span class="font-small ml-5 text-muted"> (4.0)</span>
+                                            <span class="font-small text-muted ml-5"> (4.0)</span>
                                         </div>
                                         <div>
                                             <span class="font-small text-muted">By <a
@@ -967,7 +967,7 @@
                                             <div class="product-rate d-inline-block">
                                                 <div class="product-rating" style="width: 90%"></div>
                                             </div>
-                                            <span class="font-small ml-5 text-muted"> (4.0)</span>
+                                            <span class="font-small text-muted ml-5"> (4.0)</span>
                                         </div>
                                         <div>
                                             <span class="font-small text-muted">By <a
@@ -1020,7 +1020,7 @@
                                             <div class="product-rate d-inline-block">
                                                 <div class="product-rating" style="width: 90%"></div>
                                             </div>
-                                            <span class="font-small ml-5 text-muted"> (4.0)</span>
+                                            <span class="font-small text-muted ml-5"> (4.0)</span>
                                         </div>
                                         <div>
                                             <span class="font-small text-muted">By <a
@@ -1070,7 +1070,7 @@
                                             <div class="product-rate d-inline-block">
                                                 <div class="product-rating" style="width: 90%"></div>
                                             </div>
-                                            <span class="font-small ml-5 text-muted"> (4.0)</span>
+                                            <span class="font-small text-muted ml-5"> (4.0)</span>
                                         </div>
                                         <div>
                                             <span class="font-small text-muted">By <a
@@ -1120,7 +1120,7 @@
                                             <div class="product-rate d-inline-block">
                                                 <div class="product-rating" style="width: 90%"></div>
                                             </div>
-                                            <span class="font-small ml-5 text-muted"> (4.0)</span>
+                                            <span class="font-small text-muted ml-5"> (4.0)</span>
                                         </div>
                                         <div>
                                             <span class="font-small text-muted">By <a
@@ -1173,7 +1173,7 @@
                                             <div class="product-rate d-inline-block">
                                                 <div class="product-rating" style="width: 90%"></div>
                                             </div>
-                                            <span class="font-small ml-5 text-muted"> (4.0)</span>
+                                            <span class="font-small text-muted ml-5"> (4.0)</span>
                                         </div>
                                         <div>
                                             <span class="font-small text-muted">By <a
@@ -1226,7 +1226,7 @@
                                             <div class="product-rate d-inline-block">
                                                 <div class="product-rating" style="width: 90%"></div>
                                             </div>
-                                            <span class="font-small ml-5 text-muted"> (4.0)</span>
+                                            <span class="font-small text-muted ml-5"> (4.0)</span>
                                         </div>
                                         <div>
                                             <span class="font-small text-muted">By <a
@@ -1277,7 +1277,7 @@
                                             <div class="product-rate d-inline-block">
                                                 <div class="product-rating" style="width: 50%"></div>
                                             </div>
-                                            <span class="font-small ml-5 text-muted"> (2.0)</span>
+                                            <span class="font-small text-muted ml-5"> (2.0)</span>
                                         </div>
                                         <div>
                                             <span class="font-small text-muted">By <a
@@ -1336,7 +1336,7 @@
                                             <div class="product-rate d-inline-block">
                                                 <div class="product-rating" style="width: 90%"></div>
                                             </div>
-                                            <span class="font-small ml-5 text-muted"> (4.0)</span>
+                                            <span class="font-small text-muted ml-5"> (4.0)</span>
                                         </div>
                                         <div>
                                             <span class="font-small text-muted">By <a
@@ -1389,7 +1389,7 @@
                                             <div class="product-rate d-inline-block">
                                                 <div class="product-rating" style="width: 80%"></div>
                                             </div>
-                                            <span class="font-small ml-5 text-muted"> (3.5)</span>
+                                            <span class="font-small text-muted ml-5"> (3.5)</span>
                                         </div>
                                         <div>
                                             <span class="font-small text-muted">By <a
@@ -1442,7 +1442,7 @@
                                             <div class="product-rate d-inline-block">
                                                 <div class="product-rating" style="width: 85%"></div>
                                             </div>
-                                            <span class="font-small ml-5 text-muted"> (4.0)</span>
+                                            <span class="font-small text-muted ml-5"> (4.0)</span>
                                         </div>
                                         <div>
                                             <span class="font-small text-muted">By <a
@@ -1492,7 +1492,7 @@
                                             <div class="product-rate d-inline-block">
                                                 <div class="product-rating" style="width: 90%"></div>
                                             </div>
-                                            <span class="font-small ml-5 text-muted"> (4.0)</span>
+                                            <span class="font-small text-muted ml-5"> (4.0)</span>
                                         </div>
                                         <div>
                                             <span class="font-small text-muted">By <a
@@ -1545,7 +1545,7 @@
                                             <div class="product-rate d-inline-block">
                                                 <div class="product-rating" style="width: 90%"></div>
                                             </div>
-                                            <span class="font-small ml-5 text-muted"> (4.0)</span>
+                                            <span class="font-small text-muted ml-5"> (4.0)</span>
                                         </div>
                                         <div>
                                             <span class="font-small text-muted">By <a
@@ -1595,7 +1595,7 @@
                                             <div class="product-rate d-inline-block">
                                                 <div class="product-rating" style="width: 90%"></div>
                                             </div>
-                                            <span class="font-small ml-5 text-muted"> (4.0)</span>
+                                            <span class="font-small text-muted ml-5"> (4.0)</span>
                                         </div>
                                         <div>
                                             <span class="font-small text-muted">By <a
@@ -1645,7 +1645,7 @@
                                             <div class="product-rate d-inline-block">
                                                 <div class="product-rating" style="width: 90%"></div>
                                             </div>
-                                            <span class="font-small ml-5 text-muted"> (4.0)</span>
+                                            <span class="font-small text-muted ml-5"> (4.0)</span>
                                         </div>
                                         <div>
                                             <span class="font-small text-muted">By <a
@@ -1698,7 +1698,7 @@
                                             <div class="product-rate d-inline-block">
                                                 <div class="product-rating" style="width: 90%"></div>
                                             </div>
-                                            <span class="font-small ml-5 text-muted"> (4.0)</span>
+                                            <span class="font-small text-muted ml-5"> (4.0)</span>
                                         </div>
                                         <div>
                                             <span class="font-small text-muted">By <a
@@ -1751,7 +1751,7 @@
                                             <div class="product-rate d-inline-block">
                                                 <div class="product-rating" style="width: 90%"></div>
                                             </div>
-                                            <span class="font-small ml-5 text-muted"> (4.0)</span>
+                                            <span class="font-small text-muted ml-5"> (4.0)</span>
                                         </div>
                                         <div>
                                             <span class="font-small text-muted">By <a
@@ -1802,7 +1802,7 @@
                                             <div class="product-rate d-inline-block">
                                                 <div class="product-rating" style="width: 50%"></div>
                                             </div>
-                                            <span class="font-small ml-5 text-muted"> (2.0)</span>
+                                            <span class="font-small text-muted ml-5"> (2.0)</span>
                                         </div>
                                         <div>
                                             <span class="font-small text-muted">By <a
@@ -1861,7 +1861,7 @@
                                             <div class="product-rate d-inline-block">
                                                 <div class="product-rating" style="width: 90%"></div>
                                             </div>
-                                            <span class="font-small ml-5 text-muted"> (4.0)</span>
+                                            <span class="font-small text-muted ml-5"> (4.0)</span>
                                         </div>
                                         <div>
                                             <span class="font-small text-muted">By <a
@@ -1914,7 +1914,7 @@
                                             <div class="product-rate d-inline-block">
                                                 <div class="product-rating" style="width: 80%"></div>
                                             </div>
-                                            <span class="font-small ml-5 text-muted"> (3.5)</span>
+                                            <span class="font-small text-muted ml-5"> (3.5)</span>
                                         </div>
                                         <div>
                                             <span class="font-small text-muted">By <a
@@ -1967,7 +1967,7 @@
                                             <div class="product-rate d-inline-block">
                                                 <div class="product-rating" style="width: 85%"></div>
                                             </div>
-                                            <span class="font-small ml-5 text-muted"> (4.0)</span>
+                                            <span class="font-small text-muted ml-5"> (4.0)</span>
                                         </div>
                                         <div>
                                             <span class="font-small text-muted">By <a
@@ -2017,7 +2017,7 @@
                                             <div class="product-rate d-inline-block">
                                                 <div class="product-rating" style="width: 90%"></div>
                                             </div>
-                                            <span class="font-small ml-5 text-muted"> (4.0)</span>
+                                            <span class="font-small text-muted ml-5"> (4.0)</span>
                                         </div>
                                         <div>
                                             <span class="font-small text-muted">By <a
@@ -2070,7 +2070,7 @@
                                             <div class="product-rate d-inline-block">
                                                 <div class="product-rating" style="width: 90%"></div>
                                             </div>
-                                            <span class="font-small ml-5 text-muted"> (4.0)</span>
+                                            <span class="font-small text-muted ml-5"> (4.0)</span>
                                         </div>
                                         <div>
                                             <span class="font-small text-muted">By <a
@@ -2120,7 +2120,7 @@
                                             <div class="product-rate d-inline-block">
                                                 <div class="product-rating" style="width: 90%"></div>
                                             </div>
-                                            <span class="font-small ml-5 text-muted"> (4.0)</span>
+                                            <span class="font-small text-muted ml-5"> (4.0)</span>
                                         </div>
                                         <div>
                                             <span class="font-small text-muted">By <a
@@ -2170,7 +2170,7 @@
                                             <div class="product-rate d-inline-block">
                                                 <div class="product-rating" style="width: 90%"></div>
                                             </div>
-                                            <span class="font-small ml-5 text-muted"> (4.0)</span>
+                                            <span class="font-small text-muted ml-5"> (4.0)</span>
                                         </div>
                                         <div>
                                             <span class="font-small text-muted">By <a
@@ -2223,7 +2223,7 @@
                                             <div class="product-rate d-inline-block">
                                                 <div class="product-rating" style="width: 90%"></div>
                                             </div>
-                                            <span class="font-small ml-5 text-muted"> (4.0)</span>
+                                            <span class="font-small text-muted ml-5"> (4.0)</span>
                                         </div>
                                         <div>
                                             <span class="font-small text-muted">By <a
@@ -2276,7 +2276,7 @@
                                             <div class="product-rate d-inline-block">
                                                 <div class="product-rating" style="width: 90%"></div>
                                             </div>
-                                            <span class="font-small ml-5 text-muted"> (4.0)</span>
+                                            <span class="font-small text-muted ml-5"> (4.0)</span>
                                         </div>
                                         <div>
                                             <span class="font-small text-muted">By <a
@@ -2327,7 +2327,7 @@
                                             <div class="product-rate d-inline-block">
                                                 <div class="product-rating" style="width: 50%"></div>
                                             </div>
-                                            <span class="font-small ml-5 text-muted"> (2.0)</span>
+                                            <span class="font-small text-muted ml-5"> (2.0)</span>
                                         </div>
                                         <div>
                                             <span class="font-small text-muted">By <a
@@ -2386,7 +2386,7 @@
                                             <div class="product-rate d-inline-block">
                                                 <div class="product-rating" style="width: 90%"></div>
                                             </div>
-                                            <span class="font-small ml-5 text-muted"> (4.0)</span>
+                                            <span class="font-small text-muted ml-5"> (4.0)</span>
                                         </div>
                                         <div>
                                             <span class="font-small text-muted">By <a
@@ -2439,7 +2439,7 @@
                                             <div class="product-rate d-inline-block">
                                                 <div class="product-rating" style="width: 80%"></div>
                                             </div>
-                                            <span class="font-small ml-5 text-muted"> (3.5)</span>
+                                            <span class="font-small text-muted ml-5"> (3.5)</span>
                                         </div>
                                         <div>
                                             <span class="font-small text-muted">By <a
@@ -2492,7 +2492,7 @@
                                             <div class="product-rate d-inline-block">
                                                 <div class="product-rating" style="width: 85%"></div>
                                             </div>
-                                            <span class="font-small ml-5 text-muted"> (4.0)</span>
+                                            <span class="font-small text-muted ml-5"> (4.0)</span>
                                         </div>
                                         <div>
                                             <span class="font-small text-muted">By <a
@@ -2542,7 +2542,7 @@
                                             <div class="product-rate d-inline-block">
                                                 <div class="product-rating" style="width: 90%"></div>
                                             </div>
-                                            <span class="font-small ml-5 text-muted"> (4.0)</span>
+                                            <span class="font-small text-muted ml-5"> (4.0)</span>
                                         </div>
                                         <div>
                                             <span class="font-small text-muted">By <a
@@ -2595,7 +2595,7 @@
                                             <div class="product-rate d-inline-block">
                                                 <div class="product-rating" style="width: 90%"></div>
                                             </div>
-                                            <span class="font-small ml-5 text-muted"> (4.0)</span>
+                                            <span class="font-small text-muted ml-5"> (4.0)</span>
                                         </div>
                                         <div>
                                             <span class="font-small text-muted">By <a
@@ -2645,7 +2645,7 @@
                                             <div class="product-rate d-inline-block">
                                                 <div class="product-rating" style="width: 90%"></div>
                                             </div>
-                                            <span class="font-small ml-5 text-muted"> (4.0)</span>
+                                            <span class="font-small text-muted ml-5"> (4.0)</span>
                                         </div>
                                         <div>
                                             <span class="font-small text-muted">By <a
@@ -2695,7 +2695,7 @@
                                             <div class="product-rate d-inline-block">
                                                 <div class="product-rating" style="width: 90%"></div>
                                             </div>
-                                            <span class="font-small ml-5 text-muted"> (4.0)</span>
+                                            <span class="font-small text-muted ml-5"> (4.0)</span>
                                         </div>
                                         <div>
                                             <span class="font-small text-muted">By <a
@@ -2748,7 +2748,7 @@
                                             <div class="product-rate d-inline-block">
                                                 <div class="product-rating" style="width: 90%"></div>
                                             </div>
-                                            <span class="font-small ml-5 text-muted"> (4.0)</span>
+                                            <span class="font-small text-muted ml-5"> (4.0)</span>
                                         </div>
                                         <div>
                                             <span class="font-small text-muted">By <a
@@ -2801,7 +2801,7 @@
                                             <div class="product-rate d-inline-block">
                                                 <div class="product-rating" style="width: 90%"></div>
                                             </div>
-                                            <span class="font-small ml-5 text-muted"> (4.0)</span>
+                                            <span class="font-small text-muted ml-5"> (4.0)</span>
                                         </div>
                                         <div>
                                             <span class="font-small text-muted">By <a
@@ -2852,7 +2852,7 @@
                                             <div class="product-rate d-inline-block">
                                                 <div class="product-rating" style="width: 50%"></div>
                                             </div>
-                                            <span class="font-small ml-5 text-muted"> (2.0)</span>
+                                            <span class="font-small text-muted ml-5"> (2.0)</span>
                                         </div>
                                         <div>
                                             <span class="font-small text-muted">By <a
@@ -2911,7 +2911,7 @@
                                             <div class="product-rate d-inline-block">
                                                 <div class="product-rating" style="width: 90%"></div>
                                             </div>
-                                            <span class="font-small ml-5 text-muted"> (4.0)</span>
+                                            <span class="font-small text-muted ml-5"> (4.0)</span>
                                         </div>
                                         <div>
                                             <span class="font-small text-muted">By <a
@@ -2964,7 +2964,7 @@
                                             <div class="product-rate d-inline-block">
                                                 <div class="product-rating" style="width: 80%"></div>
                                             </div>
-                                            <span class="font-small ml-5 text-muted"> (3.5)</span>
+                                            <span class="font-small text-muted ml-5"> (3.5)</span>
                                         </div>
                                         <div>
                                             <span class="font-small text-muted">By <a
@@ -3017,7 +3017,7 @@
                                             <div class="product-rate d-inline-block">
                                                 <div class="product-rating" style="width: 85%"></div>
                                             </div>
-                                            <span class="font-small ml-5 text-muted"> (4.0)</span>
+                                            <span class="font-small text-muted ml-5"> (4.0)</span>
                                         </div>
                                         <div>
                                             <span class="font-small text-muted">By <a
@@ -3067,7 +3067,7 @@
                                             <div class="product-rate d-inline-block">
                                                 <div class="product-rating" style="width: 90%"></div>
                                             </div>
-                                            <span class="font-small ml-5 text-muted"> (4.0)</span>
+                                            <span class="font-small text-muted ml-5"> (4.0)</span>
                                         </div>
                                         <div>
                                             <span class="font-small text-muted">By <a
@@ -3120,7 +3120,7 @@
                                             <div class="product-rate d-inline-block">
                                                 <div class="product-rating" style="width: 90%"></div>
                                             </div>
-                                            <span class="font-small ml-5 text-muted"> (4.0)</span>
+                                            <span class="font-small text-muted ml-5"> (4.0)</span>
                                         </div>
                                         <div>
                                             <span class="font-small text-muted">By <a
@@ -3170,7 +3170,7 @@
                                             <div class="product-rate d-inline-block">
                                                 <div class="product-rating" style="width: 90%"></div>
                                             </div>
-                                            <span class="font-small ml-5 text-muted"> (4.0)</span>
+                                            <span class="font-small text-muted ml-5"> (4.0)</span>
                                         </div>
                                         <div>
                                             <span class="font-small text-muted">By <a
@@ -3220,7 +3220,7 @@
                                             <div class="product-rate d-inline-block">
                                                 <div class="product-rating" style="width: 90%"></div>
                                             </div>
-                                            <span class="font-small ml-5 text-muted"> (4.0)</span>
+                                            <span class="font-small text-muted ml-5"> (4.0)</span>
                                         </div>
                                         <div>
                                             <span class="font-small text-muted">By <a
@@ -3273,7 +3273,7 @@
                                             <div class="product-rate d-inline-block">
                                                 <div class="product-rating" style="width: 90%"></div>
                                             </div>
-                                            <span class="font-small ml-5 text-muted"> (4.0)</span>
+                                            <span class="font-small text-muted ml-5"> (4.0)</span>
                                         </div>
                                         <div>
                                             <span class="font-small text-muted">By <a
@@ -3326,7 +3326,7 @@
                                             <div class="product-rate d-inline-block">
                                                 <div class="product-rating" style="width: 90%"></div>
                                             </div>
-                                            <span class="font-small ml-5 text-muted"> (4.0)</span>
+                                            <span class="font-small text-muted ml-5"> (4.0)</span>
                                         </div>
                                         <div>
                                             <span class="font-small text-muted">By <a
@@ -3377,7 +3377,7 @@
                                             <div class="product-rate d-inline-block">
                                                 <div class="product-rating" style="width: 50%"></div>
                                             </div>
-                                            <span class="font-small ml-5 text-muted"> (2.0)</span>
+                                            <span class="font-small text-muted ml-5"> (2.0)</span>
                                         </div>
                                         <div>
                                             <span class="font-small text-muted">By <a
@@ -3436,7 +3436,7 @@
                                             <div class="product-rate d-inline-block">
                                                 <div class="product-rating" style="width: 90%"></div>
                                             </div>
-                                            <span class="font-small ml-5 text-muted"> (4.0)</span>
+                                            <span class="font-small text-muted ml-5"> (4.0)</span>
                                         </div>
                                         <div>
                                             <span class="font-small text-muted">By <a
@@ -3489,7 +3489,7 @@
                                             <div class="product-rate d-inline-block">
                                                 <div class="product-rating" style="width: 80%"></div>
                                             </div>
-                                            <span class="font-small ml-5 text-muted"> (3.5)</span>
+                                            <span class="font-small text-muted ml-5"> (3.5)</span>
                                         </div>
                                         <div>
                                             <span class="font-small text-muted">By <a
@@ -3542,7 +3542,7 @@
                                             <div class="product-rate d-inline-block">
                                                 <div class="product-rating" style="width: 85%"></div>
                                             </div>
-                                            <span class="font-small ml-5 text-muted"> (4.0)</span>
+                                            <span class="font-small text-muted ml-5"> (4.0)</span>
                                         </div>
                                         <div>
                                             <span class="font-small text-muted">By <a
@@ -3592,7 +3592,7 @@
                                             <div class="product-rate d-inline-block">
                                                 <div class="product-rating" style="width: 90%"></div>
                                             </div>
-                                            <span class="font-small ml-5 text-muted"> (4.0)</span>
+                                            <span class="font-small text-muted ml-5"> (4.0)</span>
                                         </div>
                                         <div>
                                             <span class="font-small text-muted">By <a
@@ -3645,7 +3645,7 @@
                                             <div class="product-rate d-inline-block">
                                                 <div class="product-rating" style="width: 90%"></div>
                                             </div>
-                                            <span class="font-small ml-5 text-muted"> (4.0)</span>
+                                            <span class="font-small text-muted ml-5"> (4.0)</span>
                                         </div>
                                         <div>
                                             <span class="font-small text-muted">By <a
@@ -3695,7 +3695,7 @@
                                             <div class="product-rate d-inline-block">
                                                 <div class="product-rating" style="width: 90%"></div>
                                             </div>
-                                            <span class="font-small ml-5 text-muted"> (4.0)</span>
+                                            <span class="font-small text-muted ml-5"> (4.0)</span>
                                         </div>
                                         <div>
                                             <span class="font-small text-muted">By <a
@@ -3745,7 +3745,7 @@
                                             <div class="product-rate d-inline-block">
                                                 <div class="product-rating" style="width: 90%"></div>
                                             </div>
-                                            <span class="font-small ml-5 text-muted"> (4.0)</span>
+                                            <span class="font-small text-muted ml-5"> (4.0)</span>
                                         </div>
                                         <div>
                                             <span class="font-small text-muted">By <a
@@ -3798,7 +3798,7 @@
                                             <div class="product-rate d-inline-block">
                                                 <div class="product-rating" style="width: 90%"></div>
                                             </div>
-                                            <span class="font-small ml-5 text-muted"> (4.0)</span>
+                                            <span class="font-small text-muted ml-5"> (4.0)</span>
                                         </div>
                                         <div>
                                             <span class="font-small text-muted">By <a
@@ -3851,7 +3851,7 @@
                                             <div class="product-rate d-inline-block">
                                                 <div class="product-rating" style="width: 90%"></div>
                                             </div>
-                                            <span class="font-small ml-5 text-muted"> (4.0)</span>
+                                            <span class="font-small text-muted ml-5"> (4.0)</span>
                                         </div>
                                         <div>
                                             <span class="font-small text-muted">By <a
@@ -3902,7 +3902,7 @@
                                             <div class="product-rate d-inline-block">
                                                 <div class="product-rating" style="width: 50%"></div>
                                             </div>
-                                            <span class="font-small ml-5 text-muted"> (2.0)</span>
+                                            <span class="font-small text-muted ml-5"> (2.0)</span>
                                         </div>
                                         <div>
                                             <span class="font-small text-muted">By <a
@@ -4826,7 +4826,7 @@
                                         <div class="product-rate d-inline-block">
                                             <div class="product-rating" style="width: 90%"></div>
                                         </div>
-                                        <span class="font-small ml-5 text-muted"> (4.0)</span>
+                                        <span class="font-small text-muted ml-5"> (4.0)</span>
                                     </div>
                                     <div>
                                         <span class="font-small text-muted">By <a
@@ -4867,7 +4867,7 @@
                                         <div class="product-rate d-inline-block">
                                             <div class="product-rating" style="width: 90%"></div>
                                         </div>
-                                        <span class="font-small ml-5 text-muted"> (4.0)</span>
+                                        <span class="font-small text-muted ml-5"> (4.0)</span>
                                     </div>
                                     <div>
                                         <span class="font-small text-muted">By <a href="vendor-details-1.html">Old
@@ -4908,7 +4908,7 @@
                                         <div class="product-rate d-inline-block">
                                             <div class="product-rating" style="width: 80%"></div>
                                         </div>
-                                        <span class="font-small ml-5 text-muted"> (3.0)</span>
+                                        <span class="font-small text-muted ml-5"> (3.0)</span>
                                     </div>
                                     <div>
                                         <span class="font-small text-muted">By <a
@@ -4949,7 +4949,7 @@
                                         <div class="product-rate d-inline-block">
                                             <div class="product-rating" style="width: 80%"></div>
                                         </div>
-                                        <span class="font-small ml-5 text-muted"> (3.0)</span>
+                                        <span class="font-small text-muted ml-5"> (3.0)</span>
                                     </div>
                                     <div>
                                         <span class="font-small text-muted">By <a
@@ -4994,7 +4994,7 @@
                                         <div class="product-rate d-inline-block">
                                             <div class="product-rating" style="width: 90%"></div>
                                         </div>
-                                        <span class="font-small ml-5 text-muted"> (4.0)</span>
+                                        <span class="font-small text-muted ml-5"> (4.0)</span>
                                     </div>
                                     <div class="product-price">
                                         <span>$32.85</span>
@@ -5016,7 +5016,7 @@
                                         <div class="product-rate d-inline-block">
                                             <div class="product-rating" style="width: 90%"></div>
                                         </div>
-                                        <span class="font-small ml-5 text-muted"> (4.0)</span>
+                                        <span class="font-small text-muted ml-5"> (4.0)</span>
                                     </div>
                                     <div class="product-price">
                                         <span>$32.85</span>
@@ -5038,7 +5038,7 @@
                                         <div class="product-rate d-inline-block">
                                             <div class="product-rating" style="width: 90%"></div>
                                         </div>
-                                        <span class="font-small ml-5 text-muted"> (4.0)</span>
+                                        <span class="font-small text-muted ml-5"> (4.0)</span>
                                     </div>
                                     <div class="product-price">
                                         <span>$32.85</span>
@@ -5066,7 +5066,7 @@
                                         <div class="product-rate d-inline-block">
                                             <div class="product-rating" style="width: 90%"></div>
                                         </div>
-                                        <span class="font-small ml-5 text-muted"> (4.0)</span>
+                                        <span class="font-small text-muted ml-5"> (4.0)</span>
                                     </div>
                                     <div class="product-price">
                                         <span>$32.85</span>
@@ -5088,7 +5088,7 @@
                                         <div class="product-rate d-inline-block">
                                             <div class="product-rating" style="width: 90%"></div>
                                         </div>
-                                        <span class="font-small ml-5 text-muted"> (4.0)</span>
+                                        <span class="font-small text-muted ml-5"> (4.0)</span>
                                     </div>
                                     <div class="product-price">
                                         <span>$32.85</span>
@@ -5110,7 +5110,7 @@
                                         <div class="product-rate d-inline-block">
                                             <div class="product-rating" style="width: 90%"></div>
                                         </div>
-                                        <span class="font-small ml-5 text-muted"> (4.0)</span>
+                                        <span class="font-small text-muted ml-5"> (4.0)</span>
                                     </div>
                                     <div class="product-price">
                                         <span>$32.85</span>
@@ -5138,7 +5138,7 @@
                                         <div class="product-rate d-inline-block">
                                             <div class="product-rating" style="width: 90%"></div>
                                         </div>
-                                        <span class="font-small ml-5 text-muted"> (4.0)</span>
+                                        <span class="font-small text-muted ml-5"> (4.0)</span>
                                     </div>
                                     <div class="product-price">
                                         <span>$32.85</span>
@@ -5159,7 +5159,7 @@
                                         <div class="product-rate d-inline-block">
                                             <div class="product-rating" style="width: 90%"></div>
                                         </div>
-                                        <span class="font-small ml-5 text-muted"> (4.0)</span>
+                                        <span class="font-small text-muted ml-5"> (4.0)</span>
                                     </div>
                                     <div class="product-price">
                                         <span>$32.85</span>
@@ -5180,7 +5180,7 @@
                                         <div class="product-rate d-inline-block">
                                             <div class="product-rating" style="width: 90%"></div>
                                         </div>
-                                        <span class="font-small ml-5 text-muted"> (4.0)</span>
+                                        <span class="font-small text-muted ml-5"> (4.0)</span>
                                     </div>
                                     <div class="product-price">
                                         <span>$32.85</span>
@@ -5208,7 +5208,7 @@
                                         <div class="product-rate d-inline-block">
                                             <div class="product-rating" style="width: 90%"></div>
                                         </div>
-                                        <span class="font-small ml-5 text-muted"> (4.0)</span>
+                                        <span class="font-small text-muted ml-5"> (4.0)</span>
                                     </div>
                                     <div class="product-price">
                                         <span>$32.85</span>
@@ -5230,7 +5230,7 @@
                                         <div class="product-rate d-inline-block">
                                             <div class="product-rating" style="width: 90%"></div>
                                         </div>
-                                        <span class="font-small ml-5 text-muted"> (4.0)</span>
+                                        <span class="font-small text-muted ml-5"> (4.0)</span>
                                     </div>
                                     <div class="product-price">
                                         <span>$32.85</span>
@@ -5252,7 +5252,7 @@
                                         <div class="product-rate d-inline-block">
                                             <div class="product-rating" style="width: 90%"></div>
                                         </div>
-                                        <span class="font-small ml-5 text-muted"> (4.0)</span>
+                                        <span class="font-small text-muted ml-5"> (4.0)</span>
                                     </div>
                                     <div class="product-price">
                                         <span>$32.85</span>
