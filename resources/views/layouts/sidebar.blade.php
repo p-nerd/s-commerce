@@ -43,6 +43,23 @@ $sidebarLinks = [
             ],
         ],
     ],
+    [
+        'label' => 'Products',
+        'icon' => $dashboardIcon,
+        'subLinks' => [
+            [
+                'label' => 'List',
+                'href' => route('dashboard.products'),
+                'icon' => $listIcon,
+            ],
+            [
+                'label' => 'New',
+                'href' => route('dashboard.products.create'),
+                'icon' => $newIcon,
+            ],
+        ],
+    ],
+
 ];
 
 ?>

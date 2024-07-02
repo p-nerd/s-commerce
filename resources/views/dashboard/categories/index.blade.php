@@ -14,7 +14,7 @@
     </x-slot>
 
     @if ($categories->isEmpty())
-        <div class="text-center text-red-500">You didn't create any category yet</div>
+        <div class="text-center py-4 text-red-500">You didn't create any category yet</div>
     @else
         <div class="relative w-full overflow-auto">
             <table class="w-full caption-bottom rounded-md bg-white text-sm">
