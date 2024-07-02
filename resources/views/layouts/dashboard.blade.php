@@ -15,7 +15,7 @@
 <body
     class="scrollbar scrollbar-w-3 scrollbar-thumb-rounded-[0.25rem] scrollbar-track-slate-200 scrollbar-thumb-gray-400 dark:scrollbar-track-gray-900 dark:scrollbar-thumb-gray-700 bg-gray-50 selection:bg-red-500 selection:text-white dark:bg-gray-800">
 
-    @include('layouts.navbar-sidebar')
+    @include('layouts.navbar')
 
     @include('layouts.sidebar')
 
@@ -23,14 +23,16 @@
         <div id="main-content"
             class="relative h-full min-h-screen w-full overflow-y-auto bg-gray-50 text-center dark:bg-gray-900 lg:ml-64">
             @isset($header)
-                <header class="p-4">
-                    <div class="rounded bg-white px-4 py-4 shadow">
+                <header class="p-4 pb-0">
+                    <div class="rounded-md bg-white px-4 py-4 shadow">
                         {{ $header }}
                     </div>
                 </header>
             @endisset
             <main class="p-4">
-                {{ $slot }}
+                <div class="rounded-md bg-white shadow">
+                    {{ $slot }}
+                </div>
             </main>
         </div>
     </div>
