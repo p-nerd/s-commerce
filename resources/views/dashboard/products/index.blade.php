@@ -1,15 +1,18 @@
 <x-dashboard-layout>
     <x-slot name="header">
-        <div class="flex justify-between">
+        <div class="flex items-center justify-between">
             <x-dash.title>
                 Products
             </x-dash.title>
-            <x-dash.anchor-link href="{{ route('dashboard.products.create') }}">Create new
-                product</x-dash.anchor-link>
+            <x-dash.new-button href="{{ route('dashboard.products.create') }}">Create new
+                product</x-dash.new-button>
         </div>
     </x-slot>
 
-    <x-dash.search-input :href="route('dashboard.products') . '?'" />
+    <div class="flex w-full justify-between">
+        <x-dash.search-input />
+        <x-dash.select-per-page />
+    </div>
 
     @if ($products->isEmpty())
         <div class="py-4 text-center text-red-500">You didn't create any product yet</div>
@@ -21,8 +24,8 @@
                         <x-dash.th>No</x-dash.th>
                         <x-dash.sortable-th name="name">Name</x-dash.sortable-th>
                         <x-dash.th>Description</x-dash.th>
-                        <x-dash.sortable-th name="price">Price</x-dash.sortable-th>
-                        <x-dash.sortable-th name="discount_price">Discount Price</x-dash.sortable-th>
+                        <x-dash.th name="price">Price</x-dash.th>
+                        <x-dash.th name="discount_price">Discount Price</x-dash.th>
                         <x-dash.sortable-th name="category">Category</x-dash.sortable-th>
                         <x-dash.sortable-th name="stock">Stock</x-dash.sortable-th>
                         <x-dash.th></x-dash.th>
@@ -31,7 +34,7 @@
                 <tbody class="[&amp;_tr:last-child]:border-0">
                     @php
                         $isDesc = request()->query('order') === 'desc';
-                        $no = $isDesc ? count($products) : 1;
+                        $no = $isDesc ? $products->toArray()['to'] : $products->toArray()['from'];
                     @endphp
 
                     @foreach ($products as $product)
@@ -68,10 +71,8 @@
                             </td>
                             <td class="p-4 align-middle">
                                 <div class="flex items-center justify-end gap-2">
-                                    <x-dash.link-button
-                                        href="{{ route('dashboard.products.show', ['product' => $product->id]) }}">
-                                        View
-                                    </x-dash.link-button>
+                                    <x-dash.view-button
+                                        href="{{ route('dashboard.products.show', ['product' => $product->id]) }}" />
                                     <x-dash.edit-button
                                         href="{{ route('dashboard.products.edit', ['product' => $product->id]) }}" />
                                     <x-dash.delete-button id="delete-product-{{ $product->id }}"
@@ -83,6 +84,7 @@
                 </tbody>
             </table>
         </div>
+        {{ $products->links() }}
     @endif
 
 </x-dashboard-layout>

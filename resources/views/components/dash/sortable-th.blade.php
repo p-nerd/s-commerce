@@ -30,15 +30,22 @@ $descIcon = '
 
 @php
     $search = request()->query('search');
+    $page = request()->query('page');
+
     $sort_by = request()->query('sort_by');
     $order = request()->query('order');
 @endphp
 
 <th class="border-r text-left align-middle font-medium">
     <form method="get" action="">
-        <input type="hidden" name="search" value="{{ $search }}" />
+        @if ($search)
+            <input type="hidden" name="search" value="{{ $search }}" />
+        @endif
         <input type="hidden" name="sort_by" value="{{ $name }}" />
         <input type="hidden" name="order" value="{{ $sort_by === $name && $order === 'asc' ? 'desc' : 'asc' }}" />
+        @if ($page)
+            <input type="hidden" name="page" value="{{ $page }}" />
+        @endif
         <button type="submit" {{ $attributes->merge(['class' => 'h-12 px-4 flex items-center space-x-1']) }}>
             <span class="flex text-start">{{ $slot }}</span>
             <span>

@@ -15,6 +15,7 @@ class ProductController extends Controller
         $search = $request->query('search');
         $sortBy = $request->query('sort_by') ?? 'id';
         $order = $request->query('order') ?? 'desc';
+        $perPage = $request->query(('per_page')) ?? 15;
 
         $query = Product::query()->with('category');
 
@@ -30,7 +31,7 @@ class ProductController extends Controller
             $query = $query->orderBy($sortBy, $order);
         }
 
-        $products = $query->get();
+        $products = $query->paginate($perPage)->withQueryString();
 
         return view('dashboard/products/index', [
             'products' => $products,
