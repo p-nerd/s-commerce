@@ -14,12 +14,23 @@ return new class extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             $table->id();
+
             $table->string('name');
-            $table->text('description')->nullable();
+            $table->string('slug');
             $table->decimal('price', 10, 2);
-            $table->foreignIdFor(Category::class);
+            $table->decimal('discount_price', 10, 2)->nullable();
+            $table->string('short_description');
+            $table->string('type');
+            $table->string('sku');
+            $table->date('manufactured_date');
+            $table->date('expired_date')->nullable();
+            $table->text('long_description')->nullable();
             $table->integer('stock')->default(0);
+
+            $table->foreignIdFor(Category::class);
+
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

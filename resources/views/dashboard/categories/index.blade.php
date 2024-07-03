@@ -1,20 +1,20 @@
 <x-dashboard-layout>
     <x-slot name="header">
         <div class="flex justify-between">
-            <x-dashboard.title>
+            <x-dash.title>
                 @if (isset($category))
                     Sub-categories of '{{ $category->name }}'
                 @else
                     Categories
                 @endif
-            </x-dashboard.title>
-            <x-dashboard.anchor-link href="{{ route('dashboard.categories.create') }}">Create new
-                category</x-dashboard.anchor-link>
+            </x-dash.title>
+            <x-dash.anchor-link href="{{ route('dashboard.categories.create') }}">Create new
+                category</x-dash.anchor-link>
         </div>
     </x-slot>
 
     @if ($categories->isEmpty())
-        <div class="text-center py-4 text-red-500">You didn't create any category yet</div>
+        <div class="py-4 text-center text-red-500">You didn't create any category yet</div>
     @else
         <div class="relative w-full overflow-auto">
             <table class="w-full caption-bottom rounded-md bg-white text-sm">
@@ -37,8 +37,7 @@
                     @foreach ($categories as $category)
                         <tr class="hover:bg-muted/50 data-[state=selected]:bg-muted border-b transition-colors">
                             <td class="w-[25%] p-4 align-middle">
-                                <x-dashboard.anchor-link
-                                    href="/_/{{ $category->slug }}">{{ $category->name }}</x-dashboard>
+                                <x-dash.anchor-link href="/_/{{ $category->slug }}">{{ $category->name }}</x-dash>
                             </td>
                             <td class="w-[25%] p-4 align-middle">
                                 {{ $category->description }}
@@ -49,19 +48,19 @@
                             <td class="w-[25%] p-4 align-middle">
                                 <div class="flex items-center justify-end gap-2">
                                     @if (!$category->subCategories->isEmpty())
-                                        <x-dashboard.link-button
+                                        <x-dash.link-button
                                             href="{{ route('dashboard.categories.sub-categories', ['category' => $category->id]) }}">
                                             View Sub-Categories
-                                        </x-dashboard.link-button>
+                                        </x-dash.link-button>
                                     @endif
-                                    <x-dashboard.link-button
+                                    <x-dash.link-button
                                         href="{{ route('dashboard.categories.edit', ['category' => $category->id]) }}">
                                         Edit
-                                    </x-dashboard.link-button>
-                                    <x-dashboard.delete-button id="delete-category-{{ $category->id }}"
+                                    </x-dash.link-button>
+                                    <x-dash.delete-button id="delete-category-{{ $category->id }}"
                                         href="{{ route('dashboard.categories.destroy', ['category' => $category->id]) }}">
                                         Delete
-                                    </x-dashboard.delete-button>
+                                    </x-dash.delete-button>
                                 </div>
                             </td>
                         </tr>

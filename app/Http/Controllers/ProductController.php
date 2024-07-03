@@ -10,10 +10,31 @@ class ProductController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
+        $search = $request->query('search');
+        $sortBy = $request->query('sort_by') ?? 'id';
+        $order = $request->query('order') ?? 'desc';
+
+        $query = Product::query()->with('category');
+
+        if ($search) {
+            $query->where('name', 'like', '%'.$search.'%');
+        }
+
+        if ($sortBy === 'category') {
+            $query = $query->join('categories', 'categories.id', '=', 'products.category_id')
+                ->orderBy('categories.name', $order)
+                ->select('products.*');
+        } else {
+            $query = $query->orderBy($sortBy, $order);
+        }
+
+        $products = $query->get();
+
         return view('dashboard/products/index', [
-            'products' => Product::query()->with('category')->get(),
+            'products' => $products,
+
         ]);
     }
 
@@ -62,6 +83,8 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
-        //
+        $product->delete();
+
+        return back()->with(['success' => 'Product deleted.']);
     }
 }

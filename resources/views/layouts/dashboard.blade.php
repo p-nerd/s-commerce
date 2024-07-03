@@ -30,7 +30,7 @@
                 </header>
             @endisset
             <main class="p-4 text-start">
-                <div class="rounded-md bg-white shadow">
+                <div class="space-y-4 rounded-md">
                     {{ $slot }}
                 </div>
             </main>

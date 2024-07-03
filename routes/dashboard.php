@@ -26,6 +26,7 @@ Route::prefix('products')->group(function () {
     Route::post('/', [ProductController::class, 'store'])->name('dashboard.products.store');
 
     Route::get('/', [ProductController::class, 'index'])->name('dashboard.products');
+    Route::get('/{product}', [ProductController::class, 'show'])->name('dashboard.products.show');
 
     Route::get('/{product}/edit', [ProductController::class, 'edit'])->name('dashboard.products.edit');
     Route::patch('/{product}', [ProductController::class, 'update'])->name('dashboard.products.update');

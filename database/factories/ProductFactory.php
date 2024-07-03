@@ -17,14 +17,22 @@ class ProductFactory extends Factory
      */
     public function definition(): array
     {
+        $name = fake()->name;
+        $slug = str()->slug($name);
+
         return [
-            'name' => $this->faker->word(),
-            'description' => $this->faker->paragraph(),
-            'price' => $this->faker->randomFloat(2, 1, 1000),
+            'name' => $name,
+            'slug' => $slug,
             'category_id' => Category::inRandomOrder()->first()->id,
+            'price' => $this->faker->randomFloat(2, 10, 1000),
+            'discount_price' => $this->faker->randomElement([null, $this->faker->randomFloat(2, 5, 500)]),
+            'short_description' => $this->faker->sentence,
+            'type' => $this->faker->randomElement(['physical', 'digital']),
+            'sku' => $this->faker->unique()->ean13,
+            'manufactured_date' => $this->faker->date(),
+            'expired_date' => $this->faker->optional()->date(),
+            'long_description' => $this->faker->paragraph,
             'stock' => $this->faker->numberBetween(0, 100),
-            'created_at' => now(),
-            'updated_at' => now(),
         ];
     }
 }

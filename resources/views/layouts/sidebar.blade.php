@@ -59,7 +59,6 @@ $sidebarLinks = [
             ],
         ],
     ],
-
 ];
 
 ?>
@@ -127,7 +126,7 @@ $sidebarLinks = [
                         @else
                             <li>
                                 <a href="{{ $link['href'] }}"
-                                    class="group {{ request()->url() === $link['href'] ? 'bg-gray-100' : '' }} flex items-center rounded-lg p-2 text-base text-gray-900 hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-700">
+                                    class="{{ request()->url() === $link['href'] ? 'bg-gray-100' : '' }} group flex items-center rounded-lg p-2 text-base text-gray-900 hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-700">
 
                                     {!! $link['icon'] !!}
                                     <span class="ml-3" sidebar-toggle-item>{{ $link['label'] }}</span>
