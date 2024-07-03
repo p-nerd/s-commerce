@@ -23,10 +23,8 @@
         <div id="main-content"
             class="relative h-full w-full overflow-y-auto bg-gray-50 text-center dark:bg-gray-900 lg:ml-64">
             @isset($header)
-                <header class="p-4 pb-0 text-start">
-                    <div class="rounded-md bg-white px-4 py-4 shadow">
-                        {{ $header }}
-                    </div>
+                <header class="flex items-center justify-between rounded-md p-4 py-4 text-start">
+                    {{ $header }}
                 </header>
             @endisset
             <main class="p-4 text-start">

@@ -1,15 +1,12 @@
 <x-dashboard-layout>
     <x-slot name="header">
-        <div class="flex items-center justify-between">
-            <x-dash.title>
-                Products
-            </x-dash.title>
-            <x-dash.new-button href="{{ route('dashboard.products.create') }}">Create new
-                product</x-dash.new-button>
-        </div>
+        <x-dash.title>Products</x-dash.title>
+        <x-dash.new-button href="{{ route('dashboard.products.create') }}">
+            Create new product
+        </x-dash.new-button>
     </x-slot>
 
-    <div class="flex w-full justify-between">
+    <div class="flex w-full items-center justify-between">
         <x-dash.search-input />
         <x-dash.select-per-page />
     </div>
