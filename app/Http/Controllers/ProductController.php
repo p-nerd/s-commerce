@@ -15,7 +15,7 @@ class ProductController extends Controller
         $search = $request->query('search');
         $sortBy = $request->query('sort_by') ?? 'id';
         $order = $request->query('order') ?? 'desc';
-        $perPage = $request->query(('per_page')) ?? 15;
+        $perPage = $request->query(('per_page')) ?? 10;
 
         $query = Product::query()->with('category');
 
@@ -86,6 +86,6 @@ class ProductController extends Controller
     {
         $product->delete();
 
-        return back()->with(['success' => 'Product deleted.']);
+        return back()->with('success', 'Product deleted successfully.');
     }
 }

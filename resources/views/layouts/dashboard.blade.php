@@ -13,7 +13,7 @@
 </head>
 
 <body
-    class="scrollbar scrollbar-w-3 scrollbar-thumb-rounded-[0.25rem] scrollbar-track-slate-200 scrollbar-thumb-gray-400 dark:scrollbar-track-gray-900 dark:scrollbar-thumb-gray-700 bg-gray-50 selection:bg-red-500 selection:text-white dark:bg-gray-800">
+    class="scrollbar scrollbar-w-3 scrollbar-thumb-rounded-[0.25rem] scrollbar-track-slate-200 scrollbar-thumb-gray-400 dark:scrollbar-track-gray-900 dark:scrollbar-thumb-gray-700 relative bg-gray-50 selection:bg-red-500 selection:text-white dark:bg-gray-800">
 
     @include('layouts.navbar')
 
@@ -34,6 +34,8 @@
             </main>
         </div>
     </div>
+
+    @include('layouts.success-message')
 
     <script src="https://cdn.jsdelivr.net/npm/flowbite@2.4.1/dist/flowbite.min.js"></script>
 </body>

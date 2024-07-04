@@ -17,7 +17,7 @@
                             clip-rule="evenodd"></path>
                     </svg>
                 </button>
-                <a href="/" class="ml-2 flex md:mr-24">
+                <a href="{{ route('dashboard') }}" class="ml-2 flex md:mr-24">
                     <span
                         class="self-center whitespace-nowrap text-xl font-semibold dark:text-white sm:text-2xl">S-Commerce
                         Dashboard</span>
