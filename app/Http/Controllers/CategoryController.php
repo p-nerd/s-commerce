@@ -12,9 +12,23 @@ class CategoryController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $categories = Category::with('subCategories')->get();
+        $search = $request->query('search');
+        $sortBy = $request->query('sort_by') ?? 'id';
+        $order = $request->query('order') ?? 'desc';
+        $perPage = $request->query(('per_page')) ?? 10;
+
+        $query = Category::query()->with('subCategories');
+
+        if ($search) {
+            $query->where('name', 'like', '%'.$search.'%');
+        }
+
+        $categories = $query
+            ->orderBy($sortBy, $order)
+            ->paginate($perPage)
+            ->withQueryString();
 
         return view('dashboard/categories/index', [
             'categories' => $categories,

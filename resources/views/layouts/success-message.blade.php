@@ -12,7 +12,7 @@
                 </svg>
                 <span class="sr-only">Check icon</span>
             </div>
-            <div class="mr-1 ms-3 text-sm font-normal">{{ session()->get("success") }}</div>
+            <div class="mr-1 ms-3 text-sm font-normal">{{ session()->get('success') }}</div>
             <button type="button" @click="open=false"
                 class="-mx-1.5 -my-1.5 ms-auto inline-flex h-8 w-8 items-center justify-center rounded-lg bg-white p-1.5 text-gray-400 hover:bg-gray-100 hover:text-gray-900 focus:ring-2 focus:ring-gray-300 dark:bg-gray-800 dark:text-gray-500 dark:hover:bg-gray-700 dark:hover:text-white"
                 aria-label="Close">
