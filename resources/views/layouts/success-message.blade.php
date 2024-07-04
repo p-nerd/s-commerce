@@ -1,5 +1,5 @@
 @if (session()->has('success'))
-    <div x-data="{ open: true }" x-init="setTimeout(() => open = false, 4000)" x-show="open" x-transition
+    <div x-data="{ open: true }" x-init="setTimeout(() => open = false, 5000)" x-show="open" x-transition
         class="fixed right-5 top-5 z-50 flex flex-col items-end">
         <div
             class="mb-4 flex w-full max-w-xs items-center rounded-lg bg-white p-4 text-gray-500 shadow dark:bg-gray-800 dark:text-gray-400">
@@ -12,7 +12,7 @@
                 </svg>
                 <span class="sr-only">Check icon</span>
             </div>
-            <div class="mr-1 ms-3 text-sm font-normal">Item moved successfully.</div>
+            <div class="mr-1 ms-3 text-sm font-normal">{{ session()->get("success") }}</div>
             <button type="button" @click="open=false"
                 class="-mx-1.5 -my-1.5 ms-auto inline-flex h-8 w-8 items-center justify-center rounded-lg bg-white p-1.5 text-gray-400 hover:bg-gray-100 hover:text-gray-900 focus:ring-2 focus:ring-gray-300 dark:bg-gray-800 dark:text-gray-500 dark:hover:bg-gray-700 dark:hover:text-white"
                 aria-label="Close">
