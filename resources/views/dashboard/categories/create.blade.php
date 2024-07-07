@@ -4,10 +4,9 @@
             Create a new category
         </x-dash.title>
     </x-slot>
-    <div class="p-6">
-        <form method="POST" action="{{ route('dashboard.categories.store') }}" class="space-y-5">
+        <form method="POST" action="{{ route('dashboard.categories.store') }}" class="bg-white p-5 rounded-lg shadow">
             @csrf
-
+            <div class="space-y-5">
             <div>
                 <x-input-label for="name" value="Name" />
                 <x-text-input id="name" class="mt-1 block w-full" type="text" name="name" :value="old('name')"
@@ -36,6 +35,7 @@
                     Save
                 </x-primary-button>
             </div>
+            </div>
+
         </form>
-    </div>
 </x-dashboard-layout>
