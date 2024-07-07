@@ -1,4 +1,4 @@
-<td x-data="{ open: false }" class="relative border-r p-4 align-middle">
+<td x-data="{ open: false }" class="relative w-4 border-r p-4 align-middle">
     <button @click="open = !open" @click.outside="open = false">
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
             class="size-6">

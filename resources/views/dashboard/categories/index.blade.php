@@ -25,7 +25,6 @@
                 <x-table.tr>
                     <x-table.th>No</x-table.th>
                     <x-table.sortable-th name="name">Name</x-table.sortable-th>
-                    <x-table.th>Description</x-table.th>
                     <x-table.sortable-th name="created_at">Created At</x-table.th>
                 </x-table.tr>
             </x-table.thead>
@@ -49,11 +48,11 @@
                             @endphp
                         </x-table.td>
                         <x-table.td>{{ $category->name }}</x-table.td>
-                        <x-table.td>{{ $category->description }}</x-table.td>
                         <x-table.td class="w-[120px]">{{ $category->created_at->format('M, j Y') }}</x-table.td>
                         <x-table.actions-td>
                             <x-table.edit-button href="{{ route('dashboard.categories.edit', $category) }}" />
-                            <x-table.delete-button href="{{ route('dashboard.categories.destroy', $category) }}" />
+                            <x-table.delete-button href="{{ route('dashboard.categories.destroy', $category) }}"
+                                confirm="Are you sure?" />
                         </x-table.actions-td>
                     </x-table.tr>
                 @endforeach

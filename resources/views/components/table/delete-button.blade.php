@@ -1,15 +1,25 @@
-@props(['href', 'label' => 'Delete'])
+@props(['href', 'label' => 'Delete', 'confirm' => null, 'confirmText' => ''])
 
-<form x-data="{ href: '{{ $href }}' }" method="POST" action="{{ $href }}">
+<form method="POST" action="{{ $href }}"
+    @if ($confirm) onsubmit="
+            event.preventDefault();
+            sweetalert({
+                title: '{{ $confirm }}',
+                text: '{{ $confirmText }}',
+                icon: 'warning',
+                dangerMode: true,
+                buttons: ['Cancel', 'Confirm'],
+            })
+            .then((result) => {
+                if (result) {
+                    this.submit();
+                }
+            });
+        " @endif>
     @csrf
-    <input type="hidden" name="_method" value="delete" />
+    @method('delete')
     <button type="submit"
         class="{{ twMerge('inline-flex items-center justify-start whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-9 rounded-md px-3 bg-red-500 text-white space-x-1', $attributes['class']) }}"
-        @click.prevent="
-            if(confirm('Are you sure you want to delete this item?')) {
-                $el.closest('form').submit()
-            }
-        "
         {{ $attributes }}>
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4">

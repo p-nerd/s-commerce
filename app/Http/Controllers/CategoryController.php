@@ -105,7 +105,7 @@ class CategoryController extends Controller
 
         $category->update($payload);
 
-        return to_route('dashboard.categories.edit', ['category' => $category])->with(['success' => 'Category updated.']);
+        return to_route('dashboard.categories')->with(['success' => 'Category updated.']);
     }
 
     /**
