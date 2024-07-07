@@ -1,4 +1,4 @@
-@props(['href', 'label' => 'Delete', 'confirm' => null, 'confirmText' => ''])
+@props(['href', 'label' => null, 'confirm' => null, 'confirmText' => ''])
 
 <form method="POST" action="{{ $href }}"
     @if ($confirm) onsubmit="
@@ -29,6 +29,8 @@
             <line x1="10" x2="10" y1="11" y2="17" />
             <line x1="14" x2="14" y1="11" y2="17" />
         </svg>
-        <span>{{ $label }}</span>
+        @if($label)
+            <span>{{ $label }}</span>
+        @endif
     </button>
 </form>

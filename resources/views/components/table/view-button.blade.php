@@ -1,4 +1,4 @@
-@props(['href', 'label' => 'View'])
+@props(['href', 'label' => null])
 
 <a href="{{ $href }}"
     class="{{ twMerge('inline-flex items-center justify-start whitespace-nowrap text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input h-9 rounded-md space-x-1 px-3 bg-green-500 text-white', $attributes['class']) }}"
@@ -8,5 +8,7 @@
         <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z" />
         <circle cx="12" cy="12" r="3" />
     </svg>
-    <span>{{ $label }}</span>
+    @if($label)
+        <span>{{ $label }}</span>
+    @endif
 </a>

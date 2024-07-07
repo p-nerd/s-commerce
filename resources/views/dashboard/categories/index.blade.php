@@ -25,7 +25,7 @@
                 <x-table.tr>
                     <x-table.th>No</x-table.th>
                     <x-table.sortable-th name="name">Name</x-table.sortable-th>
-                    <x-table.sortable-th name="created_at">Created At</x-table.th>
+                    <x-table.sortable-th class="w-[120px]" name="created_at">Created At</x-table.th>
                 </x-table.tr>
             </x-table.thead>
             <x-table.tbody>
@@ -47,14 +47,10 @@
                                 }
                             @endphp
                         </x-table.td>
-                        <x-table.td>{{ $category->name }}</x-table.td>
-                        <x-table.td class="w-[120px]">{{ $category->created_at->format('M, j Y') }}</x-table.td>
-                        <x-table.actions-td>
+                        <x-table.td class="w-full">{{ $category->name }}</x-table.td>
+                        <x-table.td >{{ $category->created_at->format('M, j Y') }}</x-table.td>
+                        <x-table.actions-td >
                             <x-table.view-button href="{{ route('dashboard.categories.show', $category) }}" />
-                            @if (count($category->subCategories) !== 0)
-                                <x-table.view-button href="{{ route('dashboard.categories.sub-categories', $category) }}"
-                                    label="Sub-categories" />
-                            @endif
                             <x-table.edit-button href="{{ route('dashboard.categories.edit', $category) }}" />
                             <x-table.delete-button href="{{ route('dashboard.categories.destroy', $category) }}"
                                 confirm="Are you sure?" />
