@@ -50,6 +50,10 @@
                         <x-table.td>{{ $category->name }}</x-table.td>
                         <x-table.td class="w-[120px]">{{ $category->created_at->format('M, j Y') }}</x-table.td>
                         <x-table.actions-td>
+                            <x-table.view-button href="{{ route('dashboard.categories.show', $category) }}" />
+                            @if (count($category->subCategories) !== 0)
+                                <x-table.view-button href="{{ route('dashboard.categories.sub-categories', $category) }}" label="Sub-categories" />
+                            @endif
                             <x-table.edit-button href="{{ route('dashboard.categories.edit', $category) }}" />
                             <x-table.delete-button href="{{ route('dashboard.categories.destroy', $category) }}"
                                 confirm="Are you sure?" />

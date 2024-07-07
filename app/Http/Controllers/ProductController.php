@@ -17,7 +17,7 @@ class ProductController extends Controller
         $order = $request->query('order') ?? 'desc';
         $perPage = $request->query(('per_page')) ?? 10;
 
-        $query = Product::query()->with('category');
+        $query = Product::with('category');
 
         if ($search) {
             $query->where('name', 'like', '%'.$search.'%');
@@ -35,7 +35,6 @@ class ProductController extends Controller
 
         return view('dashboard/products/index', [
             'products' => $products,
-
         ]);
     }
 
@@ -60,7 +59,9 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
-        //
+        return view('dashboard/products/show', [
+            'product' => $product,
+        ]);
     }
 
     /**

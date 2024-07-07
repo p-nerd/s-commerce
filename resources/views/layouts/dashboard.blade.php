@@ -31,6 +31,11 @@
                 <div class="space-y-4 rounded-md">
                     {{ $slot }}
                 </div>
+                @isset($back)
+                    <div class="flex py-4">
+                        <a href="{{ $back }}" class="rounded-md bg-gray-500 px-3 py-2 text-white">Go Back</a>
+                    </div>
+                @endisset
             </main>
         </div>
     </div>

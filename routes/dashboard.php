@@ -12,6 +12,7 @@ Route::prefix('categories')->group(function () {
 
     Route::get('/', [CategoryController::class, 'index'])->name('dashboard.categories');
     Route::get('/{category}/sub-categories', [CategoryController::class, 'subCategories'])->name('dashboard.categories.sub-categories');
+    Route::get('/{category}', [CategoryController::class, 'show'])->name('dashboard.categories.show');
 
     Route::get('/{category}/edit', [CategoryController::class, 'edit'])->name('dashboard.categories.edit');
     Route::patch('/{category}', [CategoryController::class, 'update'])->name('dashboard.categories.update');

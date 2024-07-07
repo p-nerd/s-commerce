@@ -35,11 +35,27 @@ class CategoryController extends Controller
         ]);
     }
 
-    public function subCategories(Category $category)
+    public function subCategories(Request $request, Category $category)
     {
+        $search = $request->query('search');
+        $sortBy = $request->query('sort_by') ?? 'id';
+        $order = $request->query('order') ?? 'desc';
+        $perPage = $request->query(('per_page')) ?? 10;
+
+        $query = $category->subCategories()->with('subCategories');
+
+        if ($search) {
+            $query->where('name', 'like', '%'.$search.'%');
+        }
+
+        $categories = $query
+            ->orderBy($sortBy, $order)
+            ->paginate($perPage)
+            ->withQueryString();
+
         return view('dashboard/categories/index', [
             'category' => $category,
-            'categories' => $category->subCategories,
+            'categories' => $categories,
         ]);
     }
 
@@ -81,6 +97,18 @@ class CategoryController extends Controller
         return to_route('dashboard.categories')->with(['success' => 'Category created.']);
     }
 
+    public function show(Category $category)
+    {
+        $parent = $category->parent;
+        $subCategories = $category->subCategories;
+
+        return view('dashboard/categories/show', [
+            'category' => $category,
+            'parent' => $parent,
+            'subCategories' => $subCategories,
+        ]);
+    }
+
     /**
      * Show the form for creating a new resource.
      */
@@ -115,6 +143,6 @@ class CategoryController extends Controller
     {
         $category->delete();
 
-        return back()->with(['success' => 'Category deleted.']);
+        return to_route('dashboard.categories')->with(['success' => 'Category deleted.']);
     }
 }
