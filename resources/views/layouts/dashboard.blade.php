@@ -23,7 +23,7 @@
         <div id="main-content"
             class="relative h-full w-full overflow-y-auto bg-gray-50 text-center dark:bg-gray-900 lg:ml-64">
             @isset($header)
-                <header class="flex items-center justify-between rounded-md p-4 py-4 text-start">
+                <header class="flex items-center justify-between rounded-md p-4 text-start">
                     {{ $header }}
                 </header>
             @endisset
@@ -32,7 +32,7 @@
                     {{ $slot }}
                 </div>
                 @isset($back)
-                    <div class="flex py-4">
+                    <div class="flex py-8">
                         <a href="{{ $back }}" class="rounded-md bg-gray-500 px-3 py-2 text-white">Go Back</a>
                     </div>
                 @endisset

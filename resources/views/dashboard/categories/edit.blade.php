@@ -1,4 +1,7 @@
 <x-dashboard-layout>
+    <x-slot name="back">
+        {{ route('dashboard.categories') }}
+    </x-slot>
     <x-slot name="header">
         <x-dash.title>
             Update '{{ $category->name }}' category
