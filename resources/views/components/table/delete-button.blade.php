@@ -1,10 +1,10 @@
-@props(['href'])
+@props(['href', 'label' => 'Delete'])
 
 <form x-data="{ href: '{{ $href }}' }" method="POST" action="{{ $href }}">
     @csrf
     <input type="hidden" name="_method" value="delete" />
     <button type="submit"
-        class="{{ twMerge('inline-flex items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-9 rounded-md px-3 bg-red-500 text-white', $attributes['class']) }}"
+        class="{{ twMerge('inline-flex items-center justify-start whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-9 rounded-md px-3 bg-red-500 text-white space-x-1', $attributes['class']) }}"
         @click.prevent="
             if(confirm('Are you sure you want to delete this item?')) {
                 $el.closest('form').submit()
@@ -19,5 +19,6 @@
             <line x1="10" x2="10" y1="11" y2="17" />
             <line x1="14" x2="14" y1="11" y2="17" />
         </svg>
+        <span>{{ $label }}</span>
     </button>
 </form>

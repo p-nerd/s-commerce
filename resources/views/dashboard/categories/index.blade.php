@@ -52,8 +52,7 @@
                         <x-table.td>{{ $category->description }}</x-table.td>
                         <x-table.td class="w-[120px]">{{ $category->created_at->format('M, j Y') }}</x-table.td>
                         <x-table.actions-td>
-                            <x-table.edit-button
-                                href="{{ route('dashboard.categories.edit', $category) }}" />
+                            <x-table.edit-button href="{{ route('dashboard.categories.edit', $category) }}" />
                             <x-table.delete-button href="{{ route('dashboard.categories.destroy', $category) }}" />
                         </x-table.actions-td>
                     </x-table.tr>

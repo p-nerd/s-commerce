@@ -53,10 +53,8 @@
                         <x-table.td>{{ $product->category->name }}</x-table.td>
                         <x-table.td>{{ $product->stock }}</x-table.td>
                         <x-table.actions-td>
-                            <x-table.view-button
-                                href="{{ route('dashboard.products.show', $product) }}" />
-                            <x-table.edit-button
-                                href="{{ route('dashboard.products.edit', $product) }}" />
+                            <x-table.view-button href="{{ route('dashboard.products.show', $product) }}" />
+                            <x-table.edit-button href="{{ route('dashboard.products.edit', $product) }}" />
                             <x-table.delete-button href="{{ route('dashboard.products.destroy', $product) }}" />
                         </x-table.actions-td>
                     </x-table.tr>
