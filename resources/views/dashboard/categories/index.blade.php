@@ -36,7 +36,7 @@
 
                 @foreach ($categories as $category)
                     <x-table.tr>
-                        <x-table.td>
+                        <x-table.td class="w-[50px] text-center">
                             {{ $no }}
 
                             @php
