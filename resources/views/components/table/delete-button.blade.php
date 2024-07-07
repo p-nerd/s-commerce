@@ -29,7 +29,7 @@
             <line x1="10" x2="10" y1="11" y2="17" />
             <line x1="14" x2="14" y1="11" y2="17" />
         </svg>
-        @if($label)
+        @if ($label)
             <span>{{ $label }}</span>
         @endif
     </button>
