@@ -5,6 +5,7 @@ use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', fn () => view('dashboard/index'))->name('dashboard');
+
 Route::prefix('categories')->group(function () {
 
     Route::get('/create', [CategoryController::class, 'create'])->name('dashboard.categories.create');
