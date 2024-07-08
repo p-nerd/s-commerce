@@ -15,9 +15,8 @@
 <body
     class="scrollbar scrollbar-w-3 scrollbar-thumb-rounded-[0.25rem] scrollbar-track-slate-200 scrollbar-thumb-gray-400 dark:scrollbar-track-gray-900 dark:scrollbar-thumb-gray-700 relative bg-gray-50 selection:bg-red-500 selection:text-white dark:bg-gray-800">
 
-    @include('layouts.navbar')
-
-    @include('layouts.sidebar')
+    <x-dash.navbar />
+    <x-dash.sidebar />
 
     <div class="flex overflow-hidden bg-gray-50 pt-16 dark:bg-gray-900">
         <div id="main-content"
@@ -40,7 +39,7 @@
         </div>
     </div>
 
-    @include('layouts.success-message')
+    <x-dash.success-message />
 
     <script src="https://cdn.jsdelivr.net/npm/flowbite@2.4.1/dist/flowbite.min.js"></script>
 </body>

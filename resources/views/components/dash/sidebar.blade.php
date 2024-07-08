@@ -75,12 +75,12 @@ $listIcon = '
 ';
 
 $newIcon = '
-    <svg 
+    <svg
         xmlns="http://www.w3.org/2000/svg"
         width="24"
         height="24"
         viewBox="0 0 24 24"
-        fill="none" 
+        fill="none"
         stroke="currentColor"
         stroke-width="2"
         stroke-linecap="round"
@@ -166,7 +166,7 @@ $sidebarLinks = [
                     @foreach ($sidebarLinks as $link)
                         @if (isset($link['subLinks']))
                             <li x-data="{ open: {{ !!array_filter($link['subLinks'], fn($sublink) => $sublink['href'] === request()->url()) ? 'true' : 'false' }} }">
-                                <a href="{{ $link['href'] }}" type="button"
+                                <button @click="open = !open" type="button"
                                     class="group flex w-full items-center rounded-lg p-2 text-base text-gray-900 transition duration-75 hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-700">
                                     {!! $link['icon'] !!}
                                     <span class="ml-3 flex-1 whitespace-nowrap text-left"
@@ -177,7 +177,7 @@ $sidebarLinks = [
                                             d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
                                             clip-rule="evenodd"></path>
                                     </svg>
-                                </a>
+                                </button>
                                 <ul x-show="open" class="space-y-2 py-2">
                                     @foreach ($link['subLinks'] as $subLink)
                                         <li>
