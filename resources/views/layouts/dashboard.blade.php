@@ -9,9 +9,7 @@
     <title>{{ config('app.name') }} Dashboard</title>
 
     <!-- Scripts -->
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
-
-    <link rel="stylesheet" type="text/css" href="https://unpkg.com/trix@2.0.8/dist/trix.css">
+    @vite(['resources/js/app.js'])
 </head>
 
 <body
