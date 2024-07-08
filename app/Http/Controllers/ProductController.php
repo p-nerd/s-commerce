@@ -85,6 +85,7 @@ class ProductController extends Controller
     {
         return view('dashboard/products/show', [
             'product' => $product,
+
         ]);
     }
 
@@ -93,7 +94,11 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-        //
+        return view('dashboard/products/edit', [
+            'product' => $product,
+            'productTypeOptions' => ProductType::options(),
+            'categories' => Category::select('name AS label', 'id AS value')->get(),
+        ]);
     }
 
     /**
