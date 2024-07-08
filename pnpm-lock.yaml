@@ -11,6 +11,9 @@ importers:
       sweetalert:
         specifier: ^2.1.2
         version: 2.1.2
+      trix:
+        specifier: ^2.1.2
+        version: 2.1.2
     devDependencies:
       '@shufo/prettier-plugin-blade':
         specifier: ^1.14.1
@@ -1107,6 +1110,9 @@ packages:
     resolution: {integrity: sha512-65P7iz6X5yEr1cwcgvQxbbIw7Uk3gOy5dIdtZ4rDveLqhrdJP+Li/Hx6tyK0NEb+2GCyneCMJiGqrADCSNk8sQ==}
     engines: {node: '>=8.0'}
 
+  trix@2.1.2:
+    resolution: {integrity: sha512-PsQC4qn1Ub0djn7FZ9KLzEC2whE1J27JiRycn5WddlVT8JgwKq5PtlXo6rRfjc7Qj2aSzIdjkApai9zAW7/IRA==}
+
   ts-interface-checker@0.1.13:
     resolution: {integrity: sha512-Y/arvbn+rrz3JCKl9C4kVNfTfSm2/mEp5FSz5EsZSANGPSlQrpRI5M4PKF+mJnE52jOO90PnPSc3Ur3bTQw0gA==}
 
@@ -2128,6 +2134,8 @@ snapshots:
   to-regex-range@5.0.1:
     dependencies:
       is-number: 7.0.0
+
+  trix@2.1.2: {}
 
   ts-interface-checker@0.1.13: {}
 

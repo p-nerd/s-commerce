@@ -21,13 +21,15 @@
         </div>
         <div class="flex space-x-5">
             <x-form.date name="manufactured_date" label="Manufactured Date" required />
-            <x-form.date name="expired_date" label="Expired Date" required/>
+            <x-form.date name="expired_date" label="Expired Date" required />
         </div>
         <div class="flex space-x-5">
             <x-form.text type="number" step="1" name="stock" label="Stock" required />
-            <x-form.select name="category_id" label="Category" placeholder="Select product category" :options="$categories" required  />
+            <x-form.select name="category_id" label="Category" placeholder="Select product category" :options="$categories"
+                required />
         </div>
-        <x-form.textarea class="h-[300px]" name="long_description" label="Long Description (Markdown is allowed here)" />
+        <x-form.markdown name="long_description" label="Long Description"
+            placeholder="Long Description (Markdown is allowed here)" />
         <x-form.submit />
     </x-form.form>
 </x-dashboard-layout>
