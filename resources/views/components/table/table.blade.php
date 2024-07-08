@@ -1,5 +1,5 @@
-<div class="relative w-full overflow-auto rounded-md border bg-white shadow">
-    <table class="w-full caption-bottom rounded-md text-xs">
+<div class="{{ twMerge('relative w-full overflow-auto rounded-md border bg-white shadow', $attributes['divClass']) }}">
+    <table class="{{ twMerge('w-full caption-bottom text-xs', $attributes['class']) }}" {{ $attributes }}>
         {{ $slot }}
     </table>
 </div>

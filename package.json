@@ -4,7 +4,7 @@
     "scripts": {
         "dev": "vite",
         "build": "vite build",
-        "blade:format": "prettier --sort-tailwindcss-classes --write resources/ "
+        "format": "prettier --sort-tailwindcss-classes --write resources/ "
     },
     "devDependencies": {
         "@shufo/prettier-plugin-blade": "^1.14.1",

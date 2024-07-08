@@ -19,7 +19,7 @@ class CategoryController extends Controller
         $order = $request->query('order') ?? 'desc';
         $perPage = $request->query(('per_page')) ?? 10;
 
-        $query = Category::query()->with('subCategories');
+        $query = Category::query()->with('subCategories')->where('parent_id', null);
 
         if ($search) {
             $query->where('name', 'like', '%'.$search.'%');

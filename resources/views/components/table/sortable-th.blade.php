@@ -36,7 +36,7 @@ $descIcon = '
     $order = request()->query('order');
 @endphp
 
-<th class="border-r text-left align-middle font-medium">
+<th class="{{ twMerge('border-r text-left align-middle font-medium', $attributes['class']) }}" {{ $attributes }}>
     <form method="get" action="">
         @if ($search)
             <input type="hidden" name="search" value="{{ $search }}" />
