@@ -1,26 +1,26 @@
 <x-guest-layout>
     <!-- Session Status -->
-    <x-auth-session-status class="mb-4" :status="session('status')" />
+    <x-guest.auth-session-status class="mb-4" :status="session('status')" />
 
     <form method="POST" action="{{ route('login') }}">
         @csrf
 
         <!-- Email Address -->
         <div>
-            <x-input-label for="email" :value="__('Email')" />
-            <x-text-input id="email" class="mt-1 block w-full" type="email" name="email" :value="old('email')" required
-                autofocus autocomplete="username" />
-            <x-input-error :messages="$errors->get('email')" class="mt-2" />
+            <x-form.input-label for="email" :value="__('Email')" />
+            <x-shared.text-input id="email" class="mt-1 block w-full" type="email" name="email" :value="old('email')"
+                required autofocus autocomplete="username" />
+            <x-form.input-error :messages="$errors->get('email')" class="mt-2" />
         </div>
 
         <!-- Password -->
         <div class="mt-4">
-            <x-input-label for="password" :value="__('Password')" />
+            <x-form.input-label for="password" :value="__('Password')" />
 
-            <x-text-input id="password" class="mt-1 block w-full" type="password" name="password" required
+            <x-shared.text-input id="password" class="mt-1 block w-full" type="password" name="password" required
                 autocomplete="current-password" />
 
-            <x-input-error :messages="$errors->get('password')" class="mt-2" />
+            <x-form.input-error :messages="$errors->get('password')" class="mt-2" />
         </div>
 
         <!-- Remember Me -->
@@ -40,9 +40,9 @@
                 </a>
             @endif
 
-            <x-primary-button class="ms-3">
+            <x-shared.primary-button class="ms-3">
                 {{ __('Log in') }}
-            </x-primary-button>
+            </x-shared.primary-button>
         </div>
     </form>
 </x-guest-layout>

@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name') }} Dashboard</title>
+    <title>{{ config('app.name') }} / Dashboard</title>
 
     <!-- Scripts -->
     @vite(['resources/js/app.js'])
@@ -32,7 +32,7 @@
                 </div>
                 @isset($back)
                     <div class="flex py-8">
-                        <a href="{{ $back }}" class="rounded-md bg-gray-500 px-3 py-2 text-white">Go Back</a>
+                        <a href="{{ $back }}" class="rounded-md bg-gray-700 px-3 py-2 text-white">Go Back</a>
                     </div>
                 @endisset
             </main>

@@ -17,12 +17,11 @@
                             clip-rule="evenodd"></path>
                     </svg>
                 </button>
-                    <div
-class="ml-2 flex md:mr-24">
-                        <a href="/"
-                        class="self-center whitespace-nowrap text-xl font-semibold dark:text-white sm:text-2xl"
-                        >S-Commerce</a> / Dashboard
-                    </div>
+                <div class="ml-2 flex space-x-2 self-center whitespace-nowrap text-2xl font-semibold">
+                    <a href="/">S-Commerce</a>
+                    <span>/</span>
+                    <a href="{{ route('dashboard') }}">Dashboard</a>
+                </div>
             </div>
 
             <div class="flex items-center">
