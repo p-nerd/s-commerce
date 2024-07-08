@@ -85,7 +85,6 @@ class ProductController extends Controller
     {
         return view('dashboard/products/show', [
             'product' => $product,
-
         ]);
     }
 
@@ -106,7 +105,23 @@ class ProductController extends Controller
      */
     public function update(Request $request, Product $product)
     {
-        //
+        $payload = $request->validate([
+            'name' => ['required', 'string', 'max:255'],
+            'short_description' => ['required', 'string', 'max:255'],
+            'type' => ['required', 'string', 'max:255'],
+            'sku' => ['required', 'string', 'max:255'],
+            'price' => ['required'],
+            'discount_price' => ['nullable'],
+            'manufactured_date' => ['required', 'date'],
+            'expired_date' => ['required', 'date', 'after:manufactured_date'],
+            'stock' => ['required', 'integer', 'min:0'],
+            'category_id' => ['required', 'exists:categories,id'],
+            'long_description' => ['nullable', 'string'],
+        ]);
+
+        $product->update($payload);
+
+        return to_route('dashboard.products')->with('success', 'Product updated successfully.');
     }
 
     /**

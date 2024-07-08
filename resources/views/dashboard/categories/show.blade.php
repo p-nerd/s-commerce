@@ -7,7 +7,7 @@
             Showing '{{ $category->name }}' category
         </x-dash.title>
     </x-slot>
-    <div class="space-y-4 rounded-lg bg-white p-5 shadow">
+    <x-show.card>
         <x-show.item label="Slug">{{ $category->slug }}</x-show.item>
         <x-show.item label="Name">{{ $category->name }}</x-show.item>
         <x-show.item label="Description">{{ $category->description }}</x-show.item>
@@ -26,5 +26,5 @@
                 @endforeach
             </x-show.item>
         @endif
-    </div>
+    </x-show.card>
 </x-dashboard-layout>
