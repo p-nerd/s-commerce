@@ -2,22 +2,94 @@
 
 $dashboardIcon = '
     <svg
-        class="h-6 w-6 text-gray-500 transition duration-75 group-hover:text-gray-900"
+        class="w-6 h-6 text-gray-500 transition duration-75 group-hover:text-gray-900"
         fill="currentColor"
         viewBox="0 0 20 20"
-        xmlns="http://www.w3.org/2000/svg">
+        xmlns="http://www.w3.org/2000/svg"
+    >
         <path d="M2 10a8 8 0 018-8v8h8a8 8 0 11-16 0z"></path>
         <path d="M12 2.252A8.014 8.014 0 0117.748 8H12V2.252z"></path>
     </svg>
 ';
 
+$categoryIcon = '
+    <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        class="w-6 h-6 text-gray-500 transition duration-75 group-hover:text-gray-900"
+    >
+        <rect width="7" height="7" x="3" y="3" rx="1"></rect>
+        <rect width="7" height="7" x="14" y="3" rx="1"></rect>
+        <rect width="7" height="7" x="14" y="14" rx="1"></rect>
+        <rect width="7" height="7" x="3" y="14" rx="1"></rect>
+    </svg>
+';
+
+$productIcon = '
+    <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        class="w-6 h-6 text-gray-500 transition duration-75 group-hover:text-gray-900"
+    >
+        <path d="m7.5 4.27 9 5.15"></path>
+        <path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"></path>
+        <path d="m3.3 7 8.7 5 8.7-5"></path>
+        <path d="M12 22V12"></path>
+    </svg>
+';
+
 $listIcon = '
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-list"><line x1="8" x2="21" y1="6" y2="6"/><line x1="8" x2="21" y1="12" y2="12"/><line x1="8" x2="21" y1="18" y2="18"/><line x1="3" x2="3.01" y1="6" y2="6"/><line x1="3" x2="3.01" y1="12" y2="12"/><line x1="3" x2="3.01" y1="18" y2="18"/>
+    <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        class="w-6 h-6 text-gray-500 transition duration-75 group-hover:text-gray-900"
+    >
+        <line x1="8" x2="21" y1="6" y2="6"/>
+        <line x1="8" x2="21" y1="12" y2="12"/>
+        <line x1="8" x2="21" y1="18" y2="18"/>
+        <line x1="3" x2="3.01" y1="6" y2="6"/>
+        <line x1="3" x2="3.01" y1="12" y2="12"/>
+        <line x1="3" x2="3.01" y1="18" y2="18"/>
     </svg>
 ';
 
 $newIcon = '
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-badge-plus"><path d="M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.77 4.78 4 4 0 0 1-6.75 0 4 4 0 0 1-4.78-4.77 4 4 0 0 1 0-6.76Z"/><line x1="12" x2="12" y1="8" y2="16"/><line x1="8" x2="16" y1="12" y2="12"/>
+    <svg 
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none" 
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        class="w-6 h-6 text-gray-500 transition duration-75 group-hover:text-gray-900"
+    >
+        <path d="M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.77 4.78 4 4 0 0 1-6.75 0 4 4 0 0 1-4.78-4.77 4 4 0 0 1 0-6.76Z"/>
+        <line x1="12" x2="12" y1="8" y2="16"/>
+        <line x1="8" x2="16" y1="12" y2="12"/>
     </svg>
 ';
 
@@ -29,7 +101,8 @@ $sidebarLinks = [
     ],
     [
         'label' => 'Categories',
-        'icon' => $dashboardIcon,
+        'icon' => $categoryIcon,
+        'href' => route('dashboard.categories'),
         'subLinks' => [
             [
                 'label' => 'List',
@@ -45,7 +118,8 @@ $sidebarLinks = [
     ],
     [
         'label' => 'Products',
-        'icon' => $dashboardIcon,
+        'icon' => $productIcon,
+        'href' => route('dashboard.products'),
         'subLinks' => [
             [
                 'label' => 'List',
@@ -64,7 +138,7 @@ $sidebarLinks = [
 ?>
 
 <aside id="sidebar"
-    class="transition-width fixed left-0 top-0 z-20 hidden h-full w-64 flex-shrink-0 flex-col pt-16 font-normal duration-75 lg:flex">
+    class="transition-width fixed left-0 top-0 z-20 hidden h-full w-60 flex-shrink-0 flex-col pt-16 font-normal duration-75 lg:flex">
     <div
         class="relative flex min-h-0 flex-1 flex-col border-r border-gray-200 bg-white pt-0 dark:border-gray-700 dark:bg-gray-800">
         <div
@@ -92,7 +166,7 @@ $sidebarLinks = [
                     @foreach ($sidebarLinks as $link)
                         @if (isset($link['subLinks']))
                             <li x-data="{ open: {{ !!array_filter($link['subLinks'], fn($sublink) => $sublink['href'] === request()->url()) ? 'true' : 'false' }} }">
-                                <button @click="open = !open" type="button"
+                                <a href="{{ $link['href'] }}" type="button"
                                     class="group flex w-full items-center rounded-lg p-2 text-base text-gray-900 transition duration-75 hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-700">
                                     {!! $link['icon'] !!}
                                     <span class="ml-3 flex-1 whitespace-nowrap text-left"
@@ -103,7 +177,7 @@ $sidebarLinks = [
                                             d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
                                             clip-rule="evenodd"></path>
                                     </svg>
-                                </button>
+                                </a>
                                 <ul x-show="open" class="space-y-2 py-2">
                                     @foreach ($link['subLinks'] as $subLink)
                                         <li>
