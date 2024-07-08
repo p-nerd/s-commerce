@@ -35,16 +35,18 @@ class Category extends Model
             ->get();
     }
 
-    public static function getParentCategoryOptions()
+    public static function options()
     {
-        return self::query()
+        return Category::select('name AS label', 'id AS value')
+            ->orderBy('name')
+            ->get();
+    }
+
+    public static function parentOptions()
+    {
+        return Category::select('name AS label', 'id AS value')
             ->where('parent_id', null)
-            ->get()
-            ->map(function (Category $category) {
-                return [
-                    'label' => $category->name,
-                    'value' => $category->id,
-                ];
-            });
+            ->orderBy('name')
+            ->get();
     }
 }

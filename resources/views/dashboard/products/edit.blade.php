@@ -8,13 +8,13 @@
         </x-dash.title>
     </x-slot>
 
-    <x-form.form method="PATCH" action="{{ route('dashboard.products.update', $product) }}">
+    <x-form.form method="PATCH" action="{{ route('dashboard.products.update', $product) }}" confirm="Are you sure?">
         <x-form.text name="name" label="Name" value="{{ $product->name }}" required autofocus />
         <x-form.textarea name="short_description" value="{{ $product->short_description }}" label="Short Description"
             required />
         <x-form.two>
             <x-form.select name="type" label="Type" value="{{ $product->type }}" placeholder="Select product type"
-                :options="$productTypeOptions" />
+                :options="$types" />
             <x-form.text name="sku" label="SKU" value="{{ $product->sku }}" required />
         </x-form.two>
         <x-form.two>

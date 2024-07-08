@@ -55,7 +55,8 @@
                         <x-table.actions-td>
                             <x-table.view-button href="{{ route('dashboard.products.show', $product) }}" />
                             <x-table.edit-button href="{{ route('dashboard.products.edit', $product) }}" />
-                            <x-table.delete-button href="{{ route('dashboard.products.destroy', $product) }}" />
+                            <x-table.delete-button href="{{ route('dashboard.products.destroy', $product) }}"
+                                confirm="Are you sure?" />
                         </x-table.actions-td>
                     </x-table.tr>
                 @endforeach

@@ -63,7 +63,7 @@ class CategoryController extends Controller
     public function create()
     {
         return view('dashboard/categories/create', [
-            'categories' => Category::getParentCategoryOptions(),
+            'categories' => Category::parentOptions(),
         ]);
     }
 
@@ -105,7 +105,7 @@ class CategoryController extends Controller
     {
         return view('dashboard/categories/edit', [
             'category' => $category,
-            'categories' => Category::getParentCategoryOptions(),
+            'categories' => Category::parentOptions(),
         ]);
     }
 

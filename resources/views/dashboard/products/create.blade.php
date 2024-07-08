@@ -12,7 +12,7 @@
         <x-form.text name="name" label="Name" required autofocus />
         <x-form.textarea name="short_description" label="Short Description" required />
         <x-form.two>
-            <x-form.select name="type" label="Type" placeholder="Select product type" :options="$productTypeOptions" />
+            <x-form.select name="type" label="Type" placeholder="Select product type" :options="$types" />
             <x-form.text name="sku" label="SKU" required />
         </x-form.two>
         <x-form.two>

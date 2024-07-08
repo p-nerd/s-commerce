@@ -46,8 +46,8 @@ class ProductController extends Controller
     public function create()
     {
         return view('dashboard/products/create', [
-            'productTypeOptions' => ProductType::options(),
-            'categories' => Category::select('name AS label', 'id AS value')->get(),
+            'types' => ProductType::options(),
+            'categories' => Category::options(),
         ]);
     }
 
@@ -95,8 +95,8 @@ class ProductController extends Controller
     {
         return view('dashboard/products/edit', [
             'product' => $product,
-            'productTypeOptions' => ProductType::options(),
-            'categories' => Category::select('name AS label', 'id AS value')->get(),
+            'types' => ProductType::options(),
+            'categories' => Category::options(),
         ]);
     }
 
