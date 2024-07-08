@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Enums\ProductType;
 use App\Models\Category;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -27,7 +28,7 @@ class ProductFactory extends Factory
             'price' => $this->faker->randomFloat(2, 10, 1000),
             'discount_price' => $this->faker->randomElement([null, $this->faker->randomFloat(2, 5, 500)]),
             'short_description' => $this->faker->sentence,
-            'type' => $this->faker->randomElement(['physical', 'digital']),
+            'type' => $this->faker->randomElement(ProductType::values()),
             'sku' => $this->faker->unique()->ean13,
             'manufactured_date' => $this->faker->date(),
             'expired_date' => $this->faker->optional()->date(),

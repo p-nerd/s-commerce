@@ -1,5 +1,6 @@
 <?php
 
+use App\Enums\ProductType;
 use App\Models\Category;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
@@ -16,11 +17,11 @@ return new class extends Migration
             $table->id();
 
             $table->string('name');
-            $table->string('slug');
+            $table->string('slug')->unique();
             $table->decimal('price', 10, 2);
             $table->decimal('discount_price', 10, 2)->nullable();
             $table->string('short_description');
-            $table->string('type');
+            $table->enum('type', ProductType::values());
             $table->string('sku');
             $table->date('manufactured_date');
             $table->date('expired_date')->nullable();

@@ -4,8 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use Illuminate\Http\Request;
-use Illuminate\Support\Str;
-use Illuminate\Validation\ValidationException;
 
 class CategoryController extends Controller
 {
@@ -80,18 +78,9 @@ class CategoryController extends Controller
             'parent_id' => ['nullable', 'exists:categories,id'],
         ]);
 
-        $slug = Str::slug($payload['name']);
-
-        $category = Category::query()->where('slug', $slug)->first();
-        if ($category) {
-            throw ValidationException::withMessages([
-                'name' => 'The category already exist',
-            ]);
-        }
-
         Category::create([
             ...$payload,
-            'slug' => $slug,
+            'slug' => Category::generateSlug($payload['name']),
         ]);
 
         return to_route('dashboard.categories')->with(['success' => 'Category created.']);

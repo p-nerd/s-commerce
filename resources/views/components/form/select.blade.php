@@ -1,6 +1,6 @@
-@props(['name', 'label', 'value' => '', 'options' => []])
+@props(['name', 'label', 'placeholder', 'value' => '', 'options' => []])
 
-<div>
+<div class="w-full">
     <x-input-label for="{{ $name }}" value="{{ $label }}" />
     <x-dash.select-input id="{{ $name }}" name="{{ $name }}"
         class="{{ twMerge('mt-1 block w-full', $attributes['class']) }}"

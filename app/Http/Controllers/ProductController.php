@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Enums\ProductType;
+use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
 
@@ -43,7 +45,10 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        return view('dashboard/products/create', [
+            'productTypeOptions' => ProductType::options(),
+            'categories' => Category::select('name AS label', 'id AS value')->get(),
+        ]);
     }
 
     /**
@@ -51,7 +56,26 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $payload = $request->validate([
+            'name' => ['required', 'string', 'max:255'],
+            'short_description' => ['required', 'string', 'max:255'],
+            'type' => ['required', 'string', 'max:255'],
+            'sku' => ['required', 'string', 'max:255'],
+            'price' => ['required'],
+            'discount_price' => ['nullable'],
+            'manufactured_date' => ['required', 'date'],
+            'expired_date' => ['required', 'date', 'after:manufactured_date'],
+            'stock' => ['required', 'integer', 'min:0'],
+            'category_id' => ['required', 'exists:categories,id'],
+            'long_description' => ['nullable', 'string'],
+        ]);
+
+        Product::create([
+            ...$payload,
+            'slug' => Product::generateSlug($payload['name']),
+        ]);
+
+        return to_route('dashboard.products')->with('success', 'Product created successfully.');
     }
 
     /**
