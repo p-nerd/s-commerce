@@ -19,11 +19,11 @@
 </head>
 
 <body>
-    <x-store.header />
+    @include('partials.store-layout.header')
 
     {{ $slot }}
 
-    <x-store.footer />
+    @include('partials.store-layout.footer')
 
     <!-- Preloader Start -->
     <div id="preloader-active">

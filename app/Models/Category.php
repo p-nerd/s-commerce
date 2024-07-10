@@ -40,7 +40,6 @@ class Category extends Model
     public static function parentCategories()
     {
         return self::query()
-            ->with('subCategories')
             ->where('parent_id', null)
             ->get();
     }
