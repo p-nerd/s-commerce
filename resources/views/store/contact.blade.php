@@ -1,5 +1,5 @@
 <x-store-layout>
-  <main class="main pages">
+    <main class="main pages">
         <div class="page-header breadcrumb-wrap">
             <div class="container">
                 <div class="breadcrumb">
@@ -14,28 +14,34 @@
                     <div class="col-xl-10 col-lg-12 m-auto">
                         <section class="row align-items-end mb-50">
                             <div class="col-lg-4 mb-lg-0 mb-md-5 mb-sm-5">
-                                <h4 class="mb-20 text-brand">How can help you ?</h4>
+                                <h4 class="text-brand mb-20">How can help you ?</h4>
                                 <h1 class="mb-30">Let us know how we can help you</h1>
-                                <p class="mb-20">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.</p>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.</p>
+                                <p class="mb-20">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit
+                                    tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.</p>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec
+                                    ullamcorper mattis, pulvinar dapibus leo.</p>
                             </div>
                             <div class="col-lg-8">
                                 <div class="row">
                                     <div class="col-lg-6 mb-4">
                                         <h5 class="mb-20">01. Visit Feedback</h5>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.</p>
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus,
+                                            luctus nec ullamcorper mattis, pulvinar dapibus leo.</p>
                                     </div>
                                     <div class="col-lg-6 mb-4">
                                         <h5 class="mb-20">02. Employer Services</h5>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.</p>
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus,
+                                            luctus nec ullamcorper mattis, pulvinar dapibus leo.</p>
                                     </div>
                                     <div class="col-lg-6 mb-lg-0 mb-4">
-                                        <h5 class="mb-20 text-brand">03. Billing Inquiries</h5>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.</p>
+                                        <h5 class="text-brand mb-20">03. Billing Inquiries</h5>
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus,
+                                            luctus nec ullamcorper mattis, pulvinar dapibus leo.</p>
                                     </div>
                                     <div class="col-lg-6">
                                         <h5 class="mb-20">04.General Inquiries</h5>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.</p>
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus,
+                                            luctus nec ullamcorper mattis, pulvinar dapibus leo.</p>
                                     </div>
                                 </div>
                             </div>
@@ -43,7 +49,7 @@
                     </div>
                 </div>
             </div>
-            <section class="container mb-50 d-none d-md-block">
+            <section class="mb-50 d-none d-md-block container">
                 <div class="border-radius-15 overflow-hidden">
                     <div id="map-panes" class="leaflet-map"></div>
                 </div>
@@ -53,26 +59,38 @@
                     <div class="col-xl-10 col-lg-12 m-auto">
                         <section class="mb-50">
                             <div class="row mb-60">
-                                <div class="col-md-4 mb-4 mb-md-0">
+                                <div class="col-md-4 mb-md-0 mb-4">
                                     <h4 class="mb-15 text-brand">Office</h4>
                                     205 North Michigan Avenue, Suite 810<br /> Chicago, 60601, USA<br />
                                     <abbr title="Phone">Phone:</abbr> (123) 456-7890<br />
-                                    <abbr title="Email">Email: </abbr><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="680b07061c090b1c282d1e091a09460b0705">[email&#160;protected]</a><br />
-                                    <a class="btn btn-sm font-weight-bold text-white mt-20 border-radius-5 btn-shadow-brand hover-up"><i class="fi-rs-marker mr-5"></i>View map</a>
+                                    <abbr title="Email">Email: </abbr><a href="/cdn-cgi/l/email-protection"
+                                        class="__cf_email__"
+                                        data-cfemail="680b07061c090b1c282d1e091a09460b0705">[email&#160;protected]</a><br />
+                                    <a
+                                        class="btn btn-sm font-weight-bold border-radius-5 btn-shadow-brand hover-up mt-20 text-white"><i
+                                            class="fi-rs-marker mr-5"></i>View map</a>
                                 </div>
-                                <div class="col-md-4 mb-4 mb-md-0">
+                                <div class="col-md-4 mb-md-0 mb-4">
                                     <h4 class="mb-15 text-brand">Studio</h4>
                                     205 North Michigan Avenue, Suite 810<br /> Chicago, 60601, USA<br />
                                     <abbr title="Phone">Phone:</abbr> (123) 456-7890<br />
-                                    <abbr title="Email">Email: </abbr><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="c4a7abaab0a5a7b08481b2a5b6a5eaa7aba9">[email&#160;protected]</a><br />
-                                    <a class="btn btn-sm font-weight-bold text-white mt-20 border-radius-5 btn-shadow-brand hover-up"><i class="fi-rs-marker mr-5"></i>View map</a>
+                                    <abbr title="Email">Email: </abbr><a href="/cdn-cgi/l/email-protection"
+                                        class="__cf_email__"
+                                        data-cfemail="c4a7abaab0a5a7b08481b2a5b6a5eaa7aba9">[email&#160;protected]</a><br />
+                                    <a
+                                        class="btn btn-sm font-weight-bold border-radius-5 btn-shadow-brand hover-up mt-20 text-white"><i
+                                            class="fi-rs-marker mr-5"></i>View map</a>
                                 </div>
                                 <div class="col-md-4">
                                     <h4 class="mb-15 text-brand">Shop</h4>
                                     205 North Michigan Avenue, Suite 810<br /> Chicago, 60601, USA<br />
                                     <abbr title="Phone">Phone:</abbr> (123) 456-7890<br />
-                                    <abbr title="Email">Email: </abbr><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="85e6eaebf1e4e6f1c5c0f3e4f7e4abe6eae8">[email&#160;protected]</a><br />
-                                    <a class="btn btn-sm font-weight-bold text-white mt-20 border-radius-5 btn-shadow-brand hover-up"><i class="fi-rs-marker mr-5"></i>View map</a>
+                                    <abbr title="Email">Email: </abbr><a href="/cdn-cgi/l/email-protection"
+                                        class="__cf_email__"
+                                        data-cfemail="85e6eaebf1e4e6f1c5c0f3e4f7e4abe6eae8">[email&#160;protected]</a><br />
+                                    <a
+                                        class="btn btn-sm font-weight-bold border-radius-5 btn-shadow-brand hover-up mt-20 text-white"><i
+                                            class="fi-rs-marker mr-5"></i>View map</a>
                                 </div>
                             </div>
                             <div class="row">
@@ -80,8 +98,10 @@
                                     <div class="contact-from-area padding-20-row-col">
                                         <h5 class="text-brand mb-10">Contact form</h5>
                                         <h2 class="mb-10">Drop Us a Line</h2>
-                                        <p class="text-muted mb-30 font-sm">Your email address will not be published. Required fields are marked *</p>
-                                        <form class="contact-form-style mt-30" id="contact-form" action="#" method="post">
+                                        <p class="text-muted mb-30 font-sm">Your email address will not be published.
+                                            Required fields are marked *</p>
+                                        <form class="contact-form-style mt-30" id="contact-form" action="#"
+                                            method="post">
                                             <div class="row">
                                                 <div class="col-lg-6 col-md-6">
                                                     <div class="input-style mb-20">
@@ -95,7 +115,8 @@
                                                 </div>
                                                 <div class="col-lg-6 col-md-6">
                                                     <div class="input-style mb-20">
-                                                        <input name="telephone" placeholder="Your Phone" type="tel" />
+                                                        <input name="telephone" placeholder="Your Phone"
+                                                            type="tel" />
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-6 col-md-6">
@@ -107,7 +128,8 @@
                                                     <div class="textarea-style mb-30">
                                                         <textarea name="message" placeholder="Message"></textarea>
                                                     </div>
-                                                    <button class="submit submit-auto-width" type="submit">Send message</button>
+                                                    <button class="submit submit-auto-width" type="submit">Send
+                                                        message</button>
                                                 </div>
                                             </div>
                                         </form>
@@ -115,7 +137,8 @@
                                     </div>
                                 </div>
                                 <div class="col-lg-4 pl-50 d-lg-block d-none">
-                                    <img class="border-radius-15 mt-50" src="assets/imgs/page/contact-2.png" alt="" />
+                                    <img class="border-radius-15 mt-50" src="assets/imgs/page/contact-2.png"
+                                        alt="" />
                                 </div>
                             </div>
                         </section>

@@ -210,17 +210,15 @@ $parentCategories = Category::with('subCategories')->where('parent_id', null)->t
                                     </ul>
                                 </div>
                             </div>
-                            <div class="more_categories"><span class="icon"></span> <span class="heading-sm-1">Show more...</span></div>
+                            <div class="more_categories"><span class="icon"></span> <span class="heading-sm-1">Show
+                                    more...</span></div>
                         </div>
                     </div>
                     <div class="main-menu main-menu-padding-1 main-menu-lh-2 d-none d-lg-block font-heading">
                         <nav>
                             <ul>
                                 <li class="hot-deals">
-                                    <img
-                                        src="assets/imgs/theme/icons/icon-hot.svg"
-                                        alt="hot deals"
-                                    />
+                                    <img src="assets/imgs/theme/icons/icon-hot.svg" alt="hot deals" />
                                     <a href="/hot-deals">Deals</a>
                                 </li>
                                 <li>
@@ -238,19 +236,19 @@ $parentCategories = Category::with('subCategories')->where('parent_id', null)->t
                                 <li class="position-static">
                                     <a href="/categories">Categories <i class="fi-rs-angle-down"></i></a>
                                     <ul class="mega-menu">
-                                        @foreach($parentCategories as $parentCategory)
-                                        <li class="sub-mega-menu sub-mega-menu-width-22">
-                                            <a class="menu-title" href="/categories/{{ $parentCategory->slug }}">
-                                                {{ $parentCategory->name }}
-                                            </a>
-                                            <ul>
-                                                @foreach($parentCategory->subCategories as $subCategory)
-                                                <li><a href="/categories/{{ $subCategory->slug }}">
-                                                {{ $subCategory->name }}
-                                                </a></li>
-                                                @endforeach
-                                            </ul>
-                                        </li>
+                                        @foreach ($parentCategories as $parentCategory)
+                                            <li class="sub-mega-menu sub-mega-menu-width-22">
+                                                <a class="menu-title" href="/categories/{{ $parentCategory->slug }}">
+                                                    {{ $parentCategory->name }}
+                                                </a>
+                                                <ul>
+                                                    @foreach ($parentCategory->subCategories as $subCategory)
+                                                        <li><a href="/categories/{{ $subCategory->slug }}">
+                                                                {{ $subCategory->name }}
+                                                            </a></li>
+                                                    @endforeach
+                                                </ul>
+                                            </li>
                                         @endforeach
                                         <li class="sub-mega-menu sub-mega-menu-width-34">
                                             <div class="menu-banner-wrap">
