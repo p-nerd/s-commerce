@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Route;
 Route::middleware([])->group(function () {
 
     Route::get('/', [HomeController::class, 'index']);
-    Route::get('/products', fn () => view('store/products'));
+    Route::get('/products', [HomeController::class, 'products']);
 
     Route::get('/about', fn () => view('store/about'));
     Route::get('/account', fn () => view('store/account'));

@@ -7,13 +7,13 @@
             <div class="modal-body">
                 <div class="deal" style="background-image: url('assets/imgs/banner/popup-1.png')">
                     <div class="deal-top">
-                        <h6 class="text-brand-2 mb-10">Deal of the Day</h6>
+                        <h6 class="mb-10 text-brand-2">Deal of the Day</h6>
                     </div>
                     <div class="deal-content detail-info">
                         <h4 class="product-title"><a href="shop-product-right.html" class="text-heading">Organic fruit
                                 for your family's health</a></h4>
                         <div class="clearfix product-price-cover">
-                            <div class="product-price primary-color float-left">
+                            <div class="float-left product-price primary-color">
                                 <span class="current-price text-brand">$38</span>
                                 <span>
                                     <span class="save-price font-md color3 ml-15">26% Off</span>
@@ -24,7 +24,7 @@
                     </div>
                     <div class="deal-bottom">
                         <p class="mb-20">Hurry Up! Offer End In:</p>
-                        <div class="deals-countdown pl-5" data-countdown="2025/03/25 00:00:00">
+                        <div class="pl-5 deals-countdown" data-countdown="2025/03/25 00:00:00">
                             <span class="countdown-section"><span class="countdown-amount hover-up">03</span><span
                                     class="countdown-period"> days </span></span><span class="countdown-section"><span
                                     class="countdown-amount hover-up">02</span><span class="countdown-period"> hours
@@ -39,7 +39,7 @@
                                 <div class="product-rate d-inline-block">
                                     <div class="product-rating" style="width: 90%"></div>
                                 </div>
-                                <span class="font-small text-muted ml-5"> (32 rates)</span>
+                                <span class="ml-5 font-small text-muted"> (32 rates)</span>
                             </div>
                         </div>
                         <a href="shop-grid-right.html" class="btn hover-up">Shop Now <i
@@ -112,11 +112,11 @@
                                     <div class="product-rate d-inline-block">
                                         <div class="product-rating" style="width: 90%"></div>
                                     </div>
-                                    <span class="font-small text-muted ml-5"> (32 reviews)</span>
+                                    <span class="ml-5 font-small text-muted"> (32 reviews)</span>
                                 </div>
                             </div>
                             <div class="clearfix product-price-cover">
-                                <div class="product-price primary-color float-left">
+                                <div class="float-left product-price primary-color">
                                     <span class="current-price text-brand">$38</span>
                                     <span>
                                         <span class="save-price font-md color3 ml-15">26% Off</span>
@@ -125,7 +125,7 @@
                                 </div>
                             </div>
                             <div class="detail-extralink mb-30">
-                                <div class="detail-qty radius border">
+                                <div class="border detail-qty radius">
                                     <a href="#" class="qty-down"><i class="fi-rs-angle-small-down"></i></a>
                                     <span class="qty-val">1</span>
                                     <a href="#" class="qty-up"><i class="fi-rs-angle-small-up"></i></a>
