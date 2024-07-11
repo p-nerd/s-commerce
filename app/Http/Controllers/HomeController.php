@@ -26,7 +26,7 @@ class HomeController extends Controller
     {
         $products = Product::query()
             ->with('images')
-            ->paginate(request('per_page') || '')
+            ->paginate(request('per_page') ?? 50)
             ->withQueryString();
 
         return view('store/products', [

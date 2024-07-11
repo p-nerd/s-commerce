@@ -27,15 +27,15 @@
     @include('partials.store-layout.footer')
 
     <!-- Preloader Start -->
-    <div id="preloader-active">
-        <div class="preloader d-flex align-items-center justify-content-center">
-            <div class="preloader-inner position-relative">
-                <div class="text-center">
-                    <img src="assets/imgs/theme/loading.gif" alt="" />
-                </div>
-            </div>
-        </div>
-    </div>
+    <!-- <div id="preloader-active"> -->
+    <!--     <div class="preloader d-flex align-items-center justify-content-center"> -->
+    <!--         <div class="preloader-inner position-relative"> -->
+    <!--             <div class="text-center"> -->
+    <!--                 <img src="assets/imgs/theme/loading.gif" alt="" /> -->
+    <!--             </div> -->
+    <!--         </div> -->
+    <!--     </div> -->
+    <!-- </div> -->
     <!-- Vendor JS-->
     <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
     <script src="assets/js/vendor/modernizr-3.6.0.min.js"></script>
