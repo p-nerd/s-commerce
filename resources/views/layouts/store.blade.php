@@ -15,6 +15,7 @@
     <link rel="shortcut icon" type="image/x-icon" href="/favicon.svg" />
     <!-- Template CSS -->
     <link rel="stylesheet" href="assets/css/plugins/animate.min.css" />
+    <link rel="stylesheet" href="assets/css/plugins/slider-range.css" />
     <link rel="stylesheet" href="assets/css/main.css?v=5.5" />
 </head>
 
@@ -56,6 +57,7 @@
     <script src="assets/js/plugins/jquery.vticker-min.js"></script>
     <script src="assets/js/plugins/jquery.theia.sticky.js"></script>
     <script src="assets/js/plugins/jquery.elevatezoom.js"></script>
+    <script src="assets/js/plugins/slider-range.js"></script>
     <!-- Template  JS -->
     <script src="assets/js/main.js?v=5.5"></script>
     <script src="assets/js/shop.js?v=5.5"></script>

@@ -10,15 +10,27 @@ class HomeController extends Controller
     public function index()
     {
         return view('store/home', [
-            'featuredParentCategories' => Category::query()->where('parent_id', null)->where('featured', true)->take(5)->get(),
-            'featuredSubCategories' => Category::query()->where('parent_id', '!=', null)->where('featured', true)->get(),
+            'featuredParentCategories' => Category::query()
+                ->where('parent_id', null)
+                ->where('featured', true)
+                ->take(5)
+                ->get(),
+            'featuredSubCategories' => Category::query()
+                ->where('parent_id', '!=', null)
+                ->where('featured', true)
+                ->get(),
         ]);
     }
 
     public function products()
     {
+        $products = Product::query()
+            ->with('images')
+            ->paginate(request('per_page') || '')
+            ->withQueryString();
+
         return view('store/products', [
-            'products' => Product::query()->with('images')->paginate(50),
+            'products' => $products,
         ]);
     }
 }
