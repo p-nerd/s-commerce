@@ -4,11 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\Product;
-use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
-    public function index(Request $request)
+    public function index()
     {
         return view('store/home', [
             'featuredParentCategories' => Category::query()->where('parent_id', null)->where('featured', true)->take(5)->get(),
@@ -19,7 +18,7 @@ class HomeController extends Controller
     public function products()
     {
         return view('store/products', [
-            'products' => Product::query()->paginate(50),
+            'products' => Product::query()->with('images')->paginate(50),
         ]);
     }
 }

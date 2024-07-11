@@ -9,8 +9,8 @@
         <div class="product-img-action-wrap">
             <div class="product-img product-img-zoom">
                 <a href="{{ $productLink }}">
-                    <img class="default-img" src="assets/imgs/shop/product-2-1.jpg" alt="" />
-                    <img class="hover-img" src="assets/imgs/shop/product-2-2.jpg" alt="" />
+                    <img class="default-img" src="{{ $product->featuredImage()->url }}" alt="" />
+                    <img class="hover-img" src="{{ $product->featuredImage()->url }}" alt="" />
                 </a>
             </div>
             <div class="product-action-1">
@@ -42,7 +42,7 @@
                     @endif
                 </div>
                 <div class="add-cart">
-                    <a class="add" href="#"><i class="fi-rs-shopping-cart mr-5"></i>Add </a>
+                    <a class="add" href="#"><i class="fi-rs-shopping-cart mr-5"></i>Add</a>
                 </div>
             </div>
         </div>

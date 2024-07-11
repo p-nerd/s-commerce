@@ -83,6 +83,7 @@
                         </div>
                     </div>
                     <x-store.products.list :products="$products" />
+                    {{ $products->links('components.store.products.pagination') }}
                     <div class="pagination-area mb-20 mt-20">
                         <nav aria-label="Page navigation example">
                             <ul class="pagination justify-content-start">
