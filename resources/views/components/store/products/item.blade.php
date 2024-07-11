@@ -16,8 +16,8 @@
             <div class="product-action-1">
                 <a aria-label="Add To Wishlist" class="action-btn"><i class="fi-rs-heart"></i></a>
                 <a aria-label="Compare" class="action-btn"><i class="fi-rs-shuffle"></i></a>
-                <a aria-label="Quick view" class="action-btn" data-bs-toggle="modal"
-                    data-bs-target="#quickViewModal"><i class="fi-rs-eye"></i></a>
+                <a aria-label="Quick view" class="action-btn" data-bs-toggle="modal" data-bs-target="#quickViewModal"><i
+                        class="fi-rs-eye"></i></a>
             </div>
             <div class="product-badges product-badges-position product-badges-mrg">
                 <span class="sale">Sale</span>
@@ -37,7 +37,7 @@
             <div class="product-card-bottom">
                 <div class="product-price">
                     <span>${{ $product->discount_price ?? $product->price }}</span>
-                    @if($product->price)
+                    @if ($product->price)
                         <span class="old-price">${{ $product->price }}</span>
                     @endif
                 </div>
@@ -48,4 +48,3 @@
         </div>
     </div>
 </div>
-
