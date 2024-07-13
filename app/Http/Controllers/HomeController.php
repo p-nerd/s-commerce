@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
-use App\Models\Product;
 
 class HomeController extends Controller
 {
@@ -19,18 +18,6 @@ class HomeController extends Controller
                 ->where('parent_id', '!=', null)
                 ->where('featured', true)
                 ->get(),
-        ]);
-    }
-
-    public function products()
-    {
-        $products = Product::query()
-            ->with('images')
-            ->paginate(request('per_page') ?? 50)
-            ->withQueryString();
-
-        return view('store/products', [
-            'products' => $products,
         ]);
     }
 }

@@ -1,12 +1,17 @@
 <?php
 
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\Store\ProductController;
 use Illuminate\Support\Facades\Route;
+
+Route::prefix('/products')->group(function () {
+    Route::get('/', [ProductController::class, 'index']);
+    Route::get('/filters', [ProductController::class, 'filters']);
+});
 
 Route::middleware([])->group(function () {
 
     Route::get('/', [HomeController::class, 'index']);
-    Route::get('/products', [HomeController::class, 'products']);
 
     Route::get('/about', fn () => view('store/about'));
     Route::get('/account', fn () => view('store/account'));
