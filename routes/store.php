@@ -6,7 +6,6 @@ use Illuminate\Support\Facades\Route;
 
 Route::prefix('/products')->group(function () {
     Route::get('/', [ProductController::class, 'index']);
-    Route::get('/filters', [ProductController::class, 'filters']);
 });
 
 Route::middleware([])->group(function () {

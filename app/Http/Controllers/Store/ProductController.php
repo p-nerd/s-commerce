@@ -11,29 +11,31 @@ class ProductController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $products = Product::query()
-            ->with('images')
-            ->paginate(request('per_page') ?? 50)
+        $perPage = $request->query(('per_page')) ?? 50;
+
+        $filter = $request->query('filter') ?? 'featured';
+
+        $query = Product::query()
+            ->with('images');
+
+        $query = match ($filter) {
+            'featured' => $query->where('featured', true)->orderBy('created_at', 'desc'),
+            'low-to-high' => $query->orderBy('discount_price', 'asc'),
+            'high-to-low' => $query->orderBy('discount_price', 'desc'),
+            'release-date' => $query->orderBy('released_date', 'desc'),
+            'rating' => $query,
+            default => $query,
+        };
+
+        $products = $query->paginate($perPage)
             ->withQueryString();
 
-        return view('store/products/index', [
-            'products' => $products,
-        ]);
-    }
-
-    public function filters()
-    {
-        $products = Product::query()
-            ->with('images')
-            ->paginate(request('per_page') ?? 50)
-            ->withQueryString();
-
-        return view('store/products/list', [
-            'products' => $products,
-            'message' => 'Per page: '.request('per_page'),
-        ]);
+        return match ($request->header('X-Type')) {
+            'partial' => view('store/products/list', ['products' => $products]),
+            default => view('store/products/index', ['products' => $products])
+        };
     }
 
     /**
