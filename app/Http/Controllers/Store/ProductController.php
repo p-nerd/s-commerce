@@ -30,8 +30,9 @@ class ProductController extends Controller
             ->paginate(request('per_page') ?? 50)
             ->withQueryString();
 
-        return view('store/products/filters', [
+        return view('store/products/list', [
             'products' => $products,
+            'message' => 'Per page: '.request('per_page'),
         ]);
     }
 

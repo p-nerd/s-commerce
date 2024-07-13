@@ -1,6 +1,6 @@
 <div class="shop-product-fillter">
-    <div class="totall-product">
-        <p>We found <strong class="text-brand">{{ count($products) }}</strong> items for you!</p>
+    <div class="totall-product" >
+        <p>We found <strong class="text-brand product-count">{{ count($products) }}</strong> items for you!</p>
     </div>
 
     <div class="sort-by-product-area">
@@ -11,7 +11,10 @@
                     <span><i class="fi-rs-apps"></i>Show:</span>
                 </div>
                 <div class="sort-by-dropdown-wrap">
-                    <span> {{ $products->perPage() }} <i class="fi-rs-angle-small-down"></i></span>
+                    <span>
+<span class="product-count">{{ $products->perPage() }}</span>
+<i class="fi-rs-angle-small-down"></i>
+                    </span>
                 </div>
             </div>
             <div class="sort-by-dropdown">
@@ -59,3 +62,28 @@
         </div>
     </div>
 </div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const links = document.querySelectorAll('.per-page-select-link');
+
+        links.forEach(link => {
+            link.addEventListener('click', function(event) {
+                event.preventDefault();
+
+                const perPage = this.getAttribute('data-per-page');
+                const url = '/products/filters?per_page=' + perPage;
+
+                fetch(url)
+                    .then(response => response.text())
+                    .then(data => {
+                        document.querySelector('#products').innerHTML = data;
+                        document.querySelectorAll('.product-count').forEach(ele => ele.innerHTML = perPage)
+                    })
+                    .catch(error => {
+                        console.log('Error:', error);
+                    });
+            });
+        });
+    });
+</script>
