@@ -1,12 +1,8 @@
 <?php
 
-use App\Http\Controllers\HomeController;
+use App\Http\Controllers\Store\HomeController;
 use App\Http\Controllers\Store\ProductController;
 use Illuminate\Support\Facades\Route;
-
-Route::prefix('/products')->group(function () {
-    Route::get('/', [ProductController::class, 'index']);
-});
 
 Route::middleware([])->group(function () {
 
@@ -26,5 +22,11 @@ Route::middleware([])->group(function () {
     Route::get('/privacy-policy', fn () => view('store/privacy-policy'));
     Route::get('/terms', fn () => view('store/terms'));
     Route::get('/404', fn () => view('store/404'));
+
+});
+
+Route::prefix('/products')->group(function () {
+
+    Route::get('/', [ProductController::class, 'index']);
 
 });

@@ -20,11 +20,11 @@
 </head>
 
 <body>
-    @include('partials.store-layout.header')
+    @include('components.store-layout.header')
 
     {{ $slot }}
 
-    @include('partials.store-layout.footer')
+    @include('components.store-layout.footer')
 
     <!-- Preloader Start -->
     <!-- <div id="preloader-active"> -->

@@ -7,7 +7,7 @@ $parentCategories = Category::with('subCategories')->where('parent_id', null)->t
 
 ?>
 
-@include('partials.store-layout.modal')
+@include('components.store-layout.modal')
 
 <header class="header-area header-style-1 header-height-2">
     <div class="mobile-promotion">
