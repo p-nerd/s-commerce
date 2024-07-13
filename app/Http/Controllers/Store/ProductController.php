@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Store;
 
 use App\Http\Controllers\Controller;
+use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
 
@@ -29,9 +30,18 @@ class ProductController extends Controller
         $products = $query->paginate($perPage)
             ->withQueryString();
 
+        $categories = Category::query()
+            ->where('parent_id', null)
+            ->where('featured', true)
+            ->take(5)
+            ->get();
+
         return match ($request->header('X-Type')) {
             'partial' => view('store/products/list', ['products' => $products]),
-            default => view('store/products/index', ['products' => $products])
+            default => view('store/products/index', [
+                'products' => $products,
+                'categories' => $categories,
+            ])
         };
     }
 
