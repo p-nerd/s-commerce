@@ -97,7 +97,11 @@
                 const url = `/products?filter=${filter}&per_page=${perPage}`;
 
                 try {
-                    const response = await fetch(url, {headers: {"X-Type": "partial"}});
+                    const response = await fetch(url, {
+                        headers: {
+                            "X-Type": "partial"
+                        }
+                    });
                     const data = await response.text();
 
                     products.innerHTML = data;
@@ -125,7 +129,11 @@
                 const url = `/products?filter=${filter}&per_page=${perPage}`;
 
                 try {
-                    const response = await fetch(url, {headers: {"X-Type": "partial"}});
+                    const response = await fetch(url, {
+                        headers: {
+                            "X-Type": "partial"
+                        }
+                    });
                     const data = await response.text();
 
                     products.innerHTML = data;

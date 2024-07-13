@@ -55,4 +55,4 @@
     @endforeach
 </div>
 
-<x-store.products.pagination :products="$products" href='/products' />
+{{ $products->links('store.products.pagination') }}
