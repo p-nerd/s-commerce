@@ -74,6 +74,9 @@
                 </ul>
             </div>
         </div>
+        <div style="display: flex; align-items: center; justify-items: center; margin-left: 10px;">
+            <a class="btn btn-primary btn-sm" href="{{ route('products') }}">Clear Filters</a>
+        </div>
     </div>
 </div>
 

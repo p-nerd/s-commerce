@@ -222,7 +222,7 @@ $parentCategories = Category::with('subCategories')->where('parent_id', null)->t
                                     <a href="/hot-deals">Deals</a>
                                 </li>
                                 <li>
-                                    <a class="active" href="/">Home</a>
+                                    <a href="/">Home</a>
                                 </li>
                                 <li>
                                     <a href="/about">About</a>
@@ -231,7 +231,7 @@ $parentCategories = Category::with('subCategories')->where('parent_id', null)->t
                                     <a href="/blog">Blog</a>
                                 </li>
                                 <li>
-                                    <a href="/products">Products</a>
+                                    <x-store-layout.nav-link route="products">Products</x-store-layout.nav-link>
                                 </li>
                                 <li class="position-static">
                                     <a href="/categories">Categories <i class="fi-rs-angle-down"></i></a>

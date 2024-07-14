@@ -29,13 +29,11 @@
                     <div id="products">
                         @include('store/products/products')
                     </div>
-                    @include('store/products/deals-of-the-day')
                 </div>
                 <div class="col-lg-1-5 primary-sidebar sticky-sidebar">
                     @include('store/products/categories')
                     @include('store/products/fill-by-price')
                     @include('store/products/new-products')
-                    @include('store/products/product-page-small-banner')
                 </div>
             </div>
         </div>

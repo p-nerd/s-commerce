@@ -14,10 +14,11 @@ class ProductController extends Controller
         $perPage = $request->query(('per_page')) ?? 50;
         $filter = $request->query('filter') ?? 'release-date';
         $categorySlug = $request->query('category');
+        $priceFrom = $request->query('price_from');
+        $priceTo = $request->query('price_to');
 
         $query = Product::with('images');
-
-        // category
+        // category filter
         if ($categorySlug) {
             $category = Category::with('subCategories')->where('slug', $categorySlug)->first();
             if ($category) {
@@ -26,7 +27,14 @@ class ProductController extends Controller
                 $query = $query->whereIn('category_id', $subCategoryIds);
             }
         }
-
+        // price filter
+        if ($priceFrom && $priceTo) {
+            $query->whereBetween('price', [$priceFrom, $priceTo]);
+        } elseif ($priceFrom) {
+            $query->where('price', '>=', $priceFrom);
+        } elseif ($priceTo) {
+            $query->where('price', '<=', $priceTo);
+        }
         // filters with sort
         $query = match ($filter) {
             'featured' => $query->where('featured', true)->orderBy('created_at', 'desc'),
@@ -36,10 +44,11 @@ class ProductController extends Controller
             'rating' => $query,
             default => $query,
         };
-
+        // paginate products
         $products = $query->paginate($perPage)
             ->withQueryString();
 
+        // parent categories
         $categories = Category::query()
             ->where('parent_id', null)
             ->get()
@@ -48,6 +57,13 @@ class ProductController extends Controller
                 'productCount' => $category->productCounts()]
             )->sort(fn ($a, $b) => $b['productCount'] - $a['productCount']);
 
+        // new products
+        $newProducts = Product::query()
+            ->with('images')
+            ->orderBy('release-date')
+            ->take(3)
+            ->get();
+
         return match ($request->header('X-Type')) {
             'partial' => view('store/products/products', [
                 'products' => $products,
@@ -55,6 +71,7 @@ class ProductController extends Controller
             default => view('store/products/index', [
                 'products' => $products,
                 'categories' => $categories,
+                'newProducts' => $newProducts,
             ])
         };
     }

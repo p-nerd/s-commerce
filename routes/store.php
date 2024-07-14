@@ -27,6 +27,6 @@ Route::middleware([])->group(function () {
 
 Route::prefix('/products')->group(function () {
 
-    Route::get('/', [ProductController::class, 'index']);
+    Route::get('/', [ProductController::class, 'index'])->name('products');
 
 });
