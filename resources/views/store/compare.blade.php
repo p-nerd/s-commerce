@@ -18,11 +18,14 @@
                             <tbody>
                                 <tr class="pr_image">
                                     <td class="text-muted font-sm fw-600 font-heading mw-200">Preview</td>
-                                    <td class="row_img"><img src="assets/imgs/shop/product-2-1.jpg" alt="compare-img" />
+                                    <td class="row_img"><img src="/assets/imgs/shop/product-2-1.jpg"
+                                            alt="compare-img" />
                                     </td>
-                                    <td class="row_img"><img src="assets/imgs/shop/product-1-1.jpg" alt="compare-img" />
+                                    <td class="row_img"><img src="/assets/imgs/shop/product-1-1.jpg"
+                                            alt="compare-img" />
                                     </td>
-                                    <td class="row_img"><img src="assets/imgs/shop/product-3-1.jpg" alt="compare-img" />
+                                    <td class="row_img"><img src="/assets/imgs/shop/product-3-1.jpg"
+                                            alt="compare-img" />
                                     </td>
                                 </tr>
                                 <tr class="pr_title">

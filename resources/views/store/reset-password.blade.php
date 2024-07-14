@@ -15,7 +15,7 @@
                     <div class="col-xl-6 col-lg-8 col-md-12 m-auto">
                         <div class="row">
                             <div class="heading_s1">
-                                <img class="border-radius-15" src="assets/imgs/page/reset_password.svg"
+                                <img class="border-radius-15" src="/assets/imgs/page/reset_password.svg"
                                     alt="" />
                                 <h2 class="mb-15 mt-15">Set new password</h2>
                                 <p class="mb-30">Please create a new password that you don’t use on any other site.</p>

@@ -41,4 +41,11 @@ class Product extends Model
     {
         return $this->images()->where('featured', true)->first();
     }
+
+    public function discountPercentage()
+    {
+        $discount = ($this->price - $this->discount_price) / $this->price * 100;
+
+        return round($discount, 2); // Round to 2 decimal places
+    }
 }

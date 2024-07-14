@@ -14,7 +14,7 @@
                     <div class="col-xl-10 col-lg-12 m-auto">
                         <section class="row align-items-center mb-50">
                             <div class="col-lg-6">
-                                <img src="assets/imgs/page/about-1.png" alt=""
+                                <img src="/assets/imgs/page/about-1.png" alt=""
                                     class="border-radius-15 mb-md-3 mb-lg-0 mb-sm-4" />
                             </div>
                             <div class="col-lg-6">
@@ -34,10 +34,10 @@
                                     <div class="carausel-3-columns-cover position-relative">
                                         <div id="carausel-3-columns-arrows"></div>
                                         <div class="carausel-3-columns" id="carausel-3-columns">
-                                            <img src="assets/imgs/page/about-2.png" alt="" />
-                                            <img src="assets/imgs/page/about-3.png" alt="" />
-                                            <img src="assets/imgs/page/about-4.png" alt="" />
-                                            <img src="assets/imgs/page/about-2.png" alt="" />
+                                            <img src="/assets/imgs/page/about-2.png" alt="" />
+                                            <img src="/assets/imgs/page/about-3.png" alt="" />
+                                            <img src="/assets/imgs/page/about-4.png" alt="" />
+                                            <img src="/assets/imgs/page/about-2.png" alt="" />
                                         </div>
                                     </div>
                                 </div>
@@ -48,7 +48,7 @@
                             <div class="row">
                                 <div class="col-lg-4 col-md-6 mb-24">
                                     <div class="featured-card">
-                                        <img src="assets/imgs/theme/icons/icon-1.svg" alt="" />
+                                        <img src="/assets/imgs/theme/icons/icon-1.svg" alt="" />
                                         <h4>Best Prices & Offers</h4>
                                         <p>There are many variations of passages of Lorem Ipsum available, but the
                                             majority have suffered alteration in some form</p>
@@ -57,7 +57,7 @@
                                 </div>
                                 <div class="col-lg-4 col-md-6 mb-24">
                                     <div class="featured-card">
-                                        <img src="assets/imgs/theme/icons/icon-2.svg" alt="" />
+                                        <img src="/assets/imgs/theme/icons/icon-2.svg" alt="" />
                                         <h4>Wide Assortment</h4>
                                         <p>There are many variations of passages of Lorem Ipsum available, but the
                                             majority have suffered alteration in some form</p>
@@ -66,7 +66,7 @@
                                 </div>
                                 <div class="col-lg-4 col-md-6 mb-24">
                                     <div class="featured-card">
-                                        <img src="assets/imgs/theme/icons/icon-3.svg" alt="" />
+                                        <img src="/assets/imgs/theme/icons/icon-3.svg" alt="" />
                                         <h4>Free Delivery</h4>
                                         <p>There are many variations of passages of Lorem Ipsum available, but the
                                             majority have suffered alteration in some form</p>
@@ -75,7 +75,7 @@
                                 </div>
                                 <div class="col-lg-4 col-md-6 mb-24">
                                     <div class="featured-card">
-                                        <img src="assets/imgs/theme/icons/icon-4.svg" alt="" />
+                                        <img src="/assets/imgs/theme/icons/icon-4.svg" alt="" />
                                         <h4>Easy Returns</h4>
                                         <p>There are many variations of passages of Lorem Ipsum available, but the
                                             majority have suffered alteration in some form</p>
@@ -84,7 +84,7 @@
                                 </div>
                                 <div class="col-lg-4 col-md-6 mb-24">
                                     <div class="featured-card">
-                                        <img src="assets/imgs/theme/icons/icon-5.svg" alt="" />
+                                        <img src="/assets/imgs/theme/icons/icon-5.svg" alt="" />
                                         <h4>100% Satisfaction</h4>
                                         <p>There are many variations of passages of Lorem Ipsum available, but the
                                             majority have suffered alteration in some form</p>
@@ -93,7 +93,7 @@
                                 </div>
                                 <div class="col-lg-4 col-md-6 mb-24">
                                     <div class="featured-card">
-                                        <img src="assets/imgs/theme/icons/icon-6.svg" alt="" />
+                                        <img src="/assets/imgs/theme/icons/icon-6.svg" alt="" />
                                         <h4>Great Daily Deal</h4>
                                         <p>There are many variations of passages of Lorem Ipsum available, but the
                                             majority have suffered alteration in some form</p>
@@ -105,7 +105,7 @@
                         <section class="row align-items-center mb-50">
                             <div class="row mb-50 align-items-center">
                                 <div class="col-lg-7 pr-30">
-                                    <img src="assets/imgs/page/about-5.png" alt=""
+                                    <img src="/assets/imgs/page/about-5.png" alt=""
                                         class="mb-md-3 mb-lg-0 mb-sm-4" />
                                 </div>
                                 <div class="col-lg-5">
@@ -187,22 +187,22 @@
                                     <div class="row">
                                         <div class="col-lg-6 col-md-6">
                                             <div class="team-card">
-                                                <img src="assets/imgs/page/about-6.png" alt="" />
+                                                <img src="/assets/imgs/page/about-6.png" alt="" />
                                                 <div class="content text-center">
                                                     <h4 class="mb-5">H. Merinda</h4>
                                                     <span>CEO & Co-Founder</span>
                                                     <div class="social-network mt-20">
                                                         <a href="#"><img
-                                                                src="assets/imgs/theme/icons/icon-facebook-brand.svg"
+                                                                src="/assets/imgs/theme/icons/icon-facebook-brand.svg"
                                                                 alt="" /></a>
                                                         <a href="#"><img
-                                                                src="assets/imgs/theme/icons/icon-twitter-brand.svg"
+                                                                src="/assets/imgs/theme/icons/icon-twitter-brand.svg"
                                                                 alt="" /></a>
                                                         <a href="#"><img
-                                                                src="assets/imgs/theme/icons/icon-instagram-brand.svg"
+                                                                src="/assets/imgs/theme/icons/icon-instagram-brand.svg"
                                                                 alt="" /></a>
                                                         <a href="#"><img
-                                                                src="assets/imgs/theme/icons/icon-youtube-brand.svg"
+                                                                src="/assets/imgs/theme/icons/icon-youtube-brand.svg"
                                                                 alt="" /></a>
                                                     </div>
                                                 </div>
@@ -210,22 +210,22 @@
                                         </div>
                                         <div class="col-lg-6 col-md-6">
                                             <div class="team-card">
-                                                <img src="assets/imgs/page/about-8.png" alt="" />
+                                                <img src="/assets/imgs/page/about-8.png" alt="" />
                                                 <div class="content text-center">
                                                     <h4 class="mb-5">Dilan Specter</h4>
                                                     <span>Head Engineer</span>
                                                     <div class="social-network mt-20">
                                                         <a href="#"><img
-                                                                src="assets/imgs/theme/icons/icon-facebook-brand.svg"
+                                                                src="/assets/imgs/theme/icons/icon-facebook-brand.svg"
                                                                 alt="" /></a>
                                                         <a href="#"><img
-                                                                src="assets/imgs/theme/icons/icon-twitter-brand.svg"
+                                                                src="/assets/imgs/theme/icons/icon-twitter-brand.svg"
                                                                 alt="" /></a>
                                                         <a href="#"><img
-                                                                src="assets/imgs/theme/icons/icon-instagram-brand.svg"
+                                                                src="/assets/imgs/theme/icons/icon-instagram-brand.svg"
                                                                 alt="" /></a>
                                                         <a href="#"><img
-                                                                src="assets/imgs/theme/icons/icon-youtube-brand.svg"
+                                                                src="/assets/imgs/theme/icons/icon-youtube-brand.svg"
                                                                 alt="" /></a>
                                                     </div>
                                                 </div>

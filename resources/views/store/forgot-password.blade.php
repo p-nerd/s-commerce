@@ -15,7 +15,7 @@
                         <div class="login_wrap widget-taber-content background-white">
                             <div class="padding_eight_all bg-white">
                                 <div class="heading_s1">
-                                    <img class="border-radius-15" src="assets/imgs/page/forgot_password.svg"
+                                    <img class="border-radius-15" src="/assets/imgs/page/forgot_password.svg"
                                         alt="" />
                                     <h2 class="mb-15 mt-15">Forgot your password?</h2>
                                     <p class="mb-30">Not to worry, we got you! Let’s get you a new password. Please

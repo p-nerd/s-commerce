@@ -137,7 +137,7 @@
                                     </div>
                                 </div>
                                 <div class="col-lg-4 pl-50 d-lg-block d-none">
-                                    <img class="border-radius-15 mt-50" src="assets/imgs/page/contact-2.png"
+                                    <img class="border-radius-15 mt-50" src="/assets/imgs/page/contact-2.png"
                                         alt="" />
                                 </div>
                             </div>

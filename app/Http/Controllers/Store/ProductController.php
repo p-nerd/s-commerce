@@ -76,6 +76,18 @@ class ProductController extends Controller
         };
     }
 
+    public function show(string $slug)
+    {
+        $product = Product::where('slug', $slug)->first();
+        if (! $product) {
+            return abort(404, 'Product not found');
+        }
+
+        return view('store/products/show', [
+            'product' => $product,
+        ]);
+    }
+
     /**
      * Show the form for creating a new resource.
      */
@@ -88,14 +100,6 @@ class ProductController extends Controller
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(Product $product)
     {
         //
     }

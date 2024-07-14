@@ -14,7 +14,7 @@
                             <div class="product-img-action-wrap">
                                 <div class="product-img">
                                     <a href="shop-product-right.html">
-                                        <img src="assets/imgs/banner/banner-5.png" alt="" />
+                                        <img src="/assets/imgs/banner/banner-5.png" alt="" />
                                     </a>
                                 </div>
                             </div>
@@ -55,7 +55,7 @@
                             <div class="product-img-action-wrap">
                                 <div class="product-img">
                                     <a href="shop-product-right.html">
-                                        <img src="assets/imgs/banner/banner-6.png" alt="" />
+                                        <img src="/assets/imgs/banner/banner-6.png" alt="" />
                                     </a>
                                 </div>
                             </div>
@@ -96,7 +96,7 @@
                             <div class="product-img-action-wrap">
                                 <div class="product-img">
                                     <a href="shop-product-right.html">
-                                        <img src="assets/imgs/banner/banner-7.png" alt="" />
+                                        <img src="/assets/imgs/banner/banner-7.png" alt="" />
                                     </a>
                                 </div>
                             </div>
@@ -137,7 +137,7 @@
                             <div class="product-img-action-wrap">
                                 <div class="product-img">
                                     <a href="shop-product-right.html">
-                                        <img src="assets/imgs/banner/banner-8.png" alt="" />
+                                        <img src="/assets/imgs/banner/banner-8.png" alt="" />
                                     </a>
                                 </div>
                             </div>

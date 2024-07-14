@@ -47,7 +47,7 @@
                                         <label class="form-check-label" for="exampleCheckbox1"></label>
                                     </td>
                                     <td class="image product-thumbnail pt-40"><img
-                                            src="assets/imgs/shop/product-1-1.jpg" alt="#"></td>
+                                            src="/assets/imgs/shop/product-1-1.jpg" alt="#"></td>
                                     <td class="product-des product-name">
                                         <h6 class="mb-5"><a class="product-name text-heading mb-10"
                                                 href="shop-product-right.html">Field Roast Chao Cheese Creamy
@@ -86,7 +86,7 @@
                                             id="exampleCheckbox2" value="">
                                         <label class="form-check-label" for="exampleCheckbox2"></label>
                                     </td>
-                                    <td class="image product-thumbnail"><img src="assets/imgs/shop/product-2-1.jpg"
+                                    <td class="image product-thumbnail"><img src="/assets/imgs/shop/product-2-1.jpg"
                                             alt="#"></td>
                                     <td class="product-des product-name">
                                         <h6 class="mb-5"><a class="product-name text-heading mb-10"
@@ -126,7 +126,7 @@
                                             id="exampleCheckbox3" value="">
                                         <label class="form-check-label" for="exampleCheckbox3"></label>
                                     </td>
-                                    <td class="image product-thumbnail"><img src="assets/imgs/shop/product-3-1.jpg"
+                                    <td class="image product-thumbnail"><img src="/assets/imgs/shop/product-3-1.jpg"
                                             alt="#"></td>
                                     <td class="product-des product-name">
                                         <h6 class="mb-5"><a class="product-name text-heading mb-10"
