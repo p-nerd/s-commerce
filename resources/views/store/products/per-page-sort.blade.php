@@ -48,7 +48,8 @@
                 </div>
                 <div class="sort-by-dropdown-wrap">
                     <span>
-                        <span id="show-filter" data-filter="{{ request('filter') ?? 'featured' }}">Featured</span>
+                        <span id="show-filter" data-filter="{{ request('filter') ?? 'release-date' }}">Release
+                            Date</span>
                         <i class="fi-rs-angle-small-down"></i>
                     </span>
                 </div>
@@ -85,37 +86,21 @@
         const showPerPage = document.querySelector('#show-per-page')
         const showFilter = document.querySelector("#show-filter");
 
-
-
         perPageLinks.forEach(link => {
             link.addEventListener('click', async function(event) {
                 event.preventDefault();
 
                 const perPage = this.getAttribute('data-per-page');
-                const filter = showFilter.getAttribute('data-filter');
 
-                const url = `/products?filter=${filter}&per_page=${perPage}`;
+                updateProducts(addQuery({
+                    "per_page": perPage,
+                }));
 
-                try {
-                    const response = await fetch(url, {
-                        headers: {
-                            "X-Type": "partial"
-                        }
-                    });
-                    const data = await response.text();
+                showPerPage.innerHTML = this.innerHTML;
+                showPerPage.setAttribute("data-per-page", perPage);
 
-                    products.innerHTML = data;
-
-                    showPerPage.innerHTML = this.innerHTML;
-                    showPerPage.setAttribute("data-per-page", perPage);
-
-                    perPageLinks.forEach(l => l.classList.remove("active"));
-                    this.classList.add("active");
-
-                    history.pushState(null, '', url);
-                } catch (error) {
-                    console.log('Error:', error);
-                }
+                perPageLinks.forEach(l => l.classList.remove("active"));
+                this.classList.add("active");
             });
         });
 
@@ -123,35 +108,19 @@
             link.addEventListener('click', async function(event) {
                 event.preventDefault();
 
-                const perPage = showPerPage.getAttribute("data-per-page");
                 const filter = this.getAttribute('data-filter');
 
-                const url = `/products?filter=${filter}&per_page=${perPage}`;
+                updateProducts(addQuery({
+                    "filter": filter,
+                }));
 
-                try {
-                    const response = await fetch(url, {
-                        headers: {
-                            "X-Type": "partial"
-                        }
-                    });
-                    const data = await response.text();
+                showFilter.setAttribute("data-filter", filter);
+                showFilter.innerHTML = this.innerHTML;
 
-                    products.innerHTML = data;
-
-                    showFilter.setAttribute("data-filter", filter);
-                    showFilter.innerHTML = this.innerHTML;
-
-
-                    filterLinks.forEach(l => l.classList.remove("active"));
-                    link.classList.add("active");
-
-                    history.pushState(null, '', url);
-                } catch (error) {
-                    console.log('Error:', error);
-                }
+                filterLinks.forEach(l => l.classList.remove("active"));
+                link.classList.add("active");
             });
         });
-
 
         perPageLinks.forEach(l => {
             if (l.getAttribute("data-per-page") === showPerPage.getAttribute("data-per-page")) {
@@ -164,7 +133,5 @@
                 l.classList.add("active")
             }
         });
-
-
     });
 </script>

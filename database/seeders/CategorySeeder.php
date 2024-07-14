@@ -15,7 +15,7 @@ class CategorySeeder extends Seeder
     public function run(): void
     {
         // Create root categories
-        $category = Category::factory()->count(50)->create();
+        $category = Category::factory()->count(10)->create();
 
         Category::factory()->count(30)->create([
             'parent_id' => fn () => $category->random()->id,

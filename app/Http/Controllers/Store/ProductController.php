@@ -12,12 +12,22 @@ class ProductController extends Controller
     public function index(Request $request)
     {
         $perPage = $request->query(('per_page')) ?? 50;
+        $filter = $request->query('filter') ?? 'release-date';
+        $categorySlug = $request->query('category');
 
-        $filter = $request->query('filter') ?? 'featured';
+        $query = Product::with('images');
 
-        $query = Product::query()
-            ->with('images');
+        // category
+        if ($categorySlug) {
+            $category = Category::with('subCategories')->where('slug', $categorySlug)->first();
+            if ($category) {
+                $subCategoryIds = $category->subCategories->map(fn ($subCategory) => $subCategory->id);
+                $subCategoryIds[] = $category->id;
+                $query = $query->whereIn('category_id', $subCategoryIds);
+            }
+        }
 
+        // filters with sort
         $query = match ($filter) {
             'featured' => $query->where('featured', true)->orderBy('created_at', 'desc'),
             'low-to-high' => $query->orderBy('discount_price', 'asc'),
@@ -32,12 +42,16 @@ class ProductController extends Controller
 
         $categories = Category::query()
             ->where('parent_id', null)
-            ->where('featured', true)
-            ->take(5)
-            ->get();
+            ->get()
+            ->map(fn (Category $category) => [
+                ...$category->toArray(),
+                'productCount' => $category->productCounts()]
+            )->sort(fn ($a, $b) => $b['productCount'] - $a['productCount']);
 
         return match ($request->header('X-Type')) {
-            'partial' => view('store/products/list', ['products' => $products]),
+            'partial' => view('store/products/products', [
+                'products' => $products,
+            ]),
             default => view('store/products/index', [
                 'products' => $products,
                 'categories' => $categories,

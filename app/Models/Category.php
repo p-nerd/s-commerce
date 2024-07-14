@@ -34,7 +34,15 @@ class Category extends Model
 
     public function productCounts()
     {
-        return $this->products()->count();
+        $count = $this->products()->count();
+
+        $subCategories = $this->subCategories()->with('products')->get();
+
+        foreach ($subCategories as $subCategory) {
+            $count += count($subCategory->products);
+        }
+
+        return $count;
     }
 
     public static function parentCategories()
