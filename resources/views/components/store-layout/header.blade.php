@@ -90,7 +90,7 @@
                                 <a href="/cart"><span class="lable">Cart</span></a>
 
                                 <span id="header-cart-drowdown">
-                                    <x-store-layout.card-dropdown :items="Cart::items()" :price="Cart::price()" />
+                                    <x-store-layout.cart-dropdown :items="Cart::items()" :price="Cart::price()" />
                                 </span>
                             </div>
                             <div class="header-action-icon-2">

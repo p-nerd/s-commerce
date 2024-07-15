@@ -10,9 +10,9 @@ class CartController extends Controller
 {
     public function index(Request $request)
     {
-        $cartItems = Cart::items();
-
-        return view('store/cart/index', compact('cartItems'));
+        return view('store/cart/index', [
+            'carts' => $request->user()->carts()->with('product.images')->get(),
+        ]);
     }
 
     public function store(Request $request)

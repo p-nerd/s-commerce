@@ -1,1 +1,1 @@
-<x-store-layout.card-dropdown :items="$items" :price="$price" />
+<x-store-layout.cart-dropdown :items="$items" :price="$price" />

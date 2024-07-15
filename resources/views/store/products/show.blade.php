@@ -1,6 +1,6 @@
 <x-store-layout>
     <main class="main">
-        <div class="container mb-30">
+        <div class="mb-30 container">
             <div class="row">
                 <div class="col-xl-10 col-lg-12 m-auto">
                     <div class="product-detail accordion-detail">
@@ -33,7 +33,7 @@
                                             <div class="product-rate d-inline-block">
                                                 <div class="product-rating" style="width: 90%"></div>
                                             </div>
-                                            <span class="font-small ml-5 text-muted"> (32 reviews)</span>
+                                            <span class="font-small text-muted ml-5"> (32 reviews)</span>
                                         </div>
                                     </div>
                                     <div class="clearfix product-price-cover">
@@ -54,7 +54,7 @@
                                         <p class="font-lg">{{ $product->short_description }}</p>
                                     </div>
                                     <div class="detail-extralink mb-50">
-                                        <div class="detail-qty border radius">
+                                        <div class="detail-qty radius border">
                                             <a class="qty-down" id="quantity-down-button"
                                                 data-product-id="{{ $product->id }}"><i
                                                     class="fi-rs-angle-small-down"></i></a>
