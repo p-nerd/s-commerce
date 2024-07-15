@@ -17,7 +17,7 @@ class ProductController extends Controller
         $priceFrom = $request->query('price_from');
         $priceTo = $request->query('price_to');
 
-        $query = Product::with('images');
+        $query = Product::with('images', 'category');
         // category filter
         if ($categorySlug) {
             $category = Category::with('subCategories')->where('slug', $categorySlug)->first();

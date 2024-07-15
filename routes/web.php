@@ -10,17 +10,18 @@ use App\Http\Controllers\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\Auth\VerifyEmailController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Store\HomeController;
-use App\Http\Controllers\Store\ProductController;
+use App\Http\Controllers\Store\ProductController as StoreProductController;
 use Illuminate\Support\Facades\Route;
 
 // store routes
 Route::get('/', [HomeController::class, 'index']);
 
 Route::prefix('/products')->group(function () {
-    Route::get('/', [ProductController::class, 'index'])->name('products');
-    Route::get('/{slug}', [ProductController::class, 'show'])->name('products.show');
+    Route::get('/', [StoreProductController::class, 'index'])->name('products');
+    Route::get('/{slug}', [StoreProductController::class, 'show'])->name('products.show');
 });
 
 Route::middleware([])->group(function () {
@@ -45,7 +46,7 @@ Route::middleware([])->group(function () {
 Route::prefix('/dashboard')->middleware(['auth', 'verified'])->group(function () {
     Route::get('/', fn () => view('dashboard/index'))->name('dashboard');
 
-    Route::prefix('categories')->group(function () {
+    Route::prefix('/categories')->group(function () {
 
         Route::get('/create', [CategoryController::class, 'create'])->name('dashboard.categories.create');
         Route::post('/', [CategoryController::class, 'store'])->name('dashboard.categories.store');
@@ -61,7 +62,7 @@ Route::prefix('/dashboard')->middleware(['auth', 'verified'])->group(function ()
 
     });
 
-    Route::prefix('products')->group(function () {
+    Route::prefix('/products')->group(function () {
 
         Route::get('/create', [ProductController::class, 'create'])->name('dashboard.products.create');
         Route::post('/', [ProductController::class, 'store'])->name('dashboard.products.store');

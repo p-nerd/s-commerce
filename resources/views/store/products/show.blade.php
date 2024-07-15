@@ -105,7 +105,7 @@
                                 </ul>
                                 <div class="tab-content shop_info_tab entry-main-content">
                                     <div class="tab-pane fade show active trix-content" id="Description">
-                                        {{ $product->long_description }}
+                                        {!! $product->long_description !!}
                                     </div>
                                     <div class="tab-pane fade" id="Reviews">
                                         <!--Comments-->

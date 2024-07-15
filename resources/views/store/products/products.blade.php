@@ -26,9 +26,9 @@
                 </div>
                 <div class="product-content-wrap">
                     <div class="product-category">
-                        <a href="{{ $productLink }}">{{ $product->name }}</a>
+                        <a href="{{ $productLink }}">{{ $product->category->name }}</a>
                     </div>
-                    <h2><a href="{{ $productLink }}">{{ $product->short_description }}</a></h2>
+                    <h2><a href="{{ $productLink }}">{{ $product->name }}</a></h2>
                     <div class="product-rate-cover">
                         <div class="product-rate d-inline-block">
                             <div class="product-rating" style="width: 80%"></div>

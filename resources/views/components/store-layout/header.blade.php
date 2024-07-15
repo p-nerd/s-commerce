@@ -226,12 +226,6 @@ $parentCategories = Category::with('subCategories')->where('parent_id', null)->t
                                     <a href="/">Home</a>
                                 </li>
                                 <li>
-                                    <a href="/about">About</a>
-                                </li>
-                                <li>
-                                    <a href="/blog">Blog</a>
-                                </li>
-                                <li>
                                     <x-store-layout.nav-link route="products">Products</x-store-layout.nav-link>
                                 </li>
                                 <li class="position-static">
