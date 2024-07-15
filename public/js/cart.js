@@ -12,7 +12,6 @@ document.addEventListener("DOMContentLoaded", function () {
     };
 
     const removeProductFromCartIndexPage = (cartId) => {
-        console.log(cartId);
         document.querySelector(`#cart-index-item-${cartId}`)?.remove();
     };
 
@@ -66,47 +65,87 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     };
 
-    setupDeleteFromCartEventListeners();
-    setupAddToCartEventListeners();
+    const setupCartProductQuantityEventListeners = () => {
+        function updateQuantity(productId, operation) {
+            const quantityValueElements = document.querySelectorAll(
+                `#quantity-value-${productId}`,
+            );
+            let currentQuantity = parseInt(
+                quantityValueElements[0].textContent,
+            );
 
-    // cart quantity
+            if (operation === "increase") {
+                currentQuantity += 1;
+            } else if (operation === "decrease" && currentQuantity > 1) {
+                currentQuantity -= 1;
+            }
 
-    function updateQuantity(productId, operation) {
-        const quantityValueElements = document.querySelectorAll(
-            `#quantity-value-${productId}`,
-        );
-        let currentQuantity = parseInt(quantityValueElements[0].textContent);
+            quantityValueElements?.forEach((ele) => {
+                ele.textContent = currentQuantity;
+            });
 
-        if (operation === "increase") {
-            currentQuantity += 1;
-        } else if (operation === "decrease" && currentQuantity > 1) {
-            currentQuantity -= 1;
+            document
+                .querySelectorAll(
+                    `#add-to-cart-button[data-product-id="${productId}"]`,
+                )
+                .forEach((ele) => {
+                    ele.setAttribute("data-product-quantity", currentQuantity);
+                });
+
+            const unitPrice = Number(
+                document
+                    .querySelector(`#cart-item-price-unit-value-${productId}`)
+                    .textContent.trim()
+                    .substr(1),
+            );
+            if (unitPrice) {
+                document.querySelector(
+                    `#cart-item-price-subtotal-value-${productId}`,
+                ).textContent = (unitPrice * currentQuantity).toFixed(2);
+            }
         }
 
-        quantityValueElements?.forEach((ele) => {
-            ele.textContent = currentQuantity;
-        });
-
-        document
-            .querySelectorAll(
-                `#add-to-cart-button[data-product-id="${productId}"]`,
-            )
-            .forEach((ele) => {
-                ele.setAttribute("data-product-quantity", currentQuantity);
+        document.querySelectorAll("#quantity-up-button").forEach((button) => {
+            button.addEventListener("click", function () {
+                const productId = this.getAttribute("data-product-id");
+                updateQuantity(productId, "increase");
             });
-    }
-
-    document.querySelectorAll("#quantity-up-button").forEach((button) => {
-        button.addEventListener("click", function () {
-            const productId = this.getAttribute("data-product-id");
-            updateQuantity(productId, "increase");
         });
-    });
 
-    document.querySelectorAll("#quantity-down-button").forEach((button) => {
-        button.addEventListener("click", function () {
-            const productId = this.getAttribute("data-product-id");
-            updateQuantity(productId, "decrease");
+        document.querySelectorAll("#quantity-down-button").forEach((button) => {
+            button.addEventListener("click", function () {
+                const productId = this.getAttribute("data-product-id");
+                updateQuantity(productId, "decrease");
+            });
         });
-    });
+    };
+
+    const setupCartIndexPageUpdateCartButtonListener = () => {
+        document
+            .querySelector("#cart-index-page-cart-button")
+            ?.addEventListener("click", function () {
+                const cartItems = [];
+                document
+                    .querySelectorAll("#cart-index-items")
+                    .forEach((element) => {
+                        const productId = element.getAttribute(
+                            "data-cart-product-id",
+                        );
+                        const quantity = Number(
+                            document.querySelector(
+                                `#quantity-value-${productId}`,
+                            ).textContent,
+                        );
+
+                        cartItems.push({ productId, quantity });
+                    });
+
+                console.log(cartItems);
+            });
+    };
+
+    setupDeleteFromCartEventListeners();
+    setupAddToCartEventListeners();
+    setupCartProductQuantityEventListeners();
+    setupCartIndexPageUpdateCartButtonListener();
 });

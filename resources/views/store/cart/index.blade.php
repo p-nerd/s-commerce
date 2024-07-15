@@ -35,7 +35,8 @@
                                 </thead>
                                 <tbody>
                                     @foreach ($carts as $cart)
-                                        <tr class="pt-30" id="cart-index-item-{{ $cart->id }}">
+                                        <tr class="pt-30" id="cart-index-items" data-cart-id="{{ $cart->id }}"
+                                            data-cart-product-id="{{ $cart->product->id }}">
                                             <td class="custome-checkbox pl-30">
                                                 <input class="form-check-input" type="checkbox" name="checkbox"
                                                     id="exampleCheckbox1" value="">
@@ -60,7 +61,8 @@
                                                 </div>
                                             </td>
                                             <td class="price" data-title="Price">
-                                                <h4 class="text-body">
+                                                <h4 class="text-body"
+                                                    id="cart-item-price-unit-value-{{ $cart->product->id }}">
                                                     ${{ $cart->product->discount_price ?? $cart->product->price }}
                                                 </h4>
                                             </td>
@@ -73,13 +75,14 @@
                                                         <span class="qty-val"
                                                             id="quantity-value-{{ $cart->product->id }}">{{ $cart->quantity }}</span>
                                                         <a id="quantity-up-button"
-                                                            data-product-id="{{ $cart->product->id }}" class="qty-up"><i
-                                                                class="fi-rs-angle-small-up"></i></a>
+                                                            data-product-id="{{ $cart->product->id }}"
+                                                            class="qty-up"><i class="fi-rs-angle-small-up"></i></a>
                                                     </div>
                                                 </div>
                                             </td>
                                             <td class="price" data-title="Price">
-                                                <h4 class="text-brand">
+                                                <h4 class="text-brand"
+                                                    id="cart-item-price-subtotal-value-{{ $cart->product->id }}">
                                                     ${{ ($cart->product->discount_price ?? $cart->product->price) * $cart->quantity }}
                                                 </h4>
                                             </td>
@@ -97,7 +100,8 @@
                         <div class="divider-2 mb-30"></div>
                         <div class="cart-action d-flex justify-content-between">
                             <a class="btn"><i class="fi-rs-arrow-left mr-10"></i>Continue Shopping</a>
-                            <a class="btn mb-sm-15 mr-10"><i class="fi-rs-refresh mr-10"></i>Update Cart</a>
+                            <a class="btn mb-sm-15 mr-10" id="cart-index-page-cart-button"><i
+                                    class="fi-rs-refresh mr-10"></i>Update Cart</a>
                         </div>
                         <div class="row mt-50">
                             <div class="col-lg-7">
