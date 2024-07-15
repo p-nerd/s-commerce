@@ -11,6 +11,7 @@
     <meta property="og:type" content="" />
     <meta property="og:url" content="" />
     <meta property="og:image" content="" />
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <!-- Favicon -->
     <link rel="shortcut icon" type="image/x-icon" href="/favicon.svg" />
     <!-- Template CSS -->
@@ -51,6 +52,7 @@
     <!-- Template  JS -->
     <script src="/assets/js/main.js?v=5.5"></script>
     <script src="/assets/js/shop.js?v=5.5"></script>
+    <script src="/js/cart.js"></script>
 </body>
 
 </html>

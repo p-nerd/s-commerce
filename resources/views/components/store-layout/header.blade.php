@@ -1,11 +1,10 @@
-<?php
+@php
+    use App\Models\Cart;
+    use App\Models\Category;
 
-use App\Models\Category;
-
-$categories = Category::all();
-$parentCategories = Category::with('subCategories')->where('parent_id', null)->take(2)->get();
-
-?>
+    $categories = Category::all();
+    $parentCategories = Category::with('subCategories')->where('parent_id', null)->take(2)->get();
+@endphp
 
 @include('components.store-layout.modal')
 
@@ -86,48 +85,13 @@ $parentCategories = Category::with('subCategories')->where('parent_id', null)->t
                             <div class="header-action-icon-2">
                                 <a class="mini-cart-icon" href="/cart">
                                     <img alt="Nest" src="/assets/imgs/theme/icons/icon-cart.svg" />
-                                    <span class="pro-count blue">2</span>
+                                    <span class="pro-count blue" id="header-cart-count">{{ Cart::quantity() }}</span>
                                 </a>
                                 <a href="/cart"><span class="lable">Cart</span></a>
-                                <div class="cart-dropdown-wrap cart-dropdown-hm2">
-                                    <ul>
-                                        <li>
-                                            <div class="shopping-cart-img">
-                                                <a href="shop-product-right.html"><img alt="Nest"
-                                                        src="/assets/imgs/shop/thumbnail-3.jpg" /></a>
-                                            </div>
-                                            <div class="shopping-cart-title">
-                                                <h4><a href="shop-product-right.html">Daisy Casual Bag</a></h4>
-                                                <h4><span>1 × </span>$800.00</h4>
-                                            </div>
-                                            <div class="shopping-cart-delete">
-                                                <a href="#"><i class="fi-rs-cross-small"></i></a>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="shopping-cart-img">
-                                                <a href="shop-product-right.html"><img alt="Nest"
-                                                        src="/assets/imgs/shop/thumbnail-2.jpg" /></a>
-                                            </div>
-                                            <div class="shopping-cart-title">
-                                                <h4><a href="shop-product-right.html">Corduroy Shirts</a></h4>
-                                                <h4><span>1 × </span>$3200.00</h4>
-                                            </div>
-                                            <div class="shopping-cart-delete">
-                                                <a href="#"><i class="fi-rs-cross-small"></i></a>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                    <div class="shopping-cart-footer">
-                                        <div class="shopping-cart-total">
-                                            <h4>Total <span>$4000.00</span></h4>
-                                        </div>
-                                        <div class="shopping-cart-button">
-                                            <a href="/cart" class="outline">View cart</a>
-                                            <a href="/checkout">Checkout</a>
-                                        </div>
-                                    </div>
-                                </div>
+
+                                <span id="header-cart-drowdown">
+                                    <x-store-layout.card-dropdown :items="Cart::items()" :price="Cart::price()" />
+                                </span>
                             </div>
                             <div class="header-action-icon-2">
                                 <a href="/account">

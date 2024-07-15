@@ -121,13 +121,24 @@ $products = Product::with('images')->get();
                                 </div>
                                 <div class="detail-extralink mb-30">
                                     <div class="detail-qty radius border">
-                                        <a href="#" class="qty-down"><i class="fi-rs-angle-small-down"></i></a>
-                                        <span class="qty-val">1</span>
-                                        <a href="#" class="qty-up"><i class="fi-rs-angle-small-up"></i></a>
+                                        <a id="quantity-down-button" data-product-id="{{ $product->id }}"
+                                            class="qty-down">
+                                            <i class="fi-rs-angle-small-down"></i>
+                                        </a>
+                                        <span id="quantity-value-{{ $product->id }}"
+                                            class="qty-val">{{ \App\Models\Cart::productQuantity($product->id) ?? 1 }}</span>
+                                        <a id="quantity-up-button" data-product-id="{{ $product->id }}"
+                                            class="qty-up">
+                                            <i class="fi-rs-angle-small-up"></i>
+                                        </a>
                                     </div>
                                     <div class="product-extra-link2">
-                                        <button type="submit" class="button button-add-to-cart"><i
-                                                class="fi-rs-shopping-cart"></i>Add to cart</button>
+                                        <button id="add-to-cart-button" data-product-id="{{ $product->id }}"
+                                            data-product-quantity="{{ \App\Models\Cart::productQuantity($product->id) ?? 1 }}"
+                                            data-bs-dismiss="modal" type="submit" class="button button-add-to-cart">
+                                            <i class="fi-rs-shopping-cart"></i>
+                                            Add to cart
+                                        </button>
                                     </div>
                                 </div>
                             </div>
@@ -139,3 +150,40 @@ $products = Product::with('images')->get();
         </div>
     </div>
 @endforeach
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        function updateQuantity(productId, operation) {
+            const quantityValueElements = document.querySelectorAll(`#quantity-value-${productId}`);
+            let currentQuantity = parseInt(quantityValueElements[0].textContent);
+
+            if (operation === 'increase') {
+                currentQuantity += 1;
+            } else if (operation === 'decrease' && currentQuantity > 1) {
+                currentQuantity -= 1;
+            }
+
+            quantityValueElements?.forEach(ele => {
+                ele.textContent = currentQuantity
+            })
+
+            document.querySelectorAll(`#add-to-cart-button[data-product-id="${productId}"]`).forEach(ele => {
+                ele.setAttribute('data-product-quantity', currentQuantity);
+            })
+        }
+
+        document.querySelectorAll('#quantity-up-button').forEach(button => {
+            button.addEventListener('click', function() {
+                const productId = this.getAttribute('data-product-id');
+                updateQuantity(productId, 'increase');
+            });
+        });
+
+        document.querySelectorAll('#quantity-down-button').forEach(button => {
+            button.addEventListener('click', function() {
+                const productId = this.getAttribute('data-product-id');
+                updateQuantity(productId, 'decrease');
+            });
+        });
+    });
+</script>

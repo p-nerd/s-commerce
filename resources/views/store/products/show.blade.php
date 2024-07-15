@@ -55,15 +55,20 @@
                                     </div>
                                     <div class="detail-extralink mb-50">
                                         <div class="detail-qty border radius">
-                                            <a href="#" class="qty-down"><i
+                                            <a class="qty-down" id="quantity-down-button"
+                                                data-product-id="{{ $product->id }}"><i
                                                     class="fi-rs-angle-small-down"></i></a>
-                                            <input type="text" name="quantity" class="qty-val" value="1"
-                                                min="1">
-                                            <a href="#" class="qty-up"><i class="fi-rs-angle-small-up"></i></a>
+                                            <span id="quantity-value-{{ $product->id }}"
+                                                class="qty-val">{{ \App\Models\Cart::productQuantity($product->id) ?? 1 }}</span>
+                                            <a class="qty-up" id="quantity-up-button"
+                                                data-product-id="{{ $product->id }}"><i
+                                                    class="fi-rs-angle-small-up"></i></a>
                                         </div>
                                         <div class="product-extra-link2">
-                                            <button type="submit" class="button button-add-to-cart"><i
-                                                    class="fi-rs-shopping-cart"></i>Add to cart</button>
+                                            <button type="submit" id="add-to-cart-button"
+                                                data-product-id="{{ $product->id }}"
+                                                class="button button-add-to-cart"><i class="fi-rs-shopping-cart"></i>Add
+                                                to cart</button>
                                             <a aria-label="Add To Wishlist" class="action-btn hover-up"
                                                 href="shop-wishlist.html"><i class="fi-rs-heart"></i></a>
                                             <a aria-label="Compare" class="action-btn hover-up"
@@ -73,7 +78,8 @@
                                     <div class="font-xs">
                                         <ul class="mr-50 float-start">
                                             <li class="mb-5">Type: <span class="text-brand"
-                                                    style="text-transform: capitalize;">{{ $product->type }}</span></li>
+                                                    style="text-transform: capitalize;">{{ $product->type }}</span>
+                                            </li>
                                             <li class="mb-5">MFG:<span
                                                     class="text-brand">{{ \Illuminate\Support\Carbon::parse($product->manufactured_date)->format('M j, Y') }}</span>
                                             </li>
@@ -83,7 +89,8 @@
                                             <li class="mb-5">Tags: <a href="#" rel="tag">Snack</a>, <a
                                                     href="#" rel="tag">Organic</a>, <a href="#"
                                                     rel="tag">Brown</a></li>
-                                            <li>Stock:<span class="in-stock text-brand ml-5">{{ $product->stock }} Items In Stock</span>
+                                            <li>Stock:<span class="in-stock text-brand ml-5">{{ $product->stock }}
+                                                    Items In Stock</span>
                                             </li>
                                         </ul>
                                     </div>
