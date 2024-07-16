@@ -121,7 +121,8 @@
                                 <div class="payment_option">
                                     <div class="custome-radio">
                                         <input class="form-check-input" required="" type="radio"
-                                            name="payment_option" id="exampleRadios4" checked="">
+                                            name="payment_option" value="cash-on-delivery" id="exampleRadios4"
+                                            checked="">
                                         <label class="form-check-label" for="exampleRadios4"
                                             data-bs-toggle="collapse" data-target="#checkPayment"
                                             aria-controls="checkPayment">
@@ -130,7 +131,8 @@
                                     </div>
                                     <div class="custome-radio">
                                         <input class="form-check-input" required="" type="radio"
-                                            name="payment_option" id="exampleRadios5" checked="">
+                                            name="payment_option" value="online-getway" id="exampleRadios5"
+                                            checked="">
                                         <label class="form-check-label" for="exampleRadios5"
                                             data-bs-toggle="collapse" data-target="#paypal"
                                             aria-controls="paypal">Online Getway</label>

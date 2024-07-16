@@ -41,7 +41,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 errorMessage.textContent = "";
 
                 document.querySelector("#coupon-input").value = coupon;
-                // history.pushState(null, "", addQuery({ coupon }));
             })
             .catch((error) => {
                 console.error("Error:", error);
