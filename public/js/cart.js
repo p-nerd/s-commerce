@@ -25,7 +25,6 @@ document.addEventListener("DOMContentLoaded", function () {
             .querySelectorAll("#delete-from-cart-button")
             .forEach((element) => {
                 element.addEventListener("click", async () => {
-                    console.log("Here");
                     const cartId = element.getAttribute("data-cart-id");
                     const response = await fetch(`/cart/${cartId}`, {
                         method: "DELETE",

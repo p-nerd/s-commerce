@@ -15,4 +15,27 @@ class CheckoutController extends Controller
             'total' => Cart::totalPrice(),
         ]);
     }
+
+    public function store(Request $request)
+    {
+        //
+    }
+
+    public function applyCoupon(Request $request)
+    {
+        $payload = $request->validate([
+            'coupon' => ['required', 'string'],
+        ]);
+
+        if ($payload['coupon'] !== 'shihab') {
+            return response()->json([
+                'message' => 'Coupon is invalid',
+            ], 400);
+        }
+
+        return [
+            'message' => 'Coupon applied successfully',
+            'amount' => 1000,
+        ];
+    }
 }
