@@ -52,7 +52,7 @@
     <!-- Template  JS -->
     <script src="/assets/js/main.js?v=5.5"></script>
     <script src="/assets/js/shop.js?v=5.5"></script>
-    <script src="/js/cart.js"></script>
+    <script src="/js/cart.js?v=5.5"></script>
 </body>
 
 </html>

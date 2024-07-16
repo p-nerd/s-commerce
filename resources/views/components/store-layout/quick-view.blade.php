@@ -1,12 +1,7 @@
-<?php
-
-use App\Models\Product;
-
-$products = Product::with('images')->get();
-
-?>
-
-@foreach ($products as $product)
+@foreach (\App\Models\Product::with('images')->get() as $product)
+    @php
+        $quantity = \App\Models\Cart::productQuantity($product->id);
+    @endphp
     <div class="modal fade custom-modal" id="quick-view-modal-{{ $product->id }}" tabindex="-1"
         aria-labelledby="quickViewModalLabel" aria-hidden="true">
         <div class="modal-dialog">
@@ -71,7 +66,7 @@ $products = Product::with('images')->get();
                                             <i class="fi-rs-angle-small-down"></i>
                                         </a>
                                         <span id="quantity-value-{{ $product->id }}"
-                                            class="qty-val">{{ \App\Models\Cart::productQuantity($product->id) ?? 1 }}</span>
+                                            class="qty-val">{{ $quantity == 0 ? 1 : $quantity }}</span>
                                         <a id="quantity-up-button" data-product-id="{{ $product->id }}"
                                             class="qty-up">
                                             <i class="fi-rs-angle-small-up"></i>
@@ -79,7 +74,7 @@ $products = Product::with('images')->get();
                                     </div>
                                     <div class="product-extra-link2">
                                         <button id="add-to-cart-button" data-product-id="{{ $product->id }}"
-                                            data-product-quantity="{{ \App\Models\Cart::productQuantity($product->id) ?? 1 }}"
+                                            data-product-quantity="{{ $quantity == 0 ? 1 : $quantity }}"
                                             data-bs-dismiss="modal" type="submit" class="button button-add-to-cart">
                                             <i class="fi-rs-shopping-cart"></i>
                                             Add to cart

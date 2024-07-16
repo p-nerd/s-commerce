@@ -12,7 +12,9 @@ document.addEventListener("DOMContentLoaded", function () {
     };
 
     const removeProductFromCartIndexPage = (cartId) => {
-        document.querySelector(`#cart-index-item-${cartId}`)?.remove();
+        document
+            .querySelector(`#cart-index-items[data-cart-id="${cartId}"]`)
+            .remove();
     };
 
     const setupDeleteFromCartEventListeners = () => {
@@ -20,6 +22,7 @@ document.addEventListener("DOMContentLoaded", function () {
             .querySelectorAll("#delete-from-cart-button")
             .forEach((element) => {
                 element.addEventListener("click", async () => {
+                    console.log("Here");
                     const cartId = element.getAttribute("data-cart-id");
                     const response = await fetch(`/cart/${cartId}`, {
                         method: "DELETE",
@@ -123,7 +126,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const setupCartIndexPageUpdateCartButtonListener = () => {
         document
             .querySelector("#cart-index-page-cart-button")
-            ?.addEventListener("click", function () {
+            ?.addEventListener("click", async function () {
                 const cartItems = [];
                 document
                     .querySelectorAll("#cart-index-items")
@@ -137,10 +140,24 @@ document.addEventListener("DOMContentLoaded", function () {
                             ).textContent,
                         );
 
-                        cartItems.push({ productId, quantity });
+                        cartItems.push({ product_id: productId, quantity });
                     });
 
-                console.log(cartItems);
+                const response = await fetch(`/cart`, {
+                    method: "PATCH",
+                    headers: {
+                        "Content-Type": "application/json",
+                        "X-CSRF-TOKEN": CSRF_TOKEN,
+                    },
+                    body: JSON.stringify({
+                        carts: cartItems,
+                    }),
+                });
+
+                updateHTMLHeaderCartDropdown(
+                    await response.text(),
+                    response.headers.get("X-Cart-Items-Quantity"),
+                );
             });
     };
 

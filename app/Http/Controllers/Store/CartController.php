@@ -40,6 +40,27 @@ class CartController extends Controller
         return $this->renderCartDropdown();
     }
 
+    public function update(Request $request)
+    {
+        $payload = $request->validate([
+            'carts' => ['required', 'array'],
+            'carts.*.product_id' => ['required', 'integer', 'exists:products,id'],
+            'carts.*.quantity' => ['required', 'integer', 'min:1'],
+        ]);
+
+        foreach ($payload['carts'] as $cartItem) {
+            $cart = Cart::where('product_id', $cartItem['product_id'])
+                ->where('user_id', auth()->id())
+                ->first();
+            if ($cart) {
+                $cart->quantity = $cartItem['quantity'];
+                $cart->save();
+            }
+        }
+
+        return $this->renderCartDropdown();
+    }
+
     public function destroy($id)
     {
         $cart = Cart::find($id);

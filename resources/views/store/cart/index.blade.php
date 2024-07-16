@@ -21,12 +21,7 @@
                             <table class="table-wishlist table">
                                 <thead>
                                     <tr class="main-heading">
-                                        <th class="custome-checkbox start pl-30">
-                                            <input class="form-check-input" type="checkbox" name="checkbox"
-                                                id="exampleCheckbox11" value="">
-                                            <label class="form-check-label" for="exampleCheckbox11"></label>
-                                        </th>
-                                        <th scope="col" colspan="2">Product</th>
+                                        <th colspan="2" class="start pl-30">Product</th>
                                         <th scope="col">Unit Price</th>
                                         <th scope="col">Quantity</th>
                                         <th scope="col">Subtotal</th>
@@ -37,11 +32,6 @@
                                     @foreach ($carts as $cart)
                                         <tr class="pt-30" id="cart-index-items" data-cart-id="{{ $cart->id }}"
                                             data-cart-product-id="{{ $cart->product->id }}">
-                                            <td class="custome-checkbox pl-30">
-                                                <input class="form-check-input" type="checkbox" name="checkbox"
-                                                    id="exampleCheckbox1" value="">
-                                                <label class="form-check-label" for="exampleCheckbox1"></label>
-                                            </td>
                                             <td class="image product-thumbnail pt-40"><img
                                                     src="{{ $cart->product->featuredImage()->url }}" alt="#">
                                             </td>
