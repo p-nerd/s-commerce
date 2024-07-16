@@ -31,8 +31,8 @@
             <h4>Total <span>${{ $price }}</span></h4>
         </div>
         <div class="shopping-cart-button">
-            <a href="/cart" class="outline">View cart</a>
-            <a href="/checkout">Checkout</a>
+            <a href="{{ route('cart') }}" class="outline">View cart</a>
+            <a href="{{ route('checkout') }}">Checkout</a>
         </div>
     </div>
 </div>

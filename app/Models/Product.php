@@ -48,4 +48,9 @@ class Product extends Model
 
         return round($discount, 2); // Round to 2 decimal places
     }
+
+    public function currentPrice()
+    {
+        return $this->discount_price ?? $this->price;
+    }
 }

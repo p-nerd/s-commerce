@@ -57,6 +57,16 @@ class Cart extends Model
         return $total;
     }
 
+    public static function totalPrice()
+    {
+        return static::price() + static::shippingPrice();
+    }
+
+    public static function shippingPrice()
+    {
+        return 10;
+    }
+
     public static function productQuantity($productId)
     {
         $cart = static::where('user_id', Auth::id())->where('product_id', $productId)->first();

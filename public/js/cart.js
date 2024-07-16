@@ -4,6 +4,9 @@ document.addEventListener("DOMContentLoaded", function () {
     const CSRF_TOKEN = document
         .querySelector('meta[name="csrf-token"]')
         .getAttribute("content");
+    const IS_LOGIN = document
+        .querySelector('meta[name="is-login"]')
+        .getAttribute("content");
 
     const updateHTMLHeaderCartDropdown = (html, cartItemCount) => {
         document.querySelector("#header-cart-drowdown").innerHTML = html;
@@ -45,6 +48,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
         buttons.forEach((element) => {
             element.addEventListener("click", async () => {
+                if (!IS_LOGIN) {
+                    window.location = "/login";
+                    return;
+                }
                 const product_id = element.getAttribute("data-product-id");
                 const quantity = element.getAttribute("data-product-quantity");
 

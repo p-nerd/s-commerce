@@ -12,6 +12,9 @@ class CartController extends Controller
     {
         return view('store/cart/index', [
             'carts' => $request->user()->carts()->with('product.images')->get(),
+            'price' => Cart::price(),
+            'totalPrice' => Cart::totalPrice(),
+            'shippingPrice' => Cart::shippingPrice(),
         ]);
     }
 
