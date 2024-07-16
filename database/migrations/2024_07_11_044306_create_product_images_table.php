@@ -14,14 +14,12 @@ return new class extends Migration
     {
         Schema::create('product_images', function (Blueprint $table) {
             $table->id();
-
-            $table->foreignIdFor(Product::class);
-
             $table->string('path');
             $table->string('filename');
             $table->boolean('featured')->default(false);
-
+            $table->foreignIdFor(Product::class);
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

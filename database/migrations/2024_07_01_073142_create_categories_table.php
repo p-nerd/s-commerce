@@ -16,11 +16,12 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('slug')->unique();
-            $table->foreignIdFor(Category::class, 'parent_id')->nullable();
             $table->text('description')->nullable();
             $table->boolean('featured')->default(false);
             $table->string('image')->nullable();
+            $table->foreignIdFor(Category::class, 'parent_id')->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

@@ -15,9 +15,6 @@ return new class extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             $table->id();
-
-            $table->foreignIdFor(Category::class);
-
             $table->string('name');
             $table->string('slug')->unique();
             $table->decimal('price', 10, 2);
@@ -31,7 +28,7 @@ return new class extends Migration
             $table->text('long_description')->nullable();
             $table->integer('stock')->default(0);
             $table->boolean('featured')->default(false);
-
+            $table->foreignIdFor(Category::class);
             $table->timestamps();
             $table->softDeletes();
         });

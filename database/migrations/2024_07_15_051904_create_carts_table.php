@@ -15,10 +15,11 @@ return new class extends Migration
     {
         Schema::create('carts', function (Blueprint $table) {
             $table->id();
+            $table->integer('quantity');
             $table->foreignIdFor(User::class);
             $table->foreignIdFor(Product::class);
-            $table->integer('quantity');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
