@@ -55,24 +55,26 @@
                                             <option value="sylhet">Sylhet</option>
                                         </select>
                                     </div>
-                                </div>
-                                <div class="row shipping_calculator">
                                     <div class="form-group col-lg-6">
                                         <label for="select-district-option">Select District</label>
                                         <select id="select-district-option" disabled class="form-control">
                                             <option selected>Select District</option>
                                         </select>
                                     </div>
-                                    <div class="form-group col-lg-6">
-                                        <label for="zip">Postcode / ZIP *</label>
-                                        <input required="" type="text" id="zip" name="zip"
-                                            placeholder="Enter your postcode / ZIP">
+                                </div>
+                                <div class="row shipping_calculator">
+                                    <div class="form-group">
+                                        <label for="address">Address *</label>
+                                        <input type="text" id="address" name="address" required
+                                            placeholder="House no. / building / street / area">
                                     </div>
                                 </div>
-
                                 <div class="form-group mb-30">
-                                    <label for="additional-info">Additional Information</label>
-                                    <textarea id="additional-info" rows="5" placeholder="Enter any additional information"></textarea>
+                                    <div class="form-group">
+                                        <label for="landmark">Landmark</label>
+                                        <input type="text" id="landmark" name="landmark" required
+                                            placeholder="E.g. beside train station">
+                                    </div>
                                 </div>
                             </div>
                         </div>
