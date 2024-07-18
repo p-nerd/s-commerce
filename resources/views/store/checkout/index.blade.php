@@ -21,6 +21,7 @@
                         <div id="coupon-error-message" class="text-danger ml-50"></div>
                     </div>
                 </div>
+
                 <form method="POST" action="{{ route('checkout.store') }}">
                     @csrf
                     <div class="row">
@@ -31,50 +32,63 @@
                                 <div class="row">
                                     <div class="form-group col-lg-6">
                                         <label for="name">Name *</label>
-                                        <input type="text" id="name" name="name" required
-                                            placeholder="Enter your name" />
+                                        <input type="text" id="name" name="name" value="{{ old('name') }}"
+                                            required placeholder="Enter your name" />
+                                        @error('name')
+                                            <span class="text-danger">{{ $message }}</span>
+                                        @enderror
                                     </div>
                                     <div class="form-group col-lg-6">
                                         <label for="phone">Phone *</label>
                                         <input type="text" id="phone" name="phone" required
-                                            placeholder="Enter your phone number">
+                                            value="{{ old('phone') }}" placeholder="Enter your phone number">
+                                        @error('phone')
+                                            <span class="text-danger">{{ $message }}</span>
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="form-group col-lg-6">
-                                        <label for="select-division-option">Select Division</label>
-                                        <select id="select-division-option" class="form-control">
-                                            <option selected>Select Division</option>
-                                            <option value="barisal">Barisal</option>
-                                            <option value="chittagong">Chittagong</option>
-                                            <option value="dhaka">Dhaka</option>
-                                            <option value="khulna">Khulna</option>
-                                            <option value="mymensingh">Mymensingh</option>
-                                            <option value="rajshahi">Rajshahi</option>
-                                            <option value="rangpur">Rangpur</option>
-                                            <option value="sylhet">Sylhet</option>
+                                        <label for="select-division-option">Select Division *</label>
+                                        <select required id="select-division-option" name="division"
+                                            value="{{ old('division') }}" class="form-control">
+                                            <option selected>Select Division *</option>
                                         </select>
+                                        @error('divsion')
+                                            <span class="text-danger">{{ $message }}</span>
+                                        @enderror
                                     </div>
                                     <div class="form-group col-lg-6">
                                         <label for="select-district-option">Select District</label>
-                                        <select data-divisions="{{ $divisions }}" id="select-district-option"
+                                        <select required data-divisions="{{ $divisions }}"
+                                            value="{{ old('district') }}" id="select-district-option" name="district"
                                             disabled class="form-control">
                                             <option selected>Select District</option>
                                         </select>
+                                        @error('district')
+                                            <span class="text-danger">{{ $message }}</span>
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="row shipping_calculator">
                                     <div class="form-group">
                                         <label for="address">Address *</label>
                                         <input type="text" id="address" name="address" required
+                                            value="{{ old('address') }}"
                                             placeholder="House no. / building / street / area">
+                                        @error('address')
+                                            <span class="text-danger">{{ $message }}</span>
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="form-group mb-30">
                                     <div class="form-group">
                                         <label for="landmark">Landmark</label>
-                                        <input type="text" id="landmark" name="landmark" required
-                                            placeholder="E.g. beside train station">
+                                        <input type="text" id="landmark" name="landmark"
+                                            value="{{ old('landmark') }}" placeholder="E.g. beside train station">
+                                        @error('landmark')
+                                            <span class="text-danger">{{ $message }}</span>
+                                        @enderror
                                     </div>
                                 </div>
                             </div>
@@ -110,8 +124,9 @@
                                                     <h6 class="text-muted">Total</h6>
                                                 </td>
                                                 <td class="cart_total_amount">
-                                                    <h4 class="text-brand text-end" id="total-amount">
-                                                        $<span id="total-amount">{{ $subtotal }}</span>
+                                                    <h4 class="text-brand text-end">
+                                                        $<span id="total-amount"
+                                                            data-total-amount="{{ $subtotal }}">{{ $subtotal }}</span>
                                                     </h4>
                                                 </td>
                                             </tr>
@@ -160,7 +175,7 @@
                                 <div class="payment_option">
                                     <div class="custome-radio">
                                         <input class="form-check-input" required="" type="radio"
-                                            name="payment_option" value="cash-on-delivery" id="exampleRadios4"
+                                            name="payment_method" value="cash-on-delivery" id="exampleRadios4"
                                             checked="">
                                         <label class="form-check-label" for="exampleRadios4"
                                             data-bs-toggle="collapse" data-target="#checkPayment"
@@ -168,7 +183,7 @@
                                     </div>
                                     <div class="custome-radio">
                                         <input class="form-check-input" required="" type="radio"
-                                            name="payment_option" value="online-getway" id="exampleRadios5"
+                                            name="payment_method" value="online-getway" id="exampleRadios5"
                                             checked="">
                                         <label class="form-check-label" for="exampleRadios5"
                                             data-bs-toggle="collapse" data-target="#paypal"

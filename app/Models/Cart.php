@@ -64,7 +64,7 @@ class Cart extends Model
 
     public static function shippingPrice()
     {
-        return 10;
+        return 0;
     }
 
     public static function productQuantity($productId)

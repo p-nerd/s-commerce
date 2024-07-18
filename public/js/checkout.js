@@ -2,89 +2,12 @@ document.addEventListener("DOMContentLoaded", function () {
     const CSRF_TOKEN = document
         .querySelector('meta[name="csrf-token"]')
         .getAttribute("content");
-    const DIVISIONS = {
-        barisal: [
-            { label: "Barisal", value: "barisal" },
-            { label: "Bhola", value: "bhola" },
-            { label: "Jhalokathi", value: "jhalokathi" },
-            { label: "Patuakhali", value: "patuakhali" },
-            { label: "Pirojpur", value: "pirojpur" },
-            { label: "Barguna", value: "barguna" },
-        ],
-        chittagong: [
-            { label: "Chittagong", value: "chittagong" },
-            { label: "Comilla", value: "comilla" },
-            { label: "Cox's Bazar", value: "coxsbazar" },
-            { label: "Feni", value: "feni" },
-            { label: "Khagrachari", value: "khagrachari" },
-            { label: "Lakshmipur", value: "lakshmipur" },
-            { label: "Bandarban", value: "bandarban" },
-            { label: "Noakhali", value: "noakhali" },
-            { label: "Rangamati", value: "rangamati" },
-            { label: "Brahmanbaria", value: "brahmanbaria" },
-            { label: "Chandpur", value: "chandpur" },
-        ],
-        dhaka: [
-            { label: "Dhaka", value: "dhaka" },
-            { label: "Faridpur", value: "faridpur" },
-            { label: "Gazipur", value: "gazipur" },
-            { label: "Gopalganj", value: "gopalganj" },
-            { label: "Kishoreganj", value: "kishoreganj" },
-            { label: "Madaripur", value: "madaripur" },
-            { label: "Manikganj", value: "manikganj" },
-            { label: "Munshiganj", value: "munshiganj" },
-            { label: "Narayanganj", value: "narayanganj" },
-            { label: "Narsingdi", value: "narsingdi" },
-            { label: "Rajbari", value: "rajbari" },
-            { label: "Shariatpur", value: "shariatpur" },
-            { label: "Tangail", value: "tangail" },
-            { label: "Jamalpur", value: "jamalpur" },
-        ],
-        khulna: [
-            { label: "Khulna", value: "khulna" },
-            { label: "Bagerhat", value: "bagerhat" },
-            { label: "Chuadanga", value: "chuadanga" },
-            { label: "Jessore", value: "jessore" },
-            { label: "Jhenaidah", value: "jhenaidah" },
-            { label: "Kushtia", value: "kushtia" },
-            { label: "Magura", value: "magura" },
-            { label: "Meherpur", value: "meherpur" },
-            { label: "Narail", value: "narail" },
-            { label: "Satkhira", value: "satkhira" },
-        ],
-        mymensingh: [
-            { label: "Mymensingh", value: "mymensingh" },
-            { label: "Netrokona", value: "netrokona" },
-            { label: "Sherpur", value: "sherpur" },
-            { label: "Jamalpur", value: "jamalpur" },
-        ],
-        rajshahi: [
-            { label: "Rajshahi", value: "rajshahi" },
-            { label: "Bogra", value: "bogra" },
-            { label: "Chapainawabganj", value: "chapainawabganj" },
-            { label: "Joypurhat", value: "joypurhat" },
-            { label: "Naogaon", value: "naogaon" },
-            { label: "Natore", value: "natore" },
-            { label: "Pabna", value: "pabna" },
-            { label: "Sirajganj", value: "sirajganj" },
-        ],
-        rangpur: [
-            { label: "Rangpur", value: "rangpur" },
-            { label: "Dinajpur", value: "dinajpur" },
-            { label: "Gaibandha", value: "gaibandha" },
-            { label: "Kurigram", value: "kurigram" },
-            { label: "Lalmonirhat", value: "lalmonirhat" },
-            { label: "Nilphamari", value: "nilphamari" },
-            { label: "Panchagarh", value: "panchagarh" },
-            { label: "Thakurgaon", value: "thakurgaon" },
-        ],
-        sylhet: [
-            { label: "Sylhet", value: "sylhet" },
-            { label: "Habiganj", value: "habiganj" },
-            { label: "Maulvibazar", value: "maulvibazar" },
-            { label: "Sunamganj", value: "sunamganj" },
-        ],
-    };
+
+    const selectDivision = document.querySelector("#select-division-option");
+    const selectDistrict = document.querySelector("#select-district-option");
+    const subtotalAmount = document.querySelector("#subtotal-amount");
+    const deliveryAmount = document.querySelector("#delivery-amount");
+    const totalAmount = document.querySelector("#total-amount");
 
     const setupApplyCouponEventListener = () => {
         const form = document.getElementById("apply-coupon-form");
@@ -120,8 +43,11 @@ document.addEventListener("DOMContentLoaded", function () {
                         return;
                     }
 
-                    document.querySelector("#total-price").textContent =
+                    const xAmount =
+                        Number(totalAmount.getAttribute("data-total-amount")) -
                         data.amount;
+                    totalAmount.textContent = xAmount.toFixed(2);
+                    totalAmount.setAttribute("data-total-amount", xAmount);
 
                     successMessage.textContent = data.message;
                     errorMessage.textContent = "";
@@ -135,19 +61,16 @@ document.addEventListener("DOMContentLoaded", function () {
     };
 
     const setupLocationsSelectEventListener = () => {
-        const selectDivision = document.querySelector(
-            "#select-division-option",
-        );
-        const selectDistrict = document.querySelector(
-            "#select-district-option",
-        );
-        const subtotalAmount = document.querySelector("#subtotal-amount");
-        const deliveryAmount = document.querySelector("#delivery-amount");
-        const totalAmount = document.querySelector("#total-amount");
-
         const divisions = JSON.parse(
             selectDistrict.getAttribute("data-divisions"),
         );
+
+        divisions.forEach((division) => {
+            const option = document.createElement("option");
+            option.value = division.value;
+            option.textContent = division.label;
+            selectDivision.appendChild(option);
+        });
 
         selectDivision.addEventListener("change", function (event) {
             selectDistrict.disabled = false;
@@ -169,6 +92,10 @@ document.addEventListener("DOMContentLoaded", function () {
                 option.textContent = label;
                 selectDistrict.appendChild(option);
             });
+
+            deliveryAmount.textContent = `--`;
+            totalAmount.textContent =
+                totalAmount.getAttribute("data-total-amount");
         });
 
         selectDistrict.addEventListener("change", function (event) {
@@ -176,9 +103,10 @@ document.addEventListener("DOMContentLoaded", function () {
                 .find((d) => d.value === selectDivision.value)
                 .districts.find((d) => d.value === event.target.value);
 
-            deliveryAmount.innerHTML = `$${district.price}`;
-            totalAmount.innerHTML = (
-                district.price + Number(subtotalAmount.textContent)
+            deliveryAmount.textContent = `$${district.price}`;
+            totalAmount.textContent = (
+                district.price +
+                Number(totalAmount.getAttribute("data-total-amount"))
             ).toFixed(2);
         });
     };

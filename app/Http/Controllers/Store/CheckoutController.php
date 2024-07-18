@@ -11,6 +11,10 @@ class CheckoutController extends Controller
 {
     public function index(Request $request)
     {
+        if (! count($request->user()->carts)) {
+            return to_route('products');
+        }
+
         $divisions = Location::query()
             ->with('districts')
             ->where('division_id', null)
@@ -27,15 +31,13 @@ class CheckoutController extends Controller
     {
         $payload = $request->validate([
             'coupon' => ['nullable', 'string'],
-            'first_name' => ['required', 'string', 'max:255'],
-            'last_name' => ['required', 'string', 'max:255'],
-            'address' => ['required', 'string', 'max:255'],
-            'address2' => ['nullable', 'string', 'max:255'],
-            'city' => ['required', 'string', 'max:255'],
-            'zip' => ['required', 'string', 'max:10'],
-            'email' => ['required', 'string', 'max:255'],
+            'name' => ['required', 'string', 'max:255'],
             'phone' => ['required', 'string', 'max:15', 'regex:/^\d+$/'],
-            'payment_option' => ['required', 'in:online-getway,cash-on-delivery'],
+            'division' => ['required', 'string', 'max:255'],
+            'district' => ['required', 'string', 'max:255'],
+            'address' => ['required', 'string', 'max:255'],
+            'landmark' => ['nullable', 'string', 'max:255'],
+            'payment_method' => ['required', 'in:online-getway,cash-on-delivery'],
         ]);
 
         dd($payload);
@@ -55,7 +57,7 @@ class CheckoutController extends Controller
 
         return [
             'message' => 'Coupon applied successfully',
-            'amount' => 1000,
+            'amount' => 15,
         ];
     }
 }
