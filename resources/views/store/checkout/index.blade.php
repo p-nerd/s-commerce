@@ -52,14 +52,14 @@
                                         <label for="select-division-option">Select Division *</label>
                                         <select required id="select-division-option" name="division"
                                             value="{{ old('division') }}" class="form-control">
-                                            <option selected>Select Division *</option>
+                                            <option value="" selected>Select Division *</option>
                                         </select>
                                         @error('divsion')
                                             <span class="text-danger">{{ $message }}</span>
                                         @enderror
                                     </div>
                                     <div class="form-group col-lg-6">
-                                        <label for="select-district-option">Select District</label>
+                                        <label for="select-district-option">Select District *</label>
                                         <select required data-divisions="{{ $divisions }}"
                                             value="{{ old('district') }}" id="select-district-option" name="district"
                                             disabled class="form-control">

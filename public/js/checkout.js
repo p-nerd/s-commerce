@@ -5,7 +5,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const selectDivision = document.querySelector("#select-division-option");
     const selectDistrict = document.querySelector("#select-district-option");
-    const subtotalAmount = document.querySelector("#subtotal-amount");
     const deliveryAmount = document.querySelector("#delivery-amount");
     const totalAmount = document.querySelector("#total-amount");
 
@@ -73,7 +72,7 @@ document.addEventListener("DOMContentLoaded", function () {
         });
 
         selectDivision.addEventListener("change", function (event) {
-            selectDistrict.disabled = false;
+            selectDistrict.disabled = event.target.value == "" ? true : false;
 
             const division = divisions.find(
                 (d) => d.value == event.target.value,
