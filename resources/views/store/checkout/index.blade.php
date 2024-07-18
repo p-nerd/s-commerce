@@ -30,14 +30,19 @@
                                 <input type="hidden" name="coupon" id="coupon-input" />
                                 <div class="row">
                                     <div class="form-group col-lg-6">
-                                        <input type="text" name="name" required placeholder="Name *" />
+                                        <label for="name">Name *</label>
+                                        <input type="text" id="name" name="name" required
+                                            placeholder="Enter your name" />
                                     </div>
                                     <div class="form-group col-lg-6">
-                                        <input type="text" name="phone" required placeholder="Phone *">
+                                        <label for="phone">Phone *</label>
+                                        <input type="text" id="phone" name="phone" required
+                                            placeholder="Enter your phone number">
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="form-group col-lg-6">
+                                        <label for="select-division-option">Select Division</label>
                                         <select id="select-division-option" class="form-control">
                                             <option selected>Select Division</option>
                                             <option value="barisal">Barisal</option>
@@ -53,18 +58,21 @@
                                 </div>
                                 <div class="row shipping_calculator">
                                     <div class="form-group col-lg-6">
+                                        <label for="select-district-option">Select District</label>
                                         <select id="select-district-option" disabled class="form-control">
                                             <option selected>Select District</option>
                                         </select>
                                     </div>
                                     <div class="form-group col-lg-6">
-                                        <input required="" type="text" name="zip"
-                                            placeholder="Postcode / ZIP *">
+                                        <label for="zip">Postcode / ZIP *</label>
+                                        <input required="" type="text" id="zip" name="zip"
+                                            placeholder="Enter your postcode / ZIP">
                                     </div>
                                 </div>
 
                                 <div class="form-group mb-30">
-                                    <textarea rows="5" placeholder="Additional information"></textarea>
+                                    <label for="additional-info">Additional Information</label>
+                                    <textarea id="additional-info" rows="5" placeholder="Enter any additional information"></textarea>
                                 </div>
                             </div>
                         </div>
@@ -73,9 +81,7 @@
                                 <div class="d-flex align-items-end justify-content-between mb-30">
                                     <h4>Your Order</h4>
                                     <h6 class="text-muted">Total: <span class="text-brand"
-                                            id="total-price">{{ $total }}</span>
-                                    </h6>
-
+                                            id="total-price">{{ $total }}</span></h6>
                                 </div>
                                 <div class="divider-2 mb-30"></div>
                                 <div class="table-responsive order_table checkout">
@@ -85,19 +91,15 @@
                                                 <tr>
                                                     <td class="image product-thumbnail"><img
                                                             src="{{ $cart->product->featuredImage()->url }}"
-                                                            alt="#">
-                                                    </td>
+                                                            alt="#"></td>
                                                     <td>
                                                         <h6 class="w-160 mb-5">
                                                             <a href="{{ route('products.show', $cart->product->slug) }}"
-                                                                class="text-heading">
-                                                                {{ $cart->product->name }}
-                                                            </a>
+                                                                class="text-heading">{{ $cart->product->name }}</a>
                                                         </h6>
                                                         <div class="product-rate-cover">
                                                             <div class="product-rate d-inline-block">
-                                                                <div class="product-rating" style="width:90%">
-                                                                </div>
+                                                                <div class="product-rating" style="width:90%"></div>
                                                             </div>
                                                             <span class="font-small ml-5 text-muted"> (4.0)</span>
                                                         </div>
@@ -107,8 +109,7 @@
                                                     </td>
                                                     <td>
                                                         <h4 class="text-brand">
-                                                            ${{ $cart->quantity * $cart->product->currentPrice() }}
-                                                        </h4>
+                                                            ${{ $cart->quantity * $cart->product->currentPrice() }}</h4>
                                                     </td>
                                                 </tr>
                                             @endforeach
@@ -123,10 +124,9 @@
                                         <input class="form-check-input" required="" type="radio"
                                             name="payment_option" value="cash-on-delivery" id="exampleRadios4"
                                             checked="">
-                                        <label class="form-check-label" for="exampleRadios4" data-bs-toggle="collapse"
-                                            data-target="#checkPayment" aria-controls="checkPayment">
-                                            Cash on delivery
-                                        </label>
+                                        <label class="form-check-label" for="exampleRadios4"
+                                            data-bs-toggle="collapse" data-target="#checkPayment"
+                                            aria-controls="checkPayment">Cash on delivery</label>
                                     </div>
                                     <div class="custome-radio">
                                         <input class="form-check-input" required="" type="radio"
