@@ -1,6 +1,7 @@
 <?php
 
 use App\Enums\OrderStatus;
+use App\Enums\PaymentMethod;
 use App\Models\Coupon;
 use App\Models\User;
 use Illuminate\Database\Migrations\Migration;
@@ -17,7 +18,7 @@ return new class extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
             $table->foreignIdFor(User::class);
-            $table->foreignIdFor(Coupon::class);
+            $table->foreignIdFor(Coupon::class)->nullable();
             $table->enum('status', OrderStatus::values());
             $table->string('name');
             $table->string('phone');
@@ -29,6 +30,8 @@ return new class extends Migration
             $table->decimal('discount')->nullable();
             $table->decimal('delivery')->nullable();
             $table->decimal('total');
+            $table->enum('payment_method', PaymentMethod::values());
+            $table->boolean('paid')->default(false);
             $table->timestamps();
             $table->softDeletes();
         });

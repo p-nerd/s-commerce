@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Enums\OrderStatus;
+use App\Enums\PaymentMethod;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
@@ -24,6 +25,8 @@ class Order extends Model
         'discount',
         'delivery',
         'total',
+        'payment_method',
+        'paid',
     ];
 
     protected function casts(): array
@@ -34,6 +37,8 @@ class Order extends Model
             'discount' => 'decimal:2',
             'delivery' => 'decimal:2',
             'total' => 'decimal:2',
+            'payment_method' => PaymentMethod::class,
+            'paid' => 'boolean',
         ];
     }
 

@@ -2,10 +2,17 @@
 
 namespace App\Http\Controllers\Store;
 
+use App\Enums\OrderStatus;
+use App\Enums\PaymentMethod;
 use App\Http\Controllers\Controller;
 use App\Models\Cart;
+use App\Models\Coupon;
 use App\Models\Location;
+use App\Models\Order;
+use App\Models\OrderItem;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 
 class CheckoutController extends Controller
 {
@@ -37,10 +44,72 @@ class CheckoutController extends Controller
             'district' => ['required', 'string', 'max:255'],
             'address' => ['required', 'string', 'max:255'],
             'landmark' => ['nullable', 'string', 'max:255'],
-            'payment_method' => ['required', 'in:online-getway,cash-on-delivery'],
+            'payment_method' => ['required', 'string', 'in:'.implode(',', PaymentMethod::values())],
         ]);
 
-        dd($payload);
+        $carts = $request->user()->carts()->with('product')->get();
+        $subtotal = $carts->sum(function ($item) {
+            return $item->product->price * $item->quantity;
+        });
+
+        $coupon = null;
+        $discount = 0;
+        if ($payload['coupon']) {
+            $coupon = Coupon::where('code', $payload['coupon'])->first();
+            if ($coupon) {
+                $discount = $coupon->type === 'percentage'
+                    ? $subtotal * ($coupon->discount / 100)
+                    : $coupon->discount;
+            }
+        }
+
+        $delivery = Location::where('value', $payload['district'])->first()?->price ?? 0;
+
+        $total = $subtotal - $discount + $delivery;
+
+        DB::beginTransaction();
+
+        try {
+            $order = Order::create([
+                'user_id' => $request->user()->id,
+                'coupon_id' => $coupon ? $coupon->id : null,
+                'status' => OrderStatus::PENDING,
+                'name' => $payload['name'],
+                'phone' => $payload['phone'],
+                'division' => $payload['division'],
+                'district' => $payload['district'],
+                'address' => $payload['address'],
+                'landmark' => $payload['landmark'],
+                'subtotal' => $subtotal,
+                'discount' => $discount,
+                'delivery' => $delivery,
+                'total' => $total,
+                'payment_method' => PaymentMethod::from($payload['payment_method']),
+            ]);
+
+            foreach ($carts as $item) {
+                OrderItem::create([
+                    'order_id' => $order->id,
+                    'product_id' => $item->product_id,
+                    'quantity' => $item->quantity,
+                    'price' => $item->product->price,
+                ]);
+            }
+
+            $request->user()->carts()->delete();
+
+            DB::commit();
+
+            return redirect()
+                ->route($order->payment_method->value === 'cash-on-delivery' ? 'orders.show' : 'checkout.show', $order)
+                ->with('success', 'Order placed successfully!');
+        } catch (\Exception $e) {
+            DB::rollBack();
+            Log::error('Order creation failed: '.$e->getMessage());
+
+            return back()
+                ->with('error', 'There was an error processing your order. Please try again.');
+        }
     }
 
     public function applyCoupon(Request $request)
@@ -59,5 +128,10 @@ class CheckoutController extends Controller
             'message' => 'Coupon applied successfully',
             'amount' => 15,
         ];
+    }
+
+    public function show(Request $request, Order $order)
+    {
+        //
     }
 }

@@ -16,6 +16,7 @@ use App\Http\Controllers\Store\CartController;
 use App\Http\Controllers\Store\CheckoutController;
 use App\Http\Controllers\Store\HomeController;
 use App\Http\Controllers\Store\ProductController as StoreProductController;
+use App\Models\Order;
 use Illuminate\Support\Facades\Route;
 
 // store routes
@@ -37,6 +38,11 @@ Route::prefix('/checkout')->middleware(['auth'])->group(function () {
     Route::get('/', [CheckoutController::class, 'index'])->name('checkout');
     Route::post('/apply-coupon', [CheckoutController::class, 'applyCoupon'])->name('checkout.apply-coupon');
     Route::post('/', [CheckoutController::class, 'store'])->name('checkout.store');
+    Route::get('/{order}', [CheckoutController::class, 'show'])->name('checkout.show');
+});
+
+Route::prefix('/orders')->middleware(['auth'])->group(function () {
+    Route::get('/{order}', fn (Order $order) => "Order: {$order->id}")->name('orders.show');
 });
 
 Route::middleware([])->group(function () {
