@@ -208,5 +208,4 @@
             </div>
         </div>
     </main>
-
 </x-store-layout>

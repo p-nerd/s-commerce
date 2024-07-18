@@ -132,6 +132,8 @@ class CheckoutController extends Controller
 
     public function show(Request $request, Order $order)
     {
-        //
+        return view('store/checkout/show', [
+            'order' => $order,
+        ]);
     }
 }
