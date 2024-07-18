@@ -134,25 +134,55 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     };
 
-    const setupSelectDivisionEventListener = () => {
+    const setupLocationsSelectEventListener = () => {
         const selectDivision = document.querySelector(
             "#select-division-option",
         );
         const selectDistrict = document.querySelector(
             "#select-district-option",
         );
+        const subtotalAmount = document.querySelector("#subtotal-amount");
+        const deliveryAmount = document.querySelector("#delivery-amount");
+        const totalAmount = document.querySelector("#total-amount");
+
+        const divisions = JSON.parse(
+            selectDistrict.getAttribute("data-divisions"),
+        );
+
         selectDivision.addEventListener("change", function (event) {
-            console.log("changed", event.target.value);
             selectDistrict.disabled = false;
-            DIVISIONS[event.target.value]?.forEach(({ label, value }) => {
+
+            const division = divisions.find(
+                (d) => d.value == event.target.value,
+            );
+
+            selectDistrict.innerHTML = "";
+
+            const option = document.createElement("option");
+            option.value = "";
+            option.textContent = "Select District";
+            selectDistrict.appendChild(option);
+
+            division.districts?.forEach(({ label, value }) => {
                 const option = document.createElement("option");
                 option.value = value;
                 option.textContent = label;
                 selectDistrict.appendChild(option);
             });
         });
+
+        selectDistrict.addEventListener("change", function (event) {
+            const district = divisions
+                .find((d) => d.value === selectDivision.value)
+                .districts.find((d) => d.value === event.target.value);
+
+            deliveryAmount.innerHTML = `$${district.price}`;
+            totalAmount.innerHTML = (
+                district.price + Number(subtotalAmount.textContent)
+            ).toFixed(2);
+        });
     };
 
     setupApplyCouponEventListener();
-    setupSelectDivisionEventListener();
+    setupLocationsSelectEventListener();
 });

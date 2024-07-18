@@ -4,15 +4,22 @@ namespace App\Http\Controllers\Store;
 
 use App\Http\Controllers\Controller;
 use App\Models\Cart;
+use App\Models\Location;
 use Illuminate\Http\Request;
 
 class CheckoutController extends Controller
 {
     public function index(Request $request)
     {
+        $divisions = Location::query()
+            ->with('districts')
+            ->where('division_id', null)
+            ->get();
+
         return view('store/checkout/index', [
             'carts' => $request->user()->carts()->with('product.images')->get(),
-            'total' => Cart::totalPrice(),
+            'subtotal' => Cart::totalPrice(),
+            'divisions' => $divisions,
         ]);
     }
 

@@ -108,23 +108,6 @@
                                                 <h4 class="text-brand text-end">${{ $price }}</h4>
                                             </td>
                                         </tr>
-                                        <tr>
-                                            <td class="cart_total_label">
-                                                <h6 class="text-muted">Shipping</h6>
-                                            </td>
-                                            <td class="cart_total_amount">
-                                                <h4 class="text-heading text-end">
-                                                    {{ $shippingPrice == 0 ? 'Free' : "$$shippingPrice" }}</h4>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="cart_total_label">
-                                                <h6 class="text-muted">Total</h6>
-                                            </td>
-                                            <td class="cart_total_amount">
-                                                <h4 class="text-brand text-end">${{ $totalPrice }}</h4>
-                                            </td>
-                                        </tr>
                                     </tbody>
                                 </table>
                             </div>

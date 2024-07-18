@@ -33,7 +33,7 @@ Route::prefix('/cart')->group(function () {
     Route::delete('/{id}', [CartController::class, 'destroy'])->name('cart.destroy');
 });
 
-Route::prefix('/checkout')->group(function () {
+Route::prefix('/checkout')->middleware(['auth'])->group(function () {
     Route::get('/', [CheckoutController::class, 'index'])->name('checkout');
     Route::post('/apply-coupon', [CheckoutController::class, 'applyCoupon'])->name('checkout.apply-coupon');
     Route::post('/', [CheckoutController::class, 'store'])->name('checkout.store');

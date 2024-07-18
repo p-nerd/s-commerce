@@ -57,7 +57,8 @@
                                     </div>
                                     <div class="form-group col-lg-6">
                                         <label for="select-district-option">Select District</label>
-                                        <select id="select-district-option" disabled class="form-control">
+                                        <select data-divisions="{{ $divisions }}" id="select-district-option"
+                                            disabled class="form-control">
                                             <option selected>Select District</option>
                                         </select>
                                     </div>
@@ -82,8 +83,40 @@
                             <div class="border p-40 cart-totals ml-30 mb-50">
                                 <div class="d-flex align-items-end justify-content-between mb-30">
                                     <h4>Your Order</h4>
-                                    <h6 class="text-muted">Total: <span class="text-brand"
-                                            id="total-price">{{ $total }}</span></h6>
+                                </div>
+                                <div class="table-responsive">
+                                    <table class="no-border table">
+                                        <tbody>
+                                            <tr>
+                                                <td class="cart_total_label">
+                                                    <h6 class="text-muted">Subtotal</h6>
+                                                </td>
+                                                <td class="cart_total_amount">
+                                                    <h4 class="text-brand text-end">
+                                                        $<span id="subtotal-amount">{{ $subtotal }}</span>
+                                                    </h4>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="cart_total_label">
+                                                    <h6 class="text-muted">Delivery</h6>
+                                                </td>
+                                                <td class="cart_total_amount">
+                                                    <h4 class="text-brand text-end" id="delivery-amount">--</h4>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="cart_total_label">
+                                                    <h6 class="text-muted">Total</h6>
+                                                </td>
+                                                <td class="cart_total_amount">
+                                                    <h4 class="text-brand text-end" id="total-amount">
+                                                        $<span id="total-amount">{{ $subtotal }}</span>
+                                                    </h4>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
                                 </div>
                                 <div class="divider-2 mb-30"></div>
                                 <div class="table-responsive order_table checkout">
@@ -101,17 +134,20 @@
                                                         </h6>
                                                         <div class="product-rate-cover">
                                                             <div class="product-rate d-inline-block">
-                                                                <div class="product-rating" style="width:90%"></div>
+                                                                <div class="product-rating" style="width:90%">
+                                                                </div>
                                                             </div>
                                                             <span class="font-small ml-5 text-muted"> (4.0)</span>
                                                         </div>
                                                     </td>
                                                     <td>
-                                                        <h6 class="text-muted pl-20 pr-20">x {{ $cart->quantity }}</h6>
+                                                        <h6 class="text-muted pl-20 pr-20">x {{ $cart->quantity }}
+                                                        </h6>
                                                     </td>
                                                     <td>
                                                         <h4 class="text-brand">
-                                                            ${{ $cart->quantity * $cart->product->currentPrice() }}</h4>
+                                                            ${{ $cart->quantity * $cart->product->currentPrice() }}
+                                                        </h4>
                                                     </td>
                                                 </tr>
                                             @endforeach
