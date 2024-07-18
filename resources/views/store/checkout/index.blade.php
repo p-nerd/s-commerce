@@ -30,39 +30,39 @@
                                 <input type="hidden" name="coupon" id="coupon-input" />
                                 <div class="row">
                                     <div class="form-group col-lg-6">
-                                        <input type="text" required="" name="first_name"
-                                            placeholder="First name *">
+                                        <input type="text" name="name" required placeholder="Name *" />
                                     </div>
                                     <div class="form-group col-lg-6">
-                                        <input type="text" required="" name="last_name" placeholder="Last name *">
+                                        <input type="text" name="phone" required placeholder="Phone *">
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="form-group col-lg-6">
-                                        <input type="text" name="address" required="" placeholder="Address *">
-                                    </div>
-                                    <div class="form-group col-lg-6">
-                                        <input type="text" name="address2" required="" placeholder="Address 2">
+                                        <select id="select-division-option" class="form-control">
+                                            <option selected>Select Division</option>
+                                            <option value="barisal">Barisal</option>
+                                            <option value="chittagong">Chittagong</option>
+                                            <option value="dhaka">Dhaka</option>
+                                            <option value="khulna">Khulna</option>
+                                            <option value="mymensingh">Mymensingh</option>
+                                            <option value="rajshahi">Rajshahi</option>
+                                            <option value="rangpur">Rangpur</option>
+                                            <option value="sylhet">Sylhet</option>
+                                        </select>
                                     </div>
                                 </div>
                                 <div class="row shipping_calculator">
                                     <div class="form-group col-lg-6">
-                                        <input required="" type="text" name="city" placeholder="City / Town *">
+                                        <select id="select-district-option" disabled class="form-control">
+                                            <option selected>Select District</option>
+                                        </select>
                                     </div>
                                     <div class="form-group col-lg-6">
                                         <input required="" type="text" name="zip"
                                             placeholder="Postcode / ZIP *">
                                     </div>
                                 </div>
-                                <div class="row">
-                                    <div class="form-group col-lg-6">
-                                        <input required="" type="text" name="email"
-                                            placeholder="Email address *">
-                                    </div>
-                                    <div class="form-group col-lg-6">
-                                        <input required="" type="text" name="phone" placeholder="Phone *">
-                                    </div>
-                                </div>
+
                                 <div class="form-group mb-30">
                                     <textarea rows="5" placeholder="Additional information"></textarea>
                                 </div>
@@ -123,9 +123,8 @@
                                         <input class="form-check-input" required="" type="radio"
                                             name="payment_option" value="cash-on-delivery" id="exampleRadios4"
                                             checked="">
-                                        <label class="form-check-label" for="exampleRadios4"
-                                            data-bs-toggle="collapse" data-target="#checkPayment"
-                                            aria-controls="checkPayment">
+                                        <label class="form-check-label" for="exampleRadios4" data-bs-toggle="collapse"
+                                            data-target="#checkPayment" aria-controls="checkPayment">
                                             Cash on delivery
                                         </label>
                                     </div>
