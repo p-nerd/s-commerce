@@ -2,8 +2,6 @@
 
 namespace App\Traits;
 
-use Illuminate\Support\Str;
-
 trait EnumBehavior
 {
     public static function values(): array
@@ -13,9 +11,11 @@ trait EnumBehavior
 
     public static function options(): array
     {
-        return array_map(
-            fn ($value) => ['label' => Str::title(str_replace('_', ' ', $value)), 'value' => $value],
-            array_column(self::cases(), 'value')
-        );
+        return collect(self::values())
+            ->map(fn ($value) => [
+                'label' => ucwords($value),
+                'value' => $value,
+            ])
+            ->toArray();
     }
 }

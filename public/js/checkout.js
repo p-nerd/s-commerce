@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 .querySelector('input[name="coupon"]')
                 .value.trim();
 
-            fetch("/checkout/apply-coupon", {
+            fetch("/checkout/coupon", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",

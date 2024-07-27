@@ -4,12 +4,14 @@ namespace App\Http\Controllers\Store;
 
 use App\Enums\OrderStatus;
 use App\Enums\PaymentMethod;
+use App\Events\OrderPlaced;
 use App\Http\Controllers\Controller;
 use App\Models\Cart;
 use App\Models\Coupon;
 use App\Models\Location;
 use App\Models\Order;
 use App\Models\OrderItem;
+use DGvai\SSLCommerz\SSLCommerz;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -35,11 +37,26 @@ class CheckoutController extends Controller
         ]);
     }
 
+    public function coupon(Request $request)
+    {
+        $payload = $request->validate([
+            'coupon' => ['required', 'string'],
+        ]);
+
+        if ($payload['coupon'] !== 'shihab') {
+            return response()->json([
+                'message' => 'Coupon is invalid',
+            ], 400);
+        }
+
+        return [
+            'message' => 'Coupon applied successfully',
+            'amount' => 15,
+        ];
+    }
+
     public function store(Request $request)
     {
-        return back()
-            ->with('error', 'There was an error processing your order. Please try again.');
-
         $payload = $request->validate([
             'coupon' => ['nullable', 'string'],
             'name' => ['required', 'string', 'max:255'],
@@ -53,7 +70,7 @@ class CheckoutController extends Controller
 
         $carts = $request->user()->carts()->with('product')->get();
         $subtotal = $carts->sum(function ($item) {
-            return $item->product->price * $item->quantity;
+            return ($item->product->discount_price ?? $item->product->price) * $item->quantity;
         });
 
         $coupon = null;
@@ -77,7 +94,6 @@ class CheckoutController extends Controller
             $order = Order::create([
                 'user_id' => $request->user()->id,
                 'coupon_id' => $coupon ? $coupon->id : null,
-                'status' => OrderStatus::PENDING,
                 'name' => $payload['name'],
                 'phone' => $payload['phone'],
                 'division' => $payload['division'],
@@ -96,48 +112,72 @@ class CheckoutController extends Controller
                     'order_id' => $order->id,
                     'product_id' => $item->product_id,
                     'quantity' => $item->quantity,
-                    'price' => $item->product->price,
+                    'price' => $item->product->discount_price ?? $item->product->price,
                 ]);
             }
 
-            $request->user()->carts()->delete();
+            if ($order->payment_method === PaymentMethod::CASH_ON_DELIVERY) {
+                $request->user()->carts()->delete();
+                event(new OrderPlaced($order));
 
-            DB::commit();
+                return to_route('orders.show', $order)->with('success', 'Order placed successfully!');
+            }
 
-            return redirect()
-                ->route($order->payment_method->value === 'cash-on-delivery' ? 'orders.show' : 'checkout.show', $order)
-                ->with('success', 'Order placed successfully!');
+            $sslc = new SSLCommerz();
+            $sslc->amount($order->total)
+                ->trxid($order->id)
+                ->product('Scommerce Product')
+                ->customer($order->name, $order->user->email);
+
+            return $sslc->make_payment();
         } catch (Exception $e) {
             DB::rollBack();
             Log::error('Order creation failed: '.$e->getMessage());
 
-            return back()
-                ->with('error', 'There was an error processing your order. Please try again.');
+            return back()->with('error', 'There was an error processing your order. Please try again.');
+        } finally {
+            DB::commit();
         }
     }
 
-    public function applyCoupon(Request $request)
+    public function success(Request $request)
     {
-        $payload = $request->validate([
-            'coupon' => ['required', 'string'],
-        ]);
+        if (! SSLCommerz::validate_payment($request)) {
+            return to_route('checkout')->with('error', 'Payment is valid, please try again');
+        }
+        $orderId = $request->tran_id;
+        $bankTranID = $request->bank_tran_id;
 
-        if ($payload['coupon'] !== 'shihab') {
-            return response()->json([
-                'message' => 'Coupon is invalid',
-            ], 400);
+        $order = Order::find($orderId);
+        if (! $order) {
+            return to_route('checkout')->with('error', 'Order is not found to process, please try again');
         }
 
-        return [
-            'message' => 'Coupon applied successfully',
-            'amount' => 15,
-        ];
+        $order->update([
+            'paid' => true,
+            'bank_tran_id' => $bankTranID,
+            'status' => OrderStatus::PROCESSING,
+        ]);
+
+        $order->user->carts()->delete();
+
+        event(new OrderPlaced($order));
+
+        return to_route('orders.show', $order);
     }
 
-    public function show(Request $request, Order $order)
+    public function failure()
     {
-        return view('store/checkout/show', [
-            'order' => $order,
-        ]);
+        return to_route('checkout')->with('error', 'The payment is failed, please try again');
+    }
+
+    public function cancel()
+    {
+        return to_route('checkout')->with('error', 'The payment is cancel, please try again');
+    }
+
+    public function ipn()
+    {
+        //
     }
 }

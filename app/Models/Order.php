@@ -27,18 +27,14 @@ class Order extends Model
         'total',
         'payment_method',
         'paid',
+        'bank_tran_id',
     ];
 
     protected function casts(): array
     {
         return [
             'status' => OrderStatus::class,
-            'subtotal' => 'decimal:2',
-            'discount' => 'decimal:2',
-            'delivery' => 'decimal:2',
-            'total' => 'decimal:2',
             'payment_method' => PaymentMethod::class,
-            'paid' => 'boolean',
         ];
     }
 

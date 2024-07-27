@@ -36,9 +36,16 @@ Route::prefix('/cart')->group(function () {
 
 Route::prefix('/checkout')->middleware(['auth'])->group(function () {
     Route::get('/', [CheckoutController::class, 'index'])->name('checkout');
-    Route::post('/apply-coupon', [CheckoutController::class, 'applyCoupon'])->name('checkout.apply-coupon');
+    Route::post('/coupon', [CheckoutController::class, 'coupon'])->name('checkout.coupon');
     Route::post('/', [CheckoutController::class, 'store'])->name('checkout.store');
-    Route::get('/{order}', [CheckoutController::class, 'show'])->name('checkout.show');
+    Route::get('/{order}', [CheckoutController::class, 'pay'])->name('checkout.pay');
+
+    Route::prefix('/sslcommerz')->withoutMiddleware('auth')->group(function () {
+        Route::post('/success', [CheckoutController::class, 'success'])->name('checkout.sslcommerz.success');
+        Route::post('/failure', [CheckoutController::class, 'failure'])->name('checkout.sslcommerz.failure');
+        Route::post('/cancel', [CheckoutController::class, 'cancel'])->name('checkout.sslcommerz.cancel');
+        Route::post('/ipn', [CheckoutController::class, 'ipn'])->name('checkout.sslcommerz.ipn');
+    });
 });
 
 Route::prefix('/orders')->middleware(['auth'])->group(function () {

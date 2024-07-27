@@ -9,6 +9,7 @@
     "license": "MIT",
     "require": {
         "php": "^8.2",
+        "dgvai/laravel-sslcommerz": "^1.0",
         "gehrisandro/tailwind-merge-laravel": "^1.2",
         "itsgoingd/clockwork": "^5.2",
         "laravel/framework": "^11.9",

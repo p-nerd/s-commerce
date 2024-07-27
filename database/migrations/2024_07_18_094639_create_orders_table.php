@@ -17,21 +17,27 @@ return new class extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
+
             $table->foreignIdFor(User::class);
             $table->foreignIdFor(Coupon::class)->nullable();
-            $table->enum('status', OrderStatus::values());
+
             $table->string('name');
             $table->string('phone');
             $table->string('division');
             $table->string('district');
             $table->string('address');
             $table->string('landmark')->nullable();
+
+            $table->string('payment_method')->default(PaymentMethod::ONLINE_GETWAY->value);
             $table->decimal('subtotal');
             $table->decimal('discount')->nullable();
             $table->decimal('delivery')->nullable();
             $table->decimal('total');
-            $table->enum('payment_method', PaymentMethod::values());
             $table->boolean('paid')->default(false);
+            $table->string('bank_tran_id')->nullable();
+
+            $table->string('status')->default(OrderStatus::PENDING->value);
+
             $table->timestamps();
             $table->softDeletes();
         });
