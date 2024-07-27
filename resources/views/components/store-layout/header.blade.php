@@ -7,6 +7,7 @@
 @endphp
 
 @include('components.store-layout.modal')
+@include('components.store-layout.toast')
 
 <header class="header-area header-style-1 header-height-2">
     <div class="mobile-promotion">

@@ -10,6 +10,7 @@ use App\Models\Coupon;
 use App\Models\Location;
 use App\Models\Order;
 use App\Models\OrderItem;
+use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
@@ -36,6 +37,9 @@ class CheckoutController extends Controller
 
     public function store(Request $request)
     {
+        return back()
+            ->with('error', 'There was an error processing your order. Please try again.');
+
         $payload = $request->validate([
             'coupon' => ['nullable', 'string'],
             'name' => ['required', 'string', 'max:255'],
@@ -103,7 +107,7 @@ class CheckoutController extends Controller
             return redirect()
                 ->route($order->payment_method->value === 'cash-on-delivery' ? 'orders.show' : 'checkout.show', $order)
                 ->with('success', 'Order placed successfully!');
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             DB::rollBack();
             Log::error('Order creation failed: '.$e->getMessage());
 

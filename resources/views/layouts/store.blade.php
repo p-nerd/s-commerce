@@ -19,7 +19,8 @@
     <link rel="stylesheet" href="/assets/css/plugins/animate.min.css" />
     <link rel="stylesheet" href="/assets/css/plugins/slider-range.css" />
     <link rel="stylesheet" href="/assets/css/main.css?v=5.5" />
-    <link rel="stylesheet" type="text/css" href="https://unpkg.com/trix@2.0.8/dist/trix.css">
+    <link rel="stylesheet" href="https://unpkg.com/trix@2.0.8/dist/trix.css">
+    <link rel="stylesheet" href="https://unpkg.com/toastr@2.1.4/build/toastr.min.css">
 </head>
 
 <body>
@@ -29,10 +30,10 @@
     <!--@include('components.store-layout.preloader')-->
 
     <!-- Vendor JS-->
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
     <script src="/assets/js/vendor/modernizr-3.6.0.min.js"></script>
-    <script src="/assets/js/vendor/jquery-3.6.0.min.js"></script>
-    <script src="/assets/js/vendor/jquery-migrate-3.3.0.min.js"></script>
+    <script src="https://unpkg.com/jquery@3.6.0/dist/jquery.min.js"></script>
+    <script src="https://unpkg.com/toastr@2.1.4/build/toastr.min.js"></script>
+    <script src="https://unpkg.com/jquery-migrate@3.3.0/dist/jquery-migrate.min.js"></script>
     <script src="/assets/js/vendor/bootstrap.bundle.min.js"></script>
     <script src="/assets/js/plugins/slick.js"></script>
     <script src="/assets/js/plugins/jquery.syotimer.min.js"></script>
