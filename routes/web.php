@@ -12,15 +12,15 @@ use App\Http\Controllers\Auth\VerifyEmailController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\Store\AccountController;
 use App\Http\Controllers\Store\CartController;
 use App\Http\Controllers\Store\CheckoutController;
 use App\Http\Controllers\Store\HomeController;
 use App\Http\Controllers\Store\ProductController as StoreProductController;
-use App\Models\Order;
 use Illuminate\Support\Facades\Route;
 
 // store routes
-Route::get('/', [HomeController::class, 'index']);
+Route::get('/', [HomeController::class, 'index'])->name('index');
 
 Route::prefix('/products')->group(function () {
     Route::get('/', [StoreProductController::class, 'index'])->name('products');
@@ -34,28 +34,28 @@ Route::prefix('/cart')->group(function () {
     Route::delete('/{id}', [CartController::class, 'destroy'])->name('cart.destroy');
 });
 
-Route::prefix('/checkout')->middleware(['auth'])->group(function () {
-    Route::get('/', [CheckoutController::class, 'index'])->name('checkout');
-    Route::post('/coupon', [CheckoutController::class, 'coupon'])->name('checkout.coupon');
-    Route::post('/', [CheckoutController::class, 'store'])->name('checkout.store');
-    Route::get('/{order}', [CheckoutController::class, 'pay'])->name('checkout.pay');
+Route::prefix('/checkout')->group(function () {
+    Route::get('/', [CheckoutController::class, 'index'])->name('checkout')->middleware(['auth']);
+    Route::post('/coupon', [CheckoutController::class, 'coupon'])->name('checkout.coupon')->middleware(['auth']);
+    Route::post('/', [CheckoutController::class, 'store'])->name('checkout.store')->middleware(['auth']);
 
-    Route::prefix('/sslcommerz')->withoutMiddleware('auth')->group(function () {
-        Route::post('/success', [CheckoutController::class, 'success'])->name('checkout.sslcommerz.success');
-        Route::post('/failure', [CheckoutController::class, 'failure'])->name('checkout.sslcommerz.failure');
-        Route::post('/cancel', [CheckoutController::class, 'cancel'])->name('checkout.sslcommerz.cancel');
-        Route::post('/ipn', [CheckoutController::class, 'ipn'])->name('checkout.sslcommerz.ipn');
-    });
+    Route::post('/sslcommerz/success', [CheckoutController::class, 'success'])->name('checkout.sslcommerz.success');
+    Route::post('/sslcommerz/failure', [CheckoutController::class, 'failure'])->name('checkout.sslcommerz.failure');
+    Route::post('/sslcommerz/cancel', [CheckoutController::class, 'cancel'])->name('checkout.sslcommerz.cancel');
+    Route::post('/sslcommerz/ipn', [CheckoutController::class, 'ipn'])->name('checkout.sslcommerz.ipn');
 });
 
-Route::prefix('/orders')->middleware(['auth'])->group(function () {
-    Route::get('/{order}', fn (Order $order) => "Order: {$order->id}")->name('orders.show');
+Route::prefix('/account')->middleware(['auth'])->group(function () {
+    Route::get('/', [AccountController::class, 'index'])->name('account');
+    Route::get('/orders', [AccountController::class, 'orders'])->name('account.orders');
+    Route::get('/orders/{order}', [AccountController::class, 'ordersShow'])->name('account.orders.show');
+    Route::get('/orders/{order}/invoice', [AccountController::class, 'ordersInvoice'])->name('account.orders.invoice');
+    Route::get('/addresses', [AccountController::class, 'addresses'])->name('account.addresses');
+    Route::get('/details', [AccountController::class, 'details'])->name('account.details');
 });
 
 Route::middleware([])->group(function () {
-
     Route::get('/about', fn () => view('store/about'));
-    Route::get('/account', fn () => view('store/account'));
     Route::get('/wishlist', fn () => view('store/wishlist'));
     Route::get('/compare', fn () => view('store/compare'));
     Route::get('/contact', fn () => view('store/contact'));

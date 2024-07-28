@@ -94,27 +94,44 @@
                                     <x-store-layout.cart-dropdown :items="Cart::items()" :price="Cart::price()" />
                                 </span>
                             </div>
-                            <div class="header-action-icon-2">
-                                <a href="/account">
-                                    <img class="svgInject" alt="Nest"
-                                        src="/assets/imgs/theme/icons/icon-user.svg" />
-                                </a>
-
-                                <a href="/account"><span class="lable ml-0">Account</span></a>
-                                <div class="cart-dropdown-wrap cart-dropdown-hm2 account-dropdown">
-                                    <ul>
-                                        <li><a href="/account"><i class="fi fi-rs-user mr-10"></i>My Account</a></li>
-                                        <li><a href="/account#track-orders"><i
-                                                    class="fi fi-rs-location-alt mr-10"></i>Order Tracking</a></li>
-                                        <li><a href="/account#voucher"><i class="fi fi-rs-label mr-10"></i>My
-                                                Voucher</a></li>
-                                        <li><a href="/wishlist"><i class="fi fi-rs-heart mr-10"></i>My Wishlist</a></li>
-                                        <li><a href="/account#settings"><i
-                                                    class="fi fi-rs-settings-sliders mr-10"></i>Setting</a></li>
-                                        <li><a href="/logout"><i class="fi fi-rs-sign-out mr-10"></i>Sign out</a></li>
-                                    </ul>
+                            @auth
+                                <div class="header-action-icon-2">
+                                    <a href="/account">
+                                        <img class="svgInject" alt="Nest"
+                                            src="/assets/imgs/theme/icons/icon-user.svg" />
+                                    </a>
+                                    <a href="/account"><span class="lable ml-0">Account</span></a>
+                                    <div class="cart-dropdown-wrap cart-dropdown-hm2 account-dropdown">
+                                        <ul>
+                                            <li><a href="/account"><i class="fi fi-rs-user mr-10"></i>My Account</a></li>
+                                            <li><a href="/account/orders"><i class="fi fi-rs-location-alt mr-10"></i>My
+                                                    Orders</a></li>
+                                            <li><a href="/wishlist"><i class="fi fi-rs-heart mr-10"></i>My Wishlist</a></li>
+                                            <li><a href="/account/details"><i
+                                                        class="fi fi-rs-settings-sliders mr-10"></i>Setting</a></li>
+                                            <li>
+                                                <form id="header-logout-form" action="{{ route('logout') }}" method="POST"
+                                                    style="display: none;">
+                                                    @csrf
+                                                </form>
+                                                <a
+                                                    onclick="event.preventDefault(); document.getElementById('header-logout-form').submit();"><i
+                                                        class="fi fi-rs-sign-out mr-10"></i>Sign out</a>
+                                            </li>
+                                        </ul>
+                                    </div>
                                 </div>
-                            </div>
+                            @endauth
+                            @guest
+                                <div class="header-action-icon-2">
+                                    <a href="/login"><span class="lable"
+                                            style="border-bottom: 1px solid gray;">Login</span></a>
+                                </div>
+                                <div class="header-action-icon-2">
+                                    <a href="/register"><span class="lable"
+                                            style="border-bottom: 1px solid gray;">Register</span></a>
+                                </div>
+                            @endguest
                         </div>
                     </div>
                 </div>

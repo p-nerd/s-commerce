@@ -120,7 +120,7 @@ class CheckoutController extends Controller
                 $request->user()->carts()->delete();
                 event(new OrderPlaced($order));
 
-                return to_route('orders.show', $order)->with('success', 'Order placed successfully!');
+                return to_route('account.orders', $order)->with('success', 'Order placed successfully!');
             }
 
             $sslc = new SSLCommerz();
@@ -163,7 +163,7 @@ class CheckoutController extends Controller
 
         event(new OrderPlaced($order));
 
-        return to_route('orders.show', $order);
+        return to_route('account.orders', $order);
     }
 
     public function failure()

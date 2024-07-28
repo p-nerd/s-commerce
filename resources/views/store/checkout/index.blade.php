@@ -1,6 +1,6 @@
 <x-store-layout>
     <main class="main">
-        <div class="container mb-80 mt-50">
+        <div class="mt-50 container mb-80">
             <div class="mr-50 ml-50">
                 <div class="row">
                     <div class="col-lg-8 mb-40">
@@ -94,7 +94,7 @@
                             </div>
                         </div>
                         <div class="col-lg-5">
-                            <div class="border p-40 cart-totals ml-30 mb-50">
+                            <div class="cart-totals ml-30 mb-50 border p-40">
                                 <div class="d-flex align-items-end justify-content-between mb-30">
                                     <h4>Your Order</h4>
                                 </div>
@@ -135,7 +135,7 @@
                                 </div>
                                 <div class="divider-2 mb-30"></div>
                                 <div class="table-responsive order_table checkout">
-                                    <table class="table no-border">
+                                    <table class="no-border table">
                                         <tbody>
                                             @foreach ($carts as $cart)
                                                 <tr>
@@ -152,7 +152,7 @@
                                                                 <div class="product-rating" style="width:90%">
                                                                 </div>
                                                             </div>
-                                                            <span class="font-small ml-5 text-muted"> (4.0)</span>
+                                                            <span class="font-small text-muted ml-5"> (4.0)</span>
                                                         </div>
                                                     </td>
                                                     <td>
