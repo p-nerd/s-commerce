@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Store;
 use App\Http\Controllers\Controller;
 use App\Models\Order;
 
+use function Spatie\LaravelPdf\Support\pdf;
+
 class AccountController extends Controller
 {
     public function index()
@@ -34,9 +36,7 @@ class AccountController extends Controller
     {
         $order = Order::with('orderItems.product', 'coupon')->find($order->id);
 
-        return view('store/account/invoice', [
-            'order' => $order,
-        ]);
+        return pdf()->view('store/account/invoice', ['order' => $order])->name("invoice-#{$order->id}.pdf");
     }
 
     public function addresses()

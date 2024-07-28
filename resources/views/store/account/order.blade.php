@@ -80,10 +80,30 @@
             <a href="{{ route('account.orders') }}" class="btn btn-danger" style="background-color: var(--bs-dark);">
                 Go Back
             </a>
-            <a class="btn" href="{{ route('account.orders.invoice', $order) }}">
+            <a class="btn" href="{{ route('account.orders.invoice', $order) }}" data-order-id="{{ $order->id }}"
+                onclick="event.preventDefault(); downloadFile(this.href, this.getAttribute('data-order-id'));">
                 <img src="assets/imgs/theme/icons/icon-download.svg" alt="">
                 Download Invoice
             </a>
+            <script>
+                async function downloadFile(url, id) {
+                    try {
+                        const response = await fetch(url);
+                        if (!response.ok) {
+                            throw new Error('Network response was not ok');
+                        }
+                        const blob = await response.blob();
+                        const link = document.createElement('a');
+                        link.href = URL.createObjectURL(blob);
+                        link.download = `order-${id}-invoice-nest.pdf`;
+                        document.body.appendChild(link);
+                        link.click();
+                        document.body.removeChild(link);
+                    } catch (error) {
+                        console.error('Error downloading the file:', error);
+                    }
+                }
+            </script>
         </div>
     </div>
 </x-account-layout>

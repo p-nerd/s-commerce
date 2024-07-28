@@ -13,7 +13,8 @@
         "gehrisandro/tailwind-merge-laravel": "^1.2",
         "itsgoingd/clockwork": "^5.2",
         "laravel/framework": "^11.9",
-        "laravel/tinker": "^2.9"
+        "laravel/tinker": "^2.9",
+        "spatie/laravel-pdf": "^1.5"
     },
     "require-dev": {
         "barryvdh/laravel-ide-helper": "^3.0",
