@@ -18,6 +18,18 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
+
+            $table->string('phone')->nullable();
+            $table->string('division')->nullable();
+            $table->string('district')->nullable();
+            $table->string('address')->nullable();
+
+            $table->string('shipping_phone')->nullable();
+            $table->string('shipping_division')->nullable();
+            $table->string('shipping_district')->nullable();
+            $table->string('shipping_address')->nullable();
+            $table->string('shipping_landmark')->nullable();
+
             $table->timestamps();
             $table->softDeletes();
         });

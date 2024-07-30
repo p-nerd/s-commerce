@@ -21,8 +21,12 @@ class CheckoutController extends Controller
 {
     public function index(Request $request)
     {
-        if (! count($request->user()->carts)) {
-            return to_route('products');
+        $user = $request->user();
+
+        if (! count($user->carts)) {
+            return redirect()
+                ->route('products')
+                ->with('error', 'The cart id empty');
         }
 
         $divisions = Location::query()
@@ -31,6 +35,7 @@ class CheckoutController extends Controller
             ->get();
 
         return view('store/checkout/index', [
+            'user' => $user,
             'carts' => $request->user()->carts()->with('product.images')->get(),
             'subtotal' => Cart::totalPrice(),
             'divisions' => $divisions,

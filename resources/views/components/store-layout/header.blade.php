@@ -19,10 +19,9 @@
                 <div class="col-xl-3 col-lg-4">
                     <div class="header-info">
                         <ul>
-                            <li><a href="/about">About Us</a></li>
-                            <li><a href="/account">My Account</a></li>
-                            <li><a href="/wishlist">Wishlist</a></li>
-                            <li><a href="/account#track-orders">Order Tracking</a></li>
+                            <li><a href="{{ route('about') }}">About Us</a></li>
+                            <li><a href="{{ route('account') }}">My Account</a></li>
+                            <li><a href="{{ route('account.orders') }}">My Orders</a></li>
                         </ul>
                     </div>
                 </div>
@@ -51,44 +50,30 @@
         <div class="container">
             <div class="header-wrap">
                 <div class="logo logo-width-1">
-                    <a href="/"><img src="/assets/imgs/theme/logo.svg" alt="logo" /></a>
+                    <a href=" {{ url('/') }} ">
+                        <img src="{{ url('/assets/imgs/theme/logo.svg') }}" alt="logo" />
+                    </a>
                 </div>
                 <div class="header-right">
                     <div class="search-style-2">
-                        <form action="#">
+                        <form>
                             <select class="select-active">
                                 <option>All Categories</option>
                                 @foreach ($categories as $category)
                                     <option>{{ $category->name }}</option>
                                 @endforeach
                             </select>
-                            <input type="text" placeholder="Search for items..." />
+                            <input type="text" placeholder="Search for products..." />
                         </form>
                     </div>
                     <div class="header-action-right">
                         <div class="header-action-2">
                             <div class="header-action-icon-2">
-                                <a href="/compare">
-                                    <img class="svgInject" alt="Nest"
-                                        src="/assets/imgs/theme/icons/icon-compare.svg" />
-                                    <span class="pro-count blue">3</span>
-                                </a>
-                                <a href="/compare"><span class="lable ml-0">Compare</span></a>
-                            </div>
-                            <div class="header-action-icon-2">
-                                <a href="/wishlist">
-                                    <img class="svgInject" alt="Nest"
-                                        src="/assets/imgs/theme/icons/icon-heart.svg" />
-                                    <span class="pro-count blue">6</span>
-                                </a>
-                                <a href="/wishlist"><span class="lable">Wishlist</span></a>
-                            </div>
-                            <div class="header-action-icon-2">
-                                <a class="mini-cart-icon" href="/cart">
-                                    <img alt="Nest" src="/assets/imgs/theme/icons/icon-cart.svg" />
+                                <a class="mini-cart-icon" href="{{ route('cart') }}">
+                                    <img alt="Nest" src="{{ url('/assets/imgs/theme/icons/icon-cart.svg') }}" />
                                     <span class="pro-count blue" id="header-cart-count">{{ Cart::quantity() }}</span>
                                 </a>
-                                <a href="/cart"><span class="lable">Cart</span></a>
+                                <a href="{{ route('cart') }}"><span class="lable">Cart</span></a>
 
                                 <span id="header-cart-drowdown">
                                     <x-store-layout.cart-dropdown :items="Cart::items()" :price="Cart::price()" />
@@ -96,19 +81,29 @@
                             </div>
                             @auth
                                 <div class="header-action-icon-2">
-                                    <a href="/account">
-                                        <img class="svgInject" alt="Nest"
-                                            src="/assets/imgs/theme/icons/icon-user.svg" />
+                                    <a href="{{ route('account') }}">
+                                        <img class="svgInject"
+                                            alt="Nest"src="{{ url('/assets/imgs/theme/icons/icon-user.svg') }}" />
                                     </a>
-                                    <a href="/account"><span class="lable ml-0">Account</span></a>
+                                    <a href="{{ route('account') }}"><span class="lable ml-0">Account</span></a>
                                     <div class="cart-dropdown-wrap cart-dropdown-hm2 account-dropdown">
                                         <ul>
-                                            <li><a href="/account"><i class="fi fi-rs-user mr-10"></i>My Account</a></li>
-                                            <li><a href="/account/orders"><i class="fi fi-rs-location-alt mr-10"></i>My
-                                                    Orders</a></li>
-                                            <li><a href="/wishlist"><i class="fi fi-rs-heart mr-10"></i>My Wishlist</a></li>
-                                            <li><a href="/account/details"><i
-                                                        class="fi fi-rs-settings-sliders mr-10"></i>Setting</a></li>
+                                            <li>
+                                                <a href="{{ route('account') }}">
+                                                    <i class="fi fi-rs-user mr-10"></i>My Account
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="{{ route('account.orders') }}">
+                                                    <i class="fi fi-rs-location-alt mr-10"></i>My Orders
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="{{ route('account.details') }}">
+                                                    <i class="fi fi-rs-settings-sliders mr-10"></i>Setting
+
+                                                </a>
+                                            </li>
                                             <li>
                                                 <form id="header-logout-form" action="{{ route('logout') }}" method="POST"
                                                     style="display: none;">
@@ -124,11 +119,11 @@
                             @endauth
                             @guest
                                 <div class="header-action-icon-2">
-                                    <a href="/login"><span class="lable"
+                                    <a href="{{ route('login') }}"><span class="lable"
                                             style="border-bottom: 1px solid gray;">Login</span></a>
                                 </div>
                                 <div class="header-action-icon-2">
-                                    <a href="/register"><span class="lable"
+                                    <a href="{{ route('register') }}"><span class="lable"
                                             style="border-bottom: 1px solid gray;">Register</span></a>
                                 </div>
                             @endguest
@@ -142,7 +137,8 @@
         <div class="container">
             <div class="header-wrap header-space-between position-relative">
                 <div class="logo logo-width-1 d-block d-lg-none">
-                    <a href="/"><img src="/assets/imgs/theme/logo.svg" alt="logo" /></a>
+                    <a href="{{ url('/') }}"><img src="{{ url('/assets/imgs/theme/logo.svg') }}"
+                            alt="logo" /></a>
                 </div>
                 <div class="header-nav d-none d-lg-flex">
                     <div class="main-categori-wrap d-none d-lg-block">
@@ -200,12 +196,8 @@
                     <div class="main-menu main-menu-padding-1 main-menu-lh-2 d-none d-lg-block font-heading">
                         <nav>
                             <ul>
-                                <li class="hot-deals">
-                                    <img src="/assets/imgs/theme/icons/icon-hot.svg" alt="hot deals" />
-                                    <a href="/hot-deals">Deals</a>
-                                </li>
                                 <li>
-                                    <a href="/">Home</a>
+                                    <x-store-layout.nav-link route="index">Home</x-store-layout.nav-link>
                                 </li>
                                 <li>
                                     <x-store-layout.nav-link route="products">Products</x-store-layout.nav-link>

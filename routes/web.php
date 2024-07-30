@@ -47,17 +47,28 @@ Route::prefix('/checkout')->group(function () {
 
 Route::prefix('/account')->middleware(['auth'])->group(function () {
     Route::get('/', [AccountController::class, 'index'])->name('account');
+
     Route::get('/orders', [AccountController::class, 'orders'])->name('account.orders');
     Route::get('/orders/{order}', [AccountController::class, 'ordersShow'])->name('account.orders.show');
     Route::get('/orders/{order}/invoice', [AccountController::class, 'ordersInvoice'])->name('account.orders.invoice');
-    Route::get('/addresses', [AccountController::class, 'addresses'])->name('account.addresses');
+
+    Route::get('/addresses', [AccountController::class, 'addresses'])
+        ->name('account.addresses');
+    Route::get('/addresses/billing', [AccountController::class, 'addressesBillingEdit'])
+        ->name('account.addresses.billing.edit');
+    Route::patch('/addresses/billing', [AccountController::class, 'addressesBillingUpdate'])
+        ->name('account.addresses.billing.update');
+    Route::get('/addresses/shipping', [AccountController::class, 'addressesShippingEdit'])
+        ->name('account.addresses.shipping.edit');
+    Route::patch('/addresses/shipping', [AccountController::class, 'addressesShippingUpdate'])
+        ->name('account.addresses.shipping.update');
+
     Route::get('/details', [AccountController::class, 'details'])->name('account.details');
+    Route::patch('/details', [AccountController::class, 'detailsUpdate'])->name('account.details.update');
 });
 
 Route::middleware([])->group(function () {
-    Route::get('/about', fn () => view('store/about'));
-    Route::get('/wishlist', fn () => view('store/wishlist'));
-    Route::get('/compare', fn () => view('store/compare'));
+    Route::get('/about', fn () => view('store/about'))->name('about');
     Route::get('/contact', fn () => view('store/contact'));
     Route::get('/store-login', fn () => view('store/login'));
     Route::get('/store-register', fn () => view('store/register'));

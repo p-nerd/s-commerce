@@ -4,40 +4,50 @@
             <h5>Account Details</h5>
         </div>
         <div class="card-body">
-            <p>Already have an account? <a href="page-login.html">Log in instead!</a></p>
-            <form method="post" name="enq">
+            <form method="POST" action="{{ route('account.details.update') }}">
+                @csrf
+                @method('PATCH')
                 <div class="row">
-                    <div class="form-group col-md-6">
-                        <label>First Name <span class="required">*</span></label>
-                        <input required="" class="form-control" name="name" type="text">
-                    </div>
-                    <div class="form-group col-md-6">
-                        <label>Last Name <span class="required">*</span></label>
-                        <input required="" class="form-control" name="phone">
+                    <div class="form-group col-md-12">
+                        <label for="name">Name <span class="required">*</span></label>
+                        <input id="name" class="form-control" name="name" type="text"
+                            value="{{ old('name') ?? $user->name }}" required>
+                        @error('name')
+                            <span class="text-danger">{{ $message }}</span>
+                        @enderror
                     </div>
                     <div class="form-group col-md-12">
-                        <label>Display Name <span class="required">*</span></label>
-                        <input required="" class="form-control" name="dname" type="text">
+                        <label for="email">Email Address <span class="required">*</span></label>
+                        <input id="email" class="form-control" name="email" type="email"
+                            value="{{ old('email') ?? $user->email }}" required>
+                        @error('email')
+                            <span class="text-danger">{{ $message }}</span>
+                        @enderror
                     </div>
                     <div class="form-group col-md-12">
-                        <label>Email Address <span class="required">*</span></label>
-                        <input required="" class="form-control" name="email" type="email">
+                        <label for="current-password">Current Password</label>
+                        <input id="current-password" class="form-control" name="current_password" type="password" />
+                        @error('current_password')
+                            <span class="text-danger">{{ $message }}</span>
+                        @enderror
                     </div>
                     <div class="form-group col-md-12">
-                        <label>Current Password <span class="required">*</span></label>
-                        <input required="" class="form-control" name="password" type="password">
+                        <label for="new-password">New Password</label>
+                        <input id="new-password" class="form-control" name="password" type="password" />
+                        @error('password')
+                            <span class="text-danger">{{ $message }}</span>
+                        @enderror
                     </div>
                     <div class="form-group col-md-12">
-                        <label>New Password <span class="required">*</span></label>
-                        <input required="" class="form-control" name="npassword" type="password">
-                    </div>
-                    <div class="form-group col-md-12">
-                        <label>Confirm Password <span class="required">*</span></label>
-                        <input required="" class="form-control" name="cpassword" type="password">
+                        <label for="confirm-password">Confirm Password</label>
+                        <input id="confirm-password" class="form-control" name="password_confirmation"
+                            type="password" />
+                        @error('password_confirmation')
+                            <span class="text-danger">{{ $message }}</span>
+                        @enderror
                     </div>
                     <div class="col-md-12">
-                        <button type="submit" class="btn btn-fill-out submit font-weight-bold" name="submit"
-                            value="Submit">Save Change</button>
+                        <button type="submit" class="btn">Save Change</button>
                     </div>
                 </div>
             </form>

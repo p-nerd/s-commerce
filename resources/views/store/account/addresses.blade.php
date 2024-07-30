@@ -5,15 +5,22 @@
                 <div class="card-header">
                     <h3 class="mb-0">Billing Address</h3>
                 </div>
-                <div class="card-body">
-                    <address>
-                        3522 Interstate<br>
-                        75 Business Spur,<br>
-                        Sault Ste. <br>Marie, MI 49783
-                    </address>
-                    <p>New York</p>
-                    <a href="#" class="btn-small">Edit</a>
-                </div>
+                @if ($user->address)
+                    <div class="card-body">
+                        <address>
+                            {{ $user->address }}<br>
+                            {{ $user->district }},<br>
+                            {{ $user->division }}<br>
+                        </address>
+                        <p>Phone: {{ $user->phone }}</p>
+                        <a href="{{ route('account.addresses.billing.edit') }}" class="btn-small">Edit</a>
+                    </div>
+                @else
+                    <div class="card-body">
+                        <p>There is no billing address</p>
+                        <a href="{{ route('account.addresses.billing.edit') }}" class="btn-small">Add new one</a>
+                    </div>
+                @endif
             </div>
         </div>
         <div class="col-lg-6">
@@ -21,14 +28,25 @@
                 <div class="card-header">
                     <h5 class="mb-0">Shipping Address</h5>
                 </div>
-                <div class="card-body">
-                    <address>
-                        4299 Express Lane<br>
-                        Sarasota, <br>FL 34249 USA <br>Phone: 1.941.227.4444
-                    </address>
-                    <p>Sarasota</p>
-                    <a href="#" class="btn-small">Edit</a>
-                </div>
+                @if ($user->shipping_address)
+                    <div class="card-body">
+                        <address>
+                            {{ $user->shipping_address }}<br>
+                            {{ $user->shipping_district }},<br>
+                            {{ $user->shipping_division }}<br>
+                        </address>
+                        <p>Phone: {{ $user->shipping_phone }}</p>
+                        @if ($user->shipping_landmark)
+                            <p>Landmark: {{ $user->shipping_landmark }}</p>
+                        @endif
+                        <a href="{{ route('account.addresses.shipping.edit') }}" class="btn-small">Edit</a>
+                    </div>
+                @else
+                    <div class="card-body">
+                        <p>There is no shipping address</p>
+                        <a href="{{ route('account.addresses.shipping.edit') }}" class="btn-small">Add new one</a>
+                    </div>
+                @endif
             </div>
         </div>
     </div>

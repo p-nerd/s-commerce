@@ -8,8 +8,22 @@ document.addEventListener("DOMContentLoaded", function () {
     const deliveryAmount = document.querySelector("#delivery-amount");
     const totalAmount = document.querySelector("#total-amount");
 
+    if (
+        !CSRF_TOKEN ||
+        !selectDivision ||
+        !selectDistrict ||
+        !deliveryAmount ||
+        !totalAmount
+    ) {
+        return;
+    }
+
     const setupApplyCouponEventListener = () => {
         const form = document.getElementById("apply-coupon-form");
+
+        if (!form) {
+            return;
+        }
 
         form.addEventListener("submit", function (event) {
             event.preventDefault();
@@ -64,11 +78,47 @@ document.addEventListener("DOMContentLoaded", function () {
             selectDistrict.getAttribute("data-divisions"),
         );
 
-        divisions.forEach((division) => {
+        if (!divisions) {
+            return;
+        }
+
+        const divisionValue = selectDivision.getAttribute("value");
+
+        divisions.forEach(({ value, label }, index) => {
             const option = document.createElement("option");
-            option.value = division.value;
-            option.textContent = division.label;
+            option.value = value;
+            option.textContent = label;
+            if (divisionValue === value) {
+                option.selected = true;
+            }
+
             selectDivision.appendChild(option);
+
+            if (index === divisions.length - 1) {
+                selectDivision.disabled = false;
+            }
+        });
+
+        const division = divisions.find((d) => d.value == divisionValue);
+
+        division?.districts?.forEach(({ label, value, price }, index) => {
+            const option = document.createElement("option");
+            option.value = value;
+            option.textContent = label;
+            if (selectDistrict.getAttribute("value") === value) {
+                deliveryAmount.textContent = `$${price}`;
+                totalAmount.textContent = (
+                    price +
+                    Number(totalAmount.getAttribute("data-total-amount"))
+                ).toFixed(2);
+                option.selected = true;
+            }
+
+            selectDistrict.appendChild(option);
+
+            if (index === division?.districts.length - 1) {
+                selectDistrict.disabled = false;
+            }
         });
 
         selectDivision.addEventListener("change", function (event) {

@@ -27,13 +27,14 @@
                     <div class="row">
                         <div class="col-lg-7">
                             <div class="row">
-                                <h4 class="mb-30">Billing Details</h4>
+                                <h4 class="mb-30">Shipping Details</h4>
                                 <input type="hidden" name="coupon" id="coupon-input" />
                                 <div class="row">
                                     <div class="form-group col-lg-6">
                                         <label for="name">Name *</label>
-                                        <input type="text" id="name" name="name" value="{{ old('name') }}"
-                                            required placeholder="Enter your name" />
+                                        <input type="text" id="name" name="name"
+                                            value="{{ old('name') ?? $user->name }}" required
+                                            placeholder="Enter your name" />
                                         @error('name')
                                             <span class="text-danger">{{ $message }}</span>
                                         @enderror
@@ -41,7 +42,8 @@
                                     <div class="form-group col-lg-6">
                                         <label for="phone">Phone *</label>
                                         <input type="text" id="phone" name="phone" required
-                                            value="{{ old('phone') }}" placeholder="Enter your phone number">
+                                            value="{{ old('phone') ?? $user->phone }}"
+                                            placeholder="Enter your phone number">
                                         @error('phone')
                                             <span class="text-danger">{{ $message }}</span>
                                         @enderror
@@ -51,18 +53,19 @@
                                     <div class="form-group col-lg-6">
                                         <label for="select-division-option">Select Division *</label>
                                         <select required id="select-division-option" name="division"
-                                            value="{{ old('division') }}" class="form-control">
+                                            value="{{ old('division') ?? $user->shipping_division }}"
+                                            class="form-control" disabled>
                                             <option value="" selected>Select Division *</option>
                                         </select>
-                                        @error('divsion')
+                                        @error('division')
                                             <span class="text-danger">{{ $message }}</span>
                                         @enderror
                                     </div>
                                     <div class="form-group col-lg-6">
                                         <label for="select-district-option">Select District *</label>
-                                        <select required data-divisions="{{ $divisions }}"
-                                            value="{{ old('district') }}" id="select-district-option" name="district"
-                                            disabled class="form-control">
+                                        <select required data-divisions="{{ json_encode($divisions->toArray()) }}"
+                                            value="{{ old('district') ?? $user->shipping_district }}"
+                                            id="select-district-option" name="district" disabled class="form-control">
                                             <option selected>Select District</option>
                                         </select>
                                         @error('district')
@@ -74,7 +77,7 @@
                                     <div class="form-group">
                                         <label for="address">Address *</label>
                                         <input type="text" id="address" name="address" required
-                                            value="{{ old('address') }}"
+                                            value="{{ old('address') ?? $user->shipping_address }}"
                                             placeholder="House no. / building / street / area">
                                         @error('address')
                                             <span class="text-danger">{{ $message }}</span>
@@ -85,7 +88,8 @@
                                     <div class="form-group">
                                         <label for="landmark">Landmark</label>
                                         <input type="text" id="landmark" name="landmark"
-                                            value="{{ old('landmark') }}" placeholder="E.g. beside train station">
+                                            value="{{ old('landmark') ?? $user->shipping_landmark }}"
+                                            placeholder="E.g. beside train station">
                                         @error('landmark')
                                             <span class="text-danger">{{ $message }}</span>
                                         @enderror
