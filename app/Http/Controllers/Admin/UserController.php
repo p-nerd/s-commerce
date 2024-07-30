@@ -11,25 +11,28 @@ class UserController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
-    }
+        $query = User::query();
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
+        $search = $request->query('search');
+        if ($search) {
+            $query->where('id', 'like', '%'.$search.'%');
+            $query->orWhere('name', 'like', '%'.$search.'%');
+            $query->orWhere('email', 'like', '%'.$search.'%');
+        }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
+        $sortBy = $request->query('sort_by') ?? 'created_at';
+        $order = $request->query('order') ?? 'desc';
+
+        $query = $query->orderBy($sortBy, $order);
+
+        $perPage = $request->query(('per_page')) ?? 10;
+        $users = $query->paginate($perPage)->withQueryString();
+
+        return view('admin/users/index', [
+            'users' => $users,
+        ]);
     }
 
     /**

@@ -100,11 +100,6 @@ Route::prefix('/admin')->middleware(['auth', 'verified'])->group(function () {
     Route::get('/', fn () => view('admin/index'))->name('admin');
 
     Route::prefix('/users')->group(function () {
-        Route::get('/create', [AdminUserController::class, 'create'])
-            ->name('admin.users.create');
-        Route::post('/', [AdminUserController::class, 'store'])
-            ->name('admin.users.store');
-
         Route::get('/', [AdminUserController::class, 'index'])
             ->name('admin.users');
         Route::get('/{user}', [AdminUserController::class, 'show'])

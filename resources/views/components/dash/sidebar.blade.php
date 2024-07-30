@@ -131,11 +131,6 @@ $sidebarLinks = [
                 'href' => route('admin.users'),
                 'icon' => $listIcon,
             ],
-            [
-                'label' => 'New',
-                'href' => route('admin.users.create'),
-                'icon' => $newIcon,
-            ],
         ],
     ],
     [

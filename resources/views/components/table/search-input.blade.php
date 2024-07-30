@@ -1,7 +1,7 @@
-@props(['href'])
+@props(['href', 'placeholder' => 'Search...'])
 
 <form method="GET" class="flex w-full items-center">
-    <input name="search" value="{{ request('search') }}" action="" type="text" placeholder="Search..."
+    <input name="search" value="{{ request('search') }}" action="" type="text" placeholder="{{ $placeholder }}"
         class="w-full rounded-l-md border border-gray-300 px-3 py-3 focus:border-gray-300 focus:ring-0" />
 
     <button type="submit"
