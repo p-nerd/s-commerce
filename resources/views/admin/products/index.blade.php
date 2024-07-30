@@ -1,4 +1,4 @@
-<x-dashboard-layout>
+<x-admin-layout>
     <x-slot name="header">
         <x-dash.title>Products</x-dash.title>
         <x-dash.new-button href="{{ route('admin.products.create') }}">
@@ -64,4 +64,4 @@
         </x-table.table>
         <x-table.pagination :data="$products" />
     @endif
-</x-dashboard-layout>
+</x-admin-layout>

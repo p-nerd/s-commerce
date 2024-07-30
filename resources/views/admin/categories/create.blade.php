@@ -1,4 +1,4 @@
-<x-dashboard-layout>
+<x-admin-layout>
     <x-slot name="back">
         {{ route('admin.categories') }}
     </x-slot>
@@ -16,4 +16,4 @@
             placeholder="Select parent category" :options="$categories" />
         <x-form.submit />
     </x-form.form>
-</x-dashboard-layout>
+</x-admin-layout>

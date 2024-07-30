@@ -36,7 +36,7 @@ class ProductController extends Controller
 
         $products = $query->paginate($perPage)->withQueryString();
 
-        return view('dashboard/products/index', [
+        return view('admin/products/index', [
             'products' => $products,
         ]);
     }
@@ -46,7 +46,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        return view('dashboard/products/create', [
+        return view('admin/products/create', [
             'types' => ProductType::options(),
             'categories' => Category::options(),
         ]);
@@ -84,7 +84,7 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
-        return view('dashboard/products/show', [
+        return view('admin/products/show', [
             'product' => $product,
         ]);
     }
@@ -94,7 +94,7 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-        return view('dashboard/products/edit', [
+        return view('admin/products/edit', [
             'product' => $product,
             'types' => ProductType::options(),
             'categories' => Category::options(),

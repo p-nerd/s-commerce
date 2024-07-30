@@ -1,3 +1,3 @@
-<x-dashboard-layout>
+<x-admin-layout>
     <div class="py-10">Your are login</div>
-</x-dashboard-layout>
+</x-admin-layout>

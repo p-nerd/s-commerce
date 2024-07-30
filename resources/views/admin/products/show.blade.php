@@ -1,4 +1,4 @@
-<x-dashboard-layout>
+<x-admin-layout>
     <x-slot name="back">
         {{ route('admin.products') }}
     </x-slot>
@@ -39,4 +39,4 @@
         </x-show.two>
         <x-show.rich-text label="Long Description">{!! $product->long_description !!}</x-show.rich-text>
     </x-show.card>
-</x-dashboard-layout>
+</x-admin-layout>

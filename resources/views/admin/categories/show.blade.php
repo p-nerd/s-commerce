@@ -1,4 +1,4 @@
-<x-dashboard-layout>
+<x-admin-layout>
     <x-slot name="back">
         {{ route('admin.categories') }}
     </x-slot>
@@ -27,4 +27,4 @@
             </x-show.item>
         @endif
     </x-show.card>
-</x-dashboard-layout>
+</x-admin-layout>

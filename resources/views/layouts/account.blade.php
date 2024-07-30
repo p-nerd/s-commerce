@@ -1,6 +1,6 @@
 <x-store-layout>
     <main class="main pages page-content row col-lg-10 pt-150 pb-150 container m-auto">
-        <div class="col-md-3 dashboard-menu">
+        <div class="col-md-3 admin-menu">
             <?php
             $links = [
                 [

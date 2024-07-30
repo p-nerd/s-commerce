@@ -1,4 +1,4 @@
-<x-dashboard-layout>
+<x-admin-layout>
     <x-slot name="header">
         <x-dash.title>
             @if (isset($category))
@@ -100,4 +100,4 @@
             <x-table.pagination :data="$categories" />
         </div>
     @endif
-</x-dashboard-layout>
+</x-admin-layout>

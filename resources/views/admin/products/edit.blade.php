@@ -1,4 +1,4 @@
-<x-dashboard-layout>
+<x-admin-layout>
     <x-slot name="back">
         {{ route('admin.products') }}
     </x-slot>
@@ -37,4 +37,4 @@
         <x-form.markdown name="long_description" label="Long Description" value="{{ $product->long_description }}" />
         <x-form.submit />
     </x-form.form>
-</x-dashboard-layout>
+</x-admin-layout>

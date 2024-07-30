@@ -5,7 +5,7 @@
         </div>
         <div class="card-body">
             <p>
-                From your account dashboard. you can easily check &amp; view your
+                From your account admin. you can easily check &amp; view your
                 <a href="{{ route('account.orders') }}">recent orders</a>,<br>
                 manage your <a href="{{ route('account.addresses') }}">shipping and billing addresses</a>
                 and <a href="{{ route('account.details') }}">edit your password and account details.</a>

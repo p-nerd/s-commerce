@@ -20,7 +20,7 @@
                 <div class="ml-2 flex space-x-2 self-center whitespace-nowrap text-2xl font-semibold">
                     <a href="/">S-Commerce</a>
                     <span>/</span>
-                    <a href="{{ route('dashboard') }}">Dashboard</a>
+                    <a href="{{ route('admin') }}">Admin</a>
                 </div>
             </div>
 

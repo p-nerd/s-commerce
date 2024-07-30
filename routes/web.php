@@ -97,7 +97,7 @@ Route::prefix('/account')->middleware(['auth'])->group(function () {
 
 // admin routes
 Route::prefix('/admin')->middleware(['auth', 'verified'])->group(function () {
-    Route::get('/', fn () => view('dashboard/index'))->name('dashboard');
+    Route::get('/', fn () => view('admin/index'))->name('admin');
 
     Route::prefix('/users')->group(function () {
         Route::get('/create', [AdminUserController::class, 'create'])

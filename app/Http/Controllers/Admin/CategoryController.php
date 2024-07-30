@@ -29,7 +29,7 @@ class CategoryController extends Controller
             ->paginate($perPage)
             ->withQueryString();
 
-        return view('dashboard/categories/index', [
+        return view('admin/categories/index', [
             'categories' => $categories,
         ]);
     }
@@ -52,7 +52,7 @@ class CategoryController extends Controller
             ->paginate($perPage)
             ->withQueryString();
 
-        return view('dashboard/categories/index', [
+        return view('admin/categories/index', [
             'category' => $category,
             'categories' => $categories,
         ]);
@@ -63,7 +63,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        return view('dashboard/categories/create', [
+        return view('admin/categories/create', [
             'categories' => Category::parentOptions(),
         ]);
     }
@@ -92,7 +92,7 @@ class CategoryController extends Controller
         $parent = $category->parent;
         $subCategories = $category->subCategories;
 
-        return view('dashboard/categories/show', [
+        return view('admin/categories/show', [
             'category' => $category,
             'parent' => $parent,
             'subCategories' => $subCategories,
@@ -104,7 +104,7 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
-        return view('dashboard/categories/edit', [
+        return view('admin/categories/edit', [
             'category' => $category,
             'categories' => Category::parentOptions(),
         ]);

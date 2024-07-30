@@ -1,4 +1,4 @@
-<x-dashboard-layout>
+<x-admin-layout>
     <x-slot name="header">
         <h2 class="text-xl font-semibold leading-tight text-gray-800">
             {{ __('Profile') }}
@@ -26,4 +26,4 @@
             </div>
         </div>
     </div>
-</x-dashboard-layout>
+</x-admin-layout>
