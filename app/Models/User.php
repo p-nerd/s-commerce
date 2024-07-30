@@ -3,6 +3,9 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+
+use App\Enums\UserRole;
+use App\Enums\UserStatus;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -16,6 +19,8 @@ class User extends Authenticatable
     protected $fillable = [
         'name',
         'email',
+        'role',
+        'avatar',
         'password',
         'phone',
         'division',
@@ -26,6 +31,7 @@ class User extends Authenticatable
         'shipping_district',
         'shipping_address',
         'shipping_landmark',
+        'status',
     ];
 
     protected $hidden = [
@@ -36,8 +42,10 @@ class User extends Authenticatable
     protected function casts(): array
     {
         return [
-            'email_verified_at' => 'datetime',
+            'role' => UserRole::class,
             'password' => 'hashed',
+            'status' => UserStatus::class,
+            'email_verified_at' => 'datetime',
         ];
     }
 
