@@ -1,6 +1,6 @@
 <x-dashboard-layout>
     <x-slot name="back">
-        {{ route('dashboard.categories') }}
+        {{ route('admin.categories') }}
     </x-slot>
     <x-slot name="header">
         <x-dash.title>
@@ -8,7 +8,7 @@
         </x-dash.title>
     </x-slot>
 
-    <x-form.form method="PATCH" action="{{ route('dashboard.categories.update', $category) }}" confirm="Are you sure?"
+    <x-form.form method="PATCH" action="{{ route('admin.categories.update', $category) }}" confirm="Are you sure?"
         confirmText="This will update the category with the given values">
         <x-form.text name="name" label="Name" :value="$category->name" required autofocus />
         <x-form.textarea name="description" label="Description" :value="$category->description" required autofocus />

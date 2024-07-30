@@ -1,6 +1,6 @@
 <x-dashboard-layout>
     <x-slot name="back">
-        {{ route('dashboard.products') }}
+        {{ route('admin.products') }}
     </x-slot>
     <x-slot name="header">
         <x-dash.title>
@@ -8,7 +8,7 @@
         </x-dash.title>
     </x-slot>
 
-    <x-form.form method="POST" action="{{ route('dashboard.products.store') }}">
+    <x-form.form method="POST" action="{{ route('admin.products.store') }}">
         <x-form.text name="name" label="Name" required autofocus />
         <x-form.textarea name="short_description" label="Short Description" required />
         <x-form.two>

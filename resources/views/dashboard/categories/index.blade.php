@@ -7,7 +7,7 @@
                 Categories
             @endif
         </x-dash.title>
-        <x-dash.new-button href="{{ route('dashboard.categories.create') }}">
+        <x-dash.new-button href="{{ route('admin.categories.create') }}">
             Create new category
         </x-dash.new-button>
     </x-slot>
@@ -54,9 +54,9 @@
                                 <x-table.td class="w-full">{{ $category->name }}</x-table.td>
                                 <x-table.td class="w-[200px]">{{ $category->created_at->format('M, j Y') }}</x-table.td>
                                 <x-table.actions-td class="w-[300px]">
-                                    <x-table.view-button href="{{ route('dashboard.categories.show', $category) }}" />
-                                    <x-table.edit-button href="{{ route('dashboard.categories.edit', $category) }}" />
-                                    <x-table.delete-button href="{{ route('dashboard.categories.destroy', $category) }}"
+                                    <x-table.view-button href="{{ route('admin.categories.show', $category) }}" />
+                                    <x-table.edit-button href="{{ route('admin.categories.edit', $category) }}" />
+                                    <x-table.delete-button href="{{ route('admin.categories.destroy', $category) }}"
                                         confirm="Are you sure?" />
                                 </x-table.actions-td>
                             </x-table.tr>
@@ -83,11 +83,11 @@
                                             class="w-[200px]">{{ $subCategory->created_at->format('M, j Y') }}</x-table.td>
                                         <x-table.actions-td class="w-[300px]">
                                             <x-table.view-button
-                                                href="{{ route('dashboard.categories.show', $subCategory) }}" />
+                                                href="{{ route('admin.categories.show', $subCategory) }}" />
                                             <x-table.edit-button
-                                                href="{{ route('dashboard.categories.edit', $subCategory) }}" />
+                                                href="{{ route('admin.categories.edit', $subCategory) }}" />
                                             <x-table.delete-button
-                                                href="{{ route('dashboard.categories.destroy', $subCategory) }}"
+                                                href="{{ route('admin.categories.destroy', $subCategory) }}"
                                                 confirm="Are you sure?" />
                                         </x-table.actions-td>
                                     </x-table.tr>

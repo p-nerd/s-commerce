@@ -1,6 +1,6 @@
 <x-dashboard-layout>
     <x-slot name="back">
-        {{ route('dashboard.products') }}
+        {{ route('admin.products') }}
     </x-slot>
     <x-slot name="header">
         <x-dash.title>
@@ -27,12 +27,12 @@
             <x-show.item label="Stock">{{ $product->stock }}</x-show.item>
             <x-show.item label="Category">
                 @if ($product->category->parent)
-                    <x-dash.anchor-link href="{{ route('dashboard.categories.show', $product->category->parent) }}">
+                    <x-dash.anchor-link href="{{ route('admin.categories.show', $product->category->parent) }}">
                         {{ $product->category->parent->name }}
                     </x-dash.anchor-link>
                     >
                 @endif
-                <x-dash.anchor-link href="{{ route('dashboard.categories.show', $product->category) }}">
+                <x-dash.anchor-link href="{{ route('admin.categories.show', $product->category) }}">
                     {{ $product->category->name }}
                 </x-dash.anchor-link>
             </x-show.item>

@@ -1,6 +1,6 @@
 <x-dashboard-layout>
     <x-slot name="back">
-        {{ route('dashboard.products') }}
+        {{ route('admin.products') }}
     </x-slot>
     <x-slot name="header">
         <x-dash.title>
@@ -8,7 +8,7 @@
         </x-dash.title>
     </x-slot>
 
-    <x-form.form method="PATCH" action="{{ route('dashboard.products.update', $product) }}" confirm="Are you sure?">
+    <x-form.form method="PATCH" action="{{ route('admin.products.update', $product) }}" confirm="Are you sure?">
         <x-form.text name="name" label="Name" value="{{ $product->name }}" required autofocus />
         <x-form.textarea name="short_description" value="{{ $product->short_description }}" label="Short Description"
             required />

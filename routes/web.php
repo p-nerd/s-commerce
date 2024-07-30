@@ -1,5 +1,9 @@
 <?php
 
+use App\Http\Controllers\Admin\CategoryController as AdminCategoryController;
+use App\Http\Controllers\Admin\OrderController as AdminOrderController;
+use App\Http\Controllers\Admin\ProductController as AdminProductController;
+use App\Http\Controllers\Admin\UserController as AdminUserController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Auth\ConfirmablePasswordController;
 use App\Http\Controllers\Auth\EmailVerificationNotificationController;
@@ -9,48 +13,70 @@ use App\Http\Controllers\Auth\PasswordController;
 use App\Http\Controllers\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\Auth\VerifyEmailController;
-use App\Http\Controllers\CategoryController;
-use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Store\AccountController;
 use App\Http\Controllers\Store\CartController;
 use App\Http\Controllers\Store\CheckoutController;
 use App\Http\Controllers\Store\HomeController;
-use App\Http\Controllers\Store\ProductController as StoreProductController;
+use App\Http\Controllers\Store\ProductController;
 use Illuminate\Support\Facades\Route;
 
 // store routes
-Route::get('/', [HomeController::class, 'index'])->name('index');
+Route::get('/', [HomeController::class, 'index'])
+    ->name('index');
 
 Route::prefix('/products')->group(function () {
-    Route::get('/', [StoreProductController::class, 'index'])->name('products');
-    Route::get('/{slug}', [StoreProductController::class, 'show'])->name('products.show');
+    Route::get('/', [ProductController::class, 'index'])
+        ->name('products');
+    Route::get('/{slug}', [ProductController::class, 'show'])
+        ->name('products.show');
 });
 
 Route::prefix('/cart')->group(function () {
-    Route::get('/', [CartController::class, 'index'])->name('cart');
-    Route::post('/', [CartController::class, 'store'])->name('cart.store');
-    Route::patch('/', [CartController::class, 'update'])->name('cart.update');
-    Route::delete('/{id}', [CartController::class, 'destroy'])->name('cart.destroy');
+
+    Route::get('/', [CartController::class, 'index'])
+        ->name('cart');
+    Route::post('/', [CartController::class, 'store'])
+        ->name('cart.store');
+
+    Route::patch('/', [CartController::class, 'update'])
+        ->name('cart.update');
+
+    Route::delete('/{id}', [CartController::class, 'destroy'])
+        ->name('cart.destroy');
 });
 
 Route::prefix('/checkout')->group(function () {
-    Route::get('/', [CheckoutController::class, 'index'])->name('checkout')->middleware(['auth']);
-    Route::post('/coupon', [CheckoutController::class, 'coupon'])->name('checkout.coupon')->middleware(['auth']);
-    Route::post('/', [CheckoutController::class, 'store'])->name('checkout.store')->middleware(['auth']);
+    Route::get('/', [CheckoutController::class, 'index'])
+        ->name('checkout')
+        ->middleware(['auth']);
+    Route::post('/', [CheckoutController::class, 'store'])
+        ->name('checkout.store')
+        ->middleware(['auth']);
+    Route::post('/coupon', [CheckoutController::class, 'coupon'])
+        ->name('checkout.coupon')
+        ->middleware(['auth']);
 
-    Route::post('/sslcommerz/success', [CheckoutController::class, 'success'])->name('checkout.sslcommerz.success');
-    Route::post('/sslcommerz/failure', [CheckoutController::class, 'failure'])->name('checkout.sslcommerz.failure');
-    Route::post('/sslcommerz/cancel', [CheckoutController::class, 'cancel'])->name('checkout.sslcommerz.cancel');
-    Route::post('/sslcommerz/ipn', [CheckoutController::class, 'ipn'])->name('checkout.sslcommerz.ipn');
+    Route::post('/sslcommerz/success', [CheckoutController::class, 'success'])
+        ->name('checkout.sslcommerz.success');
+    Route::post('/sslcommerz/failure', [CheckoutController::class, 'failure'])
+        ->name('checkout.sslcommerz.failure');
+    Route::post('/sslcommerz/cancel', [CheckoutController::class, 'cancel'])
+        ->name('checkout.sslcommerz.cancel');
+    Route::post('/sslcommerz/ipn', [CheckoutController::class, 'ipn'])
+        ->name('checkout.sslcommerz.ipn');
 });
 
 Route::prefix('/account')->middleware(['auth'])->group(function () {
-    Route::get('/', [AccountController::class, 'index'])->name('account');
+    Route::get('/', [AccountController::class, 'index'])
+        ->name('account');
 
-    Route::get('/orders', [AccountController::class, 'orders'])->name('account.orders');
-    Route::get('/orders/{order}', [AccountController::class, 'ordersShow'])->name('account.orders.show');
-    Route::get('/orders/{order}/invoice', [AccountController::class, 'ordersInvoice'])->name('account.orders.invoice');
+    Route::get('/orders', [AccountController::class, 'orders'])
+        ->name('account.orders');
+    Route::get('/orders/{order}', [AccountController::class, 'ordersShow'])
+        ->name('account.orders.show');
+    Route::get('/orders/{order}/invoice', [AccountController::class, 'ordersInvoice'])
+        ->name('account.orders.invoice');
 
     Route::get('/addresses', [AccountController::class, 'addresses'])
         ->name('account.addresses');
@@ -63,56 +89,96 @@ Route::prefix('/account')->middleware(['auth'])->group(function () {
     Route::patch('/addresses/shipping', [AccountController::class, 'addressesShippingUpdate'])
         ->name('account.addresses.shipping.update');
 
-    Route::get('/details', [AccountController::class, 'details'])->name('account.details');
-    Route::patch('/details', [AccountController::class, 'detailsUpdate'])->name('account.details.update');
+    Route::get('/details', [AccountController::class, 'details'])
+        ->name('account.details');
+    Route::patch('/details', [AccountController::class, 'detailsUpdate'])
+        ->name('account.details.update');
 });
 
-Route::middleware([])->group(function () {
-    Route::get('/about', fn () => view('store/about'))->name('about');
-    Route::get('/contact', fn () => view('store/contact'));
-    Route::get('/store-login', fn () => view('store/login'));
-    Route::get('/store-register', fn () => view('store/register'));
-    Route::get('/store-forgot-password', fn () => view('store/forgot-password'));
-    Route::get('/store-reset-password', fn () => view('store/reset-password'));
-    Route::get('/purchase-guide', fn () => view('store/purchase-guide'));
-    Route::get('/privacy-policy', fn () => view('store/privacy-policy'));
-    Route::get('/terms', fn () => view('store/terms'));
-    Route::get('/404', fn () => view('store/404'));
-});
-
-// dashboard routes
-Route::prefix('/dashboard')->middleware(['auth', 'verified'])->group(function () {
+// admin routes
+Route::prefix('/admin')->middleware(['auth', 'verified'])->group(function () {
     Route::get('/', fn () => view('dashboard/index'))->name('dashboard');
 
+    Route::prefix('/users')->group(function () {
+        Route::get('/create', [AdminUserController::class, 'create'])
+            ->name('admin.users.create');
+        Route::post('/', [AdminUserController::class, 'store'])
+            ->name('admin.users.store');
+
+        Route::get('/', [AdminUserController::class, 'index'])
+            ->name('admin.users');
+        Route::get('/{user}', [AdminUserController::class, 'show'])
+            ->name('admin.users.show');
+
+        Route::get('/{user}/edit', [AdminUserController::class, 'edit'])
+            ->name('admin.users.edit');
+        Route::patch('/{user}', [AdminUserController::class, 'update'])
+            ->name('admin.users.update');
+
+        Route::delete('/{user}', [AdminUserController::class, 'destroy'])
+            ->name('admin.users.destroy');
+    });
+
     Route::prefix('/categories')->group(function () {
+        Route::get('/create', [AdminCategoryController::class, 'create'])
+            ->name('admin.categories.create');
+        Route::post('/', [AdminCategoryController::class, 'store'])
+            ->name('admin.categories.store');
 
-        Route::get('/create', [CategoryController::class, 'create'])->name('dashboard.categories.create');
-        Route::post('/', [CategoryController::class, 'store'])->name('dashboard.categories.store');
+        Route::get('/', [AdminCategoryController::class, 'index'])
+            ->name('admin.categories');
+        Route::get('/{category}/sub-categories', [AdminCategoryController::class, 'subCategories'])
+            ->name('admin.categories.sub-categories');
+        Route::get('/{category}', [AdminCategoryController::class, 'show'])
+            ->name('admin.categories.show');
 
-        Route::get('/', [CategoryController::class, 'index'])->name('dashboard.categories');
-        Route::get('/{category}/sub-categories', [CategoryController::class, 'subCategories'])->name('dashboard.categories.sub-categories');
-        Route::get('/{category}', [CategoryController::class, 'show'])->name('dashboard.categories.show');
+        Route::get('/{category}/edit', [AdminCategoryController::class, 'edit'])
+            ->name('admin.categories.edit');
+        Route::patch('/{category}', [AdminCategoryController::class, 'update'])
+            ->name('admin.categories.update');
 
-        Route::get('/{category}/edit', [CategoryController::class, 'edit'])->name('dashboard.categories.edit');
-        Route::patch('/{category}', [CategoryController::class, 'update'])->name('dashboard.categories.update');
-
-        Route::delete('/{category}', [CategoryController::class, 'destroy'])->name('dashboard.categories.destroy');
-
+        Route::delete('/{category}', [AdminCategoryController::class, 'destroy'])
+            ->name('admin.categories.destroy');
     });
 
     Route::prefix('/products')->group(function () {
+        Route::get('/create', [AdminProductController::class, 'create'])
+            ->name('admin.products.create');
+        Route::post('/', [AdminProductController::class, 'store'])
+            ->name('admin.products.store');
 
-        Route::get('/create', [ProductController::class, 'create'])->name('dashboard.products.create');
-        Route::post('/', [ProductController::class, 'store'])->name('dashboard.products.store');
+        Route::get('/', [AdminProductController::class, 'index'])
+            ->name('admin.products');
+        Route::get('/{product}', [AdminProductController::class, 'show'])
+            ->name('admin.products.show');
 
-        Route::get('/', [ProductController::class, 'index'])->name('dashboard.products');
-        Route::get('/{product}', [ProductController::class, 'show'])->name('dashboard.products.show');
+        Route::get('/{product}/edit', [AdminProductController::class, 'edit'])
+            ->name('admin.products.edit');
+        Route::patch('/{product}', [AdminProductController::class, 'update'])
+            ->name('admin.products.update');
 
-        Route::get('/{product}/edit', [ProductController::class, 'edit'])->name('dashboard.products.edit');
-        Route::patch('/{product}', [ProductController::class, 'update'])->name('dashboard.products.update');
+        Route::delete('/{product}', [AdminProductController::class, 'destroy'])
+            ->name('admin.products.destroy');
+    });
 
-        Route::delete('/{product}', [ProductController::class, 'destroy'])->name('dashboard.products.destroy');
+    Route::prefix('/orders')->group(function () {
+        Route::get('/create', [AdminOrderController::class, 'create'])
+            ->name('admin.orders.create');
+        Route::post('/', [AdminOrderController::class, 'store'])
+            ->name('admin.orders.store');
 
+        Route::get('/', [AdminOrderController::class, 'index'])
+            ->name('admin.orders');
+        Route::get('/{product}', [AdminOrderController::class, 'show'])
+            ->name('admin.orders.show');
+
+        Route::get('/{product}/edit', [AdminOrderController::class, 'edit'])
+            ->name('admin.orders.edit');
+        Route::patch('/{product}', [AdminOrderController::class, 'update'])
+            ->name('admin.orders.update');
+
+        Route::delete('/{product}', [AdminOrderController::class, 'destroy'])
+            ->name('admin.orders.destroy');
     });
 });
 
@@ -168,4 +234,19 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
+
+// todo
+
+Route::middleware([])->group(function () {
+    Route::get('/about', fn () => view('store/about'))->name('about');
+    Route::get('/contact', fn () => view('store/contact'));
+    Route::get('/store-login', fn () => view('store/login'));
+    Route::get('/store-register', fn () => view('store/register'));
+    Route::get('/store-forgot-password', fn () => view('store/forgot-password'));
+    Route::get('/store-reset-password', fn () => view('store/reset-password'));
+    Route::get('/purchase-guide', fn () => view('store/purchase-guide'));
+    Route::get('/privacy-policy', fn () => view('store/privacy-policy'));
+    Route::get('/terms', fn () => view('store/terms'));
+    Route::get('/404', fn () => view('store/404'));
 });

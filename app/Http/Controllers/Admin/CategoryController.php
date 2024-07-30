@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use App\Models\Category;
 use Illuminate\Http\Request;
 
@@ -20,7 +21,7 @@ class CategoryController extends Controller
         $query = Category::query()->with('subCategories')->where('parent_id', null);
 
         if ($search) {
-            $query->where('name', 'like', '%'.$search.'%');
+            $query->where('name', 'like', '%' . $search . '%');
         }
 
         $categories = $query
@@ -43,7 +44,7 @@ class CategoryController extends Controller
         $query = $category->subCategories()->with('subCategories');
 
         if ($search) {
-            $query->where('name', 'like', '%'.$search.'%');
+            $query->where('name', 'like', '%' . $search . '%');
         }
 
         $categories = $query
@@ -83,7 +84,7 @@ class CategoryController extends Controller
             'slug' => Category::generateSlug($payload['name']),
         ]);
 
-        return to_route('dashboard.categories')->with(['success' => 'Category created.']);
+        return to_route('admin.categories')->with(['success' => 'Category created.']);
     }
 
     public function show(Category $category)
@@ -122,7 +123,7 @@ class CategoryController extends Controller
 
         $category->update($payload);
 
-        return to_route('dashboard.categories')->with(['success' => 'Category updated.']);
+        return to_route('admin.categories')->with(['success' => 'Category updated.']);
     }
 
     /**
@@ -132,6 +133,6 @@ class CategoryController extends Controller
     {
         $category->delete();
 
-        return to_route('dashboard.categories')->with(['success' => 'Category deleted.']);
+        return to_route('admin.categories')->with(['success' => 'Category deleted.']);
     }
 }

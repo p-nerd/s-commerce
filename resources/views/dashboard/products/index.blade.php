@@ -1,7 +1,7 @@
 <x-dashboard-layout>
     <x-slot name="header">
         <x-dash.title>Products</x-dash.title>
-        <x-dash.new-button href="{{ route('dashboard.products.create') }}">
+        <x-dash.new-button href="{{ route('admin.products.create') }}">
             Create new product
         </x-dash.new-button>
     </x-slot>
@@ -53,9 +53,9 @@
                         <x-table.td>{{ $product->category->name }}</x-table.td>
                         <x-table.td>{{ $product->stock }}</x-table.td>
                         <x-table.actions-td>
-                            <x-table.view-button href="{{ route('dashboard.products.show', $product) }}" />
-                            <x-table.edit-button href="{{ route('dashboard.products.edit', $product) }}" />
-                            <x-table.delete-button href="{{ route('dashboard.products.destroy', $product) }}"
+                            <x-table.view-button href="{{ route('admin.products.show', $product) }}" />
+                            <x-table.edit-button href="{{ route('admin.products.edit', $product) }}" />
+                            <x-table.delete-button href="{{ route('admin.products.destroy', $product) }}"
                                 confirm="Are you sure?" />
                         </x-table.actions-td>
                     </x-table.tr>

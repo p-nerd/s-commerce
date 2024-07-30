@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use App\Enums\ProductType;
+use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
@@ -22,7 +23,7 @@ class ProductController extends Controller
         $query = Product::with('category');
 
         if ($search) {
-            $query->where('name', 'like', '%'.$search.'%');
+            $query->where('name', 'like', '%' . $search . '%');
         }
 
         if ($sortBy === 'category') {
@@ -75,7 +76,7 @@ class ProductController extends Controller
             'slug' => Product::generateSlug($payload['name']),
         ]);
 
-        return to_route('dashboard.products')->with('success', 'Product created successfully.');
+        return to_route('admin.products')->with('success', 'Product created successfully.');
     }
 
     /**
@@ -121,7 +122,7 @@ class ProductController extends Controller
 
         $product->update($payload);
 
-        return to_route('dashboard.products')->with('success', 'Product updated successfully.');
+        return to_route('admin.products')->with('success', 'Product updated successfully.');
     }
 
     /**

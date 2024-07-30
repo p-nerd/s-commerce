@@ -1,6 +1,6 @@
 <x-dashboard-layout>
     <x-slot name="back">
-        {{ route('dashboard.categories') }}
+        {{ route('admin.categories') }}
     </x-slot>
     <x-slot name="header">
         <x-dash.title>
@@ -14,13 +14,13 @@
         @if ($parent)
             <x-show.item label="Parent Category">
                 <x-dash.anchor-link
-                    href="{{ route('dashboard.categories.show', $parent) }}">{{ $parent->name }}</x-dash.anchor-link>
+                    href="{{ route('admin.categories.show', $parent) }}">{{ $parent->name }}</x-dash.anchor-link>
             </x-show.item>
         @endif
         @if (count($subCategories) !== 0)
             <x-show.item label="Sub categories" class="flex gap-2">
                 @foreach ($subCategories as $key => $subCategory)
-                    <x-dash.anchor-link href="{{ route('dashboard.categories.show', $subCategory) }}">
+                    <x-dash.anchor-link href="{{ route('admin.categories.show', $subCategory) }}">
                         {{ $key !== count($subCategories) - 1 ? "{$subCategory->name}, " : $subCategory->name }}
                     </x-dash.anchor-link>
                 @endforeach
