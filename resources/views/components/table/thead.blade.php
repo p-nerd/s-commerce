@@ -1,3 +1,3 @@
-<thead class="{{ twMerge('', $attributes['class']) }}" {{ $attributes }}>
+<thead {{ $attributes }}>
     {{ $slot }}
 </thead>

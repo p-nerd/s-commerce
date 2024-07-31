@@ -11,11 +11,10 @@
     <x-dash.select-input
         id="{{ $name }}"
         name="{{ $name }}"
-        class="{{ twMerge('mt-1 block w-full', $attributes['class']) }}"
         placeholder="{{ $placeholder ?? 'Select option' }}"
         :value="old($name) ?? $value"
         :options="$options"
-        {{ $attributes }}
+        {{ $attributes->merge(['class' => 'mt-1 block w-full']) }}
     />
     <x-form.input-error :messages="$errors->get($name)" class="mt-2" />
 </div>

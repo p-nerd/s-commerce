@@ -1,11 +1,11 @@
 <?php
 
 $sortableIcon = '
-<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-3 w-3"><path d="m3 16 4 4 4-4"/><path d="M7 20V4"/><path d="m21 8-4-4-4 4"/><path d="M17 4v16"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-3 h-3"><path d="m3 16 4 4 4-4"/><path d="M7 20V4"/><path d="m21 8-4-4-4 4"/><path d="M17 4v16"/></svg>
 ';
 
 $ascIcon = '
-<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-3 w-3">
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-3 h-3">
     <path d="m3 16 4 4 4-4"/>
     <path d="M7 20V4"/>
     <path d="M11 4h4"/>
@@ -15,7 +15,7 @@ $ascIcon = '
 ';
 
 $descIcon = '
-<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-3 w-3">
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-3 h-3">
     <path d="m3 8 4-4 4 4"/>
     <path d="M7 4v16"/>
     <path d="M11 12h4"/>
@@ -39,8 +39,7 @@ $descIcon = '
 @endphp
 
 <th
-    class="{{ twMerge('border-r text-left align-middle font-medium', $attributes['class']) }}"
-    {{ $attributes }}
+    {{ $attributes->merge(['class' => 'border-r text-left align-middle font-medium'])}}
 >
     <form method="get" action="">
         @if ($search)

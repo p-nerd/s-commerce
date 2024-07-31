@@ -10,8 +10,7 @@
         id="{{ $name }}"
         name="{{ $name }}"
         autocomplete="{{ $name }}"
-        class="{{ twMerge('mt-1 h-[110px] w-full resize-y', $attributes['class']) }}"
-        {{ $attributes }}
+        {{ $attributes->merge(['class' => 'mt-1 h-[110px] w-full resize-y']) }}
     >
         {{ old($name) ?? $value }}
     </x-dash.textarea-input>

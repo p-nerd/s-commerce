@@ -1,6 +1,5 @@
 <td
-    class="{{ twMerge('border-r p-4 align-middle', $attributes['class']) }}"
-    {{ $attributes }}
->
+    {{ $attributes->merge(['class' => 'border-r p-4 align-middle'])}}
+    >
     {{ $slot }}
 </td>

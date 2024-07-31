@@ -1,27 +1,27 @@
-@props(["method" => "POST", "action" => "", "confirm" => null, "confirmText" => ""])
+@props(['method' => 'POST', 'action' => '', 'confirm' => null, 'confirmText' => ''])
+
+<script>
+    function handleSubmitFrom(event) {
+        event.preventDefault();
+        sweetalert({
+            title: '{{ $confirm }}',
+            text: '{{ $confirmText }}',
+            icon: 'warning',
+            dangerMode: true,
+            buttons: ['Cancel', 'Confirm'],
+        }).then((result) => {
+            if (result) {
+                event.target.submit();
+            }
+        });
+    }
+</script>
 
 <form
-    method="{{ strtoupper($method) === "GET" ? "GET" : "POST" }}"
+    method="{{ $method === 'GET' ? 'GET' : 'POST' }}"
     action="{{ $action }}"
-    class="{{ twMerge("rounded-lg bg-white p-5 shadow", $attributes["class"]) }}"
-    {{ $attributes }}
-    @if ($confirm)
-        onsubmit="
-                                                            event.preventDefault();
-                                                            sweetalert({
-                                                                title: '{{ $confirm }}',
-                                                                text: '{{ $confirmText }}',
-                                                                icon: 'warning',
-                                                                dangerMode: true,
-                                                                buttons: ['Cancel', 'Confirm'],
-                                                            })
-                                                            .then((result) => {
-                                                                if (result) {
-                                                                    this.submit();
-                                                                }
-                                                            });
-                                                        "
-    @endif
+    {{ $attributes->merge(['class' => 'rounded-lg bg-white p-5 shadow']) }}
+    onsubmit="{{ $confirm ? 'handleSubmitFrom(event)' : '' }}"
 >
     @csrf
     @method($method)

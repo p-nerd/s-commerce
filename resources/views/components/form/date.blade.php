@@ -12,8 +12,7 @@
         id="{{ $name }}"
         name="{{ $name }}"
         :value="old($name) ?? $value"
-        class="{{ twMerge('mt-1 block w-full', $attributes['class']) }}"
-        {{ $attributes }}
+        {{ $attributes->merge(['class' => 'mt-1 block w-full']) }}
     />
     <x-form.input-error :messages="$errors->get($name)" class="mt-2" />
 </div>
