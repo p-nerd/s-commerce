@@ -4,9 +4,20 @@
         <div class="price-filter-inner">
             <div id="slider-range" class="mb-20"></div>
             <div class="d-flex justify-content-between">
-                <div class="caption">From: <strong id="slider-range-value1" class="text-brand"></strong>
+                <div class="caption">
+                    From:
+                    <strong
+                        id="slider-range-value1"
+                        class="text-brand"
+                    ></strong>
                 </div>
-                <div class="caption">To: <strong id="slider-range-value2" class="text-brand"></strong></div>
+                <div class="caption">
+                    To:
+                    <strong
+                        id="slider-range-value2"
+                        class="text-brand"
+                    ></strong>
+                </div>
             </div>
         </div>
     </div>
@@ -19,12 +30,18 @@
 <script>
     const getPrice = (ranageText) => {
         return Number(ranageText.slice(1).replace(/,/g, ''));
-    }
+    };
 
     const handleFilter = () => {
-        updateProducts(addQuery({
-            "price_from": getPrice(document.querySelector("#slider-range-value1").innerText),
-            "price_to": getPrice(document.querySelector("#slider-range-value2").innerText)
-        }));
-    }
+        updateProducts(
+            addQuery({
+                price_from: getPrice(
+                    document.querySelector('#slider-range-value1').innerText,
+                ),
+                price_to: getPrice(
+                    document.querySelector('#slider-range-value2').innerText,
+                ),
+            }),
+        );
+    };
 </script>

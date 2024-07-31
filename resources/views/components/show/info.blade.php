@@ -1,4 +1,6 @@
-@props(['label'])
+@props([
+    'label',
+])
 
 <div class="w-full">
     <div class="w-full rounded border">

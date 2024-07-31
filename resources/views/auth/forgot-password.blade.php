@@ -12,9 +12,19 @@
         <!-- Email Address -->
         <div>
             <x-form.input-label for="email" :value="__('Email')" />
-            <x-shared.text-input id="email" class="mt-1 block w-full" type="email" name="email" :value="old('email')"
-                required autofocus />
-            <x-form.input-error :messages="$errors->get('email')" class="mt-2" />
+            <x-shared.text-input
+                id="email"
+                class="mt-1 block w-full"
+                type="email"
+                name="email"
+                :value="old('email')"
+                required
+                autofocus
+            />
+            <x-form.input-error
+                :messages="$errors->get('email')"
+                class="mt-2"
+            />
         </div>
 
         <div class="mt-4 flex items-center justify-end">

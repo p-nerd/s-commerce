@@ -1,4 +1,10 @@
-@props(['href', 'method' => 'GET', 'name', 'value', 'options'])
+@props([
+    'href',
+    'method' => 'GET',
+    'name',
+    'value',
+    'options',
+])
 
 <form
     action="{{ $href }}"

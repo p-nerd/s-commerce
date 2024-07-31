@@ -1,8 +1,8 @@
 @if (session()->get('error'))
     <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            $(document).ready(function() {
-                toastr.error("{{ session()->get('error') }}");
+        document.addEventListener('DOMContentLoaded', function () {
+            $(document).ready(function () {
+                toastr.error('{{ session()->get('error') }}');
             });
         });
     </script>
@@ -10,9 +10,9 @@
 
 @if (session()->get('success'))
     <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            $(document).ready(function() {
-                toastr.success("{{ session()->get('success') }}");
+        document.addEventListener('DOMContentLoaded', function () {
+            $(document).ready(function () {
+                toastr.success('{{ session()->get('success') }}');
             });
         });
     </script>

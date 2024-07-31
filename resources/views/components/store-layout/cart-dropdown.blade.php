@@ -6,6 +6,7 @@
             @php
                 $productLink = route('products.show', $item['productSlug']);
             @endphp
+
             <li>
                 <div class="shopping-cart-img">
                     <a href="{{ $productLink }}">
@@ -14,12 +15,20 @@
                 </div>
                 <div class="shopping-cart-title">
                     <h4>
-                        <a href="{{ $productLink }}">{{ $item['productName'] }}</a>
+                        <a href="{{ $productLink }}">
+                            {{ $item['productName'] }}
+                        </a>
                     </h4>
-                    <h4><span>{{ $item['quantity'] }} × </span>${{ $item['price'] }}</h4>
+                    <h4>
+                        <span>{{ $item['quantity'] }} ×</span>
+                        ${{ $item['price'] }}
+                    </h4>
                 </div>
                 <div class="shopping-cart-delete">
-                    <a id="delete-from-cart-button" data-cart-id="{{ $item['id'] }}">
+                    <a
+                        id="delete-from-cart-button"
+                        data-cart-id="{{ $item['id'] }}"
+                    >
                         <i class="fi-rs-cross-small"></i>
                     </a>
                 </div>
@@ -28,7 +37,10 @@
     </ul>
     <div class="shopping-cart-footer">
         <div class="shopping-cart-total">
-            <h4>Total <span>${{ $price }}</span></h4>
+            <h4>
+                Total
+                <span>${{ $price }}</span>
+            </h4>
         </div>
         <div class="shopping-cart-button">
             <a href="{{ route('cart') }}" class="outline">View cart</a>

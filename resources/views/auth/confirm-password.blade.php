@@ -10,10 +10,19 @@
         <div>
             <x-form.input-label for="password" :value="__('Password')" />
 
-            <x-shared.text-input id="password" class="mt-1 block w-full" type="password" name="password" required
-                autocomplete="current-password" />
+            <x-shared.text-input
+                id="password"
+                class="mt-1 block w-full"
+                type="password"
+                name="password"
+                required
+                autocomplete="current-password"
+            />
 
-            <x-form.input-error :messages="$errors->get('password')" class="mt-2" />
+            <x-form.input-error
+                :messages="$errors->get('password')"
+                class="mt-2"
+            />
         </div>
 
         <div class="mt-4 flex justify-end">

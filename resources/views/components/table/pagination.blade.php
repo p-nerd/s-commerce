@@ -1,4 +1,6 @@
-@props(['data'])
+@props([
+    'data',
+])
 
 <div>
     {{ $data->links() }}

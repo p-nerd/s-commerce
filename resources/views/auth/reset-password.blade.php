@@ -3,32 +3,68 @@
         @csrf
 
         <!-- Password Reset Token -->
-        <input type="hidden" name="token" value="{{ $request->route('token') }}">
+        <input
+            type="hidden"
+            name="token"
+            value="{{ $request->route('token') }}"
+        />
 
         <!-- Email Address -->
         <div>
             <x-form.input-label for="email" :value="__('Email')" />
-            <x-shared.text-input id="email" class="mt-1 block w-full" type="email" name="email" :value="old('email', $request->email)"
-                required autofocus autocomplete="username" />
-            <x-form.input-error :messages="$errors->get('email')" class="mt-2" />
+            <x-shared.text-input
+                id="email"
+                class="mt-1 block w-full"
+                type="email"
+                name="email"
+                :value="old('email', $request->email)"
+                required
+                autofocus
+                autocomplete="username"
+            />
+            <x-form.input-error
+                :messages="$errors->get('email')"
+                class="mt-2"
+            />
         </div>
 
         <!-- Password -->
         <div class="mt-4">
             <x-form.input-label for="password" :value="__('Password')" />
-            <x-shared.text-input id="password" class="mt-1 block w-full" type="password" name="password" required
-                autocomplete="new-password" />
-            <x-form.input-error :messages="$errors->get('password')" class="mt-2" />
+            <x-shared.text-input
+                id="password"
+                class="mt-1 block w-full"
+                type="password"
+                name="password"
+                required
+                autocomplete="new-password"
+            />
+            <x-form.input-error
+                :messages="$errors->get('password')"
+                class="mt-2"
+            />
         </div>
 
         <!-- Confirm Password -->
         <div class="mt-4">
-            <x-form.input-label for="password_confirmation" :value="__('Confirm Password')" />
+            <x-form.input-label
+                for="password_confirmation"
+                :value="__('Confirm Password')"
+            />
 
-            <x-shared.text-input id="password_confirmation" class="mt-1 block w-full" type="password"
-                name="password_confirmation" required autocomplete="new-password" />
+            <x-shared.text-input
+                id="password_confirmation"
+                class="mt-1 block w-full"
+                type="password"
+                name="password_confirmation"
+                required
+                autocomplete="new-password"
+            />
 
-            <x-form.input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
+            <x-form.input-error
+                :messages="$errors->get('password_confirmation')"
+                class="mt-2"
+            />
         </div>
 
         <div class="mt-4 flex items-center justify-end">

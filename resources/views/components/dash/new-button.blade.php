@@ -1,4 +1,6 @@
-@props(['href'])
+@props([
+    'href',
+])
 
 <x-dash.link-button href="{{ $href }}" class="bg-green-500 text-white">
     {{ $slot }}

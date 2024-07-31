@@ -4,13 +4,13 @@
             const products = document.querySelector('#products');
             const response = await fetch(url, {
                 headers: {
-                    "X-Type": "partial"
-                }
+                    'X-Type': 'partial',
+                },
             });
             const data = await response.text();
             products.innerHTML = data;
             history.pushState(null, '', url);
-        }
+        };
     </script>
     <main class="main mt-30 mb-50">
         <div class="mb-30 container">

@@ -188,61 +188,98 @@ $sidebarLinks = [
 
 ?>
 
-<aside id="sidebar"
-    class="transition-width fixed left-0 top-0 z-20 hidden h-full w-60 flex-shrink-0 flex-col pt-16 font-normal duration-75 lg:flex">
+<aside
+    id="sidebar"
+    class="transition-width fixed left-0 top-0 z-20 hidden h-full w-60 flex-shrink-0 flex-col pt-16 font-normal duration-75 lg:flex"
+>
     <div
-        class="relative flex min-h-0 flex-1 flex-col border-r border-gray-200 bg-white pt-0 dark:border-gray-700 dark:bg-gray-800">
+        class="relative flex min-h-0 flex-1 flex-col border-r border-gray-200 bg-white pt-0 dark:border-gray-700 dark:bg-gray-800"
+    >
         <div
-            class="overflow-y-autoscrollbar scrollbar-w-2 scrollbar-thumb-rounded-[0.1667rem] scrollbar-thumb-slate-200 scrollbar-track-gray-400 dark:scrollbar-thumb-slate-900 dark:scrollbar-track-gray-800 flex flex-1 flex-col pb-28 pt-5">
-            <div class="flex-1 space-y-1 divide-y divide-gray-200 bg-white px-3 dark:divide-gray-700 dark:bg-gray-800">
+            class="overflow-y-autoscrollbar scrollbar-w-2 scrollbar-thumb-rounded-[0.1667rem] scrollbar-thumb-slate-200 scrollbar-track-gray-400 dark:scrollbar-thumb-slate-900 dark:scrollbar-track-gray-800 flex flex-1 flex-col pb-28 pt-5"
+        >
+            <div
+                class="flex-1 space-y-1 divide-y divide-gray-200 bg-white px-3 dark:divide-gray-700 dark:bg-gray-800"
+            >
                 <ul class="space-y-2 pb-2">
                     <li>
                         <form action="#" method="GET" class="lg:hidden">
-                            <label for="mobile-search" class="sr-only">Search</label>
+                            <label for="mobile-search" class="sr-only">
+                                Search
+                            </label>
                             <div class="relative">
-                                <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
-                                    <svg class="h-5 w-5 text-gray-500" fill="currentColor" viewBox="0 0 20 20"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path fill-rule="evenodd"
+                                <div
+                                    class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3"
+                                >
+                                    <svg
+                                        class="h-5 w-5 text-gray-500"
+                                        fill="currentColor"
+                                        viewBox="0 0 20 20"
+                                        xmlns="http://www.w3.org/2000/svg"
+                                    >
+                                        <path
+                                            fill-rule="evenodd"
                                             d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
-                                            clip-rule="evenodd"></path>
+                                            clip-rule="evenodd"
+                                        ></path>
                                     </svg>
                                 </div>
-                                <input type="text" name="email" id="mobile-search"
+                                <input
+                                    type="text"
+                                    name="email"
+                                    id="mobile-search"
                                     class="focus:ring-primary-500 focus:border-primary-500 dark:focus:ring-primary-500 dark:focus:border-primary-500 block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 pl-10 text-sm text-gray-900 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-200 dark:placeholder-gray-400"
-                                    placeholder="Search" />
+                                    placeholder="Search"
+                                />
                             </div>
                         </form>
                     </li>
                     @foreach ($sidebarLinks as $link)
                         @if (isset($link['subLinks']))
-                            <li x-data="{ open: {{ !!array_filter($link['subLinks'], fn($sublink) => $sublink['href'] === request()->url()) ? 'true' : 'false' }} }">
-                                <button @click="open = !open" type="button"
-                                    class="group flex w-full items-center rounded-lg p-2 text-base text-gray-900 transition duration-75 hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-700">
+                            <li
+                                x-data="{
+                                    open: {{ ! ! array_filter($link['subLinks'], fn ($sublink) => $sublink['href'] === request()->url()) ? 'true' : 'false' }},
+                                }"
+                            >
+                                <button
+                                    @click="open = !open"
+                                    type="button"
+                                    class="group flex w-full items-center rounded-lg p-2 text-base text-gray-900 transition duration-75 hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-700"
+                                >
                                     {!! $link['icon'] !!}
-                                    <span class="ml-3 flex-1 whitespace-nowrap text-left"
-                                        sidebar-toggle-item>{{ $link['label'] }}</span>
-                                    <svg sidebar-toggle-item class="h-6 w-6" fill="currentColor" viewBox="0 0 20 20"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path fill-rule="evenodd"
+                                    <span
+                                        class="ml-3 flex-1 whitespace-nowrap text-left"
+                                        sidebar-toggle-item
+                                    >
+                                        {{ $link['label'] }}
+                                    </span>
+                                    <svg
+                                        sidebar-toggle-item
+                                        class="h-6 w-6"
+                                        fill="currentColor"
+                                        viewBox="0 0 20 20"
+                                        xmlns="http://www.w3.org/2000/svg"
+                                    >
+                                        <path
+                                            fill-rule="evenodd"
                                             d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                                            clip-rule="evenodd"></path>
+                                            clip-rule="evenodd"
+                                        ></path>
                                     </svg>
                                 </button>
                                 <ul x-show="open" class="space-y-2 py-2">
                                     @foreach ($link['subLinks'] as $subLink)
                                         <li>
-                                            <a href="{{ $subLink['href'] }}"
-                                                class="{{ request()->url() === $subLink['href'] ? 'bg-gray-100' : '' }} group flex items-center space-x-2 rounded-lg p-2 pl-11 text-base text-gray-900 transition duration-75 hover:bg-gray-100">
-
+                                            <a
+                                                href="{{ $subLink['href'] }}"
+                                                class="{{ request()->url() === $subLink['href'] ? 'bg-gray-100' : '' }} group flex items-center space-x-2 rounded-lg p-2 pl-11 text-base text-gray-900 transition duration-75 hover:bg-gray-100"
+                                            >
                                                 <span>
-
                                                     {!! $subLink['icon'] !!}
                                                 </span>
                                                 <span>
                                                     {{ $subLink['label'] }}
                                                 </span>
-
                                             </a>
                                         </li>
                                     @endforeach
@@ -250,11 +287,14 @@ $sidebarLinks = [
                             </li>
                         @else
                             <li>
-                                <a href="{{ $link['href'] }}"
-                                    class="{{ request()->url() === $link['href'] ? 'bg-gray-100' : '' }} group flex items-center rounded-lg p-2 text-base text-gray-900 hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-700">
-
+                                <a
+                                    href="{{ $link['href'] }}"
+                                    class="{{ request()->url() === $link['href'] ? 'bg-gray-100' : '' }} group flex items-center rounded-lg p-2 text-base text-gray-900 hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-700"
+                                >
                                     {!! $link['icon'] !!}
-                                    <span class="ml-3" sidebar-toggle-item>{{ $link['label'] }}</span>
+                                    <span class="ml-3" sidebar-toggle-item>
+                                        {{ $link['label'] }}
+                                    </span>
                                 </a>
                             </li>
                         @endif
@@ -265,5 +305,7 @@ $sidebarLinks = [
     </div>
 </aside>
 
-<div class="fixed inset-0 z-10 hidden bg-gray-900/50 dark:bg-gray-900/90" id="sidebarBackdrop">
-</div>
+<div
+    class="fixed inset-0 z-10 hidden bg-gray-900/50 dark:bg-gray-900/90"
+    id="sidebarBackdrop"
+></div>

@@ -9,11 +9,23 @@
         </p>
     </header>
 
-    <x-dash.danger-button x-data=""
-        x-on:click.prevent="$dispatch('open-modal', 'confirm-user-deletion')">{{ __('Delete Account') }}</x-dash.danger-button>
+    <x-dash.danger-button
+        x-data=""
+        x-on:click.prevent="$dispatch('open-modal', 'confirm-user-deletion')"
+    >
+        {{ __('Delete Account') }}
+    </x-dash.danger-button>
 
-    <x-dash.modal name="confirm-user-deletion" :show="$errors->userDeletion->isNotEmpty()" focusable>
-        <form method="post" action="{{ route('profile.destroy') }}" class="p-6">
+    <x-dash.modal
+        name="confirm-user-deletion"
+        :show="$errors->userDeletion->isNotEmpty()"
+        focusable
+    >
+        <form
+            method="post"
+            action="{{ route('profile.destroy') }}"
+            class="p-6"
+        >
             @csrf
             @method('delete')
 
@@ -26,12 +38,24 @@
             </p>
 
             <div class="mt-6">
-                <x-form.input-label for="password" value="{{ __('Password') }}" class="sr-only" />
+                <x-form.input-label
+                    for="password"
+                    value="{{ __('Password') }}"
+                    class="sr-only"
+                />
 
-                <x-shared.text-input id="password" name="password" type="password" class="mt-1 block w-3/4"
-                    placeholder="{{ __('Password') }}" />
+                <x-shared.text-input
+                    id="password"
+                    name="password"
+                    type="password"
+                    class="mt-1 block w-3/4"
+                    placeholder="{{ __('Password') }}"
+                />
 
-                <x-form.input-error :messages="$errors->userDeletion->get('password')" class="mt-2" />
+                <x-form.input-error
+                    :messages="$errors->userDeletion->get('password')"
+                    class="mt-2"
+                />
             </div>
 
             <div class="mt-6 flex justify-end">

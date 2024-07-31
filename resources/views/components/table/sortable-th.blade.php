@@ -26,7 +26,9 @@ $descIcon = '
 
 ?>
 
-@props(['name'])
+@props([
+    'name',
+])
 
 @php
     $search = request()->query('search');
@@ -36,22 +38,34 @@ $descIcon = '
     $order = request()->query('order');
 @endphp
 
-<th class="{{ twMerge('border-r text-left align-middle font-medium', $attributes['class']) }}" {{ $attributes }}>
+<th
+    class="{{ twMerge('border-r text-left align-middle font-medium', $attributes['class']) }}"
+    {{ $attributes }}
+>
     <form method="get" action="">
         @if ($search)
             <input type="hidden" name="search" value="{{ $search }}" />
         @endif
+
         <input type="hidden" name="sort_by" value="{{ $name }}" />
-        <input type="hidden" name="order" value="{{ $sort_by === $name && $order === 'asc' ? 'desc' : 'asc' }}" />
+        <input
+            type="hidden"
+            name="order"
+            value="{{ $sort_by === $name && $order === 'asc' ? 'desc' : 'asc' }}"
+        />
         @if ($page)
             <input type="hidden" name="page" value="{{ $page }}" />
         @endif
-        <button type="submit" {{ $attributes->merge(['class' => 'h-12 px-4 flex items-center space-x-1']) }}>
+
+        <button
+            type="submit"
+            {{ $attributes->merge(['class' => 'h-12 px-4 flex items-center space-x-1']) }}
+        >
             <span class="flex text-start">{{ $slot }}</span>
             <span>
                 @if ($sort_by !== $name)
                     {!! $sortableIcon !!}
-                @elseif($order === 'asc')
+                @elseif ($order === 'asc')
                     {!! $ascIcon !!}
                 @else
                     {!! $descIcon !!}
