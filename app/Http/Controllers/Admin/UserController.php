@@ -32,6 +32,7 @@ class UserController extends Controller
 
         return view('admin/users/index', [
             'users' => $users,
+            'statuses' => UserStatus::options(),
         ]);
     }
 
@@ -53,7 +54,7 @@ class UserController extends Controller
 
         $user->fill($payload)->save();
 
-        return go()->with('success', 'User updated successfully');
+        return response()->json(['success' => 'User updated successfully']);
     }
 
     public function destroy(User $user)

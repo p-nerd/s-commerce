@@ -8,7 +8,7 @@
                 <x-show.line label="Role">
                     {{ $user->role->capitalized() }}
                 </x-show.line>
-                <x-show.line label="Status">
+                <x-show.line label="Status" class="flex items-center space-x-2">
                     <x-show.change-select
                         href="{{ route('admin.users.update', $user) }}"
                         method="PATCH"

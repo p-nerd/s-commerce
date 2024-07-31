@@ -51,7 +51,15 @@
                         <x-table.td>{{ $user->name }}</x-table.td>
                         <x-table.td>{{ $user->email }}</x-table.td>
                         <x-table.td>{{ $user->role }}</x-table.td>
-                        <x-table.td>{{ $user->status }}</x-table.td>
+                        <x-table.td>
+                            <x-show.change-select
+                                name="status"
+                                method="PATCH"
+                                :href="route('admin.users.update', $user)"
+                                :value="$user->status->value"
+                                :options="$statuses"
+                            />
+                        </x-table.td>
                         <x-table.td>
                             {{ $user->created_at->format('d M, Y h:m:s') }}
                         </x-table.td>
