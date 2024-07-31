@@ -36,19 +36,14 @@
                     </div>
                     @isset($back)
                         <div class="flex py-8">
-                            <a
-                                href="{{ $back }}"
-                                class="rounded-md bg-gray-700 px-3 py-2 text-white"
-                            >
-                                Go Back
-                            </a>
+                            <x-dash.back href="{{ $back }}" />
                         </div>
                     @endisset
                 </main>
             </div>
         </div>
 
-        <x-dash.success-message />
+        <x-dash.flash-messages />
 
         <script src="https://cdn.jsdelivr.net/npm/flowbite@2.4.1/dist/flowbite.min.js"></script>
     </body>

@@ -1,36 +1,20 @@
 @props([
-    "href",
-    "label" => null,
-    "confirm" => null,
-    "confirmText" => "",
+    'href',
+    'label' => null,
+    'confirm' => null,
+    'confirmText' => '',
 ])
 
 <form
     method="POST"
     action="{{ $href }}"
-    @if ($confirm)
-        onsubmit="
-                                                            event.preventDefault();
-                                                            sweetalert({
-                                                                title: '{{ $confirm }}',
-                                                                text: '{{ $confirmText }}',
-                                                                icon: 'warning',
-                                                                dangerMode: true,
-                                                                buttons: ['Cancel', 'Confirm'],
-                                                            })
-                                                            .then((result) => {
-                                                                if (result) {
-                                                                    this.submit();
-                                                                }
-                                                            });
-                                                        "
-    @endif
+    onsubmit="{{ $confirm ? 'handleDeleteSubmit()' : '' }} "
 >
     @csrf
-    @method("delete")
+    @method('delete')
     <button
         type="submit"
-        class="{{ twMerge("inline-flex w-full items-center justify-start whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-9 rounded-md px-3 bg-red-500 text-white space-x-1", $attributes["class"]) }}"
+        class="{{ twMerge('inline-flex w-full items-center justify-start whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-9 rounded-md px-3 bg-red-500 text-white space-x-1', $attributes['class']) }}"
         {{ $attributes }}
     >
         <svg
@@ -56,3 +40,20 @@
         @endif
     </button>
 </form>
+
+<script>
+    function handleDeleteSubmit(event) {
+        event.preventDefault();
+        sweetalert({
+            title: '{{ $confirm }}',
+            text: '{{ $confirmText }}',
+            icon: 'warning',
+            dangerMode: true,
+            buttons: ['Cancel', 'Confirm'],
+        }).then((result) => {
+            if (result) {
+                event.target.submit();
+            }
+        });
+    }
+</script>

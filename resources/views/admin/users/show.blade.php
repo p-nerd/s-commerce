@@ -1,7 +1,4 @@
 <x-admin-layout>
-    <x-slot name="back">
-        {{ route('admin.users') }}
-    </x-slot>
     <div class="mt-5 flex w-full space-x-5">
         <div class="w-full space-y-5">
             <x-show.info label="User Details">
@@ -97,5 +94,13 @@
                 @endforeach
             </x-show.info>
         </div>
+    </div>
+    <div class="flex justify-between py-5">
+        <x-dash.back :href="route('admin.users')" />
+        <x-table.delete-button
+            label="Delete"
+            confirm="Are you sure? you are delete user #{{ $user->id }}"
+            :href="route('admin.users.destroy', [$user,  'redirect' => route('admin.users')])"
+        />
     </div>
 </x-admin-layout>

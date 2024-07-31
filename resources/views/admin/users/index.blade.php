@@ -59,9 +59,6 @@
                             <x-table.view-button
                                 href="{{ route('admin.users.show', $user) }}"
                             />
-                            <x-table.edit-button
-                                href="{{ route('admin.users.edit', $user) }}"
-                            />
                             <x-table.delete-button
                                 href="{{ route('admin.users.destroy', $user) }}"
                                 confirm="Are you sure?"
