@@ -8,7 +8,20 @@
 <form
     method="POST"
     action="{{ $href }}"
-    onsubmit="{{ $confirm ? 'handleDeleteSubmit()' : '' }} "
+    onsubmit="
+        event.preventDefault();
+        sweetalert({
+            title: '{{ $confirm }}',
+            text: '{{ $confirmText }}',
+            icon: 'warning',
+            dangerMode: true,
+            buttons: ['Cancel', 'Confirm'],
+        }).then((result) => {
+            if (result) {
+                event.target.submit();
+            }
+        });
+    "
 >
     @csrf
     @method('delete')
@@ -39,20 +52,3 @@
         @endif
     </button>
 </form>
-
-<script>
-    function handleDeleteSubmit(event) {
-        event.preventDefault();
-        sweetalert({
-            title: '{{ $confirm }}',
-            text: '{{ $confirmText }}',
-            icon: 'warning',
-            dangerMode: true,
-            buttons: ['Cancel', 'Confirm'],
-        }).then((result) => {
-            if (result) {
-                event.target.submit();
-            }
-        });
-    }
-</script>
