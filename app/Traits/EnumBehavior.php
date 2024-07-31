@@ -18,4 +18,9 @@ trait EnumBehavior
             ])
             ->toArray();
     }
+
+    public function capitalized()
+    {
+        return ucwords($this->value);
+    }
 }

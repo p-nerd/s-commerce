@@ -71,8 +71,30 @@
                 <div>{{ $user->name }}</div>
                 <div>{{ $user->email }}</div>
             </div>
-            <x-show.info label="Orders">
-                <x-show.line>Order #1</x-show.line>
+            <x-show.info label="Orders ({{ count($orders) }})">
+                @foreach ($orders as $order)
+                    <x-show.line class="flex items-center justify-between">
+                        <div>
+                            <span class="font-medium">Order</span>
+                            <a
+                                href="{{ route('admin.orders.show', $order) }}"
+                                class="underline"
+                            >
+                                #{{ $order->id }}
+                            </a>
+                            ,
+                            <span class="font-medium">Total:</span>
+                            {{ $order->total }},
+                            <span class="font-medium">Is Paid:</span>
+                            {{ $order->paid ? 'Yes' : 'No' }},
+                            <span class="font-medium">Status:</span>
+                            {{ $order->status->capitalized() }}
+                        </div>
+                        <x-table.view-button
+                            href="{{ route('admin.orders.show', $order) }}"
+                        />
+                    </x-show.line>
+                @endforeach
             </x-show.info>
         </div>
     </div>

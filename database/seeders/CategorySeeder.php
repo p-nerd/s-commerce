@@ -9,25 +9,13 @@ use Illuminate\Database\Seeder;
 
 class CategorySeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     */
     public function run(): void
     {
-        // Create root categories
         $category = Category::factory()->count(10)->create();
 
-        Category::factory()->count(30)->create([
-            'parent_id' => fn () => $category->random()->id,
-        ]);
-
-        Category::factory()->count(30)->create([
-            'parent_id' => fn () => $category->random()->id,
-        ]);
-
-        Category::factory()->count(30)->create([
-            'parent_id' => fn () => $category->random()->id,
-        ]);
-
+        // create sub-categories
+        Category::factory()->count(90)->create([
+            'parent_id' => fn () => $category->random()->id]
+        );
     }
 }

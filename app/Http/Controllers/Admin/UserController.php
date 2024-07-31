@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Enums\UserRole;
+use App\Enums\UserStatus;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class UserController extends Controller
 {
@@ -40,15 +43,11 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(User $user)
-    {
-        //
+        return view('admin/users/show', [
+            'user' => $user,
+            'orders' => $user->orders,
+            'statuses' => UserStatus::options(),
+        ]);
     }
 
     /**
@@ -56,7 +55,14 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        //
+        $payload = $request->validate([
+            'role' => ['nullable', Rule::enum(UserRole::class)],
+            'status' => ['nullable', Rule::enum(UserStatus::class)],
+        ]);
+
+        $user->fill($payload)->save();
+
+        return go()->with('success', 'User updated successfully');
     }
 
     /**
@@ -64,6 +70,8 @@ class UserController extends Controller
      */
     public function destroy(User $user)
     {
-        //
+        $user->delete();
+
+        return go()->with('success', 'User deleted successfully');
     }
 }
