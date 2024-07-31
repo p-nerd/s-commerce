@@ -12,7 +12,7 @@
         id="{{ $name }}"
         name="{{ $name }}"
         :value="old($name) ?? $value"
-        {{ $attributes->merge(['class' => 'text-gray-700'])}}
+        {{ $attributes->merge(['class' => 'text-gray-700']) }}
     />
     <x-form.input-error :messages="$errors->get($name)" class="mt-2" />
 </div>

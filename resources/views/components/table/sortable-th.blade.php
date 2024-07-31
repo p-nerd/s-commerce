@@ -39,7 +39,7 @@ $descIcon = '
 @endphp
 
 <th
-    {{ $attributes->merge(['class' => 'border-r text-left align-middle font-medium'])}}
+    {{ $attributes->merge(['class' => 'border-r text-left align-middle font-medium']) }}
 >
     <form method="get" action="">
         @if ($search)
