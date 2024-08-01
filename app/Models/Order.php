@@ -17,6 +17,7 @@ class Order extends Model
         'coupon_id',
         'status',
         'name',
+        'email',
         'phone',
         'division',
         'district',

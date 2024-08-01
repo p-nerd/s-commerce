@@ -9,13 +9,15 @@
                     {{ $user->role->capitalized() }}
                 </x-show.line>
                 <x-show.line label="Status" class="flex items-center space-x-2">
-                    <x-show.change-select
-                        href="{{ route('admin.users.update', $user) }}"
-                        method="PATCH"
-                        name="status"
-                        :value="$user->status->value"
-                        :options="$statuses"
-                    />
+                    <div class="w-[100px]">
+                        <x-show.change-select
+                            href="{{ route('admin.users.update', $user) }}"
+                            method="PATCH"
+                            name="status"
+                            :value="$user->status->value"
+                            :options="$statuses"
+                        />
+                    </div>
                 </x-show.line>
                 <x-show.line label="Joined On">
                     {{ $user->created_at->format('d M, Y h:m:s A (T)') }}

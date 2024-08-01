@@ -156,23 +156,23 @@ Route::prefix('/admin')->middleware(['auth', 'verified'])->group(function () {
             ->name('admin.products.destroy');
     });
 
-    Route::prefix('/orders')->group(function () {
-        Route::get('/create', [AdminOrderController::class, 'create'])
-            ->name('admin.orders.create');
-        Route::post('/', [AdminOrderController::class, 'store'])
-            ->name('admin.orders.store');
+    Route::prefix('coupons')->group(function () {
+        Route::get('/create', fn () => view('admin/index'))->name('admin.coupons.create');
 
+        Route::get('/', fn () => view('admin/index'))->name('admin.coupons');
+        Route::get('/{coupon}', fn () => view('admin/index'))->name('admin.coupons.show');
+    });
+
+    Route::prefix('/orders')->group(function () {
         Route::get('/', [AdminOrderController::class, 'index'])
             ->name('admin.orders');
-        Route::get('/{product}', [AdminOrderController::class, 'show'])
+        Route::get('/{order}', [AdminOrderController::class, 'show'])
             ->name('admin.orders.show');
 
-        Route::get('/{product}/edit', [AdminOrderController::class, 'edit'])
-            ->name('admin.orders.edit');
-        Route::patch('/{product}', [AdminOrderController::class, 'update'])
+        Route::patch('/{order}', [AdminOrderController::class, 'update'])
             ->name('admin.orders.update');
 
-        Route::delete('/{product}', [AdminOrderController::class, 'destroy'])
+        Route::delete('/{order}', [AdminOrderController::class, 'destroy'])
             ->name('admin.orders.destroy');
     });
 });

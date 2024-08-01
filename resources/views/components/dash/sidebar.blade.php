@@ -63,6 +63,17 @@ $productIcon = '
     </svg>
 ';
 
+$couponIcon = '
+    <svg
+        class="w-6 h-6 text-gray-500 transition duration-75 group-hover:text-gray-900"
+        fill="currentColor"
+        viewBox="0 0 24 24"
+        xmlns="http://www.w3.org/2000/svg"
+    >
+        <path d="M12 2a1 1 0 00-.707.293l-9 9a1 1 0 000 1.414l9 9a1 1 0 001.414 0l9-9a1 1 0 000-1.414l-9-9A1 1 0 0012 2zm-7.707 10.293L12 3.586l7.707 7.707-7.707 7.707-7.707-7.707z"></path>
+    </svg>
+';
+
 $orderIcon = '
     <svg
         class="w-6 h-6 text-gray-500 transition duration-75 group-hover:text-gray-900"
@@ -168,6 +179,23 @@ $sidebarLinks = [
         ],
     ],
     [
+        'label' => 'Coupons',
+        'icon' => $couponIcon,
+        'href' => route('admin.coupons'),
+        'subLinks' => [
+            [
+                'label' => 'List',
+                'href' => route('admin.coupons'),
+                'icon' => $listIcon,
+            ],
+            [
+                'label' => 'New',
+                'href' => route('admin.coupons.create'),
+                'icon' => $newIcon,
+            ],
+        ],
+    ],
+    [
         'label' => 'Orders',
         'icon' => $orderIcon,
         'href' => route('admin.orders'),
@@ -176,11 +204,6 @@ $sidebarLinks = [
                 'label' => 'List',
                 'href' => route('admin.orders'),
                 'icon' => $listIcon,
-            ],
-            [
-                'label' => 'New',
-                'href' => route('admin.orders.create'),
-                'icon' => $newIcon,
             ],
         ],
     ],

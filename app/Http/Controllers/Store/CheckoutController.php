@@ -100,6 +100,7 @@ class CheckoutController extends Controller
                 'user_id' => $request->user()->id,
                 'coupon_id' => $coupon ? $coupon->id : null,
                 'name' => $payload['name'],
+                'email' => $payload['email'],
                 'phone' => $payload['phone'],
                 'division' => $payload['division'],
                 'district' => $payload['district'],
@@ -128,7 +129,7 @@ class CheckoutController extends Controller
                 return to_route('account.orders', $order)->with('success', 'Order placed successfully!');
             }
 
-            $sslc = new SSLCommerz();
+            $sslc = new SSLCommerz;
             $sslc->amount($order->total)
                 ->trxid($order->id)
                 ->product('Scommerce Product')

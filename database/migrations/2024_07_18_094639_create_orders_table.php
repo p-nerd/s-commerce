@@ -22,6 +22,7 @@ return new class extends Migration
             $table->foreignIdFor(Coupon::class)->nullable();
 
             $table->string('name');
+            $table->string('email');
             $table->string('phone');
             $table->string('division');
             $table->string('district');

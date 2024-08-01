@@ -54,17 +54,17 @@ class UserController extends Controller
 
         $user->fill($payload)->save();
 
-        return response()->json(['success' => 'User updated successfully']);
+        return message(['success' => 'User updated successfully']);
     }
 
     public function destroy(User $user)
     {
-        if ($user->id === auth()->id()) {
+        if ($user->id === request()->user()->id) {
             return back()->with('error', 'You cannot delete your own account.');
         }
 
         $user->delete();
 
-        return go()->with('success', 'User deleted successfully');
+        return message(['success' => 'User deleted successfully']);
     }
 }

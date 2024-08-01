@@ -2,65 +2,69 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Enums\OrderStatus;
 use App\Http\Controllers\Controller;
 use App\Models\Order;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class OrderController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $orders = Order::query()
+            ->with(['user', 'coupon'])
+            ->when(
+                $request->query('search'),
+                function ($query, $search) {
+                    $query->where(function ($subQuery) use ($search) {
+                        $subQuery->where('id', 'like', '%'.$search.'%')
+                            ->orWhere('email', 'like', '%'.$search.'%')
+                            ->orWhere('name', 'like', '%'.$search.'%');
+                    });
+                }
+            )
+            ->orderBy(
+                $request->query('sort_by', 'created_at'),
+                $request->query('order', 'desc')
+            )
+            ->paginate(
+                $request->query('per_page', 6)
+            )
+            ->withQueryString();
+
+        return view('admin/orders/index', [
+            'orders' => $orders,
+            'statuses' => OrderStatus::options(),
+        ]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     */
     public function show(Order $order)
     {
-        //
+        return view('admin/orders/show', [
+            'order' => $order,
+            'user' => $order->user,
+            'coupon' => $order->coupon,
+            'statuses' => OrderStatus::options(),
+        ]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Order $order)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(Request $request, Order $order)
     {
-        //
+        $payload = $request->validate([
+            'status' => ['nullable', Rule::enum(OrderStatus::class)],
+        ]);
+
+        $order->fill($payload)->save();
+
+        return message(['success' => 'Order updated successfully']);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(Order $order)
     {
-        //
+        $order->delete();
+
+        return message(['success' => 'Order deleted successfully']);
+
     }
 }

@@ -58,6 +58,7 @@
                                 :href="route('admin.users.update', $user)"
                                 :value="$user->status->value"
                                 :options="$statuses"
+                                class="text-xs"
                             />
                         </x-table.td>
                         <x-table.td>

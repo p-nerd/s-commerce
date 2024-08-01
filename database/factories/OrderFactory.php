@@ -23,6 +23,7 @@ class OrderFactory extends Factory
             'user_id' => User::inRandomOrder()->first()->id,
             'coupon_id' => fake()->optional() ? Coupon::inRandomOrder()->first()->id : null,
             'name' => fake()->name,
+            'email' => fake()->safeEmail,
             'phone' => fake()->numerify('##########'),
             'division' => fake()->state,
             'district' => fake()->city,
