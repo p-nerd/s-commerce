@@ -12,14 +12,17 @@
             <x-show.line label="Payment Status">
                 {{ $order->paid ? 'Paid' : 'Not Paid' }}
             </x-show.line>
-            <x-show.line label="Used Coupon">
-                <a
-                    href="{{ route('admin.coupons.show', $coupon) }}"
-                    class="underline"
-                >
-                    {{ $coupon->code }}
-                </a>
-            </x-show.line>
+            @if ($coupon)
+                <x-show.line label="Used Coupon">
+                    <a
+                        href="{{ route('admin.coupons.show', $coupon) }}"
+                        class="underline"
+                    >
+                        {{ $coupon->code }}
+                    </a>
+                </x-show.line>
+            @endif
+
             <x-show.line label="bank_tran_id">
                 {{ $order->bank_tran_id }}
             </x-show.line>

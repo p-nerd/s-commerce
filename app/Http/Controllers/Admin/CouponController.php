@@ -48,6 +48,7 @@ class CouponController extends Controller
     {
         return view('admin/coupons/create', [
             'types' => CouponType::options(),
+            'statuses' => CouponStatus::options(),
         ]);
     }
 
@@ -77,6 +78,8 @@ class CouponController extends Controller
     {
         return view('admin/coupons/show', [
             'coupon' => $coupon,
+            'orders' => $coupon->orders,
+            'statuses' => CouponStatus::options(),
         ]);
     }
 
