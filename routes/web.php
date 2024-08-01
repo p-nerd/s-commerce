@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\CategoryController as AdminCategoryController;
+use App\Http\Controllers\Admin\CouponController as AdminCouponController;
 use App\Http\Controllers\Admin\OrderController as AdminOrderController;
 use App\Http\Controllers\Admin\ProductController as AdminProductController;
 use App\Http\Controllers\Admin\UserController as AdminUserController;
@@ -157,10 +158,23 @@ Route::prefix('/admin')->middleware(['auth', 'verified'])->group(function () {
     });
 
     Route::prefix('coupons')->group(function () {
-        Route::get('/create', fn () => view('admin/index'))->name('admin.coupons.create');
+        Route::get('/create', [AdminCouponController::class, 'create'])
+            ->name('admin.coupons.create');
+        Route::post('/', [AdminCouponController::class, 'store'])
+            ->name('admin.coupons.store');
 
-        Route::get('/', fn () => view('admin/index'))->name('admin.coupons');
-        Route::get('/{coupon}', fn () => view('admin/index'))->name('admin.coupons.show');
+        Route::get('/', [AdminCouponController::class, 'index'])
+            ->name('admin.coupons');
+        Route::get('/{coupon}', [AdminCouponController::class, 'show'])
+            ->name('admin.coupons.show');
+
+        Route::get('/{coupon}/edit', [AdminCouponController::class, 'edit'])
+            ->name('admin.coupons.edit');
+        Route::post('/{coupon}', [AdminCouponController::class, 'update'])
+            ->name('admin.coupons.update');
+
+        Route::delete('/{coupon}', [AdminCouponController::class, 'destroy'])
+            ->name('admin.coupon.destroy');
     });
 
     Route::prefix('/orders')->group(function () {

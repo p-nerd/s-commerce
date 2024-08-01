@@ -23,7 +23,7 @@ class ProductController extends Controller
         $query = Product::with('category');
 
         if ($search) {
-            $query->where('name', 'like', '%' . $search . '%');
+            $query->where('name', 'like', '%'.$search.'%');
         }
 
         if ($sortBy === 'category') {

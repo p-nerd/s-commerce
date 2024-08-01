@@ -21,7 +21,7 @@ class CategoryController extends Controller
         $query = Category::query()->with('subCategories')->where('parent_id', null);
 
         if ($search) {
-            $query->where('name', 'like', '%' . $search . '%');
+            $query->where('name', 'like', '%'.$search.'%');
         }
 
         $categories = $query
@@ -44,7 +44,7 @@ class CategoryController extends Controller
         $query = $category->subCategories()->with('subCategories');
 
         if ($search) {
-            $query->where('name', 'like', '%' . $search . '%');
+            $query->where('name', 'like', '%'.$search.'%');
         }
 
         $categories = $query

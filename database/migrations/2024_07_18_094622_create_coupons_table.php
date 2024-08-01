@@ -16,7 +16,7 @@ return new class extends Migration
             $table->id();
             $table->string('code')->unique();
             $table->decimal('discount');
-            $table->enum('type', CouponType::values());
+            $table->string('type')->default(CouponType::PERCENTAGE->value);
             $table->date('expires_at')->nullable();
             $table->timestamps();
             $table->softDeletes();
