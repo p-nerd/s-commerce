@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Enums\CouponStatus;
 use App\Enums\CouponType;
 use App\Http\Controllers\Controller;
 use App\Models\Coupon;
@@ -16,7 +17,6 @@ class CouponController extends Controller
     public function index(Request $request)
     {
         $coupons = Coupon::query()
-            ->with(['user', 'coupon'])
             ->when(
                 $request->query('search'),
                 function ($query, $search) {
@@ -37,6 +37,7 @@ class CouponController extends Controller
 
         return view('admin/coupons/index', [
             'coupons' => $coupons,
+            'statuses' => CouponStatus::options(),
         ]);
     }
 

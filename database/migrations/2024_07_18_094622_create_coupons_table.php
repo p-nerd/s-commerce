@@ -1,5 +1,6 @@
 <?php
 
+use App\Enums\CouponStatus;
 use App\Enums\CouponType;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
@@ -15,9 +16,10 @@ return new class extends Migration
         Schema::create('coupons', function (Blueprint $table) {
             $table->id();
             $table->string('code')->unique();
-            $table->decimal('discount');
             $table->string('type')->default(CouponType::PERCENTAGE->value);
+            $table->decimal('discount');
             $table->date('expires_at')->nullable();
+            $table->string('status')->default(CouponStatus::ENABLED->value);
             $table->timestamps();
             $table->softDeletes();
         });

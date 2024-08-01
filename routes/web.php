@@ -174,7 +174,7 @@ Route::prefix('/admin')->middleware(['auth', 'verified'])->group(function () {
             ->name('admin.coupons.update');
 
         Route::delete('/{coupon}', [AdminCouponController::class, 'destroy'])
-            ->name('admin.coupon.destroy');
+            ->name('admin.coupons.destroy');
     });
 
     Route::prefix('/orders')->group(function () {
