@@ -1,6 +1,9 @@
 <x-admin-layout>
     <x-slot name="header">
         <x-dash.title>Coupons ({{ count($coupons) }})</x-dash.title>
+        <x-dash.new-button href="{{ route('admin.coupons.create') }}">
+            Create new Coupon
+        </x-dash.new-button>
     </x-slot>
 
     <x-table.filters-row>
@@ -24,7 +27,7 @@
                     <x-table.sortable-th name="expires_at">
                         Expires At
                     </x-table.sortable-th>
-                    <x-table.sortable-th name="created_at">
+                    <x-table.sortable-th class="w-[130px]" name="created_at">
                         Status
                     </x-table.sortable-th>
                     <x-table.sortable-th name="created_at">
@@ -69,7 +72,14 @@
                             @endif
                         </x-table.td>
                         <x-table.td>
-                            {{ $coupon->status }}
+                            <x-show.change-select
+                                name="status"
+                                method="PATCH"
+                                class="text-xs"
+                                :href="route('admin.coupons.update', $coupon)"
+                                :value="$coupon->status->value"
+                                :options="$statuses"
+                            />
                         </x-table.td>
                         <x-table.td>
                             {{ $coupon->created_at->format('d M, Y h:m:s') }}

@@ -1,16 +1,27 @@
 <?php
 
-if (! function_exists('go')) {
-    function go()
+if (! function_exists('to')) {
+    function to(?string $route = null, ?array $data = null)
     {
+        $chan = redirect()->back();
+
         $redirect = request()->query('redirect');
-        if (! $redirect) {
-            return redirect()->back();
+        if ($redirect) {
+            $chan = redirect($redirect);
+
+        } elseif ($route) {
+            $chan = redirect()->route($route);
         }
 
-        return redirect($redirect);
+        return $chan->with($data);
     }
+}
 
+if (! function_exists('go')) {
+    function go(?string $route = null, ?array $data = null)
+    {
+        return to($route, $data);
+    }
 }
 
 if (! function_exists('message')) {

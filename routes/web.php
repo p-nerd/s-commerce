@@ -170,7 +170,7 @@ Route::prefix('/admin')->middleware(['auth', 'verified'])->group(function () {
 
         Route::get('/{coupon}/edit', [AdminCouponController::class, 'edit'])
             ->name('admin.coupons.edit');
-        Route::post('/{coupon}', [AdminCouponController::class, 'update'])
+        Route::patch('/{coupon}', [AdminCouponController::class, 'update'])
             ->name('admin.coupons.update');
 
         Route::delete('/{coupon}', [AdminCouponController::class, 'destroy'])

@@ -20,7 +20,7 @@
 <form
     method="{{ $method === 'GET' ? 'GET' : 'POST' }}"
     action="{{ $action }}"
-    {{ $attributes->merge(['class' => 'rounded-lg bg-white p-5 shadow']) }}
+    {{ $attributes->merge(['class' => 'rounded-lg p-5']) }}
     onsubmit="{{ $confirm ? 'handleSubmitFrom(event)' : '' }}"
 >
     @csrf

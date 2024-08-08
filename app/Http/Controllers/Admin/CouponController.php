@@ -11,9 +11,6 @@ use Illuminate\Validation\Rule;
 
 class CouponController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index(Request $request)
     {
         $coupons = Coupon::query()
@@ -41,9 +38,6 @@ class CouponController extends Controller
         ]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
         return view('admin/coupons/create', [
@@ -52,9 +46,6 @@ class CouponController extends Controller
         ]);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
         $payload = $request->validate([
@@ -62,18 +53,14 @@ class CouponController extends Controller
             'discount' => 'required', 'numeric', 'min:0',
             'type' => ['required', Rule::enum(CouponType::class)],
             'expires_at' => 'nullable', 'date', 'after:today',
+            'status' => ['nullable', Rule::enum(CouponStatus::class)],
         ]);
 
         Coupon::create($payload);
 
-        return redirect()
-            ->route('admin.coupons.index')
-            ->with(['success' => 'Coupon saved successfully']);
+        return to('admin.coupons', ['success' => 'Coupon saved successfully']);
     }
 
-    /**
-     * Display the specified resource.
-     */
     public function show(Coupon $coupon)
     {
         return view('admin/coupons/show', [
@@ -83,39 +70,30 @@ class CouponController extends Controller
         ]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
     public function edit(Coupon $coupon)
     {
         return view('admin/coupons/edit', [
             'coupon' => $coupon,
             'types' => CouponType::options(),
+            'statuses' => CouponStatus::options(),
         ]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(Request $request, Coupon $coupon)
     {
         $payload = $request->validate([
-            'code' => ['required', 'string', Rule::unique('coupons')->ignore($coupon)],
-            'discount' => ['required', 'numeric', 'min:0'],
-            'type' => ['required', Rule::enum(CouponType::class)],
+            'code' => ['nullable', 'string', Rule::unique('coupons')->ignore($coupon)],
+            'discount' => ['nullable', 'numeric', 'min:0'],
+            'type' => ['nullable', Rule::enum(CouponType::class)],
             'expires_at' => ['nullable', 'date', 'after:today'],
+            'status' => ['nullable', Rule::enum(CouponStatus::class)],
         ]);
 
-        $coupon->update($payload);
+        $coupon->fill($payload)->save();
 
-        return redirect()
-            ->back()
-            ->with(['success' => 'Coupon updated successfully']);
+        return message(['success' => 'Coupon updated successfully']);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(Coupon $coupon)
     {
         $coupon->delete();
