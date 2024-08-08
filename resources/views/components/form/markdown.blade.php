@@ -16,7 +16,7 @@
     <trix-editor
         input="{{ $name }}"
         placeholder="{{ $placeholder }}"
-        {{ $attributes->merge(['class' => 'prose lg:prose-sm prose-a:text-blue-600 min-h-[400px] max-w-full w-full']) }}
+        {{ $attributes->merge(['class' => 'prose lg:prose-sm prose-a:text-blue-600 bg-white rounded-md min-h-[400px] max-w-full w-full']) }}
     />
     <x-form.input-error :messages="$errors->get($name)" class="mt-2" />
 </div>

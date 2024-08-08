@@ -45,6 +45,7 @@ class OrderController extends Controller
             'order' => $order,
             'user' => $order->user,
             'coupon' => $order->coupon,
+            'orderItems' => $order->orderItems,
             'statuses' => OrderStatus::options(),
         ]);
     }

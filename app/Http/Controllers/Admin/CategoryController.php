@@ -96,6 +96,7 @@ class CategoryController extends Controller
             'category' => $category,
             'parent' => $parent,
             'subCategories' => $subCategories,
+            'products' => $category->products,
         ]);
     }
 

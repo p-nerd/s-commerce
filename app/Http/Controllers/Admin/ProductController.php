@@ -84,8 +84,10 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
+
         return view('admin/products/show', [
             'product' => $product,
+            'orders' => $product->orderItems()->with('order')->get()->map(fn ($item) => $item->order),
         ]);
     }
 

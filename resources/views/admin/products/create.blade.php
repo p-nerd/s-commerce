@@ -5,7 +5,6 @@
     <x-slot name="header">
         <x-dash.title>Create a new product</x-dash.title>
     </x-slot>
-
     <x-form.form method="POST" action="{{ route('admin.products.store') }}">
         <x-form.text name="name" label="Name" required autofocus />
         <x-form.textarea

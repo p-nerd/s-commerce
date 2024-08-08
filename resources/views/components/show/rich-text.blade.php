@@ -1,12 +1,11 @@
-@props([
-    'label',
-])
+@props(['label' => null, 'class' => ''])
 
-<div class="w-full">
-    <div class="font-semibold">{{ $label }}</div>
-    <div
-        {{ $attributes->merge(['class' => 'text-gray-700 max-w-full w-full prose lg:prose-sm prose-a:text-blue-600']) }}
-    >
-        {{ $slot }}
-    </div>
+<div
+    {{ $attributes->merge(['class' => 'prose w-full max-w-full border-t px-3 py-2']) }}
+>
+    @if ($label)
+        <span class="font-medium">{{ $label }}:</span>
+    @endif
+
+    {{ $slot }}
 </div>
