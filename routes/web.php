@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\CategoryController as AdminCategoryController;
 use App\Http\Controllers\Admin\CouponController as AdminCouponController;
 use App\Http\Controllers\Admin\OrderController as AdminOrderController;
 use App\Http\Controllers\Admin\ProductController as AdminProductController;
+use App\Http\Controllers\Admin\SettingController as AdminSettingController;
 use App\Http\Controllers\Admin\UserController as AdminUserController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Auth\ConfirmablePasswordController;
@@ -189,6 +190,19 @@ Route::prefix('/admin')->middleware(['auth', 'verified'])->group(function () {
         Route::delete('/{order}', [AdminOrderController::class, 'destroy'])
             ->name('admin.orders.destroy');
     });
+
+    Route::prefix('/settings')->group(function () {
+        Route::get('/', [AdminSettingController::class, 'index'])
+            ->name('admin.settings');
+
+        Route::get('/delivery-charge', [AdminSettingController::class, 'deliveryCharge'])
+            ->name('admin.settings.delivery-charge');
+        Route::post('/delivery-charge', [AdminSettingController::class, 'deliveryChargeStore'])
+            ->name('admin.settings.delivery-charge.store');
+        Route::patch('/delivery-charge', [AdminSettingController::class, 'deliveryChargeUpdate'])
+            ->name('admin.settings.delivery-charge.update');
+    });
+
 });
 
 // auth routes
