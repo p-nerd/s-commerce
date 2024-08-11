@@ -1,7 +1,4 @@
 <x-admin-layout>
-    <x-slot name="back">
-        {{ route('admin.settings') }}
-    </x-slot>
     <x-slot name="header">
         <x-dash.title>Adjust Delivery Charge</x-dash.title>
     </x-slot>
