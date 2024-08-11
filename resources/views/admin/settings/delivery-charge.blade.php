@@ -2,11 +2,11 @@
     <x-slot name="header">
         <x-dash.title>Adjust Delivery Charge</x-dash.title>
     </x-slot>
-    <div class="mx-auto w-3/4 space-y-6">
+    <div class="space-y-6 pb-10 pr-6">
         <x-form.form
             method="POST"
             action="{{ route('admin.settings.delivery-charge.store') }}"
-            class="mx-auto w-3/4"
+            class="mx-auto"
             style="padding: 0"
         >
             @csrf
@@ -127,26 +127,47 @@
                 setupLocationsSelectEventListener();
             });
         </script>
-        <div class="mx-auto w-3/4 space-y-5">
-            @foreach ($divisions as $division)
-                @if (count($division->districts))
-                    <div class="mx-auto space-y-3">
-                        <div class="text-2xl font-semibold">
-                            {{ $division->label }}
-                        </div>
-                        @foreach ($division->districts as $district)
-                            <div
-                                class="flex w-full items-center justify-between text-lg"
-                                x-data="{ editing: false }"
-                            >
-                                <div>{{ $district->label }}</div>
-                                <div class="flex items-center">
+        @if ($districts->isEmpty())
+            <x-table.empty>There is no districts available</x-table.empty>
+        @else
+            <x-table.table>
+                <x-table.thead>
+                    <x-table.tr>
+                        <x-table.th>No</x-table.th>
+                        <x-table.th>District</x-table.th>
+                        <x-table.th>Division</x-table.th>
+                        <x-table.th class="text-end">Price</x-table.th>
+                    </x-table.tr>
+                </x-table.thead>
+                <x-table.tbody>
+                    @php
+                        $desc = request()->query('order') === 'desc';
+                        $no = $desc ? $districts->toArray()['to'] : $districts->toArray()['from'];
+                    @endphp
+
+                    @foreach ($districts as $district)
+                        <x-table.tr>
+                            <x-table.td>
+                                {{ $no }}
+                                @php
+                                    $no += $desc ? -1 : 1;
+                                @endphp
+                            </x-table.td>
+                            <x-table.td>{{ $district->label }}</x-table.td>
+                            <x-table.td>
+                                {{ $district->division->label }}
+                            </x-table.td>
+                            <x-table.td class="py-2 text-end">
+                                <div
+                                    x-data="{ editing: false }"
+                                    class="flex items-center justify-end"
+                                >
                                     <form
                                         x-show="editing"
                                         method="POST"
                                         action="{{ route('admin.settings.delivery-charge.update') }}"
                                         x-on:submit="editing = false"
-                                        class="flex items-center"
+                                        class="flex items-end"
                                     >
                                         @csrf
                                         @method('PATCH')
@@ -181,11 +202,12 @@
                                         Edit
                                     </x-dash.primary-button>
                                 </div>
-                            </div>
-                        @endforeach
-                    </div>
-                @endif
-            @endforeach
-        </div>
+                            </x-table.td>
+                        </x-table.tr>
+                    @endforeach
+                </x-table.tbody>
+            </x-table.table>
+            <x-table.pagination :data="$districts" />
+        @endif
     </div>
 </x-admin-layout>

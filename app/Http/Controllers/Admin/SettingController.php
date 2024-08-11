@@ -10,8 +10,6 @@ class SettingController extends Controller
 {
     public function deliveryCharge()
     {
-        $divisions = Location::with('districts')->where('division_id', null)->get();
-
         $divisionsConfig = config('settings.divisions');
 
         $divisionsOptions = [];
@@ -22,10 +20,14 @@ class SettingController extends Controller
             ];
         }
 
+        $districts = Location::query()
+            ->with('division')
+            ->where('division_id', '!=', null)->paginate(10);
+
         return view('admin/settings/delivery-charge', [
-            'divisions' => $divisions,
             'divisionsConfig' => $divisionsConfig,
             'divisionsOptions' => $divisionsOptions,
+            'districts' => $districts,
         ]);
     }
 
