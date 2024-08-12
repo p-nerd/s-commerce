@@ -196,6 +196,21 @@
                                         </ul>
                                     </div>
                                 </div>
+                                @if (request()->user()->admin())
+                                    <div class="header-action-icon-2">
+                                        <a href="{{ route('admin') }}">
+                                            <span
+                                                class="lable"
+                                                style="
+                                                    border-bottom: 1px solid
+                                                        gray;
+                                                "
+                                            >
+                                                Admin Dashboard
+                                            </span>
+                                        </a>
+                                    </div>
+                                @endif
                             @endauth
 
                             @guest

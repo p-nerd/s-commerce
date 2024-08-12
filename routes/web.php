@@ -15,12 +15,12 @@ use App\Http\Controllers\Auth\PasswordController;
 use App\Http\Controllers\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\Auth\VerifyEmailController;
-use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Store\AccountController;
 use App\Http\Controllers\Store\CartController;
 use App\Http\Controllers\Store\CheckoutController;
 use App\Http\Controllers\Store\HomeController;
 use App\Http\Controllers\Store\ProductController;
+use App\Http\Middleware\Admin;
 use Illuminate\Support\Facades\Route;
 
 // store routes
@@ -98,7 +98,7 @@ Route::prefix('/account')->middleware(['auth'])->group(function () {
 });
 
 // admin routes
-Route::prefix('/admin')->middleware(['auth', 'verified'])->group(function () {
+Route::prefix('/admin')->middleware(['auth', 'verified', Admin::class])->group(function () {
     Route::get('/', fn () => view('admin/index'))->name('admin');
 
     Route::prefix('/users')->group(function () {
@@ -251,12 +251,6 @@ Route::middleware('auth')->group(function () {
 
     Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])
         ->name('logout');
-});
-
-Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
 // todo

@@ -1,3 +1,7 @@
+@php
+    $user = request()->user();
+@endphp
+
 <nav
     class="fixed z-30 w-full border-b border-gray-200 bg-white dark:border-gray-700 dark:bg-gray-800"
 >
@@ -58,11 +62,16 @@
                             data-dropdown-toggle="dropdown-2"
                         >
                             <span class="sr-only">Open user menu</span>
-                            <img
-                                class="h-8 w-8 rounded-full"
-                                src="https://flowbite.com/docs/images/people/profile-picture-5.jpg"
-                                alt="user photo"
-                            />
+
+                            @if (! $user)
+                                <img
+                                    class="h-8 w-8 rounded-full"
+                                    src="{{ $user->avatar }}"
+                                    alt="user photo"
+                                />
+                            @else
+                                <div class="h-8 w-8 rounded-full" />
+                            @endif
                         </button>
                     </div>
                     <!-- Dropdown menu -->
@@ -75,28 +84,19 @@
                                 class="text-sm text-gray-900 dark:text-white"
                                 role="none"
                             >
-                                Neil Sims
+                                {{ $user->name }}
                             </p>
                             <p
                                 class="truncate text-sm font-medium text-gray-900 dark:text-gray-300"
                                 role="none"
                             >
-                                neil.sims@flowbite.com
+                                {{ $user->email }}
                             </p>
                         </div>
                         <ul class="py-1" role="none">
                             <li>
                                 <a
-                                    href="#"
-                                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"
-                                    role="menuitem"
-                                >
-                                    Overview
-                                </a>
-                            </li>
-                            <li>
-                                <a
-                                    href="#"
+                                    href="{{ route('account') }}"
                                     class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"
                                     role="menuitem"
                                 >
@@ -104,19 +104,18 @@
                                 </a>
                             </li>
                             <li>
-                                <a
-                                    href="#"
-                                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"
-                                    role="menuitem"
+                                <form
+                                    id="header-logout-form"
+                                    action="{{ route('logout') }}"
+                                    method="POST"
+                                    style="display: none"
                                 >
-                                    Earnings
-                                </a>
-                            </li>
-                            <li>
+                                    @csrf
+                                </form>
                                 <a
-                                    href="#"
-                                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"
                                     role="menuitem"
+                                    onclick="event.preventDefault(); document.getElementById('header-logout-form').submit();"
+                                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"
                                 >
                                     Sign out
                                 </a>
