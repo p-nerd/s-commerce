@@ -8,12 +8,12 @@ use Illuminate\Http\Request;
 
 class SettingController extends Controller
 {
-    public function deliveryCharge()
+    public function deliveryCharge(Request $request)
     {
         $divisionsConfig = config('settings.divisions');
 
         $divisionsOptions = [];
-        foreach ($divisionsConfig as $key => $division) {
+        foreach (array_keys($divisionsConfig) as $key) {
             $divisionsOptions[] = [
                 'value' => $key,
                 'label' => ucwords($key),
@@ -22,7 +22,14 @@ class SettingController extends Controller
 
         $districts = Location::query()
             ->with('division')
-            ->where('division_id', '!=', null)->paginate(10);
+            ->whereNotNull('division_id')
+            ->when(
+                $request->query('search'),
+                fn ($q, $s) => $q
+                    ->where('value', 'like', '%'.$s.'%')
+                    ->orWhere('label', 'like', '%'.$s.'%')
+            )
+            ->paginate($request->query('per_page') ?? 10);
 
         return view('admin/settings/delivery-charge', [
             'divisionsConfig' => $divisionsConfig,

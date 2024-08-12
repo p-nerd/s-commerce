@@ -6,7 +6,7 @@
         <x-form.form
             method="POST"
             action="{{ route('admin.settings.delivery-charge.store') }}"
-            class="mx-auto"
+            class="mx-auto mb-6"
             style="padding: 0"
         >
             @csrf
@@ -127,6 +127,12 @@
                 setupLocationsSelectEventListener();
             });
         </script>
+
+        <x-table.filters-row>
+            <x-table.search-input placeholder="Search with District..." />
+            <x-table.select-per-page />
+        </x-table.filters-row>
+
         @if ($districts->isEmpty())
             <x-table.empty>There is no districts available</x-table.empty>
         @else
@@ -155,7 +161,7 @@
                             </x-table.td>
                             <x-table.td>{{ $district->label }}</x-table.td>
                             <x-table.td>
-                                {{ $district->division->label }}
+                                {{ $district?->division?->label }}
                             </x-table.td>
                             <x-table.td class="py-2 text-end">
                                 <div
@@ -199,7 +205,23 @@
                                         x-on:click="editing = true"
                                         class="ml-2 bg-blue-500 text-white"
                                     >
-                                        Edit
+                                        <svg
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            width="24"
+                                            height="24"
+                                            viewBox="0 0 24 24"
+                                            fill="none"
+                                            stroke="currentColor"
+                                            stroke-width="2"
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                            class="h-4 w-4"
+                                        >
+                                            <path
+                                                d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z"
+                                            />
+                                            <path d="m15 5 4 4" />
+                                        </svg>
                                     </x-dash.primary-button>
                                 </div>
                             </x-table.td>
