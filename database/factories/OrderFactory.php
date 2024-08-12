@@ -37,6 +37,38 @@ class OrderFactory extends Factory
             'paid' => fake()->boolean(80),
             'bank_tran_id' => fake()->optional()->uuid,
             'status' => fake()->randomElement(OrderStatus::values()),
+            'created_at' => $this->faker->dateTimeBetween('-1 year', 'now'),
+            'updated_at' => function (array $attributes) {
+                return $this->faker->dateTimeBetween($attributes['created_at'], 'now');
+            },
         ];
+    }
+
+    public function recent()
+    {
+        return $this->state(function (array $attributes) {
+            return [
+                'created_at' => $this->faker->dateTimeBetween('-30 days', 'now'),
+            ];
+        });
+    }
+
+    public function completed()
+    {
+        return $this->state(function (array $attributes) {
+            return [
+                'status' => OrderStatus::DELIVERED->value,
+                'paid' => true,
+            ];
+        });
+    }
+
+    public function lastYear()
+    {
+        return $this->state(function (array $attributes) {
+            return [
+                'created_at' => $this->faker->dateTimeBetween('-1 year', '-1 day'),
+            ];
+        });
     }
 }

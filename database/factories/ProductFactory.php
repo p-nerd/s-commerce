@@ -27,7 +27,7 @@ class ProductFactory extends Factory
 
         return [
             'name' => $name,
-            'slug' => str()->slug($name).time(),
+            'slug' => str()->slug($name).time().time(),
             'category_id' => Category::inRandomOrder()->first()->id,
             'price' => fake()->randomFloat(2, 10, 1000),
             'discount_price' => fake()->randomElement([null, $this->faker->randomFloat(2, 5, 500)]),

@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\CategoryController as AdminCategoryController;
 use App\Http\Controllers\Admin\CouponController as AdminCouponController;
 use App\Http\Controllers\Admin\OrderController as AdminOrderController;
+use App\Http\Controllers\Admin\OverviewController;
 use App\Http\Controllers\Admin\ProductController as AdminProductController;
 use App\Http\Controllers\Admin\SettingController as AdminSettingController;
 use App\Http\Controllers\Admin\UserController as AdminUserController;
@@ -99,7 +100,10 @@ Route::prefix('/account')->middleware(['auth'])->group(function () {
 
 // admin routes
 Route::prefix('/admin')->middleware(['auth', 'verified', Admin::class])->group(function () {
-    Route::get('/', fn () => view('admin/index'))->name('admin');
+    Route::get('/', [OverviewController::class, 'index'])
+        ->name('admin');
+    Route::get('/overview/sales', [OverviewController::class, 'getSalesData'])
+        ->name('admin.overview.sales');
 
     Route::prefix('/users')->group(function () {
         Route::get('/', [AdminUserController::class, 'index'])

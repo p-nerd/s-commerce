@@ -18,6 +18,23 @@ class OrderSeeder extends Seeder
         Order::factory(50)
             ->create()
             ->each(fn ($order) => $this->orderItems($order));
+
+        // Generate 1000 orders spread over the last year
+        Order::factory()->count(1000)->create()
+            ->each(fn ($order) => $this->orderItems($order));
+
+        // Generate 100 recent orders (last 30 days)
+        Order::factory()->recent()->count(100)->create()
+            ->each(fn ($order) => $this->orderItems($order));
+
+        // Generate 500 completed orders
+        Order::factory()->completed()->count(500)->create()
+            ->each(fn ($order) => $this->orderItems($order));
+
+        // Generate 200 orders from last year
+        Order::factory()->lastYear()->count(200)->create()
+            ->each(fn ($order) => $this->orderItems($order));
+
     }
 
     public function orderItems(Order $order)
