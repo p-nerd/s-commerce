@@ -100,7 +100,7 @@ class CheckoutController extends Controller
                 'user_id' => $request->user()->id,
                 'coupon_id' => $coupon ? $coupon->id : null,
                 'name' => $payload['name'],
-                'email' => $payload['email'],
+                'email' => $request->user()->email,
                 'phone' => $payload['phone'],
                 'division' => $payload['division'],
                 'district' => $payload['district'],
@@ -124,9 +124,9 @@ class CheckoutController extends Controller
 
             if ($order->payment_method === PaymentMethod::CASH_ON_DELIVERY) {
                 $request->user()->carts()->delete();
-                event(new OrderPlaced($order));
+                event(new OrderPlaced(Order::with('orderItems.product')->find($order->id)));
 
-                return to_route('account.orders', $order)->with('success', 'Order placed successfully!');
+                return to_route('account.orders.show', $order)->with('success', 'Order placed successfully!');
             }
 
             $sslc = new SSLCommerz;
@@ -154,7 +154,10 @@ class CheckoutController extends Controller
         $orderId = $request->tran_id;
         $bankTranID = $request->bank_tran_id;
 
-        $order = Order::find($orderId);
+        $order = Order::query()
+            ->with('orderItems.product')
+            ->find($orderId);
+
         if (! $order) {
             return to_route('checkout')->with('error', 'Order is not found to process, please try again');
         }
@@ -169,7 +172,7 @@ class CheckoutController extends Controller
 
         event(new OrderPlaced($order));
 
-        return to_route('account.orders', $order);
+        return to_route('account.orders.show', $order);
     }
 
     public function failure()
