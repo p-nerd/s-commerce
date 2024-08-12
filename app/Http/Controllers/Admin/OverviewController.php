@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Enums\OrderStatus;
 use App\Http\Controllers\Controller;
 use App\Models\Order;
 use App\Models\Product;
@@ -18,6 +19,12 @@ class OverviewController extends Controller
 
         return view('admin/overview/index', [
             'products' => $products,
+            'total_orders' => Order::count(),
+            'total_pending_orders' => Order::where('status', OrderStatus::PENDING->value)->count(),
+            'total_processing_orders' => Order::where('status', OrderStatus::PROCESSING->value)->count(),
+            'total_shipped_orders' => Order::where('status', OrderStatus::SHIPPED->value)->count(),
+            'total_delivered_orders' => Order::where('status', OrderStatus::DELIVERED->value)->count(),
+            'total_cancelled_orders' => Order::where('status', OrderStatus::CANCELLED->value)->count(),
         ]);
     }
 

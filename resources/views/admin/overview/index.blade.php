@@ -1,5 +1,48 @@
 <x-admin-layout>
     <div class="flex flex-col justify-between space-y-5 py-4">
+        <div class="grid w-full grid-cols-3 gap-5">
+            @php
+                $totals = [
+                    [
+                        'label' => 'Total Orders',
+                        'value' => $total_orders,
+                    ],
+                    [
+                        'label' => 'Pending Orders',
+                        'value' => $total_pending_orders,
+                    ],
+                    [
+                        'label' => 'Processing Orders',
+                        'value' => $total_processing_orders,
+                    ],
+                    [
+                        'label' => 'Shipped Orders',
+                        'value' => $total_shipped_orders,
+                    ],
+                    [
+                        'label' => 'Completed Orders',
+                        'value' => $total_delivered_orders,
+                        'class' => 'border-green-500',
+                    ],
+                    [
+                        'label' => 'Cancelled Orders',
+                        'value' => $total_cancelled_orders,
+                        'class' => 'border-red-500',
+                    ],
+                ];
+            @endphp
+
+            @foreach ($totals as $total)
+                <div class="{{ $total['class'] ?? '' }} rounded-lg border p-5">
+                    <div class="text-lg font-medium">
+                        {{ $total['label'] }}
+                    </div>
+                    <div class="text-2xl font-semibold">
+                        {{ $total['value'] }}
+                    </div>
+                </div>
+            @endforeach
+        </div>
         <div class="flex w-full flex-col rounded-lg border p-6">
             <x-dash.sales />
         </div>
