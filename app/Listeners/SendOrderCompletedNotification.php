@@ -4,8 +4,9 @@ namespace App\Listeners;
 
 use App\Events\OrderCompleted;
 use App\Notifications\OrderCompletedNotification;
+use Illuminate\Contracts\Queue\ShouldQueue;
 
-class SendOrderCompletedNotification
+class SendOrderCompletedNotification implements ShouldQueue
 {
     /**
      * Handle the event.

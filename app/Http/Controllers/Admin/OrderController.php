@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Enums\OrderStatus;
+use App\Events\OrderCompleted;
 use App\Http\Controllers\Controller;
 use App\Models\Order;
 use Illuminate\Http\Request;
@@ -57,6 +58,10 @@ class OrderController extends Controller
         ]);
 
         $order->fill($payload)->save();
+
+        if ($payload['status'] === OrderStatus::DELIVERED->value) {
+            event(new OrderCompleted(Order::with('orderItems.product')->find($order->id)));
+        }
 
         return message(['success' => 'Order updated successfully']);
     }
