@@ -102,7 +102,7 @@ Route::prefix('/account')->middleware(['auth'])->group(function () {
 Route::prefix('/admin')->middleware(['auth', 'verified', Admin::class])->group(function () {
     Route::get('/', [OverviewController::class, 'index'])
         ->name('admin');
-    Route::get('/overview/sales', [OverviewController::class, 'getSalesData'])
+    Route::get('/overview/sales', [OverviewController::class, 'sales'])
         ->name('admin.overview.sales');
 
     Route::prefix('/users')->group(function () {

@@ -42,7 +42,7 @@
             </button>
             <div
                 id="lastDaysdropdown"
-                class="z-10 hidden w-44 divide-y divide-gray-100 rounded-lg bg-white shadow dark:bg-gray-700"
+                class="z-50 hidden w-44 divide-y divide-gray-100 rounded-lg bg-white shadow dark:bg-gray-700"
             >
                 @php
                     $periods = [
@@ -50,7 +50,8 @@
                         'today' => 'Today',
                         'last-7-days' => 'Last 7 days',
                         'last-30-days' => 'Last 30 days',
-                        'last-90-days' => 'Last 90 days',
+                        'this-year' => 'This Year',
+                        'last-year' => 'Last Year',
                         'lifetime' => 'Lifetime',
                     ];
                 @endphp
@@ -63,7 +64,7 @@
                         <li>
                             <a
                                 data-period="{{ $period }} "
-                                class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                                class="block cursor-pointer px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                             >
                                 {{ $label }}
                             </a>
@@ -83,35 +84,15 @@
                 height: '100%',
                 maxWidth: '100%',
                 type: 'line',
-                fontFamily: 'Inter, sans-serif',
-                dropShadow: {
-                    enabled: false,
-                },
-                toolbar: {
-                    show: false,
-                },
+                dropShadow: { enabled: false },
             },
-            tooltip: {
-                enabled: true,
-                x: {
-                    show: false,
-                },
-            },
-            dataLabels: {
-                enabled: false,
-            },
-            stroke: {
-                width: 6,
-                curve: 'smooth',
-            },
+            tooltip: { enabled: true, x: { show: false } },
+            dataLabels: { enabled: false },
+            stroke: { width: 6, curve: 'smooth' },
             grid: {
                 show: true,
                 strokeDashArray: 4,
-                padding: {
-                    left: 2,
-                    right: 2,
-                    top: -26,
-                },
+                padding: { left: 20, right: 20, top: -26 },
             },
             series: [
                 {
@@ -120,29 +101,9 @@
                     color: '#1A56DB',
                 },
             ],
-            legend: {
-                show: false,
-            },
-            xaxis: {
-                categories: [],
-                labels: {
-                    show: true,
-                    style: {
-                        fontFamily: 'Inter, sans-serif',
-                        cssClass:
-                            'text-xs font-normal fill-gray-500 dark:fill-gray-400',
-                    },
-                },
-                axisBorder: {
-                    show: false,
-                },
-                axisTicks: {
-                    show: false,
-                },
-            },
-            yaxis: {
-                show: false,
-            },
+            legend: { show: false },
+            xaxis: { categories: [] },
+            yaxis: { show: false },
         };
 
         let chart;
@@ -157,7 +118,9 @@
         async function updateChart(period = 'last-7-days') {
             const data = await fetchSalesData(period);
 
-            options.series[0].data = data.sales;
+            options.series[0].data = data.sales.map((s) =>
+                Number(s).toFixed(2),
+            );
             options.xaxis.categories = data.dates;
 
             // Update total sales
