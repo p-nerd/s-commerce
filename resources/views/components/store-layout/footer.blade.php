@@ -1,3 +1,7 @@
+@php
+    use App\Models\Option;
+@endphp
+
 <footer class="main">
     <section class="newsletter mb-15 wow animate__animated animate__fadeIn">
         <div class="container">
@@ -318,23 +322,13 @@
                 </p>
             </div>
             <div class="col-xl-4 col-lg-6 d-none d-xl-block text-center">
-                <div class="hotline d-lg-inline-flex mr-30">
-                    <img
-                        src="/assets/imgs/theme/icons/phone-call.svg"
-                        alt="hotline"
-                    />
-                    <p>
-                        1900 - 6666
-                        <span>Working 8:00 - 22:00</span>
-                    </p>
-                </div>
                 <div class="hotline d-lg-inline-flex">
                     <img
                         src="/assets/imgs/theme/icons/phone-call.svg"
                         alt="hotline"
                     />
                     <p>
-                        1900 - 8888
+                        {{ Option::supportNumber()?->value }}
                         <span>24/7 Support Center</span>
                     </p>
                 </div>

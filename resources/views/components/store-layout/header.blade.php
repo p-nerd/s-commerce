@@ -1,6 +1,7 @@
 @php
     use App\Models\Cart;
     use App\Models\Category;
+    use App\Models\Option;
 
     $categories = Category::all();
     $parentCategories = Category::with('subCategories')
@@ -46,17 +47,11 @@
                     <div class="text-center">
                         <div id="news-flash" class="d-inline-block">
                             <ul>
-                                <li>
-                                    100% Secure delivery without contacting the
-                                    courier
-                                </li>
-                                <li>
-                                    Supper Value Deals - Save more with coupons
-                                </li>
-                                <li>
-                                    Trendy 25silver jewelry, save up 35% off
-                                    today
-                                </li>
+                                @foreach (Option::newsFlashs()?->value ?? [] as $nfo)
+                                    <li>
+                                        {{ $nfo }}
+                                    </li>
+                                @endforeach
                             </ul>
                         </div>
                     </div>
@@ -66,7 +61,9 @@
                         <ul>
                             <li>
                                 Need help? Call Us:
-                                <strong class="text-brand">+ 1800 900</strong>
+                                <strong class="text-brand">
+                                    {{ Option::supportNumber()?->value }}
+                                </strong>
                             </li>
                         </ul>
                     </div>
@@ -449,7 +446,7 @@
                         alt="hotline"
                     />
                     <p>
-                        1900 - 888
+                        {{ Option::supportNumber()?->value }}
                         <span>24/7 Support Center</span>
                     </p>
                 </div>
