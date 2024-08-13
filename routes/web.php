@@ -2,8 +2,9 @@
 
 use App\Http\Controllers\Admin\CategoryController as AdminCategoryController;
 use App\Http\Controllers\Admin\CouponController as AdminCouponController;
+use App\Http\Controllers\Admin\CustomizeController as AdminCustomizeController;
 use App\Http\Controllers\Admin\OrderController as AdminOrderController;
-use App\Http\Controllers\Admin\OverviewController;
+use App\Http\Controllers\Admin\OverviewController as AdminOverviewController;
 use App\Http\Controllers\Admin\ProductController as AdminProductController;
 use App\Http\Controllers\Admin\SettingController as AdminSettingController;
 use App\Http\Controllers\Admin\UserController as AdminUserController;
@@ -100,9 +101,9 @@ Route::prefix('/account')->middleware(['auth'])->group(function () {
 
 // admin routes
 Route::prefix('/admin')->middleware(['auth', 'verified', Admin::class])->group(function () {
-    Route::get('/', [OverviewController::class, 'index'])
+    Route::get('/', [AdminOverviewController::class, 'index'])
         ->name('admin');
-    Route::get('/overview/sales', [OverviewController::class, 'sales'])
+    Route::get('/overview/sales', [AdminOverviewController::class, 'sales'])
         ->name('admin.overview.sales');
 
     Route::prefix('/users')->group(function () {
@@ -205,6 +206,13 @@ Route::prefix('/admin')->middleware(['auth', 'verified', Admin::class])->group(f
             ->name('admin.settings.delivery-charge.store');
         Route::patch('/delivery-charge', [AdminSettingController::class, 'deliveryChargeUpdate'])
             ->name('admin.settings.delivery-charge.update');
+
+        Route::get('/customize', [AdminCustomizeController::class, 'index'])
+            ->name('admin.settings.customize');
+        Route::patch('/customize/news-flashes', [AdminCustomizeController::class, 'updateNewsFlashes'])
+            ->name('admin.settings.customize.news-flashes.update');
+        Route::patch('/customize/hero-sliders', [AdminCustomizeController::class, 'updateHeroSliders'])
+            ->name('admin.settings.customize.hero-sliders.update');
     });
 
 });

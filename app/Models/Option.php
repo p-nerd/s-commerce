@@ -55,12 +55,12 @@ class Option extends Model
         $option->save();
     }
 
-    public static function newsFlashs(): ?self
+    public static function newsFlashes(): ?self
     {
         return self::where('key', 'news_flashs')->first();
     }
 
-    public static function setNewsFlashs(array $value)
+    public static function setNewsFlashes(array $value)
     {
         $option = self::firstOrCreate(
             ['key' => 'news_flashs'],
@@ -73,8 +73,8 @@ class Option extends Model
 
     public static function addNewsFlash(string $message)
     {
-        self::setNewsFlashs([
-            ...(self::newsFlashs()?->value ?? []),
+        self::setnewsFlashes([
+            ...(self::newsFlashes()?->value ?? []),
             $message,
         ]);
     }

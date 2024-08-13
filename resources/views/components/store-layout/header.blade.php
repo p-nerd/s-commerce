@@ -47,7 +47,7 @@
                     <div class="text-center">
                         <div id="news-flash" class="d-inline-block">
                             <ul>
-                                @foreach (Option::newsFlashs()?->value ?? [] as $nfo)
+                                @foreach (Option::newsFlashes()?->value ?? [] as $nfo)
                                     <li>
                                         {{ $nfo }}
                                     </li>

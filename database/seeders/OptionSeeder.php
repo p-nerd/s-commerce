@@ -31,13 +31,13 @@ class OptionSeeder extends Seeder
             heading1: 'Don’t miss amazing 2',
             heading2: 'grocery deals 2',
             subheading: 'Sign up for the daily newsletter 2',
-            image: 'assets/imgs/slider/slider-1.png'
+            image: '/assets/imgs/slider/slider-1.png'
         );
         Option::addHeroSlider(
             heading1: 'Frash Vagitable',
             heading2: 'Big Discount',
             subheading: 'Save 50 % off',
-            image: 'assets/imgs/slider/slider-2.png'
+            image: '/assets/imgs/slider/slider-2.png'
         );
     }
 }

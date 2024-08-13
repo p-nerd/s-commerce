@@ -221,6 +221,11 @@ $sidebarLinks = [
                 'href' => route('admin.settings.delivery-charge'),
                 'icon' => $listIcon,
             ],
+            [
+                'label' => 'Customize',
+                'href' => route('admin.settings.customize'),
+                'icon' => $listIcon,
+            ],
         ],
     ],
 ];
