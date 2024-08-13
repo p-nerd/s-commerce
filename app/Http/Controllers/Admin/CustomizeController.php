@@ -19,37 +19,56 @@ class CustomizeController extends Controller
 
     public function updateNewsFlashes(Request $request)
     {
-        $flashes = $request
-            ->collect()
+        $flashes = $request->collect()
             ->filter(fn ($_, $key) => preg_match('/^flash-\d+$/', $key))
             ->map(fn ($value) => trim($value))
-            ->filter()
-            ->values()
-            ->all();
+            ->filter();
 
-        // Validate each flash message
         $validator = Validator::make(
-            ['flashes' => $flashes],
+            ['flashes' => $flashes->toArray()],
             ['flashes.*' => 'required|string|max:255']
         );
 
         if ($validator->fails()) {
-            return redirect()
-                ->back()
+            return back()
                 ->withErrors($validator)
                 ->withInput();
         }
 
-        Option::setNewsFlashes($flashes);
+        Option::setNewsFlashes($flashes->values()->all());
 
-        return redirect()
-            ->back()
-            ->with('success', 'News flashes updated successfully!');
+        return back()->with('success', 'News flashes updated successfully!');
     }
 
     public function updateHeroSliders(Request $request)
     {
-        dd($request->all());
-        //
+        $data = $request->validate([
+            'hero-sliders' => 'required|array',
+            'hero-sliders.*.heading1' => 'required|string|max:255',
+            'hero-sliders.*.heading2' => 'required|string|max:255',
+            'hero-sliders.*.subheading' => 'required|string|max:255',
+            'hero-sliders.*.image' => 'nullable|image|max:2048', // Validation for image upload
+        ]);
+
+        $heroSliders = [];
+
+        foreach ($data['hero-sliders'] as $index => $slider) {
+            // Handle image upload
+            if ($request->hasFile("hero-slider-{$index}-image")) {
+                $imagePath = $request->file("hero-slider-{$index}-image")->store('hero-sliders', 'public');
+                $slider['image'] = $imagePath;
+            }
+
+            $heroSliders[] = $slider;
+        }
+
+        dd($heroSliders);
+
+        // Save or update hero sliders in the database or any other storage
+        // Assuming you have a model to save these, e.g., HeroSlider::updateOrCreate(...)
+        // Example:
+        // HeroSlider::updateOrCreate(['id' => $id], $slider);
+
+        return redirect()->back()->with('success', 'Hero sliders updated successfully.');
     }
 }
