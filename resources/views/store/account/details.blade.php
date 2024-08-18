@@ -4,7 +4,11 @@
             <h5>Account Details</h5>
         </div>
         <div class="card-body">
-            <form method="POST" action="{{ route('account.details.update') }}">
+            <form
+                method="POST"
+                action="{{ route('account.details.update') }}"
+                enctype="multipart/form-data"
+            >
                 @csrf
                 @method('PATCH')
                 <div class="row">
@@ -42,6 +46,63 @@
                             <span class="text-danger">{{ $message }}</span>
                         @enderror
                     </div>
+                    <div class="form-group col-md-6">
+                        <label for="avatar">Avatar</label>
+                        <input
+                            id="avatar"
+                            class="form-control"
+                            name="avatar"
+                            type="file"
+                            style="display: flex; align-items: center"
+                        />
+                        @error('avatar')
+                            <span class="text-danger">{{ $message }}</span>
+                        @enderror
+                    </div>
+                    <div
+                        class="form-group col-md-6"
+                        style="
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                        "
+                    >
+                        @if ($user->avatar)
+                            <div
+                                style="
+                                    width: 150px;
+                                    height: 150px;
+                                    border-radius: 50%;
+                                    overflow: hidden;
+                                    display: flex;
+                                    align-items: center;
+                                    justify-content: center;
+                                "
+                            >
+                                <img
+                                    style="
+                                        width: 100%;
+                                        height: 100%;
+                                        object-fit: cover;
+                                    "
+                                    src="{{ public_image($user->avatar) }}"
+                                />
+                            </div>
+                        @endif
+                    </div>
+                    <div class="col-md-12">
+                        <button type="submit" class="btn">Save Change</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="card mt-20">
+        <div class="card-body">
+            <form method="POST" action="{{ route('account.details.update') }}">
+                @csrf
+                @method('PATCH')
+                <div class="row">
                     <div class="form-group col-md-12">
                         <label for="current-password">Current Password</label>
                         <input

@@ -38,7 +38,7 @@ class ProductFactory extends Factory
             'expired_date' => fake()->optional()->date(),
             'long_description' => $htmlDescription,
             'stock' => fake()->numberBetween(0, 100),
-            'featured' => fake()->boolean(),
+            'featured' => false,
         ];
     }
 }

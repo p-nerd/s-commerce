@@ -146,9 +146,14 @@ class AccountController extends Controller
         $payload = $request->validate([
             'name' => ['required', 'string'],
             'email' => ['required', 'string'],
-            'current_password' => ['required', 'current_password'],
-            'password' => ['required', Password::defaults(), 'confirmed'],
+            'avatar' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'current_password' => ['nullable', 'current_password'],
+            'password' => ['nullable', Password::defaults(), 'confirmed'],
         ]);
+
+        if ($request->hasFile('avatar')) {
+            $payload['avatar'] = $request->file('avatar')->store('avatars', 'public');
+        }
 
         $user->update($payload);
 

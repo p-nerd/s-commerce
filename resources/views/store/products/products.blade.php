@@ -32,12 +32,6 @@
                         </a>
                     </div>
                     <div class="product-action-1">
-                        <a aria-label="Add To Wishlist" class="action-btn">
-                            <i class="fi-rs-heart"></i>
-                        </a>
-                        <a aria-label="Compare" class="action-btn">
-                            <i class="fi-rs-shuffle"></i>
-                        </a>
                         <a
                             aria-label="Quick view"
                             class="action-btn"
@@ -50,7 +44,9 @@
                 </div>
                 <div class="product-content-wrap">
                     <div class="product-category">
-                        <a href="{{ $productLink }}">
+                        <a
+                            href="{{ route('products', ['category' => $product->category->slug]) }}"
+                        >
                             {{ $product->category->name }}
                         </a>
                     </div>
@@ -69,11 +65,11 @@
                     <div class="product-card-bottom">
                         <div class="product-price">
                             <span>
-                                ${{ $product->discount_price ?? $product->price }}
+                                ৳{{ $product->discount_price ?? $product->price }}
                             </span>
                             @if ($product->discount_price)
                                 <span class="old-price">
-                                    ${{ $product->price }}
+                                    ৳{{ $product->price }}
                                 </span>
                             @endif
                         </div>

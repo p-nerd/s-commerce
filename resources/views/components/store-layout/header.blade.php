@@ -129,11 +129,20 @@
                             @auth
                                 <div class="header-action-icon-2">
                                     <a href="{{ route('account') }}">
-                                        <img
-                                            class="svgInject"
-                                            alt="Nest"
-                                            src="{{ url('/assets/imgs/theme/icons/icon-user.svg') }}"
-                                        />
+                                        @if (auth()->user()?->avatar)
+                                            <img
+                                                class="svgInject"
+                                                alt="Nest"
+                                                style="border-radius: 50%"
+                                                src="{{ auth()->user()?->avatar }}"
+                                            />
+                                        @else
+                                            <img
+                                                class="svgInject"
+                                                alt="Nest"
+                                                src="{{ url('/assets/imgs/theme/icons/icon-user.svg') }}"
+                                            />
+                                        @endif
                                     </a>
                                     <a href="{{ route('account') }}">
                                         <span class="lable ml-0">Account</span>
@@ -254,88 +263,6 @@
                     </a>
                 </div>
                 <div class="header-nav d-none d-lg-flex">
-                    <div class="main-categori-wrap d-none d-lg-block">
-                        <a class="categories-button-active" href="/">
-                            <span class="fi-rs-apps"></span>
-                            <span class="et">Browse</span>
-                            All Categories
-                            <i class="fi-rs-angle-down"></i>
-                        </a>
-                        <div
-                            class="categories-dropdown-wrap categories-dropdown-active-large font-heading"
-                        >
-                            <div class="d-flex categori-dropdown-inner">
-                                <ul>
-                                    @foreach ($categories->slice(0, 5) as $category)
-                                        <li>
-                                            <a
-                                                href="/categories/{{ $category->slug }}"
-                                            >
-                                                <img
-                                                    src="{{ $category->image }}"
-                                                    alt=""
-                                                />
-                                                {{ $category->name }}
-                                            </a>
-                                        </li>
-                                    @endforeach
-                                </ul>
-                                <ul class="end">
-                                    @foreach ($categories->slice(5, 5) as $category)
-                                        <li>
-                                            <a
-                                                href="/categories/{{ $category->slug }}"
-                                            >
-                                                <img
-                                                    src="{{ $category->image }}"
-                                                    alt=""
-                                                />
-                                                {{ $category->name }}
-                                            </a>
-                                        </li>
-                                    @endforeach
-                                </ul>
-                            </div>
-                            <div class="more_slide_open" style="display: none">
-                                <div class="d-flex categori-dropdown-inner">
-                                    <ul>
-                                        @foreach ($categories->slice(10, (count($categories) - 10) / 2) as $category)
-                                            <li>
-                                                <a
-                                                    href="/categories/{{ $category->slug }}"
-                                                >
-                                                    <img
-                                                        src="{{ $category->image }}"
-                                                        alt=""
-                                                    />
-                                                    {{ $category->name }}
-                                                </a>
-                                            </li>
-                                        @endforeach
-                                    </ul>
-                                    <ul class="end">
-                                        @foreach ($categories->slice(10 + (count($categories) - 10) / 2) as $category)
-                                            <li>
-                                                <a
-                                                    href="/categories/{{ $category->slug }}"
-                                                >
-                                                    <img
-                                                        src="{{ $category->image }}"
-                                                        alt=""
-                                                    />
-                                                    {{ $category->name }}
-                                                </a>
-                                            </li>
-                                        @endforeach
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="more_categories">
-                                <span class="icon"></span>
-                                <span class="heading-sm-1">Show more...</span>
-                            </div>
-                        </div>
-                    </div>
                     <div
                         class="main-menu main-menu-padding-1 main-menu-lh-2 d-none d-lg-block font-heading"
                     >
@@ -352,7 +279,7 @@
                                     </x-store-layout.nav-link>
                                 </li>
                                 <li class="position-static">
-                                    <a href="/categories">
+                                    <a>
                                         Categories
                                         <i class="fi-rs-angle-down"></i>
                                     </a>
@@ -363,7 +290,7 @@
                                             >
                                                 <a
                                                     class="menu-title"
-                                                    href="/categories/{{ $parentCategory->slug }}"
+                                                    href="{{ route('products', ['category' => $parentCategory->slug]) }}"
                                                 >
                                                     {{ $parentCategory->name }}
                                                 </a>
@@ -371,7 +298,7 @@
                                                     @foreach ($parentCategory->subCategories as $subCategory)
                                                         <li>
                                                             <a
-                                                                href="/categories/{{ $subCategory->slug }}"
+                                                                href="{{ route('products', ['category' => $subCategory->slug]) }}"
                                                             >
                                                                 {{ $subCategory->name }}
                                                             </a>
@@ -380,57 +307,6 @@
                                                 </ul>
                                             </li>
                                         @endforeach
-
-                                        <li
-                                            class="sub-mega-menu sub-mega-menu-width-34"
-                                        >
-                                            <div class="menu-banner-wrap">
-                                                <a
-                                                    href="shop-product-right.html"
-                                                >
-                                                    <img
-                                                        src="/assets/imgs/banner/banner-menu.png"
-                                                        alt="Nest"
-                                                    />
-                                                </a>
-                                                <div
-                                                    class="menu-banner-content"
-                                                >
-                                                    <h4>Hot deals</h4>
-                                                    <h3>
-                                                        Don't miss
-                                                        <br />
-                                                        Trending
-                                                    </h3>
-                                                    <div
-                                                        class="menu-banner-price"
-                                                    >
-                                                        <span
-                                                            class="new-price text-success"
-                                                        >
-                                                            Save to 50%
-                                                        </span>
-                                                    </div>
-                                                    <div
-                                                        class="menu-banner-btn"
-                                                    >
-                                                        <a
-                                                            href="shop-product-right.html"
-                                                        >
-                                                            Shop now
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                                <div
-                                                    class="menu-banner-discount"
-                                                >
-                                                    <h3>
-                                                        <span>25%</span>
-                                                        off
-                                                    </h3>
-                                                </div>
-                                            </div>
-                                        </li>
                                     </ul>
                                 </li>
                                 <li>

@@ -37,5 +37,12 @@ class ProductSeeder extends Seeder
             ProductImage::factory(5)->create(['product_id' => $product->id]);
             $product->images->random()->update(['featured' => true]);
         });
+
+        // create normal popular products
+        Product::factory(30)->create(['featured' => true])->each(function ($product) {
+            ProductImage::factory(5)->create(['product_id' => $product->id]);
+            $product->images->random()->update(['featured' => true]);
+        });
+
     }
 }

@@ -1,5 +1,5 @@
 @php
-    $user = request()->user();
+    $user = auth()->user();
 @endphp
 
 <nav
@@ -63,7 +63,7 @@
                         >
                             <span class="sr-only">Open user menu</span>
 
-                            @if (! $user)
+                            @if ($user?->avatar)
                                 <img
                                     class="h-8 w-8 rounded-full"
                                     src="{{ $user->avatar }}"
