@@ -23,6 +23,23 @@
         submitForm(e) {
             e.target.submit()
         },
+        publicImage(input) {
+            function isUrl(string) {
+                try {
+                    new URL(string)
+                    return true
+                } catch (_) {
+                    return false
+                }
+            }
+            if (isUrl(input)) {
+                return input
+            }
+            if (input.startsWith('/')) {
+                return input
+            }
+            return `/${input}`
+        },
     }"
 >
     <div class="mx-auto w-3/4 space-y-3">
@@ -34,6 +51,7 @@
             action="{{ route('admin.settings.customize.hero-sliders.update') }}"
             class="space-y-4"
             @submit.prevent="submitForm"
+            enctype="multipart/form-data"
         >
             @csrf
             @method('PATCH')
@@ -54,7 +72,6 @@
                                 placeholder="Enter heading 1"
                             />
                         </label>
-
                         <label class="flex space-x-2">
                             <span class="w-[120px]">Heading 2:</span>
                             <input
@@ -84,7 +101,7 @@
                                 <span class="w-[103px]">Image:</span>
                                 <input
                                     type="file"
-                                    :name="'hero-slider-' + index + '-image'"
+                                    :name="'hero-slider-' + index + '-new-image'"
                                     @change="e => {
                                     const file = e.target.files[0];
                                     if (file) {
@@ -99,6 +116,11 @@
                                 />
                             </label>
                             <div class="relative w-[300px]">
+                                <input
+                                    type="hidden"
+                                    :name="'hero-slider-' + index + '-image'"
+                                    :value="heroSlider.image"
+                                />
                                 <button
                                     x-show="heroSlider.image"
                                     type="button"
@@ -127,7 +149,7 @@
                                         <line x1="14" x2="14" y1="11" y2="17" />
                                     </svg>
                                 </button>
-                                <img :src="heroSlider.image" />
+                                <img :src="publicImage(heroSlider.image)" />
                             </div>
                         </div>
                     </div>

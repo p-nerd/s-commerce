@@ -42,32 +42,25 @@ class CustomizeController extends Controller
 
     public function updateHeroSliders(Request $request)
     {
-        $data = $request->validate([
-            'hero-sliders' => 'required|array',
-            'hero-sliders.*.heading1' => 'required|string|max:255',
-            'hero-sliders.*.heading2' => 'required|string|max:255',
-            'hero-sliders.*.subheading' => 'required|string|max:255',
-            'hero-sliders.*.image' => 'nullable|image|max:2048', // Validation for image upload
-        ]);
+        $sliders = [];
 
-        $heroSliders = [];
+        foreach ($request->all() as $key => $value) {
+            $number = get_first_number($key);
 
-        foreach ($data['hero-sliders'] as $index => $slider) {
-            // Handle image upload
-            if ($request->hasFile("hero-slider-{$index}-image")) {
-                $imagePath = $request->file("hero-slider-{$index}-image")->store('hero-sliders', 'public');
-                $slider['image'] = $imagePath;
+            if (str_contains($key, 'new-image') && $request->hasFile($key)) {
+                $sliders[$number]['image'] = $request->file($key)->store('hero-sliders', 'public');
+            } elseif (str_contains($key, 'image')) {
+                $sliders[$number]['image'] = $value;
+            } elseif (str_contains($key, 'heading1')) {
+                $sliders[$number]['heading1'] = $value;
+            } elseif (str_contains($key, 'heading2')) {
+                $sliders[$number]['heading2'] = $value;
+            } elseif (str_contains($key, 'subheading')) {
+                $sliders[$number]['subheading'] = $value;
             }
-
-            $heroSliders[] = $slider;
         }
 
-        dd($heroSliders);
-
-        // Save or update hero sliders in the database or any other storage
-        // Assuming you have a model to save these, e.g., HeroSlider::updateOrCreate(...)
-        // Example:
-        // HeroSlider::updateOrCreate(['id' => $id], $slider);
+        Option::setHeroSliders($sliders);
 
         return redirect()->back()->with('success', 'Hero sliders updated successfully.');
     }
