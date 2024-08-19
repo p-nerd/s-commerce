@@ -34,10 +34,10 @@ The resulting application showcases my ability to develop complex web systems an
 
 -   **[PHP](https://www.php.net):** A widely-used server-side scripting language for building dynamic web applications.
 -   **[Laravel](https://laravel.com):** A PHP framework that simplifies web development with elegant syntax and built-in tools.
+-   **[SQLite](https://www.sqlite.org):** A lightweight, self-contained SQL database engine used for local data storage.
 -   **[TailwindCSS](https://tailwindcss.com):** A utility-first CSS framework for creating custom designs quickly and efficiently.
+-   **[AlpineJS](https://alpinejs.dev):** A minimal framework for adding JavaScript behavior to your HTML with a simple API.
 -   **[SSLCommerz](https://www.sslcommerz.com):** A payment gateway in Bangladesh supporting various local and global payment methods.
-
----
 
 ## Installation and Running the Development Server
 
