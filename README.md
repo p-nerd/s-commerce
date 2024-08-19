@@ -81,16 +81,16 @@ Follow these steps to set up the application locally:
     php artisan db:seed
     ```
 6. **Running the Development Server**
-    - **Start the PHP Local Development Server with Laravel Herd**
-        ```bash
-        herd link
-        ```
-    - **Compile Frontend Assets with Hot reloading**  
-      In a separate terminal window:
+    - Compile Frontend Assets with Hot reloading
         ```bash
         pnpm run dev
         ```
-    - **Open the Application**
+    - Start the PHP Local Development Server with Laravel Herd
+      In a separate terminal window:
+        ```bash
+        herd link
+        ```
+    - **Open the Application on Browser**
         ```bash
         herd open
         ```
