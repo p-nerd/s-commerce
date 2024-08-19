@@ -1,6 +1,6 @@
 # S-Commerce
 
-A single-vendor eCommerce platform built with Laravel.
+Single-vendor eCommerce platform built with Laravel.
 
 ## Story
 
