@@ -96,6 +96,8 @@ Follow these steps to set up the application locally:
         ```
         Alternatively, visit [http://s-commerce.test](http://s-commerce.test) in your browser.
 
+This installation process has been tested on macOS. If you encounter any issues when installing on Linux or Windows, please let me know.
+
 ## Contributing
 
 Contributions are welcome! Please open an issue or submit a pull request with your changes.
@@ -103,3 +105,7 @@ Contributions are welcome! Please open an issue or submit a pull request with yo
 ## License
 
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+
+## Contact
+
+For questions or feedback, contact [shihab4t@gmail.com](mailto:shihab4t@gmail.com) or visit [developershihab.com](https://developershihab.com).
