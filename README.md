@@ -37,58 +37,61 @@ The resulting application showcases my ability to develop complex web systems an
 -   **[TailwindCSS](https://tailwindcss.com):** A utility-first CSS framework for creating custom designs quickly and efficiently.
 -   **[SSLCommerz](https://www.sslcommerz.com):** A payment gateway in Bangladesh supporting various local and global payment methods.
 
+---
+
 ## Installation and Running the Development Server
 
-To get the application up and running on your local machine, follow these steps:
+Follow these steps to set up the application locally:
 
-1. First download & install [Laravel Herd](https://herd.laravel.com) Desktop App
-    - This will install PHP, Composer, Laravel Installer, Node.js for us
-    - To check is all everything installed run this commands in terminal
+1. **Install Laravel Herd**  
+   Download and install [Laravel Herd](https://herd.laravel.com). This will set up PHP, Composer, Laravel Installer, and Node.js.
+   Verify the installation with:
     ```bash
     php -v
     composer -v
     laravel -v
     node -v
     ```
-2. Clone the Repository
+2. **Clone the Repository**
     ```bash
     git clone https://github.com/p-nerd/s-commerce.git
     cd s-commerce
     ```
-3. Install Dependencies
+3. **Install Dependencies**
     ```bash
     composer install
     npm -g i pnpm && pnpm install
     ```
-4. Set Up
-    - Environment Variables:
+4. **Set Up**
+    - **Environment Variables**
         ```bash
-        cp .env.example .env # Open the `.env` file and update the database configuration and other environment variables as needed.
+        cp .env.example .env
         ```
-    - Generate the Application Key:
-    ```bash
-    php artisan key:generate
-    ```
-5. Run Database Migrations:
+        Edit the `.env` file to configure your database and other settings.
+    - **Generate the Application Key**
+        ```bash
+        php artisan key:generate
+        ```
+5. **Run Database Migrations**
     ```bash
     php artisan migrate
     ```
-    If you need sample data, you can also run the seeder:
+    To add sample data, run:
     ```bash
     php artisan db:seed
     ```
-6. Running the Development Server
-    1. Start the PHP Local Development Server with Laravel Hard
-    ```bash
-    herd link
-    ```
-    2. Compile Frontend Assets with Vite Server: In a separate terminal window, run:
-    ```bash
-    pnpm run dev
-    ```
-    3. Open the application with blow or visit http://s-commerce.test on browser
-    ```bash
-    herd open # this will open application url on the browser
-    ```
-
-This will compile your frontend assets and enable hot reloading for development.
+6. **Running the Development Server**
+    - **Start the PHP Local Development Server with Laravel Herd**
+        ```bash
+        herd link
+        ```
+    - **Compile Frontend Assets with Hot reloading**  
+      In a separate terminal window:
+        ```bash
+        pnpm run dev
+        ```
+    - **Open the Application**
+        ```bash
+        herd open
+        ```
+        Alternatively, visit [http://s-commerce.test](http://s-commerce.test) in your browser.
