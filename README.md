@@ -1,66 +1,94 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# S-Commerce
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+A single-vendor eCommerce platform built with Laravel.
 
-## About Laravel
+## Story
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+During my final semester diploma internship at [Systech Digital Limited](https://systechdigital.com), I developed this project over two months. It's a fully functional single-vendor eCommerce web application, incorporating all the essential features you'd expect from a typical eCommerce platform.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+The application is written in PHP using the Laravel web framework. I implemented the frontend with Laravel Blade templating, and styled the admin dashboard from scratch using TailwindCSS. The store section utilizes an eCommerce template provided by Systech.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+This project serves as a robust foundation for launching an eCommerce platform. It can be easily customized to meet specific business needs, allowing for quick deployment of a feature-rich online store.
 
-## Learning Laravel
+The resulting application showcases my ability to develop complex web systems and demonstrates my expertise in building a web application from the ground up, following best practices.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## Key Features
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+-   **Product Filtering:** Users can filter products by category, price, and stock on the products page.
+-   **Cart System:** Customers can add products to their cart for shopping.
+-   **SSLCommerz Payment Gateway Integration:** Users can make payments using cards, bKash, Nagad, and other options.
+-   **Account Section:** Customers can update their shipping and billing addresses, view their order history, and manage their account information.
+-   **Admin Dashboard:** The dashboard allows full control over the platform's operations.
+    -   Manage users and view user lists.
+    -   Create, manage, and perform CRUD operations on products and categories.
+    -   Create and control coupons.
+    -   View and update order statuses.
+    -   Set different delivery charges for districts in Bangladesh.
+    -   Customize the site by adding news flashes, managing hero sliders, and more.
+-   **Authentication System:**
+    -   Customers can register and log in with their credentials.
+    -   Password reset via email with a reset token.
+    -   Email verification for user accounts.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## Technologies and Libraries
 
-## Laravel Sponsors
+-   **[PHP](https://www.php.net):** A widely-used server-side scripting language for building dynamic web applications.
+-   **[Laravel](https://laravel.com):** A PHP framework that simplifies web development with elegant syntax and built-in tools.
+-   **[TailwindCSS](https://tailwindcss.com):** A utility-first CSS framework for creating custom designs quickly and efficiently.
+-   **[SSLCommerz](https://www.sslcommerz.com):** A payment gateway in Bangladesh supporting various local and global payment methods.
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+## Installation and Running the Development Server
 
-### Premium Partners
+To get the application up and running on your local machine, follow these steps:
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+1. First download & install [Laravel Herd](https://herd.laravel.com) Desktop App
+    - This will install PHP, Composer, Laravel Installer, Node.js for us
+    - To check is all everything installed run this commands in terminal
+    ```bash
+    php -v
+    composer -v
+    laravel -v
+    node -v
+    ```
+2. Clone the Repository
+    ```bash
+    git clone https://github.com/p-nerd/s-commerce.git
+    cd s-commerce
+    ```
+3. Install Dependencies
+    ```bash
+    composer install
+    npm -g i pnpm && pnpm install
+    ```
+4. Set Up
+    - Environment Variables:
+        ```bash
+        cp .env.example .env # Open the `.env` file and update the database configuration and other environment variables as needed.
+        ```
+    - Generate the Application Key:
+    ```bash
+    php artisan key:generate
+    ```
+5. Run Database Migrations:
+    ```bash
+    php artisan migrate
+    ```
+    If you need sample data, you can also run the seeder:
+    ```bash
+    php artisan db:seed
+    ```
+6. Running the Development Server
+    1. Start the PHP Local Development Server with Laravel Hard
+    ```bash
+    herd link
+    ```
+    2. Compile Frontend Assets with Vite Server: In a separate terminal window, run:
+    ```bash
+    pnpm run dev
+    ```
+    3. Open the application with blow or visit http://s-commerce.test on browser
+    ```bash
+    herd open # this will open application url on the browser
+    ```
 
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+This will compile your frontend assets and enable hot reloading for development.
