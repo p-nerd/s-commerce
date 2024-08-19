@@ -95,3 +95,11 @@ Follow these steps to set up the application locally:
         herd open
         ```
         Alternatively, visit [http://s-commerce.test](http://s-commerce.test) in your browser.
+
+## Contributing
+
+Contributions are welcome! Please open an issue or submit a pull request with your changes.
+
+## License
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
