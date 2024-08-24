@@ -32,6 +32,8 @@ class User extends Authenticatable
         'shipping_address',
         'shipping_landmark',
         'status',
+        'two_factor_code',
+        'two_factor_expires_at',
     ];
 
     protected $hidden = [
