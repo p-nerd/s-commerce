@@ -15,8 +15,8 @@ class Coupon extends Model
 
     protected $fillable = [
         'code',
-        'discount',
         'type',
+        'discount',
         'expires_at',
         'status',
     ];
@@ -28,6 +28,16 @@ class Coupon extends Model
             'status' => CouponStatus::class,
             'expires_at' => 'date',
         ];
+    }
+
+    public function valid(): bool
+    {
+        return $this->status === CouponStatus::ENABLED && ($this->expires_at === null || $this->expires_at->isFuture());
+    }
+
+    public function amount($total)
+    {
+        return $this->type === CouponType::PERCENTAGE ? $total * ($this->discount / 100) : $this->discount;
     }
 
     public function orders(): HasMany

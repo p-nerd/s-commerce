@@ -23,7 +23,7 @@ class AccountController extends Controller
 
     public function orders()
     {
-        $orders = Order::with('orderItems')->get();
+        $orders = Order::with('orderItems')->orderBy('created_at', 'desc')->get();
 
         return view('store/account/orders', [
             'orders' => $orders,

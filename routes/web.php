@@ -36,18 +36,11 @@ Route::prefix('/products')->group(function () {
         ->name('products.show');
 });
 
-Route::prefix('/cart')->group(function () {
-
-    Route::get('/', [CartController::class, 'index'])
-        ->name('cart');
-    Route::post('/', [CartController::class, 'store'])
-        ->name('cart.store');
-
-    Route::patch('/', [CartController::class, 'update'])
-        ->name('cart.update');
-
-    Route::delete('/{id}', [CartController::class, 'destroy'])
-        ->name('cart.destroy');
+Route::prefix('/cart')->middleware(['auth'])->group(function () {
+    Route::get('/', [CartController::class, 'index'])->name('cart');
+    Route::post('/', [CartController::class, 'store'])->name('cart.store');
+    Route::patch('/', [CartController::class, 'update'])->name('cart.update');
+    Route::delete('/{id}', [CartController::class, 'destroy'])->name('cart.destroy');
 });
 
 Route::prefix('/checkout')->group(function () {

@@ -46,17 +46,16 @@ class CheckoutController extends Controller
     {
         $payload = $request->validate([
             'coupon' => ['required', 'string'],
+            'total' => ['required'],
         ]);
 
-        if ($payload['coupon'] !== 'shihab') {
-            return response()->json([
-                'message' => 'Coupon is invalid',
-            ], 400);
+        $coupon = Coupon::where('code', $payload['coupon'])->first();
+        if (! $coupon?->valid()) {
+            return response()->json(['message' => 'Coupon is invalid'], 400);
         }
 
         return [
-            'message' => 'Coupon applied successfully',
-            'amount' => 15,
+            'amount' => $coupon->amount($payload['total']),
         ];
     }
 
@@ -82,14 +81,15 @@ class CheckoutController extends Controller
         $discount = 0;
         if ($payload['coupon']) {
             $coupon = Coupon::where('code', $payload['coupon'])->first();
-            if ($coupon) {
-                $discount = $coupon->type === 'percentage'
-                    ? $subtotal * ($coupon->discount / 100)
-                    : $coupon->discount;
+            if ($coupon?->valid()) {
+                $discount = $coupon->amount($subtotal);
             }
         }
 
-        $delivery = Location::where('value', $payload['district'])->first()?->price ?? 0;
+        $delivery = Location::query()
+            ->where('division_id', '!=', null)
+            ->where('value', $payload['district'])
+            ->first()?->price ?? 0;
 
         $total = $subtotal - $discount + $delivery;
 

@@ -195,6 +195,7 @@
                                                         $
                                                         <span
                                                             id="subtotal-amount"
+                                                            data-subtotal-amount="{{ $subtotal }}"
                                                         >
                                                             {{ $subtotal }}
                                                         </span>
