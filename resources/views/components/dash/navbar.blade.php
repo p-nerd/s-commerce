@@ -66,7 +66,7 @@
                             @if ($user?->avatar)
                                 <img
                                     class="h-8 w-8 rounded-full"
-                                    src="{{ $user->avatar }}"
+                                    src="{{ public_image($user->avatar) }}"
                                     alt="user photo"
                                 />
                             @else

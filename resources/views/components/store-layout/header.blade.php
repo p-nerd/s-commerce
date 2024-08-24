@@ -134,7 +134,7 @@
                                                 class="svgInject"
                                                 alt="Nest"
                                                 style="border-radius: 50%"
-                                                src="{{ auth()->user()?->avatar }}"
+                                                src="{{ public_image(auth()->user()->avatar) }}"
                                             />
                                         @else
                                             <img
