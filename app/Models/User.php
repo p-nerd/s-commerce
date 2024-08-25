@@ -11,6 +11,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Cache;
 
 class User extends Authenticatable
 {
@@ -64,5 +65,34 @@ class User extends Authenticatable
     public function admin(): bool
     {
         return $this->role === UserRole::ADMIN;
+    }
+
+    protected function verificationCodeKey(): string
+    {
+        return 'verification_code_'.$this->id;
+    }
+
+    public function generateVerificationCode()
+    {
+        $verificationCode = str_pad(rand(0, 9999), 4, '0', STR_PAD_LEFT);
+
+        Cache::put(
+            $this->verificationCodeKey(),
+            $verificationCode,
+            now()->addMinutes(config('auth.verification.duration'))
+        );
+
+        return $verificationCode;
+    }
+
+    public function compareVerificationCode(string $code)
+    {
+        $cacheKey = $this->verificationCodeKey();
+        if (Cache::get($cacheKey) !== $code) {
+            return false;
+        }
+        Cache::forget($cacheKey);
+
+        return true;
     }
 }

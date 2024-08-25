@@ -9,7 +9,6 @@ use App\Notifications\VerificationCodeNotification;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\View\View;
 
@@ -39,16 +38,14 @@ class AuthenticatedSessionController extends Controller
             ]);
         }
 
-        $verificationCode = str_pad(rand(0, 9999), 4, '0', STR_PAD_LEFT);
-        Cache::put('verification_code_'.$user->id, $verificationCode, now()->addMinutes(3));
-
+        $verificationCode = $user->generateVerificationCode();
         $user->notify(new VerificationCodeNotification($verificationCode));
 
         return view('auth/auth-verify', [
             'email' => $payload['email'],
             'password' => $payload['password'],
             'remember' => $payload['remember'],
-            'duration' => 3 * 60 * 1000, // 3 minutes in milliseconds
+            'duration' => config('auth.verification.duration') * 60 * 1000,
         ]);
     }
 
@@ -64,19 +61,15 @@ class AuthenticatedSessionController extends Controller
             return back()->withErrors(['email' => 'The provided credentials do not match our records.']);
         }
 
-        $cachedCode = Cache::get('verification_code_'.$user->id);
-
-        if ($cachedCode !== $enteredCode) {
+        if (! $user->compareVerificationCode($enteredCode)) {
             return back()->withErrors(['code' => 'The verification code is incorrect.']);
         }
-
-        Cache::forget('verification_code_'.$user->id);
 
         $request->authenticate();
 
         $request->session()->regenerate();
 
-        return redirect()->intended(route('admin', absolute: false));
+        return redirect()->intended(route('index', absolute: false));
     }
 
     /**
