@@ -27,19 +27,19 @@ class ProductSeeder extends Seeder
         // create products with featured categories
         $featuredCategories = Category::where('featured', true);
         $featuredCategoryId = fn () => $featuredCategories->inRandomOrder()->first()->id;
-        Product::factory(200)->create(['category_id' => $featuredCategoryId()])->each(function ($product) {
+        Product::factory(20)->create(['category_id' => $featuredCategoryId()])->each(function ($product) {
             ProductImage::factory(5)->create(['product_id' => $product->id]);
             $product->images->random()->update(['featured' => true]);
         });
 
         // create normal products
-        Product::factory(200)->create()->each(function ($product) {
+        Product::factory(20)->create()->each(function ($product) {
             ProductImage::factory(5)->create(['product_id' => $product->id]);
             $product->images->random()->update(['featured' => true]);
         });
 
         // create normal popular products
-        Product::factory(30)->create(['featured' => true])->each(function ($product) {
+        Product::factory(20)->create(['featured' => true])->each(function ($product) {
             ProductImage::factory(5)->create(['product_id' => $product->id]);
             $product->images->random()->update(['featured' => true]);
         });

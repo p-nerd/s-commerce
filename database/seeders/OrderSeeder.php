@@ -11,28 +11,28 @@ class OrderSeeder extends Seeder
 {
     public function run(): void
     {
-        Order::factory(10)
+        Order::factory(5)
             ->create(['user_id' => User::first()->id])
             ->each(fn ($order) => $this->orderItems($order));
 
-        Order::factory(50)
+        Order::factory(10)
             ->create()
             ->each(fn ($order) => $this->orderItems($order));
 
         // Generate 1000 orders spread over the last year
-        Order::factory()->count(1000)->create()
+        Order::factory()->count(10)->create()
             ->each(fn ($order) => $this->orderItems($order));
 
         // Generate 100 recent orders (last 30 days)
-        Order::factory()->recent()->count(100)->create()
+        Order::factory()->recent()->count(10)->create()
             ->each(fn ($order) => $this->orderItems($order));
 
         // Generate 500 completed orders
-        Order::factory()->completed()->count(500)->create()
+        Order::factory()->completed()->count(10)->create()
             ->each(fn ($order) => $this->orderItems($order));
 
         // Generate 200 orders from last year
-        Order::factory()->lastYear()->count(200)->create()
+        Order::factory()->lastYear()->count(10)->create()
             ->each(fn ($order) => $this->orderItems($order));
 
     }

@@ -14,7 +14,7 @@ class CategorySeeder extends Seeder
         $category = Category::factory()->count(10)->create();
 
         // create sub-categories
-        Category::factory()->count(90)->create([
+        Category::factory()->count(10)->create([
             'parent_id' => fn () => $category->random()->id]
         );
     }
