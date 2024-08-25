@@ -5,7 +5,7 @@ import axios from 'axios';
 import sweetalert from 'sweetalert';
 import Alpine from 'alpinejs';
 import Trix from 'trix';
-import ApexCharts from 'ApexCharts';
+import ApexCharts from 'apexcharts';
 
 window.axios = axios;
 window.sweetalert = sweetalert;
