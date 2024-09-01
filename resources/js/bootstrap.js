@@ -1,4 +1,3 @@
-import './../css/app.css';
 import 'trix/dist/trix.css';
 
 import axios from 'axios';
