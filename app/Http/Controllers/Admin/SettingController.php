@@ -10,15 +10,23 @@ class SettingController extends Controller
 {
     public function deliveryCharge(Request $request)
     {
-        $divisionsConfig = config('settings.divisions');
+        $allDistricts = Location::query()
+            ->with('division')
+            ->whereNotNull('division_id')
+            ->get();
 
-        $divisionsOptions = [];
-        foreach (array_keys($divisionsConfig) as $key) {
-            $divisionsOptions[] = [
-                'value' => $key,
-                'label' => ucwords($key),
-            ];
-        }
+        $divisionsConfig = collect(config('settings.divisions'))
+            ->map(function ($division) use ($allDistricts) {
+                $division['districts'] = collect($division['districts'])
+                    ->filter(fn ($district) => ! collect($allDistricts)->first(fn ($d) => $district['value'] === $d['value']))
+                    ->values()
+                    ->toArray();
+
+                return $division;
+            })
+            ->filter(fn ($division) => ! collect($division['districts'])->isEmpty())
+            ->values()
+            ->toArray();
 
         $districts = Location::query()
             ->with('division')
@@ -33,7 +41,6 @@ class SettingController extends Controller
 
         return view('admin/settings/delivery-charge', [
             'divisionsConfig' => $divisionsConfig,
-            'divisionsOptions' => $divisionsOptions,
             'districts' => $districts,
         ]);
     }

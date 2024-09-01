@@ -44,7 +44,7 @@ class AuthenticatedSessionController extends Controller
         return view('auth/auth-verify', [
             'email' => $payload['email'],
             'password' => $payload['password'],
-            'remember' => $payload['remember'],
+            'remember' => $payload['remember'] ?? false,
             'duration' => config('auth.verification.duration') * 60 * 1000,
         ]);
     }
