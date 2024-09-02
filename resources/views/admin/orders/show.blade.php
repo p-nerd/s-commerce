@@ -19,13 +19,13 @@
                 <x-show.line label="Payment Status">
                     {{ $order->paid ? 'Paid' : 'Not Paid' }}
                 </x-show.line>
-                @if ($coupon)
+                @if ($order->coupon)
                     <x-show.line label="Used Coupon">
                         <a
-                            href="{{ route('admin.coupons.show', $coupon) }}"
+                            href="{{ route('admin.coupons.show', $order->coupon) }}"
                             class="underline"
                         >
-                            {{ $coupon->code }}
+                            {{ $order->coupon->code }}
                         </a>
                     </x-show.line>
                 @endif
@@ -40,7 +40,7 @@
                             method="PATCH"
                             name="status"
                             :value="$order->status->value"
-                            :options="$statuses"
+                            :options="$statusOptions"
                         />
                     </div>
                 </x-show.line>
@@ -100,7 +100,7 @@
                 <div
                     class="mx-auto mb-2 h-36 w-36 overflow-hidden rounded-full"
                 >
-                    @if ($user->avatar)
+                    @if ($order->user->avatar)
                         <img
                             src="{{ $order->user->avatar }}"
                             class="h-full w-full object-contain"
@@ -118,13 +118,13 @@
                     </a>
                 </x-show.line>
                 <x-show.line label="Name">
-                    {{ $user->name }}
+                    {{ $order->user->name }}
                 </x-show.line>
                 <x-show.line label="Email">
-                    {{ $user->email }}
+                    {{ $order->user->email }}
                 </x-show.line>
                 <x-show.line label="Status">
-                    {{ $user->status->capitalized() }}
+                    {{ $order->user->status->capitalized() }}
                 </x-show.line>
             </x-show.info>
         </div>

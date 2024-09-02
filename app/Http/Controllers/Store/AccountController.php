@@ -2,13 +2,12 @@
 
 namespace App\Http\Controllers\Store;
 
+use App\Contracts\PDF;
 use App\Http\Controllers\Controller;
 use App\Models\Location;
 use App\Models\Order;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rules\Password;
-
-use function Spatie\LaravelPdf\Support\pdf;
 
 class AccountController extends Controller
 {
@@ -39,13 +38,15 @@ class AccountController extends Controller
         ]);
     }
 
-    public function ordersInvoice(Order $order)
+    public function ordersInvoice(Order $order, PDF $pdf)
     {
         $order = Order::with('orderItems.product', 'coupon')->find($order->id);
 
-        return pdf()
-            ->view('store/account/invoice', ['order' => $order])
-            ->name("invoice-#{$order->id}.pdf");
+        return $pdf->render(
+            name: "invoice-#{$order->id}",
+            view: 'store/account/invoice',
+            data: ['order' => $order]
+        );
     }
 
     public function addresses(Request $request)

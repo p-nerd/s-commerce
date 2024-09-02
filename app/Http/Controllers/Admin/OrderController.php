@@ -44,10 +44,8 @@ class OrderController extends Controller
     {
         return view('admin/orders/show', [
             'order' => $order,
-            'user' => $order->user,
-            'coupon' => $order->coupon,
-            'orderItems' => $order->orderItems,
-            'statuses' => OrderStatus::options(),
+            'orderItems' => $order->orderItems()->with('product')->get(),
+            'statusOptions' => OrderStatus::options(),
         ]);
     }
 
